@@ -1,186 +1,716 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hy">
 <head>
   <meta charset="UTF-8" />
-  <title>My Links</title>
+  <title>Success Academy | Shopify & Upwork Դասընթաց</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
-      --accent: #E3FC02;
-      --bg: #1F1F21;
-      --text: #ffffff;
-      --card: #2A2A2D;
+      --bg: #f7f2ee;        /* nude/cream background */
+      --bg-soft: #efe3da;   /* soft nude */
+      --card: #ffffff;
+      --text-main: #151515;
+      --text-soft: #666666;
+      --accent: #111111;    /* black */
+      --accent-soft: #c9a897;
+      --border-soft: #e2d6cd;
+      --radius-lg: 20px;
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #333, var(--bg));
-      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #f0e4da 0, var(--bg) 45%, #f7f2ee 100%);
+      color: var(--text-main);
       min-height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 24px 16px 40px;
     }
 
-    .wrapper {
+    .page {
       width: 100%;
-      max-width: 420px;
-      background: rgba(0, 0, 0, 0.4);
-      border-radius: 20px;
-      border: 1px solid rgba(227, 252, 2, 0.3);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-      padding: 24px 20px 28px;
-      backdrop-filter: blur(12px);
+      max-width: 960px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 26px;
+      border: 1px solid rgba(0,0,0,0.03);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.10);
+      backdrop-filter: blur(18px);
+      padding: 22px 18px 30px;
     }
 
-    .avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 2px solid var(--accent);
-      object-fit: cover;
-      display: block;
-      margin: 0 auto 12px;
+    @media (min-width: 768px) {
+      .page {
+        padding: 30px 32px 36px;
+      }
     }
 
-    .title {
-      text-align: center;
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .subtitle {
-      text-align: center;
-      font-size: 13px;
-      opacity: 0.8;
-      margin-bottom: 18px;
-    }
-
-    .links {
+    /* Header / Hero */
+    .hero {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-bottom: 16px;
+      gap: 14px;
+      margin-bottom: 26px;
     }
 
-    .link-btn {
-      display: block;
-      width: 100%;
-      text-decoration: none;
-      color: var(--text);
-      background: var(--card);
-      padding: 12px 14px;
+    .hero-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .pill {
       border-radius: 999px;
-      border: 1px solid transparent;
+      padding: 6px 12px;
+      border: 1px solid var(--border-soft);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-soft);
+      background: rgba(255,255,255,0.9);
+    }
+
+    .hero-main-title {
+      font-size: 24px;
+      line-height: 1.25;
+      font-weight: 700;
+    }
+
+    @media (min-width: 768px) {
+      .hero-main-title {
+        font-size: 30px;
+      }
+    }
+
+    .hero-sub {
       font-size: 14px;
+      color: var(--text-soft);
+      max-width: 520px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 13px;
       font-weight: 500;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+      border: 1px solid transparent;
+      background: var(--accent);
+      color: #ffffff;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+      white-space: nowrap;
     }
 
-    .link-btn span {
-      position: relative;
-      z-index: 1;
+    .btn span {
+      font-size: 16px;
     }
 
-    .link-btn::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top left, rgba(227, 252, 2, 0.18), transparent 60%);
-      opacity: 0;
-      transition: opacity 0.15s ease;
-    }
-
-    .link-btn:hover {
+    .btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.7);
-      border-color: rgba(227, 252, 2, 0.5);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
     }
 
-    .link-btn:hover::before {
-      opacity: 1;
+    .btn-outline {
+      background: #ffffff;
+      color: var(--text-main);
+      border-color: var(--border-soft);
     }
 
-    .link-btn.primary {
-      background: linear-gradient(135deg, #E3FC02, #C2DE01);
-      color: #111111;
+    .btn-outline:hover {
+      background: var(--bg-soft);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.10);
+    }
+
+    /* Section wrapper */
+    .section {
+      margin-top: 24px;
+      padding: 18px 16px 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(0,0,0,0.02);
+      background: rgba(255,255,255,0.85);
+    }
+
+    .section + .section {
+      margin-top: 18px;
+    }
+
+    @media (min-width: 768px) {
+      .section {
+        padding: 20px 22px 22px;
+      }
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 17px;
       font-weight: 600;
     }
 
-    .link-btn.primary:hover {
-      background: linear-gradient(135deg, #F2FF66, #E3FC02);
-      box-shadow: 0 10px 20px rgba(227, 252, 2, 0.45);
+    .section-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--bg-soft);
+      color: var(--text-main);
     }
 
-    .footer {
-      text-align: center;
+    .section p {
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.55;
+    }
+
+    .bullets {
+      margin-top: 10px;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 14px;
+      color: var(--text-main);
+    }
+
+    .bullets li {
+      display: flex;
+      gap: 6px;
+      align-items: flex-start;
+    }
+
+    .bullets li span {
+      margin-top: 3px;
+      font-size: 13px;
+    }
+
+    /* Info grid */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    @media (min-width: 640px) {
+      .info-grid {
+        grid-template-columns: repeat(3, minmax(0,1fr));
+      }
+    }
+
+    .info-item {
+      padding: 10px 11px;
+      border-radius: 14px;
+      background: #faf5f1;
+      border: 1px solid var(--border-soft);
+      font-size: 13px;
+    }
+
+    .info-label {
       font-size: 11px;
-      opacity: 0.6;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-soft);
+      margin-bottom: 3px;
+    }
+
+    .info-value {
+      font-weight: 600;
+    }
+
+    /* Packages */
+    .package-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .package-grid {
+        grid-template-columns: repeat(3, minmax(0,1fr));
+      }
+    }
+
+    .package {
+      border-radius: 18px;
+      padding: 14px 14px 16px;
+      border: 1px solid var(--border-soft);
+      background: linear-gradient(135deg, #ffffff, #f9f0ea);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .package.badge-pro {
+      border-width: 2px;
+      border-color: var(--accent-soft);
+      box-shadow: 0 14px 26px rgba(0,0,0,0.12);
+    }
+
+    .package-name {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .package-price {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .package-note {
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .package ul {
+      list-style: none;
+      font-size: 13px;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
       margin-top: 6px;
     }
 
-    @media (max-width: 480px) {
-      .wrapper {
-        padding: 20px 16px 22px;
+    .package ul li {
+      display: flex;
+      gap: 6px;
+      align-items: flex-start;
+    }
+
+    .package ul li span {
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    .package-cta {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    /* Upwork block */
+    .upwork-section {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      background: radial-gradient(circle at top left,#f7ebe2,#ffffff);
+      padding: 18px 16px 18px;
+      margin-top: 18px;
+    }
+
+    @media (min-width: 768px) {
+      .upwork-layout {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr;
+        gap: 14px;
+        align-items: flex-start;
       }
-      .title {
-        font-size: 18px;
-      }
-      .subtitle {
-        font-size: 12px;
-      }
+    }
+
+    .up-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .up-sub {
+      font-size: 14px;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .upwork-list {
+      list-style: none;
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .upwork-list li {
+      display: flex;
+      gap: 6px;
+      align-items: flex-start;
+    }
+
+    .upwork-list li span {
+      font-size: 13px;
+      margin-top: 3px;
+    }
+
+    .up-sidecard {
+      border-radius: 16px;
+      border: 1px dashed var(--accent-soft);
+      padding: 12px 12px;
+      background: rgba(255,255,255,0.9);
+      font-size: 13px;
+    }
+
+    .up-sidecard p {
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    .up-date-row {
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--text-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 22px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-soft);
+      font-size: 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      color: var(--text-soft);
+    }
+
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .footer-link {
+      font-size: 11px;
+      text-decoration: none;
+      color: var(--text-main);
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: #ffffff;
+    }
+
+    .footer-note {
+      font-size: 10px;
+      opacity: 0.75;
     }
   </style>
 </head>
 <body>
-  <main class="wrapper">
-    <!-- Optional avatar: change src to your image URL or remove the <img> -->
-    <!-- <img class="avatar" src="https://via.placeholder.com/120" alt="Profile" /> -->
+  <div class="page">
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-top">
+        <div class="brand">Success Academy</div>
+        <div class="pill">Shopify · Upwork · AI</div>
+      </div>
 
-    <h1 class="title">Your Name | Your Brand</h1>
-    <p class="subtitle">
-      Short description – e.g. Shopify expert • Success Academy • Freelancing & AI
-    </p>
+      <h1 class="hero-main-title">
+        Shopify & Upwork օնլայն դպրոց<br />
+        նոր մասնագիտություն՝ միջազգային շուկայում աշխատելու համար
+      </h1>
 
-    <section class="links">
-      <!-- Change the # to your real links -->
-      <a class="link-btn primary" href="#" target="_blank" rel="noopener">
-        <span>🚀 Join My Telegram Group</span>
-      </a>
-      <a class="link-btn" href="#" target="_blank" rel="noopener">
-        <span>🛒 Visit My Shopify Store</span>
-      </a>
-      <a class="link-btn" href="#" target="_blank" rel="noopener">
-        <span>🎓 Success Academy – Courses</span>
-      </a>
-      <a class="link-btn" href="#" target="_blank" rel="noopener">
-        <span>📺 YouTube Channel</span>
-      </a>
-      <a class="link-btn" href="#" target="_blank" rel="noopener">
-        <span>💼 Upwork Profile</span>
-      </a>
+      <p class="hero-sub">
+        3 շաբաթում 단계աբար կսովորեք Shopify օնլայն խանութների ստեղծում,
+        կպատրաստեք Upwork պրոֆիլ և կծանոթանաք AI գործիքների հետ՝
+        արագ ու արդյունավետ աշխատանք կազմակերպելու համար։
+      </p>
+
+      <div class="hero-cta-row">
+        <!-- TODO: փոխեք "#" ձեր հղումներով -->
+        <a class="btn" href="#" target="_blank" rel="noopener">
+          <span>✉️</span> Գրանցվել դասընթացին
+        </a>
+        <a class="btn btn-outline" href="#" target="_blank" rel="noopener">
+          <span>💬</span> Գրել WhatsApp / Telegram
+        </a>
+      </div>
+    </header>
+
+    <!-- WHAT YOU LEARN -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Ի՞նչ կսովորեք այս 3 շաբաթների ընթացքում</h2>
+        <span class="section-tag">New Skill</span>
+      </div>
+
+      <p>
+        Այս 3 շաբաթների ընթացքում կսովորեք նոր, պահանջված մասնագիտություն և
+        կբացահայտեք, թե ինչպես այն կիրառել միջազգային շուկայում՝
+        ստանալով բարձր վարձատրվող հեռավար աշխատանքներ Upwork-ի միջոցով։
+      </p>
+
+      <ul class="bullets">
+        <li>
+          <span>💡</span>
+          <div><strong>Ի՞նչ է Shopify, Upwork և AI-ն</strong> և ինչու են դրանք այս պահին
+            ամենապահանջված հմտություններից։</div>
+        </li>
+        <li>
+          <span>🛒</span>
+          <div><strong>Shopify –</strong> օնլայն խանութների ստեղծում, հավաքում,
+            բովանդակության տեղադրում և վաճառքի պատրաստ կարգավորում։</div>
+        </li>
+        <li>
+          <span>🌍</span>
+          <div><strong>Upwork –</strong> ամենամեծ ֆրիլանս հարթակ, որտեղ կարող եք
+            վաճառել Ձեր Shopify հմտությունները ամբողջ աշխարհում։</div>
+        </li>
+        <li>
+          <span>🤖</span>
+          <div><strong>AI գործիքներ –</strong> ինչպես օգտագործել արհեստական բանականությունը,
+            որպեսզի արագացնեք աշխատանքը, ստեղծեք տեքստեր, նկարներ և ավտոմատացնեք
+            ձեր օրակարգը։</div>
+        </li>
+        <li>
+          <span>🎥</span>
+          <div>Բացի live դասերից՝ կունենաք նաև լրացուցիչ վիդեո դասեր՝
+            սովորածը ցանկացած պահի կրկնելու և ամրապնդելու համար։</div>
+        </li>
+      </ul>
     </section>
 
-    <div class="footer">
-      © <span id="year"></span> Your Name · All rights reserved
-    </div>
+    <!-- COURSE INFO -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Դասընթացի ձևաչափը</h2>
+        <span class="section-tag">Format</span>
+      </div>
 
-    <script>
-      // Set current year automatically
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-  </main>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-label">Տևողություն</div>
+          <div class="info-value">3 շաբաթ</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Դասերի հաճախականություն</div>
+          <div class="info-value">շաբաթական 2 դաս · 2 ժամ</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Ֆորմատ</div>
+          <div class="info-value">Online · ցերեկային և երեկոյան խմբեր</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PACKAGES -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Shopify + Upwork փաթեթներ</h2>
+        <span class="section-tag">Packages</span>
+      </div>
+
+      <p>
+        Ընտրեք այն փաթեթը, որը համապատասխանում է Ձեր ներկայիս մակարդակին և նպատակներին․
+      </p>
+
+      <div class="package-grid">
+        <!-- Package 1 -->
+        <article class="package">
+          <div class="package-name">Starter · Shopify</div>
+          <div class="package-price">49,000 դրամ</div>
+          <p class="package-note">Նախապես ծանոթանալու համար Shopify հմտությանը</p>
+          <ul>
+            <li>
+              <span>✓</span>
+              <div>Shopify հիմքեր․ խանութի կառուցում, հավաքում և կարգավորումներ</div>
+            </li>
+            <li>
+              <span>✓</span>
+              <div>Օնլայն դասեր + գործնական աշխատանքներ</div>
+            </li>
+            <li>
+              <span>✓</span>
+              <div>1 ամիս հետադարձ կապ + բոլոր վիդեո դասերը հասանելի են ձայնագրությամբ</div>
+            </li>
+          </ul>
+          <div class="package-cta">
+            Իդեալական է, եթե ցանկանում եք սկզբից հասկանալ՝ Shopify-ն Ձեր հե՞տն է, թե ոչ։
+          </div>
+        </article>
+
+        <!-- Package 2 -->
+        <article class="package">
+          <div class="package-name">Professional · Shopify + Upwork</div>
+          <div class="package-price">59,000 դրամ</div>
+          <p class="package-note">Ձեզ պետք է ոչ միայն հմտություն, այլ նաև վաճառքի հարթակ</p>
+          <ul>
+            <li>
+              <span>✓</span>
+              <div>Starter փաթեթի ողջ բովանդակությունը</div>
+            </li>
+            <li>
+              <span>✓</span>
+              <div>Upwork պրոֆիլի ստեղծում կամ օպտիմիզացում՝ միասին</div>
+            </li>
+            <li>
+              <span>✓</span>
+              <div>Օգնում ենք ձևակերպել ճիշտ վերնագիր, նկարագրություն և հմտությունների բլոկ</div>
+            </li>
+            <li>
+              <span>✓</span>
+              <div>2 ամիս հետադարձ կապ + վիդեո դասեր</div>
+            </li>
+          </ul>
+          <div class="package-cta">
+            Լավ տարբերակ է, եթե արդեն ուզում եք սկսել դիմել միջազգային աշխատանքների։
+          </div>
+        </article>
+
+        <!-- Package 3 -->
+        <article class="package badge-pro">
+          <div class="package-name">Premium · Shopify + Upwork + AI</div>
+          <div class="package-price">69,000 դրամ</div>
+          <p class="package-note"><strong>Ամենամբողջական փաթեթը</strong>՝ իրական Upwork օրինակներով</p>
+          <ul>
+            <li>
+              <span>★</span>
+              <div>Shopify + Upwork Professional փաթեթի բոլոր հնարավորությունները</div>
+            </li>
+            <li>
+              <span>★</span>
+              <div>2 ժամ live հանդիպում՝ Upwork հարթակի խորացված ուսուցում</div>
+            </li>
+            <li>
+              <span>★</span>
+              <div>25+ AI գործիքներ՝ տեքստերի, նկարների, ավտոմատացումների համար</div>
+            </li>
+            <li>
+              <span>★</span>
+              <div>Upwork էջի ստեղծում, ճիշտ հայտի գրություն, աշխատանքի ստացման ռազմավարություն
+                <br />՝ ռեալ օրինակներով և գրած cover letter-ներով</div>
+            </li>
+            <li>
+              <span>★</span>
+              <div>2 ամիս ուղեցուց և հետադարձ կապ + բոլոր վիդեոները</div>
+            </li>
+          </ul>
+          <div class="package-cta">
+            Եթե ցանկանում եք ոչ միայն սովորել, այլև առաջին գործերը ստանալ որքան հնարավոր է շուտ՝
+            այս փաթեթը Ձեզ համար է 🚀
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SEPARATE UPWORK SERVICE -->
+    <section class="upwork-section">
+      <div class="section-header">
+        <h2 class="section-title">Առանձին Upwork սեսիա (առանց Shopify)</h2>
+        <span class="section-tag">Upwork Only</span>
+      </div>
+
+      <div class="upwork-layout">
+        <div>
+          <p class="up-sub">
+            Եթե արդեն ունեք հմտություն (օր․՝ դիզայն, մարքեթինգ, վարորդական փորձ, թարգմանություն և այլն),
+            բայց չգիտեք՝ ինչպես վաճառել այն Upwork-ում, մենք ձեզ կօգնենք ճիշտ սկսելուց։
+          </p>
+
+          <h3 class="up-title">Ինչ ենք անում սեսիայի ընթացքում</h3>
+          <ul class="upwork-list">
+            <li>
+              <span>✔</span>
+              <div>Ստեղծում կամ բարելավում ենք Ձեր Upwork-ի էջը՝ գրագետ պրոֆիլով և նկարագրությամբ։</div>
+            </li>
+            <li>
+              <span>✔</span>
+              <div>Կսովորեցնենք, թե ինչպես <strong>ճիշտ դիմել</strong> աշխատանքների համար և ինչու չեն պատասխանում
+                որոշ հայտերի։</div>
+            </li>
+            <li>
+              <span>✔</span>
+              <div>Կքննարկենք, թե ինչպես գրել արդյունավետ cover letter-ներ, որոնք տարբերվում են ուրիշներից։</div>
+            </li>
+            <li>
+              <span>✔</span>
+              <div>Կծանոթանանք, թե ինչպես ընտրել համապատասխան աշխատանքներ և խուսափել խաբեություններից։</div>
+            </li>
+            <li>
+              <span>✔</span>
+              <div>Կխոսենք, թե ինչպես ճիշտ ստանալ գումարը Հայաստանում՝ առանց ավելորդ սթրեսի։</div>
+            </li>
+          </ul>
+        </div>
+
+        <aside class="up-sidecard">
+          <p><strong>Արժեքը՝ 20,000 դրամ</strong></p>
+          <p>Դասընթացը՝ օնլայն, խմբային ֆորմատով։ Տևողությունը՝ մոտ 2.5–3 ժամ։</p>
+          <div class="up-date-row">
+            <div><strong>Դեկտեմբեր X</strong> (ձեզ հարմար օրը կարող եք ճշտել գրանցման ընթացքում)</div>
+            <div>Ցերեկային խումբ · 13:00</div>
+            <div>Երեկոյան խումբ · 19:00</div>
+          </div>
+          <div style="margin-top:10px; display:flex; flex-wrap:wrap; gap:8px;">
+            <a class="btn" href="#" target="_blank" rel="noopener">
+              <span>📩</span> Գրանցվել Upwork սեսիային
+            </a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-top">
+        <div>Կապ՝ <strong>Մարիամ Պողոսյան</strong></div>
+        <div class="footer-links">
+          <!-- Change these links later -->
+          <a class="footer-link" href="mailto:freelance.too.success@gmail.com">📧 Email</a>
+          <a class="footer-link" href="#" target="_blank" rel="noopener">📱 Telegram խումբ</a>
+          <a class="footer-link" href="#" target="_blank" rel="noopener">📲 Instagram էջ</a>
+        </div>
+      </div>
+      <div class="footer-note">
+        © <span id="year"></span> Success Academy · Shopify & Upwork School
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
