@@ -1,245 +1,283 @@
 <!DOCTYPE html>
 <html lang="hy">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Success Academy Packages</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Success Academy Packages</title>
 
-  <style>
-  * {
-    margin:0; padding:0; box-sizing:border-box;
-    font-family:'Poppins', sans-serif;
+<style>
+* {
+  margin:0; padding:0; box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+body { background:#000; overflow-x:hidden; }
+
+/* --- Desktop Hero Layout --- */
+.hero {
+  display:flex;
+  height:100vh;
+}
+
+.panel {
+  flex:1;
+  position:relative;
+  background-size:cover;
+  background-position:center;
+  transition:all 0.7s ease;
+  cursor:pointer;
+  overflow:hidden;
+}
+
+.panel::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.4);
+  transition:all 0.5s ease;
+  z-index:1;
+}
+
+@media(min-width:768px){
+  .panel:hover { flex:2; }
+  .panel:hover::before { background: rgba(0,0,0,0.2); }
+  .panel:hover .stack-text { opacity:0; }
+  .panel:hover .content {
+    opacity:1;
+    transform:translateY(0);
   }
+}
 
-  body { background:#000; overflow-x:hidden; }
+/* --- Side Rotated Text --- */
+.stack-text {
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%) rotate(-90deg);
+  color:rgba(255,255,255,0.9);
+  font-weight:800;
+  font-size:3rem;
+  text-transform:uppercase;
+  letter-spacing:4px;
+  text-shadow:0 4px 15px rgba(0,0,0,0.3);
+  white-space:nowrap;
+  pointer-events:none;
+  z-index:2;
+  transition:opacity 0.5s ease;
+}
 
-  /* --- Desktop Hero Layout --- */
+/* --- Popup Content Desktop (NUDE) --- */
+.content {
+  position:absolute;
+  bottom:40px; left:40px;
+  z-index:3;
+  max-width:350px;
+  background:#F4E8D8;
+  padding:30px;
+  border-radius:10px;
+  color:#1F1F1F;
+  box-shadow:0 4px 20px rgba(0,0,0,0.2);
+  opacity:0;
+  transform:translateY(20px);
+  transition:all 0.5s ease;
+}
+
+.content h2 {
+  font-size:1.4rem;
+  font-weight:700;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+/* --- Mobile Version --- */
+@media(max-width:767px){
   .hero {
-    display:flex;
-    height:100vh;
+    flex-direction:column;
+    height:auto;
   }
 
   .panel {
-    flex:1;
-    position:relative;
-    background-size:cover;
-    background-position:center;
-    transition:all 0.7s ease;
-    cursor:pointer;
-    overflow:hidden;
+    min-height:200px;
+    margin-bottom:12px;
+    overflow:visible;
   }
 
-  .panel::before {
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.4);
-    transition:all 0.5s ease;
-    z-index:1;
-  }
-
-  @media(min-width:768px){
-    .panel:hover { flex:2; }
-    .panel:hover::before { background: rgba(0,0,0,0.2); }
-    .panel:hover .stack-text { opacity:0; }
-    .panel:hover .content { opacity:1; transform:translateY(0); }
-  }
-
-  /* --- Vertical Rotated Category Text --- */
   .stack-text {
+    position:relative;
+    transform:none;
+    font-size:1.8rem;
+    text-align:center;
+    padding:14px 0;
+  }
+
+  /* Plus button */
+  .plus-btn {
+    display:flex;
     position:absolute;
-    top:50%; left:50%;
-    transform:translate(-50%,-50%) rotate(-90deg);
-    color:rgba(255,255,255,0.9);
-    font-weight:800;
-    font-size:3rem;
-    text-transform:uppercase;
-    letter-spacing:4px;
-    text-shadow:0 4px 15px rgba(0,0,0,0.3);
-    white-space:nowrap;
-    pointer-events:none;
-    z-index:2;
-    transition:opacity 0.5s ease;
-  }
-
-  /* --- Hover Content (Desktop) --- */
-  .content {
-    position:absolute;
-    bottom:40px; left:40px;
-    z-index:3;
-    max-width:320px;
-    background:rgba(65,95,85,0.95);
-    padding:30px;
-    border-radius:4px;
-    color:white;
-    box-shadow:0 4px 20px rgba(0,0,0,0.2);
-    opacity:0;
-    transform:translateY(20px);
-    transition:all 0.5s ease;
-  }
-
-  /* --- Mobile Version --- */
-  @media(max-width:767px){
-    .hero {
-      flex-direction:column;
-      height:auto;
-    }
-
-    .panel {
-      min-height:180px;
-      margin-bottom:12px;
-    }
-
-    .stack-text {
-      position:relative;
-      top:auto; left:auto;
-      transform:none;
-      font-size:1.8rem;
-      text-align:center;
-      padding:12px 0;
-    }
-
-    /* Plus Button */
-    .plus-btn {
-      display:flex;
-      position:absolute;
-      top:10px; right:10px;
-      z-index:5;
-      width:36px; height:36px;
-      border-radius:50%;
-      background:rgba(255,255,255,0.85);
-      color:black;
-      font-size:1.5rem;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      font-weight:bold;
-    }
-
-    /* Slide-up content box */
-    .content {
-      position:absolute;
-      left:0; bottom:0;
-      width:100%;
-      padding:20px;
-      border-radius:0;
-      background:rgba(65,95,85,0.95);
-      opacity:0;
-      transform:translateY(100%);
-      transition: transform 0.5s ease, opacity 0.5s ease;
-    }
-
-    .panel.active .content {
-      opacity:1;
-      transform:translateY(0);
-    }
-  }
-
-  /* Hide plus button on desktop */
-  @media(min-width:768px){
-    .plus-btn { display:none; }
-  }
-
-  /* Content Styling */
-  .content h2 {
-    font-size:1.5rem;
-    font-weight:700;
-    text-transform:uppercase;
-    margin-bottom:0.5rem;
-  }
-
-  .content p {
-    font-size:1rem;
-    opacity:0.9;
-    margin-bottom:1rem;
-    line-height:1.5;
-  }
-
-  .content button {
-    background:white; color:black;
-    border:none;
-    padding:10px 20px;
-    font-weight:600;
-    text-transform:uppercase;
-    border-radius:4px;
+    top:10px; right:10px;
+    width:40px; height:40px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.9);
+    color:black;
+    font-size:1.6rem;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    z-index:10;
     cursor:pointer;
-    transition:0.3s ease;
-  }
-  .content button:hover{
-    background:black; color:white;
   }
 
-  /* Panel Background Images – using your image on all 4 */
-  .panel:nth-child(1),
-  .panel:nth-child(2),
-  .panel:nth-child(3),
-  .panel:nth-child(4){
-    background-image:url('https://cdn.shopify.com/s/files/1/0940/1424/3186/files/laptop-at-the-table-with-tea-at-side.jpg?v=1764891796');
+  /* DROPDOWN popup */
+  .content {
+    position:relative;
+    width:100%;
+    margin-top:0;
+    padding:20px;
+    background:#F4E8D8;
+    border-radius:10px;
+    opacity:0;
+    max-height:0;
+    overflow:hidden;
+    transform:none;
+    transition:max-height 0.5s ease, opacity 0.4s ease, margin-top 0.4s ease;
   }
-  </style>
+
+  .panel.active .content {
+    opacity:1;
+    max-height:900px;
+    margin-top:12px;
+  }
+}
+
+/* Hide plus on desktop */
+@media(min-width:768px){
+  .plus-btn { display:none; }
+}
+
+/* Background image for all panels */
+.panel:nth-child(1),
+.panel:nth-child(2),
+.panel:nth-child(3),
+.panel:nth-child(4){
+  background-image:url('https://cdn.shopify.com/s/files/1/0940/1424/3186/files/laptop-at-the-table-with-tea-at-side.jpg?v=1764891796');
+}
+</style>
 </head>
 
 <body>
 
 <div class="hero">
-  <!-- PANEL 1 -->
+
+  <!-- PANEL 1 — STARTER -->
   <div class="panel">
     <div class="stack-text">STARTER</div>
     <div class="plus-btn">+</div>
+
     <div class="content">
-      <h2>Starter · Shopify</h2>
-      <p><strong>Գին՝ 49,000 դրամ</strong><br>
-      Ծանոթություն Shopify հարթակին․ առաջին օնլայն խանութը, հիմունքներ և 1 ամիս հետադարձ կապ։</p>
-      <button>Մանրամասներ</button>
+      <h2>Դասընթացի ծրագիր</h2>
+      <p>
+      Այս 3 շաբաթների ընթացքում կսովորեք նոր մասնագիտություն և կբացահայտեք, թե ինչպես այն կիրառել միջազգային շուկայում՝ ստանալով բարձր վարձատրվող աշխատանքներ։
+      <br><br>
+
+      💡 <strong>Ի՞նչ է Upwork-ը, Shopify-ն և AI-ն</strong><br>
+      ✅ Shopify – օնլայն խանութներ ստեղծելու հմտություն<br>
+      ✅ Upwork – ֆրիլանս աշխատանքի միջազգային հարթակ<br>
+      ✅ AI գործիքներ – քո աշխատանքը արագացնելու համար
+      <br><br>
+
+      🎥 Բացի դասերից՝ կստանաք նաև լրացուցիչ վիդեո դասեր՝ նյութը կրկնելու համար։
+      <br><br>
+
+      ⸻<br><br>
+
+      <strong>Դասընթացի մասին</strong><br>
+      ⏳ Տևողություն՝ 3 շաբաթ<br>
+      🕒 Դասեր՝ շաբաթական 2 անգամ (2 ժամ)<br>
+      📱 Online՝ ցերեկային և երեկոյան խմբերով
+      <br><br>
+
+      ⸻<br><br>
+
+      <strong>Փաթեթներ՝</strong><br>
+      ✅ 49,000 դրամ – Shopify (1 ամիս հետադարձ կապ + վիդեո դասեր)<br>
+      </p>
     </div>
   </div>
 
-  <!-- PANEL 2 -->
+  <!-- PANEL 2 — PRO -->
   <div class="panel">
     <div class="stack-text">PRO</div>
     <div class="plus-btn">+</div>
+
     <div class="content">
-      <h2>Professional · Shopify + Upwork</h2>
-      <p><strong>Գին՝ 59,000 դրամ</strong><br>
-      Shopify դասեր + Upwork պրոֆիլի ստեղծում/բարելավում, щоб կարողանաք սկսել դիմել միջազգային աշխատանքների։</p>
-      <button>Մանրամասներ</button>
+      <h2>PRO Փաթեթ</h2>
+      <p>
+      Բացի Shopify-ից՝ կստանաք նաև Upwork պրոֆիլի պատրաստում/բարելավում։
+      <br><br>
+
+      <strong>Գին՝ 59,000 դրամ</strong><br>
+      2 ամիս հետադարձ կապ + վիդեո դասեր։
+      <br><br>
+
+      Մասնակիցը պատրաստ է սկսել միջազգային Upwork աշխատանքներ։
+      </p>
     </div>
   </div>
 
-  <!-- PANEL 3 -->
+  <!-- PANEL 3 — PREMIUM -->
   <div class="panel">
     <div class="stack-text">PREMIUM</div>
     <div class="plus-btn">+</div>
+
     <div class="content">
-      <h2>Premium · Shopify + Upwork + AI</h2>
-      <p><strong>Գին՝ 69,000 դրամ</strong><br>
-      Ամենաամբողջական փաթեթը՝ Shopify, Upwork խորացված սեսիա և 25+ AI գործիքներ արագ աշխատանքի համար։</p>
-      <button>Մանրամասներ</button>
+      <h2>PREMIUM Փաթեթ</h2>
+      <p>
+      Ամենաբարձր մակարդակի փաթեթը՝ Shopify + Upwork + խորացված workshop + AI.
+      <br><br>
+
+      <strong>Գին՝ 69,000 դրամ</strong><br>
+      ✔ 2 ժամ Upwork խորացված ուսուցում<br>
+      ✔ 25+ AI գործիք  
+      ✔ Upwork էջի ստեղծում  
+      ✔ Աշխատանքի դիմելու ռազմավարություններ  
+      ✔ 2 ամիս հետադարձ կապ + վիդեո դասեր 🚀
+      </p>
     </div>
   </div>
 
-  <!-- PANEL 4 -->
+  <!-- PANEL 4 — UPWORK -->
   <div class="panel">
     <div class="stack-text">UPWORK</div>
     <div class="plus-btn">+</div>
+
     <div class="content">
-      <h2>Upwork Only · Սեսիա</h2>
-      <p><strong>Գին՝ 20,000 դրամ</strong><br>
-      2.5–3 ժամ խմբային սեսիա՝ միայն Upwork-ի համար․ պրոֆիլ, cover letter-ներ և անվտանգ աշխատանքի որոնում։</p>
-      <button>Մանրամասներ</button>
+      <h2>Upwork Սեսիա</h2>
+      <p>
+      2.5–3 ժամ խորացված սեսիա․  
+      ✔ Պրոֆիլի ստեղծում  
+      ✔ Cover letter-ներ  
+      ✔ Աշխատանքի որոնման մեթոդներ  
+      ✔ Ինչից զգուշանալ  
+      ✔ Ինչպես ստանալ վճարում Հայաստանում  
+      <br><br>
+
+      <strong>Գին՝ 20,000 դրամ</strong>
+      </p>
     </div>
   </div>
+
 </div>
 
 <script>
-// Mobile plus toggle
+// MOBILE DROPDOWN FUNCTION
 document.querySelectorAll('.panel').forEach(panel=>{
   const btn = panel.querySelector('.plus-btn');
   if (!btn) return;
+
   btn.addEventListener('click', e=>{
     e.stopPropagation();
     panel.classList.toggle('active');
-    // close others
+
+    // Close others
     document.querySelectorAll('.panel').forEach(p=>{
       if(p!==panel) p.classList.remove('active');
     });
@@ -249,4 +287,3 @@ document.querySelectorAll('.panel').forEach(panel=>{
 
 </body>
 </html>
-
