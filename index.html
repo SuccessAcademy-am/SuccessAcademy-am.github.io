@@ -1,1 +1,252 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Success Academy Packages</title>
+
+  <style>
+  * {
+    margin:0; padding:0; box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+  }
+
+  body { background:#000; overflow-x:hidden; }
+
+  /* --- Desktop Hero Layout --- */
+  .hero {
+    display:flex;
+    height:100vh;
+  }
+
+  .panel {
+    flex:1;
+    position:relative;
+    background-size:cover;
+    background-position:center;
+    transition:all 0.7s ease;
+    cursor:pointer;
+    overflow:hidden;
+  }
+
+  .panel::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.4);
+    transition:all 0.5s ease;
+    z-index:1;
+  }
+
+  @media(min-width:768px){
+    .panel:hover { flex:2; }
+    .panel:hover::before { background: rgba(0,0,0,0.2); }
+    .panel:hover .stack-text { opacity:0; }
+    .panel:hover .content { opacity:1; transform:translateY(0); }
+  }
+
+  /* --- Vertical Rotated Category Text --- */
+  .stack-text {
+    position:absolute;
+    top:50%; left:50%;
+    transform:translate(-50%,-50%) rotate(-90deg);
+    color:rgba(255,255,255,0.9);
+    font-weight:800;
+    font-size:3rem;
+    text-transform:uppercase;
+    letter-spacing:4px;
+    text-shadow:0 4px 15px rgba(0,0,0,0.3);
+    white-space:nowrap;
+    pointer-events:none;
+    z-index:2;
+    transition:opacity 0.5s ease;
+  }
+
+  /* --- Hover Content (Desktop) --- */
+  .content {
+    position:absolute;
+    bottom:40px; left:40px;
+    z-index:3;
+    max-width:320px;
+    background:rgba(65,95,85,0.95);
+    padding:30px;
+    border-radius:4px;
+    color:white;
+    box-shadow:0 4px 20px rgba(0,0,0,0.2);
+    opacity:0;
+    transform:translateY(20px);
+    transition:all 0.5s ease;
+  }
+
+  /* --- Mobile Version --- */
+  @media(max-width:767px){
+    .hero {
+      flex-direction:column;
+      height:auto;
+    }
+
+    .panel {
+      min-height:180px;
+      margin-bottom:12px;
+    }
+
+    .stack-text {
+      position:relative;
+      top:auto; left:auto;
+      transform:none;
+      font-size:1.8rem;
+      text-align:center;
+      padding:12px 0;
+    }
+
+    /* Plus Button */
+    .plus-btn {
+      display:flex;
+      position:absolute;
+      top:10px; right:10px;
+      z-index:5;
+      width:36px; height:36px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.85);
+      color:black;
+      font-size:1.5rem;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    /* Slide-up content box */
+    .content {
+      position:absolute;
+      left:0; bottom:0;
+      width:100%;
+      padding:20px;
+      border-radius:0;
+      background:rgba(65,95,85,0.95);
+      opacity:0;
+      transform:translateY(100%);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .panel.active .content {
+      opacity:1;
+      transform:translateY(0);
+    }
+  }
+
+  /* Hide plus button on desktop */
+  @media(min-width:768px){
+    .plus-btn { display:none; }
+  }
+
+  /* Content Styling */
+  .content h2 {
+    font-size:1.5rem;
+    font-weight:700;
+    text-transform:uppercase;
+    margin-bottom:0.5rem;
+  }
+
+  .content p {
+    font-size:1rem;
+    opacity:0.9;
+    margin-bottom:1rem;
+    line-height:1.5;
+  }
+
+  .content button {
+    background:white; color:black;
+    border:none;
+    padding:10px 20px;
+    font-weight:600;
+    text-transform:uppercase;
+    border-radius:4px;
+    cursor:pointer;
+    transition:0.3s ease;
+  }
+  .content button:hover{
+    background:black; color:white;
+  }
+
+  /* Panel Background Images – using your image on all 4 */
+  .panel:nth-child(1),
+  .panel:nth-child(2),
+  .panel:nth-child(3),
+  .panel:nth-child(4){
+    background-image:url('https://cdn.shopify.com/s/files/1/0940/1424/3186/files/laptop-at-the-table-with-tea-at-side.jpg?v=1764891796');
+  }
+  </style>
+</head>
+
+<body>
+
+<div class="hero">
+  <!-- PANEL 1 -->
+  <div class="panel">
+    <div class="stack-text">STARTER</div>
+    <div class="plus-btn">+</div>
+    <div class="content">
+      <h2>Starter · Shopify</h2>
+      <p><strong>Գին՝ 49,000 դրամ</strong><br>
+      Ծանոթություն Shopify հարթակին․ առաջին օնլայն խանութը, հիմունքներ և 1 ամիս հետադարձ կապ։</p>
+      <button>Մանրամասներ</button>
+    </div>
+  </div>
+
+  <!-- PANEL 2 -->
+  <div class="panel">
+    <div class="stack-text">PRO</div>
+    <div class="plus-btn">+</div>
+    <div class="content">
+      <h2>Professional · Shopify + Upwork</h2>
+      <p><strong>Գին՝ 59,000 դրամ</strong><br>
+      Shopify դասեր + Upwork պրոֆիլի ստեղծում/բարելավում, щоб կարողանաք սկսել դիմել միջազգային աշխատանքների։</p>
+      <button>Մանրամասներ</button>
+    </div>
+  </div>
+
+  <!-- PANEL 3 -->
+  <div class="panel">
+    <div class="stack-text">PREMIUM</div>
+    <div class="plus-btn">+</div>
+    <div class="content">
+      <h2>Premium · Shopify + Upwork + AI</h2>
+      <p><strong>Գին՝ 69,000 դրամ</strong><br>
+      Ամենաամբողջական փաթեթը՝ Shopify, Upwork խորացված սեսիա և 25+ AI գործիքներ արագ աշխատանքի համար։</p>
+      <button>Մանրամասներ</button>
+    </div>
+  </div>
+
+  <!-- PANEL 4 -->
+  <div class="panel">
+    <div class="stack-text">UPWORK</div>
+    <div class="plus-btn">+</div>
+    <div class="content">
+      <h2>Upwork Only · Սեսիա</h2>
+      <p><strong>Գին՝ 20,000 դրամ</strong><br>
+      2.5–3 ժամ խմբային սեսիա՝ միայն Upwork-ի համար․ պրոֆիլ, cover letter-ներ և անվտանգ աշխատանքի որոնում։</p>
+      <button>Մանրամասներ</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Mobile plus toggle
+document.querySelectorAll('.panel').forEach(panel=>{
+  const btn = panel.querySelector('.plus-btn');
+  if (!btn) return;
+  btn.addEventListener('click', e=>{
+    e.stopPropagation();
+    panel.classList.toggle('active');
+    // close others
+    document.querySelectorAll('.panel').forEach(p=>{
+      if(p!==panel) p.classList.remove('active');
+    });
+  });
+});
+</script>
+
+</body>
+</html>
 
