@@ -120,7 +120,7 @@
 
     .sa-hero-header {
       display:flex;
-      justify-content:flex-start;
+      justify-content:space-between;
       align-items:center;
       margin-bottom: 28px;
     }
@@ -135,6 +135,91 @@
     .sa-hero-inner {
       display:flex;
       flex-direction:column;
+    }
+
+    /* ==== MENU BUBBLE ==== */
+    .sa-menu-toggle {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: none;
+      background: rgba(127, 85, 57, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.15);
+      position: relative;
+    }
+
+    .sa-menu-toggle span {
+      display:block;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--sa-text);
+      margin: 2px 0;
+      transition: transform .25s ease, opacity .25s ease;
+    }
+
+    .sa-menu-toggle.open span:nth-child(1) {
+      transform: translateY(4px) rotate(45deg);
+    }
+    .sa-menu-toggle.open span:nth-child(2) {
+      opacity:0;
+    }
+    .sa-menu-toggle.open span:nth-child(3) {
+      transform: translateY(-4px) rotate(-45deg);
+    }
+
+    .sa-menu-panel {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px);
+      transition: opacity .25s ease, transform .25s ease;
+    }
+
+    .sa-menu-panel.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .sa-menu-card {
+      padding: 10px 14px;
+      display:flex;
+      flex-direction:column;
+      gap: 4px;
+    }
+
+    .sa-menu-link {
+      background: transparent;
+      border: none;
+      text-align: left;
+      font-size: 14px;
+      padding: 6px 4px;
+      cursor: pointer;
+      color: var(--sa-text);
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+
+    .sa-menu-dot {
+      width:6px;
+      height:6px;
+      border-radius:999px;
+      background: var(--sa-text);
+      opacity:0.6;
+    }
+
+    .sa-menu-link:hover {
+      opacity: 0.85;
     }
 
     /* ==== DYNAMIC TEXT FRAME (reusable) ==== */
@@ -485,11 +570,32 @@
   <div id="smoke-area-sa"></div>
 
   <!-- =============== HERO =============== -->
-  <section class="sa-hero">
+  <section class="sa-hero" id="hero">
 
     <header class="sa-hero-header">
       <div class="sa-logo">SUCCESS ACADEMY</div>
+      <button class="sa-menu-toggle" id="saMenuToggle" aria-label="Մենյու">
+        <span></span><span></span><span></span>
+      </button>
     </header>
+
+    <!-- floating menu -->
+    <nav class="sa-menu-panel" id="saMenuPanel">
+      <div class="sa-text-frame sa-menu-card">
+        <button class="sa-menu-link" data-scroll="#hero">
+          <span class="sa-menu-dot"></span> Գլխավոր
+        </button>
+        <button class="sa-menu-link" data-scroll="#offer">
+          <span class="sa-menu-dot"></span> Ինչ ենք առաջարկում
+        </button>
+        <button class="sa-menu-link" data-scroll="#cta">
+          <span class="sa-menu-dot"></span> Shopify խումբ
+        </button>
+        <button class="sa-menu-link" data-scroll="#upwork-consult">
+          <span class="sa-menu-dot"></span> Upwork խորհրդատվություն
+        </button>
+      </div>
+    </nav>
 
     <div class="sa-hero-inner">
 
@@ -514,7 +620,7 @@
   </section>
 
   <!-- =============== WHAT WE OFFER SECTION =============== -->
-  <section class="sa-offer">
+  <section class="sa-offer" id="offer">
 
     <h2 class="sa-section-title">Ինչ ենք մենք առաջարկում</h2>
     <p class="sa-section-subtitle">Ինչ ես սովորելու այս դասընթացի շրջանակում</p>
@@ -551,8 +657,8 @@
       <div class="sa-text-frame sa-offer-card">
         <h3>AI գործիքներ (բոնուս)</h3>
         <p>
-          Սովորում ես արհեստական բանականության գործիքներ, որոնք արագացնում են քո աշխատանքը,
-          բարձրացնում արդյունավետությունը և օգնում ավելի հեշտ ու արագ գտնել աշխատանք։
+          Սովորում ես արհեստական բանականության գործիքներ, որոնց միջոցով ավելի արագ ես աշխատում,
+          բարձրացնում ես արդյունավետությունը և ավելի հեշտ ես գտնում աշխատանք։
         </p>
         <p>
           Այս հմտությունները քեզ դարձնում են տեղեկացված և ժամանակակից մասնագետ IT ոլորտում։
@@ -587,7 +693,7 @@
   </section>
 
   <!-- =============== COUNTDOWN CTA SECTION =============== -->
-  <section class="sa-cta">
+  <section class="sa-cta" id="cta">
     <div class="sa-text-frame sa-cta-inner">
       <div>
         <h3 class="sa-cta-title">
@@ -625,8 +731,8 @@
   </section>
 
   <!-- =============== UPWORK CONSULTATION SECTION =============== -->
-  <section class="sa-upwork">
-    <h2 class="sa-section-title">Upwork խորհրդատվություն մասնագետների համար</h2>
+  <section class="sa-upwork" id="upwork-consult">
+    <h2 class="sa-section-title">Upwork խորհուրդատվություն մասնագետների համար</h2>
 
     <div class="sa-text-frame sa-up-card">
       <p>
@@ -714,7 +820,6 @@
 
       if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
 
-      // target date: 18 December 2025, 00:00 (local time)
       const target = new Date("2025-12-18T00:00:00");
 
       function updateCountdown(){
@@ -743,6 +848,31 @@
 
       updateCountdown();
       setInterval(updateCountdown, 1000);
+    })();
+
+    /* MENU TOGGLE + SMOOTH SCROLL */
+    (function(){
+      const toggle = document.getElementById("saMenuToggle");
+      const panel  = document.getElementById("saMenuPanel");
+      if (!toggle || !panel) return;
+
+      toggle.addEventListener("click", () => {
+        const isOpen = panel.classList.toggle("open");
+        toggle.classList.toggle("open", isOpen);
+      });
+
+      document.querySelectorAll(".sa-menu-link[data-scroll]").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const targetSel = btn.getAttribute("data-scroll");
+          const target = document.querySelector(targetSel);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+          panel.classList.remove("open");
+          toggle.classList.remove("open");
+        });
+      });
     })();
   </script>
 
