@@ -5,6 +5,20 @@
   <title>Success Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- Social preview / sharing image (YOUR LOGO) -->
+  <meta property="og:title" content="Success Academy — Shopify & Upwork դասընթաց" />
+  <meta property="og:description" content="Սովորիր Shopify, Upwork և AI գործիքներ, ստեղծիր իրական ֆրիլանս կարիերա Success Academy-ի հետ։" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0434.jpg?v=1765139942" />
+  <!-- optionally also set URL if you already know the domain -->
+  <!-- <meta property="og:url" content="https://your-domain.com"> -->
+
+  <!-- Twitter card (optional, also shows logo) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Success Academy — Shopify & Upwork դասընթաց" />
+  <meta name="twitter:description" content="Սովորիր Shopify, Upwork և AI գործիքներ, ստեղծիր իրական ֆրիլանս կարիերա Success Academy-ի հետ։" />
+  <meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0434.jpg?v=1765139942" />
+
   <!-- Modern clean font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -330,15 +344,15 @@
     /* ================= ROUND FLOATING IMAGES ================= */
     .sa-hero-visual {
       position:relative;
-      width: min(70vw, 340px);
-      height: min(70vw, 340px);
+      width: min(90vw, 420px);   /* more space for floating */
+      height: min(90vw, 420px);  /* more space for floating */
       align-self:flex-end;
 
       opacity: 0;
       transform: translateY(-40px);
       transition: opacity 0.8s ease, transform 0.9s ease;
 
-      margin-top: 24px;
+      margin-top: 32px;
     }
 
     .sa-hero-visual.sa-visible {
@@ -348,8 +362,8 @@
 
     .sa-portrait {
       position:absolute;
-      width: min(48vw, 230px);
-      height: min(48vw, 230px);
+      width: min(60vw, 260px);   /* a bit bigger inside larger circle */
+      height: min(60vw, 260px);
       border-radius:999px;
       overflow:hidden;
       box-shadow:0 22px 42px rgba(0,0,0,0.18);
@@ -591,13 +605,13 @@
       }
 
       .sa-hero-visual {
-        width: 240px !important;
-        height: 240px !important;
+        width: 280px !important;   /* bigger circle on mobile */
+        height: 280px !important;
       }
 
       .sa-portrait {
-        width: 190px !important;
-        height: 190px !important;
+        width: 220px !important;   /* bigger portraits on mobile */
+        height: 220px !important;
       }
 
       .sa-section-title {
@@ -810,7 +824,7 @@
 
   <!-- =============== UPWORK CONSULTATION SECTION =============== -->
   <section class="sa-upwork" id="upwork-consult">
-    <h2 class="sa-section-title">Upwork խորհրդատվություն </h2>
+    <h2 class="sa-section-title">Upwork խորհրդատվություն մասնագետների համար</h2>
 
     <div class="sa-text-frame sa-up-card sa-anim-frame">
       <p>
