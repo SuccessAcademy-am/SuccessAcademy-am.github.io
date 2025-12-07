@@ -145,3 +145,204 @@
     }, stepTime);
   })();
 </script>
+<!-- MAIN HERO SECTION -->
+<section class="sa-hero">
+  <header class="sa-hero-header">
+    <!-- TOP-LEFT LOGO TEXT (change to your brand) -->
+    <div class="sa-logo">Success Academy</div>
+
+    <!-- TOP-RIGHT TWO CIRCLES -->
+    <div class="sa-header-circles">
+      <span></span><span></span>
+    </div>
+  </header>
+
+  <div class="sa-hero-inner">
+    <div class="sa-hero-text">
+      <!-- BIG HEADING (you can replace text) -->
+      <h1>We’re a creative<br>web studio.</h1>
+
+      <!-- PARAGRAPH (replace with your own) -->
+      <p>
+        Exploring the balance between <strong>fun</strong> and <strong>focus</strong>
+        to produce immersive and engaging experiences.
+      </p>
+    </div>
+
+    <div class="sa-hero-visual">
+      <!-- TOP BLUE CIRCLE -->
+      <div class="sa-portrait sa-portrait--blue">
+        <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
+      </div>
+
+      <!-- BOTTOM GREEN CIRCLE -->
+      <div class="sa-portrait sa-portrait--green">
+        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  :root {
+    --sa-bg: #050816;             /* dark navy */
+    --sa-text-main: #f5f5f5;      /* main white */
+    --sa-text-soft: #c3c6d1;      /* gray body text */
+    --sa-accent-green: #00f59d;   /* portrait green */
+    --sa-accent-blue: #006dff;    /* portrait blue */
+  }
+
+  body {
+    margin: 0;
+    background: var(--sa-bg);
+    color: var(--sa-text-main);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* HERO LAYOUT */
+  .sa-hero {
+    min-height: 100vh;
+    padding: 24px 18px 40px;
+    background: var(--sa-bg);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sa-hero-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* LOGO TEXT (TOP LEFT) */
+  .sa-logo {
+    font-size: 30px;                 /* big like screenshot */
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* TWO RING BUTTONS (TOP RIGHT) */
+  .sa-header-circles {
+    display: inline-flex;
+    gap: 10px;
+  }
+
+  .sa-header-circles span {
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    border: 2px solid rgba(255, 255, 255, 0.78);
+  }
+
+  /* INNER CONTENT */
+  .sa-hero-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 48px;
+    gap: 40px;
+  }
+
+  .sa-hero-text {
+    max-width: 540px;
+  }
+
+  .sa-hero-text h1 {
+    font-family: "Georgia", "Times New Roman", serif;  /* serif like Zulik */
+    font-size: clamp(40px, 9vw, 56px);                 /* BIG title */
+    line-height: 1.08;
+    margin: 0 0 18px;
+  }
+
+  .sa-hero-text p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--sa-text-soft);
+    margin: 0;
+  }
+
+  /* PORTRAIT AREA */
+  .sa-hero-visual {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    min-height: 260px;
+    margin-bottom: 8px;
+  }
+
+  .sa-portrait {
+    position: absolute;
+    width: 210px;
+    height: 210px;
+    border-radius: 999px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: saturate(1.2) contrast(1.1);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+  }
+
+  .sa-portrait img {
+    width: 115%;
+    height: 115%;
+    object-fit: cover;
+    mix-blend-mode: multiply;  /* gives that mono-colored look */
+  }
+
+  /* Blue top circle */
+  .sa-portrait--blue {
+    right: 0;
+    top: 0;
+    background: var(--sa-accent-blue);
+    animation: portraitFloat1 10s ease-in-out infinite alternate;
+  }
+
+  /* Green bottom circle */
+  .sa-portrait--green {
+    left: 0;
+    bottom: 0;
+    background: var(--sa-accent-green);
+    animation: portraitFloat2 11s ease-in-out infinite alternate;
+  }
+
+  @keyframes portraitFloat1 {
+    0%   { transform: translate3d(0, 0, 0); }
+    25%  { transform: translate3d(8px, -10px, 0); }
+    50%  { transform: translate3d(-6px, 5px, 0); }
+    75%  { transform: translate3d(4px, 12px, 0); }
+    100% { transform: translate3d(-3px, -6px, 0); }
+  }
+
+  @keyframes portraitFloat2 {
+    0%   { transform: translate3d(0, 0, 0); }
+    25%  { transform: translate3d(-8px, -8px, 0); }
+    50%  { transform: translate3d(8px, 4px, 0); }
+    75%  { transform: translate3d(-5px, 8px, 0); }
+    100% { transform: translate3d(4px, -4px, 0); }
+  }
+
+  /* BIGGER, SIDE-BY-SIDE LAYOUT ON DESKTOP */
+  @media (min-width: 900px) {
+    .sa-hero {
+      padding: 32px 8vw 60px;
+    }
+
+    .sa-hero-inner {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+      margin-top: 64px;
+    }
+
+    .sa-hero-visual {
+      max-width: 360px;
+      min-height: 280px;
+    }
+  }
+</style>
+
