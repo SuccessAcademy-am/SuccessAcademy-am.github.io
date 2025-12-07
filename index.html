@@ -1,222 +1,249 @@
-<!DOCTYPE html>
-<html lang="hy">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Success Academy Packages</title>
-
+<!-- SMOKE EFFECT AREA -->
+<div id="smoke-area"></div>
 <style>
-* {
-  margin:0; padding:0; box-sizing:border-box;
-  font-family:'Poppins', sans-serif;
-}
+  /* Smoke Layer */
+  #smoke-area {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999999;
+    overflow: hidden;
+  }
 
-body {
-  background:#000;
-  overflow-x:hidden;
-}
+  .smoke {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(
+      circle,
+      rgba(227, 213, 202, 0.6) 10%,
+      rgba(234, 224, 213, 0.12) 55%,
+      rgba(198, 172, 143, 0.0) 90%
+    );
+    opacity: 0.8;
+    border-radius: 50%;
+    animation: smokeFade 1.6s ease-out forwards;
+    filter: blur(18px);
+    mix-blend-mode: soft-light;
+  }
 
-/* MOBILE HERO (ONLY MOBILE VERSION USED) */
-.hero {
-  display:flex;
-  flex-direction:column;
-  width:100%;
-  gap:14px;
-  padding:14px;
-}
+  @keyframes smokeFade {
+    0%   { transform: scale(0.5); opacity: 0.9; }
+    100% { transform: scale(2.8); opacity: 0; }
+  }
 
-.panel {
-  width:100%;
-  min-height:230px;
-  border-radius:14px;
-  background-size:cover;
-  background-position:center;
-  position:relative;
-  overflow:visible;
-}
+  /* HERO SECTION */
+  .zulik-hero {
+    position: relative;
+    overflow: hidden;
+    background: #EDEDE9;
+    color: #3D3028;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    padding: 70px 6vw 100px;
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
 
-/* Dark overlay for readability */
-.panel::before {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.45);
-  z-index:1;
-  border-radius:14px;
-}
+  .zulik-hero-text {
+    max-width: 520px;
+    z-index: 2;
+  }
 
-/* Package name */
-.stack-text {
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  font-size:1.9rem;
-  color:#fff;
-  font-weight:800;
-  letter-spacing:2px;
-  z-index:2;
-  text-align:center;
-}
+  .zulik-hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #7D6755;
+    margin-bottom: 12px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.4);
+    border: 1px solid rgba(198, 172, 143, 0.45);
+  }
 
-/* Mobile + button */
-.plus-btn {
-  position:absolute;
-  top:12px;
-  right:12px;
-  width:42px;
-  height:42px;
-  background:rgba(255,255,255,0.95);
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:1.6rem;
-  font-weight:bold;
-  z-index:3;
-  cursor:pointer;
-}
+  .zulik-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: radial-gradient(circle at 30% 0, #C6AC8F, #8C6F54);
+  }
 
-/* DROPDOWN CONTENT */
-.content {
-  width:100%;
-  background:#F4E8D8;
-  border-radius:12px;
-  margin-top:12px;
-  padding:18px;
-  color:#1F1F1F;
-  font-size:1rem;
-  line-height:1.45;
+  .zulik-hero h1 {
+    font-size: clamp(28px, 3.6vw, 40px);
+    line-height: 1.15;
+    margin: 0 0 18px;
+    color: #2E231D;
+  }
 
-  /* animation control */
-  max-height:0;
-  overflow:hidden;
-  opacity:0;
-  transition:max-height 0.5s ease, opacity 0.4s ease;
-}
+  /* INTERACTIVE FRAMES AROUND SENTENCES */
+  .zulik-hero-frames {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
 
-.panel.active .content {
-  max-height:1600px;
-  opacity:1;
-}
+  .zulik-hero-frame {
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(125, 103, 85, 0.22);
+    box-shadow: 0 10px 25px rgba(70, 55, 40, 0.12);
+    backdrop-filter: blur(6px);
+    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out, border-color 0.25s ease-out, background 0.25s ease-out;
+  }
 
-.content h2 {
-  font-size:1.35rem;
-  margin-bottom:10px;
-  font-weight:700;
-}
+  .zulik-hero-frame p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #6E5B4E;
+  }
+
+  .zulik-hero-frame.accent {
+    border-color: rgba(125, 103, 85, 0.45);
+    background: rgba(255, 252, 247, 0.9);
+  }
+
+  .zulik-hero-frame.accent p {
+    font-weight: 600;
+    color: #3A2A21;
+  }
+
+  .zulik-hero-frame:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(70, 55, 40, 0.18);
+    border-color: rgba(125, 103, 85, 0.6);
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  /* VISUAL SIDE */
+  .zulik-hero-visual {
+    position: relative;
+    flex: 1;
+    max-width: 520px;
+    min-height: 240px;
+  }
+
+  .zulik-hero-blob {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 999px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F7F0E8;
+    border: 2px solid rgba(198, 172, 143, 0.7);
+    box-shadow: 0 18px 45px rgba(102, 80, 57, 0.25);
+    cursor: pointer;
+    transition: transform 0.35s ease-out;
+  }
+
+  .zulik-hero-blob img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .zulik-hero-blob:nth-child(1) {
+    top: 6%;
+    right: 4%;
+    animation: zulik-float-1 11s infinite ease-in-out;
+  }
+
+  .zulik-hero-blob:nth-child(2) {
+    bottom: 6%;
+    left: 6%;
+    width: 150px;
+    height: 150px;
+    animation: zulik-float-2 9s infinite ease-in-out;
+  }
+
+  @keyframes zulik-float-1 {
+    0%,100% { transform: translate(0,0); }
+    25% { transform: translate(10px,-12px); }
+    50% { transform: translate(-6px,6px); }
+    75% { transform: translate(4px,10px); }
+  }
+
+  @keyframes zulik-float-2 {
+    0%,100% { transform: translate(0,0); }
+    20% { transform: translate(-8px,-8px); }
+    50% { transform: translate(10px,4px); }
+    80% { transform: translate(-4px,10px); }
+  }
+
+  .zulik-hero-blob:hover {
+    animation-play-state: paused;
+    transform: scale(1.03);
+  }
+
+  /* MOBILE OPTIMIZATION */
+  @media (max-width: 800px) {
+    .zulik-hero {
+      flex-direction: column;
+      padding: 50px 5vw 70px;
+      text-align: center;
+      gap: 2.5rem;
+    }
+
+    .zulik-hero h1 {
+      font-size: 24px;
+      line-height: 1.3;
+    }
+
+    .zulik-hero-frames {
+      text-align: left;
+    }
+
+    .zulik-hero-eyebrow {
+      margin: 0 auto 12px;
+    }
+
+    .zulik-hero-visual {
+      width: 100%;
+      min-height: 200px;
+      margin-top: 20px;
+    }
+
+    .zulik-hero-blob {
+      width: 130px;
+      height: 130px;
+    }
+
+    .zulik-hero-blob:nth-child(1) {
+      top: 0;
+      right: 10%;
+    }
+
+    .zulik-hero-blob:nth-child(2) {
+      bottom: 0;
+      left: 10%;
+    }
+  }
 </style>
-
-</head>
-<body>
-
-<div class="hero">
-
-  <!-- STARTER -->
-  <div class="panel" style="background-image:url('https://cdn.shopify.com/s/files/1/0940/1424/3186/files/laptop-at-the-table-with-tea-at-side.jpg?v=1764891796');">
-    <div class="stack-text">STARTER</div>
-    <div class="plus-btn">+</div>
-
-    <div class="content">
-      <h2>STARTER · Shopify</h2>
-
-      Այս 3 շաբաթների ընթացքում կսովորեք նոր մասնագիտություն և կբացահայտեք,
-      թե ինչպես այն կիրառել միջազգային շուկայում՝ ստանալով բարձր վարձատրվող աշխատանքներ։
-
-      <br><br>
-      💡 <strong>Ի՞նչ է ներառում</strong><br>
-      ✅ Shopify հիմունքներ<br>
-      ✅ Առաջին խանութի կառուցում<br>
-      ✅ 1 ամիս հետադարձ կապ<br>
-      ✅ Վիդեո դասեր
-
-      <br><br>
-      <strong>Գին՝ 49,000 դրամ</strong>
-    </div>
-  </div>
-
-  <!-- PRO -->
-  <div class="panel" style="background-image:url('https://cdn.shopify.com/s/files/1/0940/1424/3186/files/laptop-at-the-table-with-tea-at-side.jpg?v=1764891796');">
-    <div class="stack-text">PRO</div>
-    <div class="plus-btn">+</div>
-
-    <div class="content">
-      <h2>PRO · Shopify + Upwork</h2>
-
-      Shopify + Upwork պրոֆիլի ամբողջական պատրաստում։
-
-      <br><br>
-      ✔ Shopify դասեր<br>
-      ✔ Upwork պրոֆիլի ձևավորում<br>
-      ✔ 2 ամիս հետադարձ կապ<br>
-      ✔ Վիդեո դասերի հասանելիություն
-
-      <br><br>
-      <strong>Գին՝ 59,000 դրամ</strong>
-    </div>
-  </div>
-
-  <!-- PREMIUM -->
-  <div class="panel" style="background-image:url('https://cdn.shopify.com/s/files/1/0940/1424/3186/files/laptop-at-the-table-with-tea-at-side.jpg?v=1764891796');">
-    <div class="stack-text">PREMIUM</div>
-    <div class="plus-btn">+</div>
-
-    <div class="content">
-      <h2>PREMIUM · Full Package</h2>
-
-      Ամենաամբողջական փաթեթը՝ Shopify + Upwork + AI.
-
-      <br><br>
-      ✔ Shopify<br>
-      ✔ Upwork խորացված ուսուցում (2 ժամ)<br>
-      ✔ Upwork էջի ստեղծում<br>
-      ✔ Աշխատանքի դիմելու ռազմավարություն<br>
-      ✔ 25+ AI գործիքների ուսուցում<br>
-      ✔ 2 ամիս հետադարձ կապ + վիդեո դասեր
-
-      <br><br>
-      <strong>Գին՝ 69,000 դրամ</strong>
-    </div>
-  </div>
-
-  <!-- UPWORK -->
-  <div class="panel" style="background-image:url('https://cdn.shopify.com/s/files/1/0940/1424/3186/files/laptop-at-the-table-with-tea-at-side.jpg?v=1764891796');">
-    <div class="stack-text">UPWORK</div>
-    <div class="plus-btn">+</div>
-
-    <div class="content">
-      <h2>Upwork Only · Սեսիա</h2>
-
-      ✔ Պրոֆիլի ձևավորում<br>
-      ✔ Cover Letter-ի գրառում<br>
-      ✔ Աշխատանքի ճիշտ որոնում<br>
-      ✔ Ինչից խուսափել<br>
-      ✔ Վճարումների ընդունում Հայաստանում
-
-      <br><br>
-      <strong>Գին՝ 20,000 դրամ</strong>
-    </div>
-  </div>
-
+<section class="zulik-hero">
+<div class="zulik-hero-text">
+<div class="zulik-hero-eyebrow"><span class="zulik-dot"></span> <span>Success Academy</span></div>
+<h1>Մեզ հետ նոր մասնագիտությունը դառնում է իրական ֆրիլանս կարիերա</h1>
+<div class="zulik-hero-frames">
+<div class="zulik-hero-frame">
+<p>Աշխատանք միջազգային ֆրիլանս հարթակներում, որտեղ դու կարող ես սկսել քո կարիերան հենց ուսուցումից հետո։</p>
 </div>
-
-
-<script>
-// MOBILE ACCORDION LOGIC
-document.querySelectorAll('.panel').forEach(panel=>{
-  const btn = panel.querySelector('.plus-btn');
-
-  btn.addEventListener('click', e=>{
-    e.stopPropagation();
-    panel.classList.toggle('active');
-
-    // close the others
-    document.querySelectorAll('.panel').forEach(p=>{
-      if(p !== panel) p.classList.remove('active');
-    });
-  });
-});
-</script>
-
-</body>
-</html>
+<div class="zulik-hero-frame accent">
+<p>Մեզ հետ դու սկսում ես ոչ թե դաս, այլ կարիերա։</p>
+</div>
+</div>
+</div>
+<div class="zulik-hero-visual">
+<div class="zulik-hero-blob"><img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800"></div>
+<div class="zulik-hero-blob"><img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800"></div>
+</div>
+</section>
