@@ -11,8 +11,8 @@
   <style>
     :root {
       --sa-bg:   #EAE0D5;
-      --sa-text: #3E372F;
-      --sa-soft: #6F655D;
+      --sa-text: #7f5539;  /* main requested color */
+      --sa-soft: #a68a71;
 
       --sa-tone1: #C6AC8F;
       --sa-tone2: #E3D5CA;
@@ -100,6 +100,7 @@
       border-radius: 50%;
       opacity: 0.85;
       filter: blur(18px);
+      mix-blend-mode: soft-light;
       animation: saSmokeFade 1.8s ease-out forwards;
     }
 
@@ -117,7 +118,6 @@
       background: var(--sa-bg);
     }
 
-    /* LOGO IN ONE LINE */
     .sa-hero-header {
       display:flex;
       justify-content:flex-start;
@@ -137,13 +137,22 @@
       flex-direction:column;
     }
 
-    /* MAIN SINGLE TEXT */
+    /* TEXT BLOCK */
     .sa-hero-text h1 {
       font-weight: 600;
       font-size: clamp(26px, 7vw, 34px);
-      margin: 0 0 14px;
+      margin: 0 0 8px;
       line-height: 1.35;
       max-width: 92%;
+    }
+
+    .sa-hero-text p {
+      font-weight: 400;
+      font-size: clamp(16px, 4.2vw, 19px);
+      line-height: 1.5;
+      margin: 0;
+      max-width: 95%;
+      color: var(--sa-soft);
     }
 
     /* ================= ROUND FLOATING IMAGES ================= */
@@ -167,8 +176,8 @@
 
     .sa-portrait {
       position:absolute;
-      width: min(50vw, 240px);
-      height: min(50vw, 240px);
+      width: min(48vw, 230px);
+      height: min(48vw, 230px);
       border-radius:999px;
       overflow:hidden;
       box-shadow:0 22px 42px rgba(0,0,0,0.18);
@@ -182,36 +191,39 @@
       mix-blend-mode:multiply;
     }
 
+    /* TOP CIRCLE – now uses second image */
     .sa-portrait--tone1 {
-      right:-14px;
-      top:0;
+      right:-18px;
+      top:-6px;
       background:var(--sa-tone1);
       animation: saFloatA 12s ease-in-out infinite alternate;
       animation-play-state: paused;
     }
 
+    /* BOTTOM CIRCLE – now uses first image */
     .sa-portrait--tone2 {
-      left:0;
-      bottom:-18px;
+      left:-18px;
+      bottom:-10px;
       background:var(--sa-tone2);
       animation: saFloatB 13s ease-in-out infinite alternate;
       animation-play-state: paused;
     }
 
+    /* FLOATING but kept apart so they don't touch */
     @keyframes saFloatA {
       0%   { transform:translate(0,0); }
-      25%  { transform:translate(12px,-14px); }
-      50%  { transform:translate(-10px,10px); }
-      75%  { transform:translate(16px,16px); }
-      100% { transform:translate(-6px,-10px); }
+      25%  { transform:translate(10px,-10px); }
+      50%  { transform:translate(-8px,6px); }
+      75%  { transform:translate(12px,8px); }
+      100% { transform:translate(-6px,-6px); }
     }
 
     @keyframes saFloatB {
       0%   { transform:translate(0,0); }
-      25%  { transform:translate(-12px,-12px); }
-      50%  { transform:translate(16px,8px); }
-      75%  { transform:translate(-12px,12px); }
-      100% { transform:translate(8px,-10px); }
+      25%  { transform:translate(-10px,-8px); }
+      50%  { transform:translate(12px,6px); }
+      75%  { transform:translate(-8px,10px); }
+      100% { transform:translate(6px,-6px); }
     }
 
     .sa-floating {
@@ -225,14 +237,17 @@
         font-size: 24px !important;
       }
 
-      .sa-hero-text h1 {
-        font-size: 28px !important; /* SMALLER & CLEANER */
-        line-height: 1.35 !important;
-        text-align: left;
-      }
-
       .sa-hero-header {
         margin-bottom: 30px !important;
+      }
+
+      .sa-hero-text h1 {
+        font-size: 26px !important;
+        line-height: 1.35 !important;
+      }
+
+      .sa-hero-text p {
+        font-size: 16px !important;
       }
 
       .sa-hero-visual {
@@ -272,18 +287,19 @@
 
     <div class="sa-hero-inner">
 
-      <!-- NEW: Only ONE text -->
       <div class="sa-hero-text">
         <h1>Մեզ հետ նոր մասնագիտությունը դառնում է իրական ֆրիլանս կարիերա</h1>
+        <p>Աշխատանք միջազգային ֆրիլանս հարթակներում, որտեղ դու կարող ես սկսել քո կարիերան հենց ուսուցումից հետո։</p>
       </div>
 
       <div class="sa-hero-visual">
+        <!-- switched images: second becomes top, first becomes bottom -->
         <div class="sa-portrait sa-portrait--tone1">
-          <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0428.jpg?v=1765128580">
+          <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579">
         </div>
 
         <div class="sa-portrait sa-portrait--tone2">
-          <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579">
+          <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0428.jpg?v=1765128580">
         </div>
       </div>
 
@@ -308,7 +324,6 @@
           clearInterval(timer);
           pre.classList.add("hidden");
 
-          // delayed appearance
           setTimeout(() => {
             visual.classList.add("sa-visible");
             circles.forEach(c => c.classList.add("sa-floating"));
