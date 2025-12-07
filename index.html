@@ -335,6 +335,72 @@
       margin-top: 4px;
     }
 
+    /* =============== COUNTDOWN CTA SECTION =============== */
+    .sa-cta {
+      padding: 0 22px 40px;
+    }
+
+    .sa-cta-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .sa-cta-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0 0 4px;
+    }
+
+    .sa-cta-text {
+      font-size: 15px;
+      color: var(--sa-soft);
+      margin: 0;
+    }
+
+    .sa-cta-highlight {
+      font-weight: 600;
+    }
+
+    .sa-cta-timer {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .sa-cta-box {
+      min-width: 70px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(127, 85, 57, 0.06);
+      text-align: center;
+    }
+
+    .sa-cta-box span {
+      display: block;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .sa-cta-box label {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 2px;
+    }
+
+    .sa-cta-note {
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    .sa-cta-note strong {
+      font-weight: 700;
+    }
+
     /* =============== UPWORK CONSULT SECTION =============== */
     .sa-upwork {
       padding: 10px 22px 60px;
@@ -392,6 +458,13 @@
       .sa-offer-card h3 { font-size: 18px; }
       .sa-offer-card p  { font-size: 14px; }
       .sa-price-box h3  { font-size: 20px; }
+
+      .sa-cta-inner {
+        gap: 10px;
+      }
+      .sa-cta-title {
+        font-size: 18px;
+      }
     }
   </style>
 </head>
@@ -461,7 +534,7 @@
         </p>
       </div>
 
-      <!-- Upwork card (career start after course) -->
+      <!-- Upwork card -->
       <div class="sa-text-frame sa-offer-card">
         <h3>Upwork կարիերայի մեկնարկ</h3>
         <p>
@@ -511,6 +584,44 @@
       <p>📱 Online, ցերեկային և երեկոյան խմբերով</p>
     </div>
 
+  </section>
+
+  <!-- =============== COUNTDOWN CTA SECTION =============== -->
+  <section class="sa-cta">
+    <div class="sa-text-frame sa-cta-inner">
+      <div>
+        <h3 class="sa-cta-title">
+          Հաջորդ Shopify խումբը մեկնարկում է՝ <span class="sa-cta-highlight">18 Դեկտեմբեր 2025</span>
+        </h3>
+        <p class="sa-cta-text">
+          Եթե ուզում ես նոր մասնագիտություն, իրական պորտֆոլիո և միջազգային հաճախորդներ,
+          սա է քո հնարավորությունը։ Հաջորդ խումբը սահմանափակ տեղերով է։
+        </p>
+      </div>
+
+      <div class="sa-cta-timer" id="saCountdown">
+        <div class="sa-cta-box">
+          <span id="saDays">00</span>
+          <label>Օր</label>
+        </div>
+        <div class="sa-cta-box">
+          <span id="saHours">00</span>
+          <label>Ժամ</label>
+        </div>
+        <div class="sa-cta-box">
+          <span id="saMinutes">00</span>
+          <label>Րոպե</label>
+        </div>
+        <div class="sa-cta-box">
+          <span id="saSeconds">00</span>
+          <label>Վայրկյան</label>
+        </div>
+      </div>
+
+      <p class="sa-cta-note">
+        👉 Գրանցման համար գրիր <strong>DM</strong> և մենք կուղարկենք բոլոր մանրամասները։
+      </p>
+    </div>
   </section>
 
   <!-- =============== UPWORK CONSULTATION SECTION =============== -->
@@ -592,6 +703,46 @@
         const t = e.touches[0];
         puff(t.clientX, t.clientY);
       }, { passive:true });
+    })();
+
+    /* COUNTDOWN TO 18 DEC 2025 */
+    (function(){
+      const daysEl    = document.getElementById("saDays");
+      const hoursEl   = document.getElementById("saHours");
+      const minutesEl = document.getElementById("saMinutes");
+      const secondsEl = document.getElementById("saSeconds");
+
+      if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+
+      // target date: 18 December 2025, 00:00 (local time)
+      const target = new Date("2025-12-18T00:00:00");
+
+      function updateCountdown(){
+        const now = new Date();
+        let diff = target.getTime() - now.getTime();
+
+        if (diff <= 0) {
+          daysEl.textContent    = "00";
+          hoursEl.textContent   = "00";
+          minutesEl.textContent = "00";
+          secondsEl.textContent = "00";
+          return;
+        }
+
+        const sec  = Math.floor(diff / 1000);
+        const days = Math.floor(sec / (60*60*24));
+        const hrs  = Math.floor((sec % (60*60*24)) / (60*60));
+        const mins = Math.floor((sec % (60*60)) / 60);
+        const s    = sec % 60;
+
+        daysEl.textContent    = String(days).padStart(2,"0");
+        hoursEl.textContent   = String(hrs).padStart(2,"0");
+        minutesEl.textContent = String(mins).padStart(2,"0");
+        secondsEl.textContent = String(s).padStart(2,"0");
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
     })();
   </script>
 
