@@ -152,12 +152,13 @@ body {
 }
 
 /* =============== HERO LAYOUT =============== */
+/* Mobile–first styles (we optimise for phone first) */
 .sa-hero {
-  min-height: 100vh;
-  padding: 18px 18px 32px;
+  padding: 18px 18px 28px;
   background: var(--sa-bg);
   display: flex;
   flex-direction: column;
+  /* no min-height here → section height adapts to content */
 }
 
 .sa-hero-header {
@@ -167,7 +168,7 @@ body {
 }
 
 .sa-logo {
-  font-size: clamp(26px, 6.5vw, 34px);
+  font-size: clamp(26px, 7vw, 32px);
   font-weight: 900;
   letter-spacing: 0.18em;
 }
@@ -179,50 +180,47 @@ body {
   background: var(--sa-text);
 }
 
-/* MOBILE-FIRST: text above images */
+/* TEXT BLOCK */
 .sa-hero-inner {
-  flex: 1;
+  margin-top: 18px;              /* move content closer to header */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
-  gap: 22px;
-  margin-top: 4vh;
+  gap: 14px;
 }
 
 .sa-hero-text {
   max-width: 100%;
 }
 
-/* BIGGER MOBILE TEXT */
 .sa-hero-text h1 {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(46px, 13vw, 56px);
+  font-size: clamp(46px, 13vw, 58px);  /* bigger on mobile */
   line-height: 1.08;
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   color: var(--sa-text);
 }
 
 .sa-hero-text p {
-  font-size: clamp(19px, 5vw, 22px);
+  font-size: clamp(18px, 4.8vw, 21px);
   line-height: 1.7;
   color: var(--sa-soft);
   margin: 0;
 }
 
-/* IMAGES UNDER TEXT – SMALLER ON MOBILE */
+/* IMAGES – SMALLER + CLOSE TO TEXT */
 .sa-hero-visual {
   position: relative;
-  width: 180px;   /* smaller container on mobile */
-  height: 180px;
-  margin-top: 14px;
-  align-self: center;
+  width: 160px;   /* smaller container */
+  height: 160px;
+  margin-top: 10px;
+  align-self: flex-end;          /* like Zulik: images to the right */
 }
 
 .sa-portrait {
   position: absolute;
-  width: 120px;   /* ~2x smaller than before */
-  height: 120px;
+  width: 110px;
+  height: 110px;
   border-radius: 999px;
   overflow: hidden;
   box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22);
@@ -232,8 +230,8 @@ body {
   width: 150%;
   height: 150%;
   object-fit: cover;
-  object-position: center top;   /* focus upwards (hats) */
-  transform: translateY(10%);   /* push hats into center of circle */
+  object-position: center top;   /* focus higher (hats/face) */
+  transform: translateY(8%);
   mix-blend-mode: multiply;
 }
 
@@ -245,8 +243,8 @@ body {
 }
 
 .sa-portrait--tone2 {
-  left: 0;
-  bottom: 0;
+  left: -10px;
+  bottom: -6px;
   background: var(--tone2);
   animation: float2 11s ease-in-out infinite alternate;
 }
@@ -267,13 +265,15 @@ body {
   100% { transform: translate(4px, -4px); }
 }
 
-/* DESKTOP: text left, images right, larger circles */
+/* =============== DESKTOP OVERRIDES =============== */
 @media (min-width: 900px) {
   .sa-hero {
+    min-height: 100vh;
     padding: 32px 8vw 40px;
   }
 
   .sa-hero-inner {
+    margin-top: 8vh;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -295,7 +295,6 @@ body {
   .sa-hero-visual {
     width: 360px;
     height: 320px;
-    align-self: auto;
   }
 
   .sa-portrait {
