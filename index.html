@@ -112,7 +112,7 @@
     /* ================= HERO ================= */
     .sa-hero {
       min-height: 100vh;
-      padding: 20px 22px;
+      padding: 20px 22px 40px;
       display:flex;
       flex-direction:column;
       background: var(--sa-bg);
@@ -137,7 +137,7 @@
       flex-direction:column;
     }
 
-    /* ==== DYNAMIC TEXT FRAME (reusable for all page) ==== */
+    /* ==== DYNAMIC TEXT FRAME (reusable) ==== */
     .sa-text-frame {
       display: inline-block;
       padding: 16px 18px 14px;
@@ -147,12 +147,9 @@
       box-shadow: 0 18px 32px rgba(0, 0, 0, 0.10);
       position: relative;
       overflow: hidden;
-
-      /* subtle float */
       animation: saCardFloat 10s ease-in-out infinite alternate;
     }
 
-    /* soft moving light inside frame */
     .sa-text-frame::before {
       content: "";
       position: absolute;
@@ -182,7 +179,6 @@
       100% { opacity: 0;   transform: translate3d(60px, 0, 0); }
     }
 
-    /* TEXT inside frame */
     .sa-hero-text h1 {
       font-weight: 600;
       font-size: clamp(26px, 7vw, 34px);
@@ -236,7 +232,6 @@
       mix-blend-mode:multiply;
     }
 
-    /* TOP CIRCLE – now uses second image */
     .sa-portrait--tone1 {
       right:-18px;
       top:-6px;
@@ -245,7 +240,6 @@
       animation-play-state: paused;
     }
 
-    /* BOTTOM CIRCLE – now uses first image */
     .sa-portrait--tone2 {
       left:-18px;
       bottom:-10px;
@@ -254,7 +248,6 @@
       animation-play-state: paused;
     }
 
-    /* FLOATING but kept apart so they don't touch */
     @keyframes saFloatA {
       0%   { transform:translate(0,0); }
       25%  { transform:translate(10px,-10px); }
@@ -273,6 +266,65 @@
 
     .sa-floating {
       animation-play-state: running !important;
+    }
+
+    /* =============== WHAT WE OFFER SECTION =============== */
+    .sa-offer {
+      padding: 10px 22px 40px;
+    }
+
+    .sa-section-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 26px;
+      color: var(--sa-text);
+    }
+
+    .sa-offer-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .sa-offer-card h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: var(--sa-text);
+    }
+
+    .sa-offer-card p {
+      font-size: 15px;
+      margin-bottom: 6px;
+      color: var(--sa-soft);
+    }
+
+    .sa-price-box {
+      margin-top: 30px;
+    }
+
+    .sa-price-box h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .sa-price-list {
+      padding-left: 18px;
+      margin: 0 0 12px;
+    }
+
+    .sa-price-list li {
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .sa-price-amount {
+      font-size: 20px;
+      margin-top: 8px;
+      color: var(--sa-text);
+    }
+
+    .sa-note {
+      font-size: 13px;
+      opacity: 0.7;
     }
 
     /* ================= MOBILE TWEAKS ================= */
@@ -304,6 +356,14 @@
         width: 190px !important;
         height: 190px !important;
       }
+
+      .sa-section-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+      .sa-offer-card h3 { font-size: 18px; }
+      .sa-offer-card p  { font-size: 14px; }
+      .sa-price-box h3  { font-size: 20px; }
     }
   </style>
 </head>
@@ -333,7 +393,6 @@
     <div class="sa-hero-inner">
 
       <div class="sa-hero-text">
-        <!-- NEW dynamic frame around both texts -->
         <div class="sa-text-frame">
           <h1>Մեզ հետ նոր մասնագիտությունը դառնում է իրական ֆրիլանս կարիերա</h1>
           <p>Աշխատանք միջազգային ֆրիլանս հարթակներում, որտեղ դու կարող ես սկսել քո կարիերան հենց ուսուցումից հետո։</p>
@@ -341,7 +400,6 @@
       </div>
 
       <div class="sa-hero-visual">
-        <!-- switched images: second becomes top, first becomes bottom -->
         <div class="sa-portrait sa-portrait--tone1">
           <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579">
         </div>
@@ -352,6 +410,62 @@
       </div>
 
     </div>
+  </section>
+
+  <!-- =============== WHAT WE OFFER SECTION =============== -->
+  <section class="sa-offer">
+
+    <h2 class="sa-section-title">Ինչ ենք մենք առաջարկում</h2>
+
+    <div class="sa-offer-grid">
+
+      <div class="sa-text-frame sa-offer-card">
+        <h3>Shopify մասնագիտություն</h3>
+        <p>
+          Shopify-ը համաշխարհային ամենամեծ էլեկտրոնային առևտրի համակարգերից մեկն է,
+          որտեղ բիզնեսները ստեղծում են իրենց օնլայն խանութները։
+        </p>
+        <p><strong>Դասընթացից հետո՝</strong> դու դառնում ես ինտերմեդիատ Shopify մասնագետ՝ պատրաստ իրական նախագծերի։</p>
+      </div>
+
+      <div class="sa-text-frame sa-offer-card">
+        <h3>Upwork կարիերայի մեկնարկ</h3>
+        <p>
+          Upwork-ը աշխարհի №1 ֆրիլանս հարթակն է, որտեղ միլիոնավոր մասնագետներ
+          աշխատում են միջազգային հաճախորդների հետ։
+        </p>
+        <p>
+          Մենք քեզ օգնում ենք ստեղծել պրոֆեսիոնալ պրոֆիլ, հասկանալ հարթակի ալգորիթմը,
+          գտնել աշխատանքներ և սկսել աշխատել հենց ուսուցումից հետո։
+        </p>
+      </div>
+
+      <div class="sa-text-frame sa-offer-card">
+        <h3>AI գործիքներ (բոնուս)</h3>
+        <p>
+          Սովորում ես արհեստական բանականության գործիքներ, որոնք արագացնում են քո աշխատանքը,
+          բարձրացնում արդյունավետությունը և օգնում ավելի հեշտ ու արագ գտնել աշխատանք։
+        </p>
+        <p>Այս հմտությունները քեզ դարձնում են արդիական IT մասնագետ։</p>
+      </div>
+
+    </div>
+
+    <div class="sa-text-frame sa-price-box">
+      <h3>Դասընթացի արժեքը</h3>
+
+      <ul class="sa-price-list">
+        <li><strong>✔ Shopify ամբողջական ծրագիր</strong> — դիզայն, կառուցում, հավելվածներ, օպտիմիզացիա</li>
+        <li><strong>✔ Upwork պրոֆիլի ստեղծում</strong> — բիդեր, աշխատանքների որոնում, պրոֆիլի օպտիմիզացիա</li>
+        <li><strong>✔ Ֆրիլանս կարիերայի ուղեցույց</strong> — ինչպես վաստակել առաջին գումարը</li>
+        <li><strong>✔ AI գործիքներ</strong> — որոնք կօգնեն ավելի արագ աշխատել և մնալ թրենդում</li>
+        <li><strong>✔ Աջակցություն ու community</strong> — հարց ու պատասխան, ուղղումներ, կարծիքներ</li>
+      </ul>
+
+      <p class="sa-price-amount"><strong>Արժեքը՝ 65,000 AMD</strong></p>
+      <p class="sa-note">Վճարումը կատարվում է մեկ անգամ, առանց թաքնված հավելյալ վճարների։</p>
+    </div>
+
   </section>
 
   <script>
@@ -404,76 +518,3 @@
 
 </body>
 </html>
-/* =============== WHAT WE OFFER SECTION =============== */
-
-.sa-offer {
-  padding: 40px 22px 10px;
-}
-
-.sa-section-title {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 26px;
-  color: var(--sa-text);
-}
-
-.sa-offer-grid {
-  display: grid;
-  gap: 20px;
-}
-
-/* Reuse same dynamic frame but slightly adjusted for cards */
-.sa-offer-card h3 {
-  font-size: 20px;
-  margin-bottom: 8px;
-  color: var(--sa-text);
-}
-
-.sa-offer-card p {
-  font-size: 15px;
-  margin-bottom: 6px;
-  color: var(--sa-soft);
-}
-
-/* Price box */
-.sa-price-box {
-  margin-top: 30px;
-}
-
-.sa-price-box h3 {
-  font-size: 22px;
-  margin-bottom: 12px;
-}
-
-.sa-price-list {
-  padding-left: 18px;
-  margin: 0 0 12px;
-}
-
-.sa-price-list li {
-  margin-bottom: 6px;
-  font-size: 15px;
-}
-
-.sa-price-amount {
-  font-size: 20px;
-  margin-top: 8px;
-  color: var(--sa-text);
-}
-
-.sa-note {
-  font-size: 13px;
-  opacity: 0.7;
-}
-
-/* MOBILE */
-@media (max-width: 600px) {
-  .sa-section-title {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  .sa-offer-card h3 { font-size: 18px; }
-  .sa-offer-card p  { font-size: 14px; }
-  .sa-price-box h3  { font-size: 20px; }
-}
-
