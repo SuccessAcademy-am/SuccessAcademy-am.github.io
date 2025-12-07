@@ -127,9 +127,9 @@
       background: linear-gradient(
         to bottom,
         rgba(234,224,213,0.98),
+        rgba(234,224,213,0.95),
         rgba(234,224,213,0.90),
-        rgba(234,224,213,0.70),
-        transparent
+        rgba(234,224,213,0.75)
       );
     }
 
@@ -140,45 +140,48 @@
       white-space:nowrap;
     }
 
-    /* ==== MENU BUBBLE ==== */
+    /* ==== MENU BUBBLE WITH PULSING "S" ==== */
     .sa-menu-toggle {
       width: 42px;
       height: 42px;
       border-radius: 999px;
       border: none;
-      background: rgba(127, 85, 57, 0.12);
+      background: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       padding: 0;
-      box-shadow: 0 10px 22px rgba(0,0,0,0.15);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.18);
       position: relative;
+      animation: saHeartPulse 1.3s ease-in-out infinite;
     }
 
     .sa-menu-toggle span {
-      display:block;
-      width: 18px;
-      height: 2px;
-      border-radius: 999px;
-      background: var(--sa-text);
-      margin: 2px 0;
-      transition: transform .25s ease, opacity .25s ease;
+      font-weight: 800;
+      font-size: 20px;
+      color: var(--sa-text);
+      line-height: 1;
     }
 
-    .sa-menu-toggle.open span:nth-child(1) {
-      transform: translateY(4px) rotate(45deg);
-    }
-    .sa-menu-toggle.open span:nth-child(2) {
-      opacity:0;
-    }
-    .sa-menu-toggle.open span:nth-child(3) {
-      transform: translateY(-4px) rotate(-45deg);
+    @keyframes saHeartPulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(127,85,57,0.45);
+      }
+      40% {
+        transform: scale(1.13);
+        box-shadow: 0 0 0 10px rgba(127,85,57,0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(127,85,57,0);
+      }
     }
 
     .sa-menu-panel {
       position: fixed;
-      top: 64px;
+      top: 70px;
       right: 14px;
       z-index: 9999;
       opacity: 0;
@@ -194,10 +197,23 @@
     }
 
     .sa-menu-card {
-      padding: 10px 14px;
+      padding: 12px 16px 10px;
       display:flex;
       flex-direction:column;
       gap: 4px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 18px 32px rgba(0,0,0,0.22);
+      border: 1px solid rgba(127,85,57,0.18);
+      min-width: 220px;
+    }
+
+    .sa-menu-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      opacity: 0.6;
+      margin-bottom: 4px;
     }
 
     .sa-menu-link {
@@ -225,6 +241,13 @@
       opacity: 0.85;
     }
 
+    .sa-menu-close {
+      margin-top: 6px;
+      font-size: 13px;
+      justify-content: flex-end;
+      opacity: 0.8;
+    }
+
     /* ================= HERO ================= */
     .sa-hero {
       min-height: 100vh;
@@ -245,7 +268,7 @@
       padding: 16px 18px 14px;
       border-radius: 18px;
       border: 1px solid rgba(127, 85, 57, 0.25);
-      background: rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.86);
       box-shadow: 0 18px 32px rgba(0, 0, 0, 0.10);
       position: relative;
       overflow: hidden;
@@ -291,17 +314,17 @@
       color: var(--sa-soft);
     }
 
-    /* ==== SCROLL ZOOM ANIMATION (for frames) ==== */
+    /* ==== SCROLL ZOOM ANIMATION (stronger) ==== */
     .sa-anim-frame {
       opacity: 0;
-      transform: scale(0.96) translateY(18px);
-      transition: opacity .5s ease, transform .5s ease, box-shadow .5s ease;
+      transform: scale(0.9) translateY(40px);
+      transition: opacity .6s ease, transform .6s ease, box-shadow .6s ease;
     }
 
     .sa-anim-frame.in-view {
       opacity: 1;
-      transform: scale(1) translateY(0);
-      box-shadow: 0 20px 36px rgba(0,0,0,0.14);
+      transform: scale(1.04) translateY(0);
+      box-shadow: 0 24px 40px rgba(0,0,0,0.18);
     }
 
     /* ================= ROUND FLOATING IMAGES ================= */
@@ -410,10 +433,6 @@
       font-size: 15px;
       margin-bottom: 6px;
       color: var(--sa-soft);
-    }
-
-    .sa-price-box {
-      margin-top: 10px;
     }
 
     .sa-price-box h3 {
@@ -592,24 +611,33 @@
   <header class="sa-main-header">
     <div class="sa-logo">SUCCESS ACADEMY</div>
     <button class="sa-menu-toggle" id="saMenuToggle" aria-label="Մենյու">
-      <span></span><span></span><span></span>
+      <span>S</span>
     </button>
   </header>
 
   <!-- floating menu -->
   <nav class="sa-menu-panel" id="saMenuPanel">
-    <div class="sa-text-frame sa-menu-card">
-      <button class="sa-menu-link" data-scroll="#hero">
-        <span class="sa-menu-dot"></span> Գլխավոր
+    <div class="sa-menu-card">
+      <div class="sa-menu-title">Մենյու</div>
+
+      <button class="sa-menu-link" data-scroll="#shopify-upwork">
+        <span class="sa-menu-dot"></span> Ինչ է Shopify և Upwork-ը
       </button>
-      <button class="sa-menu-link" data-scroll="#offer">
-        <span class="sa-menu-dot"></span> Ինչ ենք առաջարկում
+      <button class="sa-menu-link" data-scroll="#course-about">
+        <span class="sa-menu-dot"></span> Դասընթացի մասին
+      </button>
+      <button class="sa-menu-link" data-scroll="#course-price">
+        <span class="sa-menu-dot"></span> Դասընթացի արժեքը
       </button>
       <button class="sa-menu-link" data-scroll="#cta">
-        <span class="sa-menu-dot"></span> Shopify խումբ
+        <span class="sa-menu-dot"></span> Դասընթացի մեկնարկը
       </button>
       <button class="sa-menu-link" data-scroll="#upwork-consult">
         <span class="sa-menu-dot"></span> Upwork խորհրդատվություն
+      </button>
+
+      <button class="sa-menu-link sa-menu-close" data-close="true">
+        Փակել ✕
       </button>
     </div>
   </nav>
@@ -646,30 +674,33 @@
 
     <div class="sa-offer-grid">
 
-      <!-- Shopify card -->
-      <div class="sa-text-frame sa-offer-card sa-anim-frame">
-        <h3>Shopify մասնագիտություն</h3>
-        <p>
-          Shopify-ը համաշխարհային ամենամեծ էլեկտրոնային առևտրի համակարգերից մեկն է,
-          որտեղ բիզնեսները ստեղծում են իրենց օնլայն խանութները։
-        </p>
-        <p>
-          Դասընթացից հետո դու դառնում ես Shopify մասնագետ՝ իրական պորտֆոլիոյով,
-          պատրաստ աշխատելու իրական նախագծերի վրա։
-        </p>
-      </div>
+      <!-- Shopify + Upwork block anchor -->
+      <div id="shopify-upwork">
+        <!-- Shopify card -->
+        <div class="sa-text-frame sa-offer-card sa-anim-frame">
+          <h3>Shopify մասնագիտություն</h3>
+          <p>
+            Shopify-ը համաշխարհային ամենամեծ էլեկտրոնային առևտրի համակարգերից մեկն է,
+            որտեղ բիզնեսները ստեղծում են իրենց օնլայն խանութները։
+          </p>
+          <p>
+            Դասընթացից հետո դու դառնում ես Shopify մասնագետ՝ իրական պորտֆոլիոյով,
+            պատրաստ աշխատելու իրական նախագծերի վրա։
+          </p>
+        </div>
 
-      <!-- Upwork card -->
-      <div class="sa-text-frame sa-offer-card sa-anim-frame">
-        <h3>Upwork կարիերայի մեկնարկ</h3>
-        <p>
-          Upwork-ը աշխարհում ամենամեծ ֆրիլանս հարթակներից մեկն է,
-          որտեղ աշխատում են միջազգային հաճախորդների հետ։
-        </p>
-        <p>
-          Դասընթացից հետո մենք օգնում ենք ստեղծել կամ բարելավել քո Upwork պրոֆիլը,
-          հասկանալ ինչպես գտնել ճիշտ աշխատանքներ և ինչպես ստանալ առաջին պատվերները։
-        </p>
+        <!-- Upwork card -->
+        <div class="sa-text-frame sa-offer-card sa-anim-frame">
+          <h3>Upwork կարիերայի մեկնարկ</h3>
+          <p>
+            Upwork-ը աշխարհում ամենամեծ ֆրիլանս հարթակներից մեկն է,
+            որտեղ աշխատում են միջազգային հաճախորդների հետ։
+          </p>
+          <p>
+            Դասընթացից հետո մենք օգնում ենք ստեղծել կամ բարելավել քո Upwork պրոֆիլը,
+            հասկանալ ինչպես գտնել ճիշտ աշխատանքներ և ինչպես ստանալ առաջին պատվերները։
+          </p>
+        </div>
       </div>
 
       <!-- AI tools card -->
@@ -686,8 +717,8 @@
 
     </div>
 
-    <!-- Price & course info -->
-    <div class="sa-text-frame sa-price-box sa-anim-frame">
+    <!-- Price box -->
+    <div class="sa-text-frame sa-price-box sa-anim-frame" id="course-price">
       <h3>Դասընթացի արժեքը</h3>
       <p>Փաթեթներ՝</p>
 
@@ -702,8 +733,11 @@
       </ul>
 
       <p class="sa-note">Վճարումը կատարվում է մեկ անգամ, առանց թաքնված հավելյալ վճարների։</p>
+    </div>
 
-      <h3 style="margin-top:16px;">Դասընթացի մասին</h3>
+    <!-- Course about (separate anchor) -->
+    <div class="sa-text-frame sa-anim-frame" id="course-about" style="margin-top:16px;">
+      <h3>Դասընթացի մասին</h3>
       <p>⏳ Տևողություն՝ 3 շաբաթ</p>
       <p>🕒 Դասեր՝ շաբաթական 2 անգամ (2 ժամ)</p>
       <p>📱 Online, ցերեկային և երեկոյան խմբերով</p>
@@ -751,7 +785,7 @@
 
   <!-- =============== UPWORK CONSULTATION SECTION =============== -->
   <section class="sa-upwork" id="upwork-consult">
-    <h2 class="sa-section-title">Upwork խորհուրդատվություն մասնագետների համար</h2>
+    <h2 class="sa-section-title">Upwork խորհրդատվություն մասնագետների համար</h2>
 
     <div class="sa-text-frame sa-up-card sa-anim-frame">
       <p>
@@ -869,28 +903,46 @@
       setInterval(updateCountdown, 1000);
     })();
 
-    /* MENU TOGGLE + SMOOTH SCROLL */
+    /* MENU TOGGLE + SMOOTH SCROLL + CLOSE BUTTON */
     (function(){
       const toggle = document.getElementById("saMenuToggle");
       const panel  = document.getElementById("saMenuPanel");
       if (!toggle || !panel) return;
 
+      function closeMenu() {
+        panel.classList.remove("open");
+      }
+
       toggle.addEventListener("click", () => {
         const isOpen = panel.classList.toggle("open");
-        toggle.classList.toggle("open", isOpen);
+        if (!isOpen) closeMenu();
       });
 
-      document.querySelectorAll(".sa-menu-link[data-scroll]").forEach(btn => {
+      document.querySelectorAll(".sa-menu-link").forEach(btn => {
         btn.addEventListener("click", (e) => {
+          if (btn.dataset.close === "true") {
+            // just close
+            e.preventDefault();
+            closeMenu();
+            return;
+          }
+
           const targetSel = btn.getAttribute("data-scroll");
-          const target = document.querySelector(targetSel);
+          const target = targetSel ? document.querySelector(targetSel) : null;
           if (target) {
             e.preventDefault();
             target.scrollIntoView({ behavior: "smooth", block: "start" });
           }
-          panel.classList.remove("open");
-          toggle.classList.remove("open");
+          closeMenu();
         });
+      });
+
+      // click outside to close
+      document.addEventListener("click", (e) => {
+        if (!panel.classList.contains("open")) return;
+        if (!panel.contains(e.target) && !toggle.contains(e.target)) {
+          closeMenu();
+        }
       });
     })();
 
