@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hy">
 <head>
   <meta charset="UTF-8" />
   <title>Success Academy</title>
@@ -119,7 +119,7 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
-      margin-bottom: 6px;
+      margin-bottom: 10px; /* a little more space after logo */
     }
     .sa-logo {
       font-size: clamp(26px,7vw,32px);
@@ -142,19 +142,25 @@
     }
 
     .sa-hero-text {
-      margin-top: 0;
+      margin-top: 6px;
     }
     .sa-hero-text h1 {
       font-family: Georgia, serif;
-      font-size: clamp(48px,13vw,62px);
-      line-height:1.05;
+      font-size: clamp(40px,10vw,56px);
+      line-height:1.1;
       margin:0 0 8px;
     }
     .sa-hero-text p {
       font-size: clamp(18px,4.8vw,22px);
       color:var(--sa-soft);
       line-height:1.6;
-      margin:0 0 12px;
+      margin:0 0 8px;
+    }
+
+    .sa-bold-line {
+      margin-top: 10px;
+      font-size: 20px;
+      line-height: 1.4;
     }
 
     /* ================= ROUND IMAGE FRAMES ================= */
@@ -267,30 +273,39 @@
       }
 
       .sa-hero-header {
-        margin-bottom: 2px !important;
+        margin-bottom: 10px !important; /* more space after logo on mobile */
       }
 
       .sa-hero-inner {
         margin-top: 2px !important;
       }
 
+      .sa-hero-text {
+        margin-top: 6px !important;
+      }
+
       .sa-hero-text h1 {
         font-size: 54px !important;
-        line-height: 1.02 !important;
+        line-height: 1.05 !important;
         margin: 0 0 4px !important;
       }
 
       .sa-hero-text p {
         font-size: 24px !important;
         line-height: 1.4 !important;
-        margin: 0 0 6px !important;
+        margin: 0 0 4px !important;
         max-width: 95%;
+      }
+
+      .sa-bold-line {
+        font-size: 22px;
+        margin-top: 8px;
       }
 
       .sa-hero-visual {
         width: 260px !important;
         height: 260px !important;
-        margin-top: 6px !important;
+        margin-top: 8px !important;
       }
 
       .sa-portrait {
@@ -335,11 +350,13 @@
 
     <div class="sa-hero-inner">
       <div class="sa-hero-text">
-        <h1>We’re a creative web studio.</h1>
-        <p>
-          Exploring the balance between <strong>fun</strong> and <strong>focus</strong>
-          to produce immersive and engaging experiences.
-        </p>
+        <h1>Մեզ հետ նոր մասնագիտությունը դառնում է իրական ֆրիլանս կարիերա</h1>
+
+        <p>Աշխատանք միջազգային ֆրիլանս հարթակներում, որտեղ դու կարող ես սկսել քո կարիերան հենց ուսուցումից հետո։</p>
+
+        <div class="sa-bold-line">
+          <strong>Մեզ հետ դու սկսում ես ոչ թե դաս, այլ կարիերա։</strong>
+        </div>
       </div>
 
       <div class="sa-hero-visual">
