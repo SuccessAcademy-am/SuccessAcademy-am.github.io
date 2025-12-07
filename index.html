@@ -30,11 +30,11 @@
 
     <div class="sa-hero-visual">
       <div class="sa-portrait sa-portrait--tone1">
-        <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0428.jpg?v=1765128580" alt="">
+        <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0428.jpg?v=1765128580">
       </div>
 
       <div class="sa-portrait sa-portrait--tone2">
-        <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579" alt="">
+        <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579">
       </div>
     </div>
   </div>
@@ -49,7 +49,7 @@
   --tone1: #C6AC8F;
   --tone2: #E3D5CA;
 
-  --smoke: #d4a373; /* smoke main tone */
+  --smoke: #d4a373;
 }
 
 body {
@@ -168,18 +168,13 @@ body {
   flex:1;
   display:flex;
   flex-direction:column;
-  justify-content:space-between;
-  margin-top: 4px;
 }
 
-.sa-hero-text {
-  margin-top: 0;
-}
 .sa-hero-text h1 {
   font-family: Georgia, serif;
   font-size: clamp(48px,13vw,62px);
-  line-height:1.05;
   margin:0 0 8px;
+  line-height:1.05;
 }
 .sa-hero-text p {
   font-size: clamp(18px,4.8vw,22px);
@@ -195,16 +190,14 @@ body {
   height: min(70vw, 340px);
   align-self:flex-end;
   margin-top: 10px;
-  margin-bottom: 10px;
 
-  opacity: 0;                 /* start hidden */
-  transform: translateY(-40px); /* start higher (fall effect) */
-  transition: opacity 0.8s ease, transform 0.9s ease;
+  opacity: 0;
+  transform: translateY(-40px);
+  transition: opacity .8s ease, transform .9s ease;
 }
-
 .sa-hero-visual.visible {
   opacity: 1;
-  transform: translateY(0);   /* falls into place */
+  transform: translateY(0);
 }
 
 .sa-portrait {
@@ -216,7 +209,6 @@ body {
   box-shadow:0 25px 45px rgba(0,0,0,0.22);
 }
 
-/* image inside circle */
 .sa-portrait img {
   width:170%;
   height:170%;
@@ -225,16 +217,14 @@ body {
   mix-blend-mode:multiply;
 }
 
-/* TOP circle */
 .sa-portrait--tone1 {
   right:-10px;
   top:0;
   background:var(--tone1);
   animation: floatA 12s ease-in-out infinite alternate;
-  animation-play-state: paused; /* will start later */
+  animation-play-state: paused;
 }
 
-/* BOTTOM circle */
 .sa-portrait--tone2 {
   left:0;
   bottom:-12px;
@@ -243,7 +233,6 @@ body {
   animation-play-state: paused;
 }
 
-/* FLOATING KEYFRAMES */
 @keyframes floatA {
   0%   { transform:translate(0,0); }
   25%  { transform:translate(14px,-18px); }
@@ -251,7 +240,6 @@ body {
   75%  { transform:translate(18px,18px); }
   100% { transform:translate(-6px,-12px); }
 }
-
 @keyframes floatB {
   0%   { transform:translate(0,0); }
   25%  { transform:translate(-16px,-14px); }
@@ -260,7 +248,6 @@ body {
   100% { transform:translate(8px,-10px); }
 }
 
-/* class that starts the floating */
 .sa-floating {
   animation-play-state: running !important;
 }
@@ -290,38 +277,44 @@ body {
   }
 }
 
-/* ================= MOBILE TWEAKS: BIGGER TEXT, LESS SPACE ================= */
+/* ================= MOBILE FIX BASED ON YOUR SCREENSHOT ================= */
 @media (max-width: 600px) {
 
   .sa-hero {
-    padding: 12px 16px 18px !important;
+    padding-top: 6px !important;
   }
 
   .sa-hero-header {
-    margin-bottom: 2px !important;
+    margin-bottom: 0 !important;
   }
 
   .sa-hero-inner {
-    margin-top: 2px !important;
+    margin-top: 0 !important;
+  }
+
+  .sa-hero-text {
+    margin-top: 0 !important;
   }
 
   .sa-hero-text h1 {
-    font-size: 54px !important;
-    line-height: 1.02 !important;
-    margin: 0 0 4px !important;
+    font-size: 52px !important;
+    margin-top: 2px !important;
+    margin-bottom: 4px !important;
+    line-height: 1.05 !important;
   }
 
   .sa-hero-text p {
-    font-size: 24px !important;
-    line-height: 1.4 !important;
-    margin: 0 0 6px !important;
-    max-width: 95%;
+    font-size: 22px !important;
+    line-height: 1.35 !important;
+    margin-top: 0 !important;
+    margin-bottom: 4px !important;
   }
 
   .sa-hero-visual {
+    margin-top: 18px !important;
     width: 260px !important;
     height: 260px !important;
-    margin-top: 6px !important;
+    transform: translateY(10px) !important;
   }
 
   .sa-portrait {
@@ -330,12 +323,12 @@ body {
   }
 
   .sa-portrait--tone1 {
-    top: -6px !important;
+    top: 10px !important;
     right: -18px !important;
   }
 
   .sa-portrait--tone2 {
-    bottom: -10px !important;
+    bottom: -2px !important;
     left: -12px !important;
   }
 }
@@ -357,16 +350,12 @@ body {
       num.textContent = count;
     } else {
       clearInterval(timer);
-      // hide preloader
       pre.classList.add("hidden");
 
-      // after preloader is gone, wait a bit, then show circles & start floating
       setTimeout(() => {
-        if (visual) {
-          visual.classList.add("visible"); // fade + fall in
-        }
-        circles.forEach(c => c.classList.add("sa-floating")); // start float animation
-      }, 800); // delay after preloader disappears
+        visual.classList.add("visible");
+        circles.forEach(c => c.classList.add("sa-floating"));
+      }, 800);
     }
   }, 1000);
 })();
