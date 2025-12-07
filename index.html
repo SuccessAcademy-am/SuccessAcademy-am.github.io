@@ -1,11 +1,12 @@
-<!-- ================== PRELOADER ================== -->
-<div id="sitePreloader" class="site-preloader">
-  <div class="loader-center">
-    <div class="loader-circle"></div>
+<!-- ================== COUNTDOWN PRELOADER ================== -->
+<div id="countdownPreloader" class="count-preloader">
+  <div class="count-wrapper">
+    <div class="count-circle"></div>
 
-    <div class="loader-content">
-      <div class="loader-logo">Success Academy</div>
-      <div class="loader-percent" id="loaderPercent">0%</div>
+    <div class="count-content">
+      <div class="count-logo">Success Academy</div>
+
+      <div class="count-number" id="countNumber">3</div>
     </div>
   </div>
 </div>
@@ -21,7 +22,6 @@
   </header>
 
   <div class="sa-hero-inner">
-
     <div class="sa-hero-text">
       <h1>We’re a creative web studio.</h1>
       <p>
@@ -30,8 +30,8 @@
       </p>
     </div>
 
-    <!-- IMAGES NOW DIRECTLY UNDER THE TEXT -->
-    <div class="sa-hero-visual stacked">
+    <!-- FLOATING IMAGES -->
+    <div class="sa-hero-visual">
       <div class="sa-portrait sa-portrait--tone1">
         <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=800">
       </div>
@@ -40,18 +40,16 @@
         <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800">
       </div>
     </div>
-
   </div>
 </section>
 
 <style>
 /* ================= GLOBAL COLORS ================== */
 :root {
-  --sa-bg: #EAE0D5;        /* new warm background */
-  --sa-text: #5E503F;      /* new text color */
-  --sa-soft: #8A7B6B;      /* softer text */
+  --sa-bg: #EAE0D5;     /* background */
+  --sa-text: #5E503F;   /* main text */
+  --sa-soft: #8A7B6B;   /* softer text */
 
-  /* warm tone portrait backgrounds */
   --tone1: #C6AC8F;
   --tone2: #E3D5CA;
 }
@@ -59,67 +57,82 @@
 body {
   margin: 0;
   background: var(--sa-bg);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: system-ui, sans-serif;
   color: var(--sa-text);
 }
 
 /* ================= PRELOADER ================== */
-.site-preloader {
+.count-preloader {
   position: fixed;
   inset: 0;
-  background: #050816;
+  background: var(--sa-bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999999;
-  transition: 0.6s ease;
+  z-index: 999999;
+  transition: opacity .6s ease, visibility .6s ease;
 }
 
-.site-preloader.hidden {
+.count-preloader.hidden {
   opacity: 0;
   visibility: hidden;
 }
 
-.loader-center {
+.count-wrapper {
   position: relative;
-  width: min(70vw, 360px);
-  height: min(70vw, 360px);
+  width: min(75vw, 380px);
+  height: min(75vw, 380px);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.loader-circle {
+.count-circle {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.15);
-  animation: loaderPulse 2.4s infinite ease-in-out;
+  border: 3px solid var(--sa-text);
+  box-shadow: 0 0 25px rgba(94, 80, 63, 0.2);
+  animation: circlePulse 2.5s infinite ease-in-out;
 }
 
-@keyframes loaderPulse {
-  0%,100% { transform: scale(0.96); opacity: .5; }
-  50% { transform: scale(1); opacity: 1; }
+@keyframes circlePulse {
+  0%,100% { transform: scale(0.96); opacity: 0.9; }
+  50%     { transform: scale(1); opacity: 1; }
 }
 
-.loader-logo {
-  font-size: 30px;
+.count-content {
+  position: relative;
+  text-align: center;
+  color: var(--sa-text);
+}
+
+.count-logo {
+  font-size: 28px;
+  font-weight: 800;
   letter-spacing: .18em;
-  font-weight: 700;
   text-transform: uppercase;
-  color: #fff;
+  margin-bottom: 18px;
 }
 
-.loader-percent {
-  margin-top: 8px;
-  font-size: 16px;
-  letter-spacing: .2em;
-  color: rgba(255,255,255,0.8);
+.count-number {
+  font-size: 90px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--sa-text);
+}
+
+@media (max-width: 600px) {
+  .count-wrapper { width: 85vw; height: 85vw; }
+  .count-number { font-size: 70px; }
 }
 
 /* ================= HERO ================== */
 .sa-hero {
-  padding: 24px 18px 60px;
+  min-height: 100vh;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
   background: var(--sa-bg);
 }
 
@@ -130,111 +143,127 @@ body {
 }
 
 .sa-logo {
-  font-size: 34px; /* BIGGER FONT */
-  font-weight: 800;
-  letter-spacing: 0.16em;
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: .18em;
 }
 
 .sa-header-circles span {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border-radius: 999px;
   border: 2px solid var(--sa-text);
 }
 
 .sa-hero-inner {
-  margin-top: 8vh;
+  flex: 1;
   display: flex;
-  flex-direction: column;
-  gap: 32px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4vh;
+}
+
+.sa-hero-text {
+  max-width: 520px;
 }
 
 .sa-hero-text h1 {
   font-family: Georgia, serif;
-  font-size: clamp(46px, 10vw, 70px); /* MUCH BIGGER */
-  line-height: 1.05;
-  margin: 0 0 12px;
+  font-size: clamp(50px, 8vw, 72px);
+  line-height: 1.04;
+  margin: 0 0 18px;
   color: var(--sa-text);
 }
 
 .sa-hero-text p {
-  font-size: 20px; /* bigger paragraph */
+  font-size: 22px;
   line-height: 1.7;
-  max-width: 520px;
   color: var(--sa-soft);
 }
 
-/* ================= STACKED IMAGES ================== */
-.sa-hero-visual.stacked {
-  display: flex;
-  flex-direction: row;
-  gap: 18px;
-  margin-top: 20px;
+/* ================= FLOATING PORTRAITS ================== */
+.sa-hero-visual {
+  position: relative;
+  width: 360px;
+  height: 340px;
 }
 
 .sa-portrait {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 999px;
   overflow: hidden;
-  flex-shrink: 0;
+  box-shadow: 0 22px 40px rgba(0,0,0,.25);
 }
 
-.sa-portrait--tone1 { background: var(--tone1); }
-.sa-portrait--tone2 { background: var(--tone2); }
-
 .sa-portrait img {
-  width: 110%;
-  height: 110%;
+  width: 120%;
+  height: 120%;
   object-fit: cover;
   mix-blend-mode: multiply;
 }
 
+.sa-portrait--tone1 {
+  right: 0;
+  top: 0;
+  background: var(--tone1);
+  animation: float1 10s infinite ease-in-out alternate;
+}
+
+.sa-portrait--tone2 {
+  left: 0;
+  bottom: 0;
+  background: var(--tone2);
+  animation: float2 11s infinite ease-in-out alternate;
+}
+
+@keyframes float1 {
+  0% { transform: translate(0,0); }
+  25% { transform: translate(12px,-10px); }
+  50% { transform: translate(-8px,6px); }
+  75% { transform: translate(6px,12px); }
+ 100% { transform: translate(-4px,-6px); }
+}
+
+@keyframes float2 {
+  0% { transform: translate(0,0); }
+  25% { transform: translate(-10px,-8px); }
+  50% { transform: translate(12px,4px); }
+  75% { transform: translate(-6px,12px); }
+ 100% { transform: translate(4px,-4px); }
+}
+
 /* DESKTOP */
 @media (min-width: 900px) {
+  .sa-hero {
+    padding: 40px 8vw;
+  }
+
   .sa-hero-inner {
-    max-width: 900px;
-    margin: 10vh auto 0;
+    margin-top: 6vh;
   }
-
-  .sa-hero-visual.stacked {
-    margin-left: 0;
-  }
-
-  .sa-portrait {
-    width: 200px;
-    height: 200px;
-  }
-
-  .sa-hero-text p {
-    font-size: 22px;
-  }
-
 }
 </style>
 
 <script>
-/* ================= PRELOADER LOGIC ================== */
+/* ================= COUNTDOWN LOGIC ================== */
 (function () {
-  const preloader = document.getElementById("sitePreloader");
-  const percentEl = document.getElementById("loaderPercent");
+  const preloader = document.getElementById("countdownPreloader");
+  const numEl = document.getElementById("countNumber");
 
-  let current = 0;
-  const target = 100;
-  const duration = 2200;
-  const stepTime = 30;
-  const increment = (target * stepTime) / duration;
+  let count = 3;
 
-  const timer = setInterval(() => {
-    current += increment;
+  const interval = setInterval(() => {
+    count -= 1;
 
-    if (current >= target) {
-      current = target;
-      clearInterval(timer);
-      setTimeout(() => preloader.classList.add("hidden"), 400);
+    if (count > 0) {
+      numEl.textContent = count;
+    } else {
+      clearInterval(interval);
+      preloader.classList.add("hidden");
     }
-
-    percentEl.textContent = Math.round(current) + "%";
-  }, stepTime);
+  }, 1000);
 })();
 </script>
