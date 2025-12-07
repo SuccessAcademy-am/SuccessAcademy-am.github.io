@@ -6,18 +6,55 @@
     <div class="loader-content">
       <!-- BRAND NAME — CHANGE THIS -->
       <div class="loader-logo">Success Academy</div>
-
       <div class="loader-percent" id="loaderPercent">0%</div>
     </div>
   </div>
 </div>
+
+<!-- ================== MAIN HERO SECTION ================== -->
+<section class="sa-hero">
+  <header class="sa-hero-header">
+    <!-- TOP-LEFT LOGO TEXT (change to your brand) -->
+    <div class="sa-logo">SUCCESS ACADEMY</div>
+
+    <!-- TOP-RIGHT TWO CIRCLES -->
+    <div class="sa-header-circles">
+      <span></span><span></span>
+    </div>
+  </header>
+
+  <div class="sa-hero-inner">
+    <div class="sa-hero-text">
+      <!-- BIG HEADING (replace with Armenian later if you want) -->
+      <h1>We’re a creative<br>web studio.</h1>
+
+      <!-- PARAGRAPH -->
+      <p>
+        Exploring the balance between <strong>fun</strong> and <strong>focus</strong>
+        to produce immersive and engaging experiences.
+      </p>
+    </div>
+
+    <div class="sa-hero-visual">
+      <!-- TOP BLUE CIRCLE -->
+      <div class="sa-portrait sa-portrait--blue">
+        <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
+      </div>
+
+      <!-- BOTTOM GREEN CIRCLE -->
+      <div class="sa-portrait sa-portrait--green">
+        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
+      </div>
+    </div>
+  </div>
+</section>
 
 <style>
   /* ========== PRELOADER STYLES ========== */
   .site-preloader {
     position: fixed;
     inset: 0;
-    background: #050816; /* Zulik dark navy */
+    background: #050816; /* dark navy like Zulik */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -101,7 +138,7 @@
     }
   }
 
-  /* Mobile optimization */
+  /* Mobile optimization for loader */
   @media (max-width: 600px) {
     .loader-center {
       width: 80vw;
@@ -114,76 +151,8 @@
       font-size: 14px;
     }
   }
-</style>
 
-<script>
-  /* ========== PRELOADER LOGIC ========== */
-  (function () {
-    const preloader = document.getElementById("sitePreloader");
-    const percentEl = document.getElementById("loaderPercent");
-
-    let current = 0;
-    const target = 100;
-    const duration = 2200; // total time
-    const stepTime = 30;
-    const increment = (target * stepTime) / duration;
-
-    const timer = setInterval(() => {
-      current += increment;
-
-      if (current >= target) {
-        current = target;
-        clearInterval(timer);
-
-        // fade out after reaching 100%
-        setTimeout(() => {
-          preloader.classList.add("hidden");
-        }, 400);
-      }
-
-      percentEl.textContent = Math.round(current) + "%";
-    }, stepTime);
-  })();
-</script>
-<!-- MAIN HERO SECTION -->
-<section class="sa-hero">
-  <header class="sa-hero-header">
-    <!-- TOP-LEFT LOGO TEXT (change to your brand) -->
-    <div class="sa-logo">Success Academy</div>
-
-    <!-- TOP-RIGHT TWO CIRCLES -->
-    <div class="sa-header-circles">
-      <span></span><span></span>
-    </div>
-  </header>
-
-  <div class="sa-hero-inner">
-    <div class="sa-hero-text">
-      <!-- BIG HEADING (you can replace text) -->
-      <h1>We’re a creative<br>web studio.</h1>
-
-      <!-- PARAGRAPH (replace with your own) -->
-      <p>
-        Exploring the balance between <strong>fun</strong> and <strong>focus</strong>
-        to produce immersive and engaging experiences.
-      </p>
-    </div>
-
-    <div class="sa-hero-visual">
-      <!-- TOP BLUE CIRCLE -->
-      <div class="sa-portrait sa-portrait--blue">
-        <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
-      </div>
-
-      <!-- BOTTOM GREEN CIRCLE -->
-      <div class="sa-portrait sa-portrait--green">
-        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
-      </div>
-    </div>
-  </div>
-</section>
-
-<style>
+  /* ========== HERO (ZULIK-LIKE) ========== */
   :root {
     --sa-bg: #050816;             /* dark navy */
     --sa-text-main: #f5f5f5;      /* main white */
@@ -217,7 +186,7 @@
 
   /* LOGO TEXT (TOP LEFT) */
   .sa-logo {
-    font-size: 30px;                 /* big like screenshot */
+    font-size: 30px;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -236,14 +205,15 @@
     border: 2px solid rgba(255, 255, 255, 0.78);
   }
 
-  /* INNER CONTENT */
+  /* INNER CONTENT – moved up with margin-top */
   .sa-hero-inner {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-top: 48px;
-    gap: 40px;
+    margin-top: 12vh;   /* moves everything into the “red box” zone */
+    padding-left: 4vw;  /* left spacing like Zulik */
+    gap: 36px;
   }
 
   .sa-hero-text {
@@ -252,7 +222,7 @@
 
   .sa-hero-text h1 {
     font-family: "Georgia", "Times New Roman", serif;  /* serif like Zulik */
-    font-size: clamp(40px, 9vw, 56px);                 /* BIG title */
+    font-size: clamp(40px, 9vw, 56px);
     line-height: 1.08;
     margin: 0 0 18px;
   }
@@ -325,24 +295,58 @@
     100% { transform: translate3d(4px, -4px, 0); }
   }
 
-  /* BIGGER, SIDE-BY-SIDE LAYOUT ON DESKTOP */
+  /* DESKTOP: side-by-side like Zulik */
   @media (min-width: 900px) {
     .sa-hero {
-      padding: 32px 8vw 60px;
+      padding: 40px 8vw 60px;
     }
 
     .sa-hero-inner {
       flex-direction: row;
-      align-items: center;
+      align-items: flex-start;   /* text higher on the left */
       justify-content: space-between;
-      gap: 60px;
-      margin-top: 64px;
+      margin-top: 12vh;          /* similar vertical position as mobile */
+      gap: 80px;
+      padding-left: 0;
+    }
+
+    .sa-hero-text h1 {
+      font-size: clamp(48px, 8vw, 60px);
     }
 
     .sa-hero-visual {
-      max-width: 360px;
-      min-height: 280px;
+      max-width: 380px;
+      min-height: 300px;
     }
   }
 </style>
 
+<script>
+  /* ========== PRELOADER LOGIC ========== */
+  (function () {
+    const preloader = document.getElementById("sitePreloader");
+    const percentEl = document.getElementById("loaderPercent");
+
+    let current = 0;
+    const target = 100;
+    const duration = 2200; // total time in ms
+    const stepTime = 30;
+    const increment = (target * stepTime) / duration;
+
+    const timer = setInterval(() => {
+      current += increment;
+
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+
+        // fade out after reaching 100%
+        setTimeout(() => {
+          preloader.classList.add("hidden");
+        }, 400);
+      }
+
+      percentEl.textContent = Math.round(current) + "%";
+    }, stepTime);
+  })();
+</script>
