@@ -24,18 +24,13 @@
       <h1>We’re a creative web studio.</h1>
       <p>
         Exploring the balance between <strong>fun</strong> and <strong>focus</strong>
-        to produce immersive and engaging experiences.
+        to create immersive experiences.
       </p>
     </div>
 
     <div class="sa-hero-visual">
-      <div class="sa-portrait sa-portrait--tone1">
-        <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0428.jpg?v=1765128580" alt="">
-      </div>
-
-      <div class="sa-portrait sa-portrait--tone2">
-        <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579" alt="">
-      </div>
+      <img class="sa-img" src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0428.jpg?v=1765128580">
+      <img class="sa-img" src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579">
     </div>
   </div>
 </section>
@@ -45,117 +40,38 @@
   --sa-bg:   #EAE0D5;
   --sa-text: #5E503F;
   --sa-soft: #8A7B6B;
-
-  --tone1: #C6AC8F;
-  --tone2: #E3D5CA;
-
   --smoke: #d4a373;
 }
 
 body {
   margin: 0;
   background: var(--sa-bg);
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: system-ui, sans-serif;
   color: var(--sa-text);
   overflow-x: hidden;
-}
-
-/* ================= PRELOADER ================= */
-.count-preloader {
-  position: fixed;
-  inset: 0;
-  background: var(--sa-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999999;
-  transition: opacity .6s ease, visibility .6s ease;
-}
-.count-preloader.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-.count-wrapper {
-  position: relative;
-  width: min(75vw, 380px);
-  height: min(75vw, 380px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.count-circle {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 3px solid var(--sa-text);
-  animation: circlePulse 2.5s ease-in-out infinite;
-}
-@keyframes circlePulse {
-  0%,100% { transform: scale(.96); opacity:.9 }
-  50%     { transform: scale(1);   opacity:1 }
-}
-.count-content { text-align:center; }
-.count-logo {
-  font-size: clamp(22px,5vw,28px);
-  font-weight:800;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  margin-bottom:16px;
-}
-.count-number {
-  font-size: clamp(64px,15vw,90px);
-  font-weight:900;
-}
-
-/* ================= SMOKE ================= */
-#smoke-area {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 999999999;
-}
-
-.smoke {
-  position: absolute;
-  width: 48px;
-  height: 48px;
-  background: radial-gradient(
-    circle,
-    rgba(212,163,115,0.55) 20%,
-    rgba(212,163,115,0.12) 55%,
-    rgba(212,163,115,0) 100%
-  );
-  border-radius: 50%;
-  opacity: 0.85;
-  filter: blur(18px);
-  mix-blend-mode: soft-light;
-  animation: smokeFade 1.8s ease-out forwards;
-}
-
-@keyframes smokeFade {
-  0%   { transform: scale(.5); opacity: 0.9; }
-  100% { transform: scale(3.4); opacity: 0; }
 }
 
 /* ================= HERO ================= */
 .sa-hero {
   min-height: 100vh;
-  padding: 18px 20px 24px;
+  padding: 16px 20px;
   display:flex;
   flex-direction:column;
-  background: var(--sa-bg);
 }
 
 .sa-hero-header {
   display:flex;
   justify-content:space-between;
   align-items:center;
+  margin-bottom: 6px;
 }
+
 .sa-logo {
   font-size: clamp(26px,7vw,32px);
   font-weight:900;
   letter-spacing:.18em;
 }
+
 .sa-menu-icon {
   width:2px;
   height:24px;
@@ -164,165 +80,73 @@ body {
 }
 
 .sa-hero-inner {
-  flex:1;
   display:flex;
   flex-direction:column;
-  justify-content:space-between;
-  margin-top:18px;
+  margin-top: 0 !important;
+}
+
+/* TEXT */
+.sa-hero-text {
+  margin-top: 4px !important;
 }
 
 .sa-hero-text h1 {
   font-family: Georgia, serif;
   font-size: clamp(48px,13vw,62px);
-  line-height:1.08;
-  margin:0 0 12px;
+  margin:0 0 8px;
+  line-height: 1.05;
 }
+
 .sa-hero-text p {
   font-size: clamp(18px,4.8vw,22px);
+  line-height:1.55;
+  margin:0 0 10px;
   color:var(--sa-soft);
-  line-height:1.7;
-  margin:0;
+  max-width: 90%;
 }
 
-/* ================= IMAGES – RESPONSIVE, BOTTOM, BIG ================= */
+/* IMAGES — now simple rectangles */
 .sa-hero-visual {
-  position:relative;
-  width: min(70vw, 340px);
-  height: min(70vw, 340px);
-  align-self:flex-end;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
 }
 
-.sa-portrait {
-  position:absolute;
-  width: min(50vw, 260px);
-  height: min(50vw, 260px);
-  border-radius:999px;
-  overflow:hidden;
-  box-shadow:0 25px 45px rgba(0,0,0,0.22);
+.sa-img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.18);
 }
 
-.sa-portrait img {
-  width:170%;
-  height:170%;
-  object-fit:cover;
-  object-position:center top;
-  mix-blend-mode:multiply;
-}
-
-/* TOP circle */
-.sa-portrait--tone1 {
-  right:-10px;
-  top:0;
-  background:var(--tone1);
-  animation: floatA 12s ease-in-out infinite alternate;
-}
-
-/* BOTTOM circle */
-.sa-portrait--tone2 {
-  left:0;
-  bottom:-12px;
-  background:var(--tone2);
-  animation: floatB 13s ease-in-out infinite alternate;
-}
-
-/* FLOAT WITHOUT TOUCHING */
-@keyframes floatA {
-  0%   { transform:translate(0,0); }
-  25%  { transform:translate(14px,-18px); }
-  50%  { transform:translate(-14px,12px); }
-  75%  { transform:translate(18px,18px); }
-  100% { transform:translate(-6px,-12px); }
-}
-
-@keyframes floatB {
-  0%   { transform:translate(0,0); }
-  25%  { transform:translate(-16px,-14px); }
-  50%  { transform:translate(18px,8px); }
-  75%  { transform:translate(-14px,14px); }
-  100% { transform:translate(8px,-10px); }
-}
-
-/* ================= DESKTOP ================= */
-@media (min-width: 900px) {
-  .sa-hero {
-    padding:32px 8vw 40px;
-  }
-  .sa-hero-inner {
-    flex-direction:row;
-    align-items:center;
-    justify-content:space-between;
-    margin-top:10vh;
-  }
-  .sa-hero-text {
-    max-width:520px;
-  }
-  .sa-hero-visual {
-    width:380px;
-    height:380px;
-    margin-bottom:0;
-  }
-  .sa-portrait {
-    width:260px;
-    height:260px;
-  }
-}
-
-/* ================= MOBILE FIX: LESS SPACE + 2X BIGGER TEXT ================= */
+/* ================= MOBILE FIX – BIGGER TEXT, LESS SPACE ================= */
 @media (max-width: 600px) {
 
-  /* overall section tighter */
-  .sa-hero {
-    padding: 10px 16px 16px !important;
+  /* Move text very close to logo */
+  .sa-hero-header {
+    margin-bottom: 2px !important;
   }
 
-  /* less gap after logo */
-  .sa-hero-header {
+  .sa-hero-text h1 {
+    font-size: 52px !important;
+    margin-top: 0 !important;
     margin-bottom: 4px !important;
   }
 
-  .sa-hero-inner {
-    margin-top: 4px !important;
-    gap: 6px; /* very small vertical gap between text and images */
-  }
-
-  /* main title ~2x visually bigger on mobile */
-  .sa-hero-text h1 {
-    font-size: 62px !important;
-    line-height: 1.02 !important;
-    margin: 0 0 4px !important;
-  }
-
-  /* sub text bigger + closer */
   .sa-hero-text p {
     font-size: 24px !important;
-    line-height: 1.4 !important;
-    margin: 0 0 6px !important;
-    max-width: 95%;
+    margin-bottom: 6px !important;
   }
 
-  /* bring images closer to text */
-  .sa-hero-visual {
-    margin-top: 4px !important;
-    margin-bottom: 0 !important;
-    width: 260px !important;
-    height: 260px !important;
+  .sa-img {
+    border-radius: 10px;
+    height: auto;
   }
 
-  /* keep frames big but compact */
-  .sa-portrait {
-    width: 210px !important;
-    height: 210px !important;
-  }
-
-  .sa-portrait--tone1 {
-    top: -8px !important;
-    right: -18px !important;
-  }
-
-  .sa-portrait--tone2 {
-    bottom: -10px !important;
-    left: -12px !important;
+  .sa-hero-inner {
+    gap: 6px !important;
   }
 }
 </style>
