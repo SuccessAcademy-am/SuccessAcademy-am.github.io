@@ -4,7 +4,6 @@
     <div class="loader-circle"></div>
 
     <div class="loader-content">
-      <!-- BRAND NAME — CHANGE THIS -->
       <div class="loader-logo">Success Academy</div>
       <div class="loader-percent" id="loaderPercent">0%</div>
     </div>
@@ -14,339 +13,228 @@
 <!-- ================== MAIN HERO SECTION ================== -->
 <section class="sa-hero">
   <header class="sa-hero-header">
-    <!-- TOP-LEFT LOGO TEXT (change to your brand) -->
     <div class="sa-logo">SUCCESS ACADEMY</div>
 
-    <!-- TOP-RIGHT TWO CIRCLES -->
     <div class="sa-header-circles">
       <span></span><span></span>
     </div>
   </header>
 
   <div class="sa-hero-inner">
-    <div class="sa-hero-text">
-      <!-- BIG HEADING (replace with Armenian later if you want) -->
-      <h1>We’re a creative<br>web studio.</h1>
 
-      <!-- PARAGRAPH -->
+    <div class="sa-hero-text">
+      <h1>We’re a creative web studio.</h1>
       <p>
         Exploring the balance between <strong>fun</strong> and <strong>focus</strong>
         to produce immersive and engaging experiences.
       </p>
     </div>
 
-    <div class="sa-hero-visual">
-      <!-- TOP BLUE CIRCLE -->
-      <div class="sa-portrait sa-portrait--blue">
-        <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
+    <!-- IMAGES NOW DIRECTLY UNDER THE TEXT -->
+    <div class="sa-hero-visual stacked">
+      <div class="sa-portrait sa-portrait--tone1">
+        <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=800">
       </div>
 
-      <!-- BOTTOM GREEN CIRCLE -->
-      <div class="sa-portrait sa-portrait--green">
-        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
+      <div class="sa-portrait sa-portrait--tone2">
+        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800">
       </div>
     </div>
+
   </div>
 </section>
 
 <style>
-  /* ========== PRELOADER STYLES ========== */
-  .site-preloader {
-    position: fixed;
-    inset: 0;
-    background: #050816; /* dark navy like Zulik */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999999;
-    transition: opacity 0.6s ease, visibility 0.6s ease;
-  }
+/* ================= GLOBAL COLORS ================== */
+:root {
+  --sa-bg: #EAE0D5;        /* new warm background */
+  --sa-text: #5E503F;      /* new text color */
+  --sa-soft: #8A7B6B;      /* softer text */
 
-  .site-preloader.hidden {
-    opacity: 0;
-    visibility: hidden;
-  }
+  /* warm tone portrait backgrounds */
+  --tone1: #C6AC8F;
+  --tone2: #E3D5CA;
+}
 
-  .loader-center {
-    position: relative;
-    width: min(70vw, 360px);
-    height: min(70vw, 360px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+body {
+  margin: 0;
+  background: var(--sa-bg);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--sa-text);
+}
 
-  .loader-circle {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
-    animation: loaderPulse 2.4s ease-in-out infinite;
-  }
+/* ================= PRELOADER ================== */
+.site-preloader {
+  position: fixed;
+  inset: 0;
+  background: #050816;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999999;
+  transition: 0.6s ease;
+}
 
-  .loader-content {
-    position: relative;
-    text-align: center;
-    color: #ffffff;
-  }
+.site-preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
 
-  .loader-logo {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 28px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-bottom: 10px;
-    position: relative;
-  }
+.loader-center {
+  position: relative;
+  width: min(70vw, 360px);
+  height: min(70vw, 360px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  /* Accent dot like Zulik */
-  .loader-logo::after {
-    content: "";
-    position: absolute;
-    top: -6px;
-    right: 35%;
-    width: 8px;
-    height: 8px;
-    border-radius: 999px;
-    background: radial-gradient(circle at 30% 0, #00ff7a, #006dff);
-    box-shadow: 0 0 12px rgba(0, 255, 140, 0.9);
-  }
+.loader-circle {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  animation: loaderPulse 2.4s infinite ease-in-out;
+}
 
-  .loader-percent {
-    font-size: 16px;
-    letter-spacing: 0.2em;
-    color: rgba(255, 255, 255, 0.75);
-  }
+@keyframes loaderPulse {
+  0%,100% { transform: scale(0.96); opacity: .5; }
+  50% { transform: scale(1); opacity: 1; }
+}
 
-  @keyframes loaderPulse {
-    0% {
-      transform: scale(0.98);
-      border-color: rgba(255, 255, 255, 0.12);
-      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.07);
-    }
-    50% {
-      transform: scale(1);
-      border-color: rgba(255, 255, 255, 0.28);
-      box-shadow: 0 0 30px 6px rgba(255, 255, 255, 0.05);
-    }
-    100% {
-      transform: scale(0.98);
-      border-color: rgba(255, 255, 255, 0.12);
-      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.07);
-    }
-  }
+.loader-logo {
+  font-size: 30px;
+  letter-spacing: .18em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+}
 
-  /* Mobile optimization for loader */
-  @media (max-width: 600px) {
-    .loader-center {
-      width: 80vw;
-      height: 80vw;
-    }
-    .loader-logo {
-      font-size: 22px;
-    }
-    .loader-percent {
-      font-size: 14px;
-    }
-  }
+.loader-percent {
+  margin-top: 8px;
+  font-size: 16px;
+  letter-spacing: .2em;
+  color: rgba(255,255,255,0.8);
+}
 
-  /* ========== HERO (ZULIK-LIKE) ========== */
-  :root {
-    --sa-bg: #050816;             /* dark navy */
-    --sa-text-main: #f5f5f5;      /* main white */
-    --sa-text-soft: #c3c6d1;      /* gray body text */
-    --sa-accent-green: #00f59d;   /* portrait green */
-    --sa-accent-blue: #006dff;    /* portrait blue */
-  }
+/* ================= HERO ================== */
+.sa-hero {
+  padding: 24px 18px 60px;
+  background: var(--sa-bg);
+}
 
-  body {
-    margin: 0;
-    background: var(--sa-bg);
-    color: var(--sa-text-main);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  }
+.sa-hero-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  /* HERO LAYOUT */
-  .sa-hero {
-    min-height: 100vh;
-    padding: 24px 18px 40px;
-    background: var(--sa-bg);
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-  }
+.sa-logo {
+  font-size: 34px; /* BIGGER FONT */
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
 
-  .sa-hero-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+.sa-header-circles span {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  border: 2px solid var(--sa-text);
+}
 
-  /* LOGO TEXT (TOP LEFT) */
-  .sa-logo {
-    font-size: 30px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
+.sa-hero-inner {
+  margin-top: 8vh;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
 
-  /* TWO RING BUTTONS (TOP RIGHT) */
-  .sa-header-circles {
-    display: inline-flex;
-    gap: 10px;
-  }
+.sa-hero-text h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(46px, 10vw, 70px); /* MUCH BIGGER */
+  line-height: 1.05;
+  margin: 0 0 12px;
+  color: var(--sa-text);
+}
 
-  .sa-header-circles span {
-    width: 22px;
-    height: 22px;
-    border-radius: 999px;
-    border: 2px solid rgba(255, 255, 255, 0.78);
-  }
+.sa-hero-text p {
+  font-size: 20px; /* bigger paragraph */
+  line-height: 1.7;
+  max-width: 520px;
+  color: var(--sa-soft);
+}
 
-  /* INNER CONTENT – moved up with margin-top */
+/* ================= STACKED IMAGES ================== */
+.sa-hero-visual.stacked {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.sa-portrait {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.sa-portrait--tone1 { background: var(--tone1); }
+.sa-portrait--tone2 { background: var(--tone2); }
+
+.sa-portrait img {
+  width: 110%;
+  height: 110%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+}
+
+/* DESKTOP */
+@media (min-width: 900px) {
   .sa-hero-inner {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-top: 12vh;   /* moves everything into the “red box” zone */
-    padding-left: 4vw;  /* left spacing like Zulik */
-    gap: 36px;
+    max-width: 900px;
+    margin: 10vh auto 0;
   }
 
-  .sa-hero-text {
-    max-width: 540px;
-  }
-
-  .sa-hero-text h1 {
-    font-family: "Georgia", "Times New Roman", serif;  /* serif like Zulik */
-    font-size: clamp(40px, 9vw, 56px);
-    line-height: 1.08;
-    margin: 0 0 18px;
-  }
-
-  .sa-hero-text p {
-    font-size: 16px;
-    line-height: 1.7;
-    color: var(--sa-text-soft);
-    margin: 0;
-  }
-
-  /* PORTRAIT AREA */
-  .sa-hero-visual {
-    position: relative;
-    width: 100%;
-    max-width: 320px;
-    min-height: 260px;
-    margin-bottom: 8px;
+  .sa-hero-visual.stacked {
+    margin-left: 0;
   }
 
   .sa-portrait {
-    position: absolute;
-    width: 210px;
-    height: 210px;
-    border-radius: 999px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    filter: saturate(1.2) contrast(1.1);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+    width: 200px;
+    height: 200px;
   }
 
-  .sa-portrait img {
-    width: 115%;
-    height: 115%;
-    object-fit: cover;
-    mix-blend-mode: multiply;  /* gives that mono-colored look */
+  .sa-hero-text p {
+    font-size: 22px;
   }
 
-  /* Blue top circle */
-  .sa-portrait--blue {
-    right: 0;
-    top: 0;
-    background: var(--sa-accent-blue);
-    animation: portraitFloat1 10s ease-in-out infinite alternate;
-  }
-
-  /* Green bottom circle */
-  .sa-portrait--green {
-    left: 0;
-    bottom: 0;
-    background: var(--sa-accent-green);
-    animation: portraitFloat2 11s ease-in-out infinite alternate;
-  }
-
-  @keyframes portraitFloat1 {
-    0%   { transform: translate3d(0, 0, 0); }
-    25%  { transform: translate3d(8px, -10px, 0); }
-    50%  { transform: translate3d(-6px, 5px, 0); }
-    75%  { transform: translate3d(4px, 12px, 0); }
-    100% { transform: translate3d(-3px, -6px, 0); }
-  }
-
-  @keyframes portraitFloat2 {
-    0%   { transform: translate3d(0, 0, 0); }
-    25%  { transform: translate3d(-8px, -8px, 0); }
-    50%  { transform: translate3d(8px, 4px, 0); }
-    75%  { transform: translate3d(-5px, 8px, 0); }
-    100% { transform: translate3d(4px, -4px, 0); }
-  }
-
-  /* DESKTOP: side-by-side like Zulik */
-  @media (min-width: 900px) {
-    .sa-hero {
-      padding: 40px 8vw 60px;
-    }
-
-    .sa-hero-inner {
-      flex-direction: row;
-      align-items: flex-start;   /* text higher on the left */
-      justify-content: space-between;
-      margin-top: 12vh;          /* similar vertical position as mobile */
-      gap: 80px;
-      padding-left: 0;
-    }
-
-    .sa-hero-text h1 {
-      font-size: clamp(48px, 8vw, 60px);
-    }
-
-    .sa-hero-visual {
-      max-width: 380px;
-      min-height: 300px;
-    }
-  }
+}
 </style>
 
 <script>
-  /* ========== PRELOADER LOGIC ========== */
-  (function () {
-    const preloader = document.getElementById("sitePreloader");
-    const percentEl = document.getElementById("loaderPercent");
+/* ================= PRELOADER LOGIC ================== */
+(function () {
+  const preloader = document.getElementById("sitePreloader");
+  const percentEl = document.getElementById("loaderPercent");
 
-    let current = 0;
-    const target = 100;
-    const duration = 2200; // total time in ms
-    const stepTime = 30;
-    const increment = (target * stepTime) / duration;
+  let current = 0;
+  const target = 100;
+  const duration = 2200;
+  const stepTime = 30;
+  const increment = (target * stepTime) / duration;
 
-    const timer = setInterval(() => {
-      current += increment;
+  const timer = setInterval(() => {
+    current += increment;
 
-      if (current >= target) {
-        current = target;
-        clearInterval(timer);
+    if (current >= target) {
+      current = target;
+      clearInterval(timer);
+      setTimeout(() => preloader.classList.add("hidden"), 400);
+    }
 
-        // fade out after reaching 100%
-        setTimeout(() => {
-          preloader.classList.add("hidden");
-        }, 400);
-      }
-
-      percentEl.textContent = Math.round(current) + "%";
-    }, stepTime);
-  })();
+    percentEl.textContent = Math.round(current) + "%";
+  }, stepTime);
+})();
 </script>
