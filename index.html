@@ -1,430 +1,340 @@
-<!-- ================= PRELOADER ================= -->
+<!-- ================== PRELOADER ================== -->
 <div id="sitePreloader" class="site-preloader">
-  <div class="loader-center">
-    <div class="loader-circle"></div>
+<div class="loader-center">
+<div class="loader-circle"></div>
 
-    <div class="loader-content">
-      <!-- CHANGE TO YOUR BRAND NAME -->
-      <div class="loader-logo">Success Academy</div>
-      <div class="loader-percent" id="loaderPercent">0%</div>
-    </div>
-  </div>
+<div class="loader-content">
+<!-- BRAND NAME IN LOADER -->
+<div class="loader-logo">Success Academy</div>
+<div class="loader-percent" id="loaderPercent">0%</div>
+</div>
+</div>
 </div>
 
-<!-- ================= SMOKE LAYER ================= -->
-<div id="smoke-area"></div>
+<!-- ================== HERO ================== -->
+<section class="sa-hero">
+<header class="sa-hero-header">
+<!-- TOP-LEFT LOGO TEXT -->
+<div class="sa-logo">Success Academy</div>
 
-<style>
-  /* ================= PRELOADER STYLES ================= */
-  .site-preloader {
-    position: fixed;
-    inset: 0;
-    background: #050816; /* dark intro screen */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 999999;
-    transition: opacity 0.6s ease, visibility 0.6s ease;
-  }
+<!-- TWO OUTLINED CIRCLES ON THE RIGHT -->
+<div class="sa-header-circles">
+<span></span><span></span>
+</div>
+</header>
 
-  .site-preloader.hidden {
-    opacity: 0;
-    visibility: hidden;
-  }
+<div class="sa-hero-inner">
+<div class="sa-hero-text">
+<!-- YOUR HEADING TEXT -->
+<h1>Մեզ հետ նոր մասնագիտությունը դառնում է իրական ֆրիլանս կարիերա</h1>
 
-  .loader-center {
-    position: relative;
-    width: min(72vw, 360px);
-    height: min(72vw, 360px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+<!-- YOUR PARAGRAPH TEXT -->
+<p>
+Աշխատանք միջազգային ֆրիլանս հարթակներում, որտեղ դու կարող ես սկսել քո
+կարիերան հենց ուսուցումից հետո՝ համատեղելով творчություն և կայուն եկամուտ։
+</p>
+</div>
 
-  .loader-circle {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
-    animation: loaderPulse 2.4s ease-in-out infinite;
-  }
+<div class="sa-hero-visual">
+<!-- TOP BLUE CIRCLE -->
+<div class="sa-portrait sa-portrait--blue">
+<img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
+</div>
 
-  .loader-content {
-    position: relative;
-    text-align: center;
-    color: #f5f5f5;
-  }
-
-  .loader-logo {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 28px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-
-  .loader-percent {
-    font-size: 16px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  /* Small accent dot (optional) */
-  .loader-logo::after {
-    content: "";
-    position: absolute;
-    top: -6px;
-    right: 32%;
-    width: 8px;
-    height: 8px;
-    border-radius: 999px;
-    background: radial-gradient(circle at 30% 0, #21e3c2, #035bff);
-    box-shadow: 0 0 12px rgba(33, 227, 194, 0.9);
-  }
-
-  @keyframes loaderPulse {
-    0% {
-      transform: scale(0.98);
-      border-color: rgba(255, 255, 255, 0.12);
-      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.08);
-    }
-    50% {
-      transform: scale(1);
-      border-color: rgba(255, 255, 255, 0.25);
-      box-shadow: 0 0 30px 6px rgba(255, 255, 255, 0.04);
-    }
-    100% {
-      transform: scale(0.98);
-      border-color: rgba(255, 255, 255, 0.12);
-      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.08);
-    }
-  }
-
-  @media (max-width: 600px) {
-    .loader-center {
-      width: 74vw;
-      height: 74vw;
-    }
-    .loader-logo {
-      font-size: 22px;
-    }
-    .loader-percent {
-      font-size: 14px;
-    }
-  }
-
-  /* ================= SMOKE STYLES ================= */
-  #smoke-area {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 9999; /* under preloader, above content */
-    overflow: hidden;
-  }
-
-  .smoke {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background: radial-gradient(
-      circle,
-      rgba(227, 213, 202, 0.6) 10%,
-      rgba(234, 224, 213, 0.12) 55%,
-      rgba(198, 172, 143, 0.0) 90%
-    );
-    opacity: 0.8;
-    border-radius: 50%;
-    animation: smokeFade 1.6s ease-out forwards;
-    filter: blur(18px);
-    mix-blend-mode: soft-light;
-  }
-
-  @keyframes smokeFade {
-    0%   { transform: scale(0.5); opacity: 0.9; }
-    100% { transform: scale(2.8); opacity: 0; }
-  }
-
-  /* ================= HERO (YOUR DESIGN) ================= */
-  .zulik-hero {
-    position: relative;
-    overflow: hidden;
-    background: #EDEDE9;
-    color: #3D3028;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    padding: 70px 6vw 100px;
-    min-height: 75vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 3rem;
-  }
-
-  .zulik-hero-text {
-    max-width: 540px;
-    z-index: 2;
-  }
-
-  .zulik-hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #7D6755;
-    margin-bottom: 12px;
-    padding: 6px 14px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.4);
-    border: 1px solid rgba(198, 172, 143, 0.45);
-  }
-
-  .zulik-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 999px;
-    background: radial-gradient(circle at 30% 0, #C6AC8F, #8C6F54);
-  }
-
-  .zulik-hero h1 {
-    font-size: clamp(30px, 4.2vw, 42px);
-    line-height: 1.15;
-    margin: 0 0 18px;
-    color: #2E231D;
-  }
-
-  .zulik-hero-frames {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .zulik-hero-frame {
-    padding: 16px 18px;
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(125, 103, 85, 0.22);
-    box-shadow: 0 10px 25px rgba(70, 55, 40, 0.12);
-    backdrop-filter: blur(6px);
-    transition: transform 0.25s ease-out,
-                box-shadow 0.25s ease-out,
-                border-color 0.25s ease-out,
-                background 0.25s ease-out;
-  }
-
-  .zulik-hero-frame p {
-    margin: 0;
-    font-size: 15px;
-    line-height: 1.7;
-    color: #6E5B4E;
-  }
-
-  .zulik-hero-frame.accent {
-    border-color: rgba(125, 103, 85, 0.45);
-    background: rgba(255, 252, 247, 0.9);
-  }
-
-  .zulik-hero-frame.accent p {
-    font-weight: 600;
-    color: #3A2A21;
-  }
-
-  .zulik-hero-frame:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(70, 55, 40, 0.18);
-    border-color: rgba(125, 103, 85, 0.6);
-    background: rgba(255, 255, 255, 0.95);
-  }
-
-  .zulik-hero-visual {
-    position: relative;
-    flex: 1;
-    max-width: 520px;
-    min-height: 240px;
-  }
-
-  .zulik-hero-blob {
-    position: absolute;
-    width: 160px;
-    height: 160px;
-    border-radius: 999px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #F7F0E8;
-    border: 2px solid rgba(198, 172, 143, 0.7);
-    box-shadow: 0 18px 45px rgba(102, 80, 57, 0.25);
-    cursor: pointer;
-    transition: transform 0.35s ease-out;
-  }
-
-  .zulik-hero-blob img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .zulik-hero-blob:nth-child(1) {
-    top: 6%;
-    right: 4%;
-    animation: zulik-float-1 11s infinite ease-in-out;
-  }
-
-  .zulik-hero-blob:nth-child(2) {
-    bottom: 6%;
-    left: 6%;
-    width: 150px;
-    height: 150px;
-    animation: zulik-float-2 9s infinite ease-in-out;
-  }
-
-  @keyframes zulik-float-1 {
-    0%,100% { transform: translate(0,0); }
-    25% { transform: translate(10px,-12px); }
-    50% { transform: translate(-6px,6px); }
-    75% { transform: translate(4px,10px); }
-  }
-
-  @keyframes zulik-float-2 {
-    0%,100% { transform: translate(0,0); }
-    20% { transform: translate(-8px,-8px); }
-    50% { transform: translate(10px,4px); }
-    80% { transform: translate(-4px,10px); }
-  }
-
-  .zulik-hero-blob:hover {
-    animation-play-state: paused;
-    transform: scale(1.03);
-  }
-
-  /* MOBILE */
-  @media (max-width: 800px) {
-    .zulik-hero {
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 40px 18px 48px;
-      gap: 2rem;
-      min-height: 100vh;
-    }
-
-    .zulik-hero-text {
-      max-width: 100%;
-    }
-
-    .zulik-hero h1 {
-      font-size: 26px;
-      line-height: 1.25;
-    }
-
-    .zulik-hero-frame p {
-      font-size: 16px;
-    }
-
-    .zulik-hero-visual {
-      width: 100%;
-      min-height: 220px;
-      margin-top: 10px;
-    }
-
-    .zulik-hero-blob {
-      width: 145px;
-      height: 145px;
-    }
-
-    .zulik-hero-blob:nth-child(1) {
-      top: 0;
-      right: 6%;
-    }
-
-    .zulik-hero-blob:nth-child(2) {
-      bottom: 4%;
-      left: 12%;
-      width: 135px;
-      height: 135px;
-    }
-  }
-</style>
-
-<!-- =============== HERO CONTENT (SHOWN AFTER LOADER) =============== -->
-<section class="zulik-hero">
-  <div class="zulik-hero-text">
-    <div class="zulik-hero-eyebrow">
-      <span class="zulik-dot"></span>
-      <span>Success Academy</span>
-    </div>
-    <h1>Մեզ հետ նոր մասնագիտությունը դառնում է իրական ֆրիլանս կարիերա</h1>
-
-    <div class="zulik-hero-frames">
-      <div class="zulik-hero-frame">
-        <p>Աշխատանք միջազգային ֆրիլանս հարթակներում, որտեղ դու կարող ես սկսել քո կարիերան հենց ուսուցումից հետո։</p>
-      </div>
-      <div class="zulik-hero-frame accent">
-        <p>Մեզ հետ դու սկսում ես ոչ թե դաս, այլ կարիերա։</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="zulik-hero-visual">
-    <div class="zulik-hero-blob">
-      <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
-    </div>
-    <div class="zulik-hero-blob">
-      <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
-    </div>
-  </div>
+<!-- BOTTOM GREEN CIRCLE -->
+<div class="sa-portrait sa-portrait--green">
+<img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
+</div>
+</div>
+</div>
 </section>
 
+<style>
+/* ========== PRELOADER STYLES (100% CIRCLE) ========== */
+.site-preloader {
+position: fixed;
+inset: 0;
+background: #050816; /* same dark navy as Zulik */
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 999999;
+transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.site-preloader.hidden {
+opacity: 0;
+visibility: hidden;
+}
+
+.loader-center {
+position: relative;
+width: min(72vw, 360px);
+height: min(72vw, 360px);
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.loader-circle {
+position: absolute;
+inset: 0;
+border-radius: 50%;
+border: 1px solid rgba(255, 255, 255, 0.16);
+box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
+animation: loaderPulse 2.4s ease-in-out infinite;
+}
+
+.loader-content {
+position: relative;
+text-align: center;
+color: #f5f5f5;
+}
+
+.loader-logo {
+font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+font-size: 28px;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+font-weight: 600;
+margin-bottom: 12px;
+}
+
+.loader-percent {
+font-size: 16px;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: rgba(255, 255, 255, 0.7);
+}
+
+/* little accent dot */
+.loader-logo::after {
+content: "";
+position: absolute;
+top: -6px;
+right: 32%;
+width: 8px;
+height: 8px;
+border-radius: 999px;
+background: radial-gradient(circle at 30% 0, #00ff95, #006dff);
+box-shadow: 0 0 12px rgba(0, 255, 149, 0.9);
+}
+
+@keyframes loaderPulse {
+0% {
+transform: scale(0.98);
+border-color: rgba(255, 255, 255, 0.12);
+box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.08);
+}
+50% {
+transform: scale(1);
+border-color: rgba(255, 255, 255, 0.25);
+box-shadow: 0 0 30px 6px rgba(255, 255, 255, 0.04);
+}
+100% {
+transform: scale(0.98);
+border-color: rgba(255, 255, 255, 0.12);
+box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.08);
+}
+}
+
+@media (max-width: 600px) {
+.loader-center {
+width: 74vw;
+height: 74vw;
+}
+.loader-logo {
+font-size: 22px;
+}
+.loader-percent {
+font-size: 14px;
+}
+}
+
+/* ========== HERO (ZULIK-LIKE) ========== */
+:root {
+--sa-bg: #050816;
+--sa-text-main: #f5f5f5;
+--sa-text-soft: #c3c6d1;
+--sa-accent-green: #00f59d;
+--sa-accent-blue: #006dff;
+}
+
+body {
+margin: 0;
+background: var(--sa-bg);
+color: var(--sa-text-main);
+font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.sa-hero {
+min-height: 100vh;
+padding: 28px 6vw 48px;
+background: var(--sa-bg);
+box-sizing: border-box;
+display: flex;
+flex-direction: column;
+}
+
+.sa-hero-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding-bottom: 24px;
+}
+
+.sa-logo {
+font-size: 30px;
+font-weight: 700;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+}
+
+.sa-header-circles {
+display: inline-flex;
+gap: 10px;
+}
+
+.sa-header-circles span {
+width: 22px;
+height: 22px;
+border-radius: 999px;
+border: 2px solid rgba(255, 255, 255, 0.76);
+}
+
+.sa-hero-inner {
+flex: 1;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 40px;
+}
+
+.sa-hero-text {
+max-width: 520px;
+}
+
+.sa-hero-text h1 {
+font-family: "Georgia", "Times New Roman", serif; /* serif like in screenshot */
+font-size: clamp(36px, 9vw, 54px);
+line-height: 1.1;
+margin: 0 0 18px;
+}
+
+.sa-hero-text p {
+font-size: 16px;
+line-height: 1.7;
+color: var(--sa-text-soft);
+margin: 0;
+}
+
+.sa-hero-visual {
+position: relative;
+flex: 1;
+max-width: 330px;
+min-height: 260px;
+}
+
+.sa-portrait {
+position: absolute;
+width: 210px;
+height: 210px;
+border-radius: 999px;
+overflow: hidden;
+display: flex;
+align-items: center;
+justify-content: center;
+filter: saturate(1.2) contrast(1.1);
+box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+}
+
+.sa-portrait img {
+width: 115%;
+height: 115%;
+object-fit: cover;
+mix-blend-mode: multiply;
+}
+
+/* blue circle (top-right) */
+.sa-portrait--blue {
+right: 0;
+top: 0;
+background: var(--sa-accent-blue);
+animation: portraitFloat1 10s ease-in-out infinite alternate;
+}
+
+/* green circle (bottom-left) */
+.sa-portrait--green {
+left: 0;
+bottom: 0;
+background: var(--sa-accent-green);
+animation: portraitFloat2 11s ease-in-out infinite alternate;
+}
+
+@keyframes portraitFloat1 {
+0% { transform: translate3d(0, 0, 0); }
+25% { transform: translate3d(8px, -10px, 0); }
+50% { transform: translate3d(-6px, 5px, 0); }
+75% { transform: translate3d(4px, 12px, 0); }
+100% { transform: translate3d(-3px, -6px, 0); }
+}
+
+@keyframes portraitFloat2 {
+0% { transform: translate3d(0, 0, 0); }
+25% { transform: translate3d(-8px, -8px, 0); }
+50% { transform: translate3d(8px, 4px, 0); }
+75% { transform: translate3d(-5px, 8px, 0); }
+100% { transform: translate3d(4px, -4px, 0); }
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+.sa-hero {
+padding: 24px 18px 40px;
+}
+
+.sa-hero-inner {
+flex-direction: column;
+align-items: flex-start;
+gap: 32px;
+}
+
+.sa-hero-visual {
+align-self: center;
+max-width: 260px;
+min-height: 240px;
+}
+
+.sa-portrait {
+width: 190px;
+height: 190px;
+}
+}
+</style>
+
 <script>
-  // PRELOADER LOGIC (0% -> 100%, then hide)
-  (function () {
-    const preloader = document.getElementById("sitePreloader");
-    const percentEl = document.getElementById("loaderPercent");
+// PRELOADER: 0% -> 100% then hide
+(function () {
+const preloader = document.getElementById("sitePreloader");
+const percentEl = document.getElementById("loaderPercent");
 
-    let current = 0;
-    const target = 100;
-    const duration = 2200; // ms
-    const stepTime = 30;
-    const increment = (target * stepTime) / duration;
+let current = 0;
+const target = 100;
+const duration = 2200; // ms
+const stepTime = 30;
+const increment = (target * stepTime) / duration;
 
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        current = target;
-        clearInterval(timer);
-        setTimeout(() => {
-          preloader.classList.add("hidden");
-        }, 400);
-      }
-      percentEl.textContent = Math.round(current) + "%";
-    }, stepTime);
-  })();
+const timer = setInterval(() => {
+current += increment;
+if (current >= target) {
+current = target;
+clearInterval(timer);
 
-  // SMOKE EFFECT (mouse + touch)
-  (function(){
-    const smokeArea = document.getElementById("smoke-area");
-
-    function createSmoke(x, y) {
-      const smoke = document.createElement("div");
-      smoke.className = "smoke";
-      smoke.style.left = (x - 20) + "px";
-      smoke.style.top = (y - 20) + "px";
-      smokeArea.appendChild(smoke);
-      smoke.addEventListener("animationend", () => smoke.remove());
-    }
-
-    window.addEventListener("mousemove", (e) => {
-      createSmoke(e.clientX, e.clientY);
-    });
-
-    window.addEventListener("touchmove", (e) => {
-      const t = e.touches[0];
-      if (!t) return;
-      createSmoke(t.clientX, t.clientY);
-    });
-  })();
+setTimeout(() => {
+preloader.classList.add("hidden");
+}, 400);
+}
+percentEl.textContent = Math.round(current) + "%";
+}, stepTime);
+})();
 </script>
