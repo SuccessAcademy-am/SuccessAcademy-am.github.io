@@ -29,13 +29,13 @@
       </p>
     </div>
 
-    <!-- IMAGES (ALWAYS UNDER TEXT ON MOBILE) -->
+    <!-- IMAGES (TEXT ABOVE ON MOBILE) -->
     <div class="sa-hero-visual">
       <div class="sa-portrait sa-portrait--tone1">
-        <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
+        <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0425.jpg?v=1765127824" alt="">
       </div>
       <div class="sa-portrait sa-portrait--tone2">
-        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
+        <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0427_1.jpg?v=1765127882" alt="">
       </div>
     </div>
   </div>
@@ -107,7 +107,7 @@ body {
 }
 
 .count-logo {
-  font-size: 26px;
+  font-size: clamp(22px, 5vw, 28px);
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -115,14 +115,9 @@ body {
 }
 
 .count-number {
-  font-size: 86px;
+  font-size: clamp(64px, 16vw, 90px);
   font-weight: 900;
   line-height: 1;
-}
-
-@media (max-width: 600px) {
-  .count-wrapper { width: 85vw; height: 85vw; }
-  .count-number  { font-size: 70px; }
 }
 
 /* =============== SMOKE EFFECT =============== */
@@ -130,7 +125,7 @@ body {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 100;   /* above content, below preloader */
+  z-index: 100;
   overflow: hidden;
 }
 
@@ -172,7 +167,7 @@ body {
 }
 
 .sa-logo {
-  font-size: 30px;
+  font-size: clamp(26px, 6vw, 34px);
   font-weight: 900;
   letter-spacing: 0.18em;
 }
@@ -191,7 +186,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: 20px;
+  gap: 22px;
   margin-top: 4vh;
 }
 
@@ -202,45 +197,46 @@ body {
 /* BIGGER MOBILE TEXT */
 .sa-hero-text h1 {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(38px, 11vw, 48px);  /* big on mobile */
-  line-height: 1.1;
+  font-size: clamp(44px, 12vw, 54px);
+  line-height: 1.08;
   margin: 0 0 10px;
   color: var(--sa-text);
 }
 
 .sa-hero-text p {
-  font-size: 18px;
+  font-size: clamp(18px, 4.7vw, 21px);
   line-height: 1.7;
   color: var(--sa-soft);
   margin: 0;
 }
 
-/* IMAGES ARE UNDER TEXT ON MOBILE */
+/* IMAGES UNDER TEXT */
 .sa-hero-visual {
   position: relative;
   width: 260px;
   height: 260px;
-  margin-top: 10px;
-  align-self: center; /* center on mobile */
+  margin-top: 14px;
+  align-self: center;
 }
 
 .sa-portrait {
   position: absolute;
-  width: 170px;
-  height: 170px;
+  width: 175px;
+  height: 175px;
   border-radius: 999px;
   overflow: hidden;
   box-shadow: 0 22px 40px rgba(0, 0, 0, 0.25);
 }
 
 .sa-portrait img {
-  width: 115%;
-  height: 115%;
+  width: 140%;
+  height: 140%;
   object-fit: cover;
+  object-position: center top;   /* focus on hats */
+  transform: translateY(8%);    /* push hats to center */
   mix-blend-mode: multiply;
 }
 
-/* positions for mobile */
 .sa-portrait--tone1 {
   right: 0;
   top: 0;
