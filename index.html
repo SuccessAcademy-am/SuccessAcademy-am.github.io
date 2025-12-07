@@ -353,6 +353,13 @@
       border-radius:999px;
       overflow:hidden;
       box-shadow:0 22px 42px rgba(0,0,0,0.18);
+      touch-action: none;   /* allow touch drag without scrolling */
+      cursor: grab;
+    }
+
+    .sa-portrait.sa-dragging {
+      cursor: grabbing;
+      animation: none !important; /* stop float during drag */
     }
 
     .sa-portrait img {
@@ -984,6 +991,113 @@
       }, { threshold: 0.25 });
 
       frames.forEach(f => observer.observe(f));
+    })();
+
+    /* DRAGGABLE HERO IMAGES (MOBILE + DESKTOP) */
+    (function () {
+      const container = document.querySelector(".sa-hero-visual");
+      if (!container) return;
+
+      const portraits = container.querySelectorAll(".sa-portrait");
+      if (!portraits.length) return;
+
+      portraits.forEach(setupDraggable);
+
+      function setupDraggable(el) {
+        let isDragging = false;
+        let pointerOffsetX = 0;
+        let pointerOffsetY = 0;
+        let elWidth = 0;
+        let elHeight = 0;
+
+        function pointerDown(clientX, clientY, isTouchEvent) {
+          isDragging = true;
+          el.classList.add("sa-dragging");
+
+          // switch control purely to left/top
+          el.style.right = "auto";
+          el.style.bottom = "auto";
+
+          const rect = el.getBoundingClientRect();
+          const contRect = container.getBoundingClientRect();
+
+          elWidth = rect.width;
+          elHeight = rect.height;
+
+          // point where user grabbed the element
+          pointerOffsetX = clientX - rect.left;
+          pointerOffsetY = clientY - rect.top;
+
+          if (isTouchEvent) {
+            document.addEventListener("touchmove", touchMove, { passive: false });
+            document.addEventListener("touchend", pointerUp);
+            document.addEventListener("touchcancel", pointerUp);
+          } else {
+            document.addEventListener("mousemove", mouseMove);
+            document.addEventListener("mouseup", pointerUp);
+          }
+
+          moveTo(clientX, clientY);
+        }
+
+        function pointerUp() {
+          if (!isDragging) return;
+          isDragging = false;
+          el.classList.remove("sa-dragging");
+
+          document.removeEventListener("mousemove", mouseMove);
+          document.removeEventListener("mouseup", pointerUp);
+          document.removeEventListener("touchmove", touchMove);
+          document.removeEventListener("touchend", pointerUp);
+          document.removeEventListener("touchcancel", pointerUp);
+        }
+
+        function moveTo(clientX, clientY) {
+          if (!isDragging) return;
+
+          const contRect = container.getBoundingClientRect();
+
+          let x = clientX - contRect.left - pointerOffsetX;
+          let y = clientY - contRect.top - pointerOffsetY;
+
+          // keep element inside the container bounds
+          const maxX = contRect.width - elWidth;
+          const maxY = contRect.height - elHeight;
+
+          x = Math.max(0, Math.min(maxX, x));
+          y = Math.max(0, Math.min(maxY, y));
+
+          el.style.left = x + "px";
+          el.style.top = y + "px";
+        }
+
+        function mouseDown(e) {
+          e.preventDefault();
+          pointerDown(e.clientX, e.clientY, false);
+        }
+
+        function mouseMove(e) {
+          e.preventDefault();
+          moveTo(e.clientX, e.clientY);
+        }
+
+        function touchStart(e) {
+          if (!e.touches || !e.touches.length) return;
+          const t = e.touches[0];
+          e.preventDefault();
+          pointerDown(t.clientX, t.clientY, true);
+        }
+
+        function touchMove(e) {
+          if (!e.touches || !e.touches.length) return;
+          const t = e.touches[0];
+          e.preventDefault();
+          moveTo(t.clientX, t.clientY);
+        }
+
+        el.addEventListener("mousedown", mouseDown);
+        el.addEventListener("touchstart", touchStart, { passive: false });
+      }
     })();
   </script>
 
