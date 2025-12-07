@@ -268,52 +268,61 @@ body {
   }
 }
 
-/* ================= MOBILE FIX: BIGGER TEXT + TIGHT SPACING ================= */
+/* ================= MOBILE FIX: LESS SPACE + 2X BIGGER TEXT ================= */
 @media (max-width: 600px) {
 
+  /* overall section tighter */
   .sa-hero {
-    padding-top: 10px !important;
+    padding: 10px 16px 16px !important;
   }
 
+  /* less gap after logo */
   .sa-hero-header {
-    margin-bottom: 8px !important;
-  }
-
-  .sa-hero-text h1 {
-    font-size: 42px !important;
-    line-height: 1.05 !important;
-    margin: 0 0 6px !important;
-  }
-
-  .sa-hero-text p {
-    font-size: 20px !important;
-    line-height: 1.45 !important;
-    margin: 0 0 8px !important;
-    max-width: 90%;
+    margin-bottom: 4px !important;
   }
 
   .sa-hero-inner {
-    margin-top: 8px !important;
+    margin-top: 4px !important;
+    gap: 6px; /* very small vertical gap between text and images */
   }
 
+  /* main title ~2x visually bigger on mobile */
+  .sa-hero-text h1 {
+    font-size: 62px !important;
+    line-height: 1.02 !important;
+    margin: 0 0 4px !important;
+  }
+
+  /* sub text bigger + closer */
+  .sa-hero-text p {
+    font-size: 24px !important;
+    line-height: 1.4 !important;
+    margin: 0 0 6px !important;
+    max-width: 95%;
+  }
+
+  /* bring images closer to text */
   .sa-hero-visual {
-    margin-top: -5px !important;
+    margin-top: 4px !important;
     margin-bottom: 0 !important;
+    width: 260px !important;
+    height: 260px !important;
   }
 
+  /* keep frames big but compact */
   .sa-portrait {
-    width: 230px !important;
-    height: 230px !important;
+    width: 210px !important;
+    height: 210px !important;
   }
 
   .sa-portrait--tone1 {
-    top: -10px !important;
-    right: -20px !important;
+    top: -8px !important;
+    right: -18px !important;
   }
 
   .sa-portrait--tone2 {
     bottom: -10px !important;
-    left: -10px !important;
+    left: -12px !important;
   }
 }
 </style>
