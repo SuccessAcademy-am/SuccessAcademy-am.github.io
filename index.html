@@ -20,6 +20,7 @@
   </header>
 
   <div class="sa-hero-inner">
+
     <div class="sa-hero-text">
       <h1>We’re a creative web studio.</h1>
       <p>
@@ -37,6 +38,7 @@
         <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579" alt="">
       </div>
     </div>
+
   </div>
 </section>
 
@@ -48,6 +50,8 @@
 
   --tone1: #C6AC8F;
   --tone2: #E3D5CA;
+
+  --smoke: #d4a373;
 }
 
 body {
@@ -58,7 +62,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ============== PRELOADER ============== */
+/* ================= PRELOADER ================= */
 .count-preloader {
   position: fixed;
   inset: 0;
@@ -66,7 +70,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 99999;
+  z-index: 999999;
   transition: opacity .6s ease, visibility .6s ease;
 }
 .count-preloader.hidden {
@@ -105,34 +109,41 @@ body {
   font-weight:900;
 }
 
-/* ============== SMOKE ============== */
+/* ================= SMOKE ================= */
 #smoke-area {
   position: fixed;
   inset: 0;
-  pointer-events:none;
-  z-index:100;
-}
-.smoke {
-  position:absolute;
-  width:40px;
-  height:40px;
-  background: radial-gradient(circle,
-    rgba(227,213,202,0.6)10%,
-    rgba(234,224,213,0.12)55%,
-    rgba(198,172,143,0)90%);
-  border-radius:50%;
-  animation: smokeFade 1.6s ease-out forwards;
-  filter: blur(18px);
-  mix-blend-mode:soft-light;
-}
-@keyframes smokeFade {
-  0%   { transform:scale(.5); opacity:.9 }
-  100% { transform:scale(2.8); opacity:0 }
+  pointer-events: none;
+  z-index: 999999999; /* always above EVERYTHING */
 }
 
-/* ============== HERO – MOBILE FIRST ============== */
+.smoke {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+
+  background: radial-gradient(
+    circle,
+    rgba(212,163,115,0.55) 20%,
+    rgba(212,163,115,0.12) 55%,
+    rgba(212,163,115,0) 100%
+  );
+
+  border-radius: 50%;
+  opacity: 0.85;
+  filter: blur(18px);
+  mix-blend-mode: soft-light;
+  animation: smokeFade 1.8s ease-out forwards;
+}
+
+@keyframes smokeFade {
+  0%   { transform: scale(.5); opacity: 0.9; }
+  100% { transform: scale(3.4); opacity: 0; }
+}
+
+/* ================= HERO ================= */
 .sa-hero {
-  min-height: 100vh;            /* full screen on mobile */
+  min-height: 100vh;
   padding: 18px 20px 24px;
   display:flex;
   flex-direction:column;
@@ -156,12 +167,11 @@ body {
   border-radius:999px;
 }
 
-/* TEXT + IMAGES STACKED, WITH IMAGES AT BOTTOM */
 .sa-hero-inner {
   flex:1;
   display:flex;
   flex-direction:column;
-  justify-content:space-between; /* text upper, images bottom */
+  justify-content:space-between;
   margin-top:18px;
 }
 
@@ -178,64 +188,66 @@ body {
   margin:0;
 }
 
-/* ====== IMAGES – RESPONSIVE, 2× BIGGER, BOTTOM ====== */
+/* ================= IMAGES – RESPONSIVE, BOTTOM, 2× BIGGER ================= */
 .sa-hero-visual {
   position:relative;
-  width: min(70vw, 320px);      /* responsive circle area */
-  height: min(70vw, 320px);
+  width: min(70vw, 340px);
+  height: min(70vw, 340px);
   align-self:flex-end;
-  margin-bottom: 16px;          /* distance from bottom of screen */
+  margin-bottom: 20px;
 }
 
 .sa-portrait {
   position:absolute;
-  width: min(50vw, 230px);      /* big responsive circles */
-  height: min(50vw, 230px);
+  width: min(50vw, 260px);
+  height: min(50vw, 260px);
   border-radius:999px;
   overflow:hidden;
   box-shadow:0 25px 45px rgba(0,0,0,0.22);
 }
 
 .sa-portrait img {
-  width:160%;
-  height:160%;
+  width:170%;
+  height:170%;
   object-fit:cover;
   object-position:center top;
   mix-blend-mode:multiply;
 }
 
-/* top circle */
+/* TOP circle */
 .sa-portrait--tone1 {
-  right:-6px;
+  right:-10px;
   top:0;
   background:var(--tone1);
   animation: floatA 12s ease-in-out infinite alternate;
 }
-/* bottom circle */
+
+/* BOTTOM circle */
 .sa-portrait--tone2 {
   left:0;
-  bottom:-18px;
+  bottom:-12px;
   background:var(--tone2);
   animation: floatB 13s ease-in-out infinite alternate;
 }
 
-/* FLOAT BUT NEVER TOUCH (LIMITED RANGE) */
+/* FLOAT WITHOUT TOUCHING */
 @keyframes floatA {
   0%   { transform:translate(0,0); }
-  25%  { transform:translate(10px,-14px); }
-  50%  { transform:translate(-10px,8px); }
-  75%  { transform:translate(14px,12px); }
-  100% { transform:translate(-6px,-10px); }
-}
-@keyframes floatB {
-  0%   { transform:translate(0,0); }
-  25%  { transform:translate(-12px,-10px); }
-  50%  { transform:translate(14px,6px); }
-  75%  { transform:translate(-10px,10px); }
-  100% { transform:translate(6px,-8px); }
+  25%  { transform:translate(14px,-18px); }
+  50%  { transform:translate(-14px,12px); }
+  75%  { transform:translate(18px,18px); }
+  100% { transform:translate(-6px,-12px); }
 }
 
-/* ============== DESKTOP LAYOUT ============== */
+@keyframes floatB {
+  0%   { transform:translate(0,0); }
+  25%  { transform:translate(-16px,-14px); }
+  50%  { transform:translate(18px,8px); }
+  75%  { transform:translate(-14px,14px); }
+  100% { transform:translate(8px,-10px); }
+}
+
+/* ================= DESKTOP ================= */
 @media (min-width: 900px) {
   .sa-hero {
     padding:32px 8vw 40px;
@@ -250,50 +262,54 @@ body {
     max-width:520px;
   }
   .sa-hero-visual {
-    width:360px;
-    height:360px;
+    width:380px;
+    height:380px;
     margin-bottom:0;
   }
   .sa-portrait {
-    width:230px;
-    height:230px;
+    width:260px;
+    height:260px;
   }
 }
 </style>
 
 <script>
-/* =============== COUNTDOWN LOGIC =============== */
+/* =============== PRELOADER COUNTDOWN =============== */
 (function(){
   const pre = document.getElementById("countdownPreloader");
   const num = document.getElementById("countNumber");
   let count = 3;
+
   const timer = setInterval(()=>{
     count--;
-    if(count>0){
+    if(count > 0){
       num.textContent = count;
     } else {
       clearInterval(timer);
       pre.classList.add("hidden");
     }
-  },1000);
+  }, 1000);
 })();
 
 /* =============== SMOKE EFFECT =============== */
 (function(){
   const smoke = document.getElementById("smoke-area");
-  function puff(x,y){
-    const s=document.createElement("div");
-    s.className="smoke";
-    s.style.left=(x-20)+"px";
-    s.style.top =(y-20)+"px";
+
+  function puff(x, y) {
+    const s = document.createElement("div");
+    s.className = "smoke";
+    s.style.left = (x - 24) + "px";
+    s.style.top  = (y - 24) + "px";
     smoke.appendChild(s);
-    setTimeout(()=>s.remove(),1600);
+    setTimeout(() => s.remove(), 1800);
   }
-  window.addEventListener("mousemove",e=>puff(e.clientX,e.clientY));
-  window.addEventListener("touchmove",e=>{
-    if(!e.touches.length) return;
-    const t=e.touches[0];
-    puff(t.clientX,t.clientY);
-  },{passive:true});
+
+  window.addEventListener("mousemove", e => puff(e.clientX, e.clientY));
+
+  window.addEventListener("touchmove", e => {
+    if (!e.touches.length) return;
+    const t = e.touches[0];
+    puff(t.clientX, t.clientY);
+  }, { passive:true });
 })();
 </script>
