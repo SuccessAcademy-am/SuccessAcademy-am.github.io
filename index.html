@@ -10,8 +10,13 @@
   </div>
 </div>
 
-<!-- =============== SMOKE EFFECT LAYER =============== -->
-<div id="smoke-area"></div>
+<!-- =============== SMOKE EFFECT LAYER (ambient + interactive) =============== -->
+<div id="smoke-area">
+  <!-- Ambient drifting blobs -->
+  <div class="smoke-ambient sa1"></div>
+  <div class="smoke-ambient sa2"></div>
+  <div class="smoke-ambient sa3"></div>
+</div>
 
 <!-- =============== MAIN HERO SECTION =============== -->
 <section class="sa-hero">
@@ -120,45 +125,72 @@ body {
   line-height: 1;
 }
 
-/* =============== SMOKE EFFECT =============== */
+/* =============== SMOKE EFFECT (ambient + interactive) =============== */
 #smoke-area {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 100;
+  z-index: 100;          /* under preloader, above hero */
   overflow: hidden;
 }
 
+/* Strong dark smoke for interaction */
 .smoke {
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 55px;
+  height: 55px;
   background: radial-gradient(
     circle,
-    rgba(227, 213, 202, 0.6) 10%,
-    rgba(234, 224, 213, 0.12) 55%,
-    rgba(198, 172, 143, 0.0) 90%
+    rgba(94, 80, 63, 0.55) 0%,
+    rgba(94, 80, 63, 0.25) 45%,
+    rgba(94, 80, 63, 0.00) 100%
   );
-  opacity: 0.8;
+  opacity: 0.9;
   border-radius: 50%;
-  animation: smokeFade 1.6s ease-out forwards;
-  filter: blur(18px);
-  mix-blend-mode: soft-light;
+  filter: blur(10px);
+  mix-blend-mode: multiply;
+  animation: smokeFade 1.8s ease-out forwards;
 }
 
 @keyframes smokeFade {
-  0%   { transform: scale(0.5); opacity: 0.9; }
-  100% { transform: scale(2.8); opacity: 0; }
+  0%   { transform: scale(0.4); opacity: 0.9; }
+  100% { transform: scale(2.6); opacity: 0; }
 }
 
-/* =============== HERO LAYOUT =============== */
-/* Mobile–first styles (we optimise for phone first) */
+/* Ambient drifting smoke blobs */
+.smoke-ambient {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(94, 80, 63, 0.28) 0%,
+    rgba(94, 80, 63, 0.12) 40%,
+    rgba(94, 80, 63, 0.0) 100%
+  );
+  filter: blur(22px);
+  mix-blend-mode: multiply;
+  opacity: 0.7;
+  animation: smokeDrift 24s linear infinite;
+}
+
+.smoke-ambient.sa1 { top: 10%; left: -10%; animation-duration: 28s; }
+.smoke-ambient.sa2 { top: 40%; right: -20%; animation-duration: 32s; }
+.smoke-ambient.sa3 { bottom: -15%; left: 30%; animation-duration: 26s; }
+
+@keyframes smokeDrift {
+  0%   { transform: translate3d(0,0,0) scale(1); }
+  50%  { transform: translate3d(20px,-30px,0) scale(1.1); }
+  100% { transform: translate3d(-10px,20px,0) scale(1); }
+}
+
+/* =============== HERO LAYOUT (mobile-first) =============== */
 .sa-hero {
-  padding: 18px 18px 28px;
+  padding: 14px 16px 20px;
   background: var(--sa-bg);
   display: flex;
   flex-direction: column;
-  /* no min-height here → section height adapts to content */
 }
 
 .sa-hero-header {
@@ -182,11 +214,11 @@ body {
 
 /* TEXT BLOCK */
 .sa-hero-inner {
-  margin-top: 18px;              /* move content closer to header */
+  margin-top: 12px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 14px;
+  gap: 12px;
 }
 
 .sa-hero-text {
@@ -195,7 +227,7 @@ body {
 
 .sa-hero-text h1 {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(46px, 13vw, 58px);  /* bigger on mobile */
+  font-size: clamp(46px, 13vw, 58px);
   line-height: 1.08;
   margin: 0 0 8px;
   color: var(--sa-text);
@@ -208,19 +240,19 @@ body {
   margin: 0;
 }
 
-/* IMAGES – SMALLER + CLOSE TO TEXT */
+/* IMAGES – small and close to text on mobile */
 .sa-hero-visual {
   position: relative;
-  width: 160px;   /* smaller container */
-  height: 160px;
-  margin-top: 10px;
-  align-self: flex-end;          /* like Zulik: images to the right */
+  width: 150px;
+  height: 150px;
+  margin-top: 8px;
+  align-self: flex-end;   /* like Zulik: on the right */
 }
 
 .sa-portrait {
   position: absolute;
-  width: 110px;
-  height: 110px;
+  width: 105px;
+  height: 105px;
   border-radius: 999px;
   overflow: hidden;
   box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22);
@@ -230,7 +262,7 @@ body {
   width: 150%;
   height: 150%;
   object-fit: cover;
-  object-position: center top;   /* focus higher (hats/face) */
+  object-position: center top;  /* show hat/upper part */
   transform: translateY(8%);
   mix-blend-mode: multiply;
 }
@@ -324,28 +356,26 @@ body {
   }, 1000);
 })();
 
-/* =============== SMOKE EFFECT LOGIC =============== */
+/* =============== SMOKE EFFECT LOGIC (interactive) =============== */
 (function () {
   const smokeArea = document.getElementById('smoke-area');
 
   function createSmoke(x, y) {
     const s = document.createElement('div');
     s.className = 'smoke';
-    s.style.left = x - 20 + 'px';
-    s.style.top  = y - 20 + 'px';
+    s.style.left = (x - 28) + 'px';
+    s.style.top  = (y - 28) + 'px';
     smokeArea.appendChild(s);
 
-    setTimeout(() => {
-      s.remove();
-    }, 1700);
+    setTimeout(() => s.remove(), 1900);
   }
 
-  // Mouse
+  // Desktop
   window.addEventListener('mousemove', (e) => {
     createSmoke(e.clientX, e.clientY);
   });
 
-  // Touch (mobile)
+  // Mobile
   window.addEventListener('touchmove', (e) => {
     if (!e.touches || !e.touches.length) return;
     const t = e.touches[0];
