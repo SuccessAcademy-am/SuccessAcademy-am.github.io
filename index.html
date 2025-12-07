@@ -1,340 +1,147 @@
 <!-- ================== PRELOADER ================== -->
 <div id="sitePreloader" class="site-preloader">
-<div class="loader-center">
-<div class="loader-circle"></div>
+  <div class="loader-center">
+    <div class="loader-circle"></div>
 
-<div class="loader-content">
-<!-- BRAND NAME IN LOADER -->
-<div class="loader-logo">Success Academy</div>
-<div class="loader-percent" id="loaderPercent">0%</div>
-</div>
-</div>
-</div>
+    <div class="loader-content">
+      <!-- BRAND NAME — CHANGE THIS -->
+      <div class="loader-logo">Success Academy</div>
 
-<!-- ================== HERO ================== -->
-<section class="sa-hero">
-<header class="sa-hero-header">
-<!-- TOP-LEFT LOGO TEXT -->
-<div class="sa-logo">Success Academy</div>
-
-<!-- TWO OUTLINED CIRCLES ON THE RIGHT -->
-<div class="sa-header-circles">
-<span></span><span></span>
+      <div class="loader-percent" id="loaderPercent">0%</div>
+    </div>
+  </div>
 </div>
-</header>
-
-<div class="sa-hero-inner">
-<div class="sa-hero-text">
-<!-- YOUR HEADING TEXT -->
-<h1>Մեզ հետ նոր մասնագիտությունը դառնում է իրական ֆրիլանս կարիերա</h1>
-
-<!-- YOUR PARAGRAPH TEXT -->
-<p>
-Աշխատանք միջազգային ֆրիլանս հարթակներում, որտեղ դու կարող ես սկսել քո
-կարիերան հենց ուսուցումից հետո՝ համատեղելով творчություն և կայուն եկամուտ։
-</p>
-</div>
-
-<div class="sa-hero-visual">
-<!-- TOP BLUE CIRCLE -->
-<div class="sa-portrait sa-portrait--blue">
-<img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
-</div>
-
-<!-- BOTTOM GREEN CIRCLE -->
-<div class="sa-portrait sa-portrait--green">
-<img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800" alt="">
-</div>
-</div>
-</div>
-</section>
 
 <style>
-/* ========== PRELOADER STYLES (100% CIRCLE) ========== */
-.site-preloader {
-position: fixed;
-inset: 0;
-background: #050816; /* same dark navy as Zulik */
-display: flex;
-align-items: center;
-justify-content: center;
-z-index: 999999;
-transition: opacity 0.6s ease, visibility 0.6s ease;
-}
+  /* ========== PRELOADER STYLES ========== */
+  .site-preloader {
+    position: fixed;
+    inset: 0;
+    background: #050816; /* Zulik dark navy */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999999;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+  }
 
-.site-preloader.hidden {
-opacity: 0;
-visibility: hidden;
-}
+  .site-preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
 
-.loader-center {
-position: relative;
-width: min(72vw, 360px);
-height: min(72vw, 360px);
-display: flex;
-align-items: center;
-justify-content: center;
-}
+  .loader-center {
+    position: relative;
+    width: min(70vw, 360px);
+    height: min(70vw, 360px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.loader-circle {
-position: absolute;
-inset: 0;
-border-radius: 50%;
-border: 1px solid rgba(255, 255, 255, 0.16);
-box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
-animation: loaderPulse 2.4s ease-in-out infinite;
-}
+  .loader-circle {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
+    animation: loaderPulse 2.4s ease-in-out infinite;
+  }
 
-.loader-content {
-position: relative;
-text-align: center;
-color: #f5f5f5;
-}
+  .loader-content {
+    position: relative;
+    text-align: center;
+    color: #ffffff;
+  }
 
-.loader-logo {
-font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-font-size: 28px;
-letter-spacing: 0.12em;
-text-transform: uppercase;
-font-weight: 600;
-margin-bottom: 12px;
-}
+  .loader-logo {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 10px;
+    position: relative;
+  }
 
-.loader-percent {
-font-size: 16px;
-letter-spacing: 0.18em;
-text-transform: uppercase;
-color: rgba(255, 255, 255, 0.7);
-}
+  /* Accent dot like Zulik */
+  .loader-logo::after {
+    content: "";
+    position: absolute;
+    top: -6px;
+    right: 35%;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: radial-gradient(circle at 30% 0, #00ff7a, #006dff);
+    box-shadow: 0 0 12px rgba(0, 255, 140, 0.9);
+  }
 
-/* little accent dot */
-.loader-logo::after {
-content: "";
-position: absolute;
-top: -6px;
-right: 32%;
-width: 8px;
-height: 8px;
-border-radius: 999px;
-background: radial-gradient(circle at 30% 0, #00ff95, #006dff);
-box-shadow: 0 0 12px rgba(0, 255, 149, 0.9);
-}
+  .loader-percent {
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.75);
+  }
 
-@keyframes loaderPulse {
-0% {
-transform: scale(0.98);
-border-color: rgba(255, 255, 255, 0.12);
-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.08);
-}
-50% {
-transform: scale(1);
-border-color: rgba(255, 255, 255, 0.25);
-box-shadow: 0 0 30px 6px rgba(255, 255, 255, 0.04);
-}
-100% {
-transform: scale(0.98);
-border-color: rgba(255, 255, 255, 0.12);
-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.08);
-}
-}
+  @keyframes loaderPulse {
+    0% {
+      transform: scale(0.98);
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.07);
+    }
+    50% {
+      transform: scale(1);
+      border-color: rgba(255, 255, 255, 0.28);
+      box-shadow: 0 0 30px 6px rgba(255, 255, 255, 0.05);
+    }
+    100% {
+      transform: scale(0.98);
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.07);
+    }
+  }
 
-@media (max-width: 600px) {
-.loader-center {
-width: 74vw;
-height: 74vw;
-}
-.loader-logo {
-font-size: 22px;
-}
-.loader-percent {
-font-size: 14px;
-}
-}
-
-/* ========== HERO (ZULIK-LIKE) ========== */
-:root {
---sa-bg: #050816;
---sa-text-main: #f5f5f5;
---sa-text-soft: #c3c6d1;
---sa-accent-green: #00f59d;
---sa-accent-blue: #006dff;
-}
-
-body {
-margin: 0;
-background: var(--sa-bg);
-color: var(--sa-text-main);
-font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-.sa-hero {
-min-height: 100vh;
-padding: 28px 6vw 48px;
-background: var(--sa-bg);
-box-sizing: border-box;
-display: flex;
-flex-direction: column;
-}
-
-.sa-hero-header {
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding-bottom: 24px;
-}
-
-.sa-logo {
-font-size: 30px;
-font-weight: 700;
-letter-spacing: 0.14em;
-text-transform: uppercase;
-}
-
-.sa-header-circles {
-display: inline-flex;
-gap: 10px;
-}
-
-.sa-header-circles span {
-width: 22px;
-height: 22px;
-border-radius: 999px;
-border: 2px solid rgba(255, 255, 255, 0.76);
-}
-
-.sa-hero-inner {
-flex: 1;
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: 40px;
-}
-
-.sa-hero-text {
-max-width: 520px;
-}
-
-.sa-hero-text h1 {
-font-family: "Georgia", "Times New Roman", serif; /* serif like in screenshot */
-font-size: clamp(36px, 9vw, 54px);
-line-height: 1.1;
-margin: 0 0 18px;
-}
-
-.sa-hero-text p {
-font-size: 16px;
-line-height: 1.7;
-color: var(--sa-text-soft);
-margin: 0;
-}
-
-.sa-hero-visual {
-position: relative;
-flex: 1;
-max-width: 330px;
-min-height: 260px;
-}
-
-.sa-portrait {
-position: absolute;
-width: 210px;
-height: 210px;
-border-radius: 999px;
-overflow: hidden;
-display: flex;
-align-items: center;
-justify-content: center;
-filter: saturate(1.2) contrast(1.1);
-box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
-}
-
-.sa-portrait img {
-width: 115%;
-height: 115%;
-object-fit: cover;
-mix-blend-mode: multiply;
-}
-
-/* blue circle (top-right) */
-.sa-portrait--blue {
-right: 0;
-top: 0;
-background: var(--sa-accent-blue);
-animation: portraitFloat1 10s ease-in-out infinite alternate;
-}
-
-/* green circle (bottom-left) */
-.sa-portrait--green {
-left: 0;
-bottom: 0;
-background: var(--sa-accent-green);
-animation: portraitFloat2 11s ease-in-out infinite alternate;
-}
-
-@keyframes portraitFloat1 {
-0% { transform: translate3d(0, 0, 0); }
-25% { transform: translate3d(8px, -10px, 0); }
-50% { transform: translate3d(-6px, 5px, 0); }
-75% { transform: translate3d(4px, 12px, 0); }
-100% { transform: translate3d(-3px, -6px, 0); }
-}
-
-@keyframes portraitFloat2 {
-0% { transform: translate3d(0, 0, 0); }
-25% { transform: translate3d(-8px, -8px, 0); }
-50% { transform: translate3d(8px, 4px, 0); }
-75% { transform: translate3d(-5px, 8px, 0); }
-100% { transform: translate3d(4px, -4px, 0); }
-}
-
-/* MOBILE */
-@media (max-width: 900px) {
-.sa-hero {
-padding: 24px 18px 40px;
-}
-
-.sa-hero-inner {
-flex-direction: column;
-align-items: flex-start;
-gap: 32px;
-}
-
-.sa-hero-visual {
-align-self: center;
-max-width: 260px;
-min-height: 240px;
-}
-
-.sa-portrait {
-width: 190px;
-height: 190px;
-}
-}
+  /* Mobile optimization */
+  @media (max-width: 600px) {
+    .loader-center {
+      width: 80vw;
+      height: 80vw;
+    }
+    .loader-logo {
+      font-size: 22px;
+    }
+    .loader-percent {
+      font-size: 14px;
+    }
+  }
 </style>
 
 <script>
-// PRELOADER: 0% -> 100% then hide
-(function () {
-const preloader = document.getElementById("sitePreloader");
-const percentEl = document.getElementById("loaderPercent");
+  /* ========== PRELOADER LOGIC ========== */
+  (function () {
+    const preloader = document.getElementById("sitePreloader");
+    const percentEl = document.getElementById("loaderPercent");
 
-let current = 0;
-const target = 100;
-const duration = 2200; // ms
-const stepTime = 30;
-const increment = (target * stepTime) / duration;
+    let current = 0;
+    const target = 100;
+    const duration = 2200; // total time
+    const stepTime = 30;
+    const increment = (target * stepTime) / duration;
 
-const timer = setInterval(() => {
-current += increment;
-if (current >= target) {
-current = target;
-clearInterval(timer);
+    const timer = setInterval(() => {
+      current += increment;
 
-setTimeout(() => {
-preloader.classList.add("hidden");
-}, 400);
-}
-percentEl.textContent = Math.round(current) + "%";
-}, stepTime);
-})();
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+
+        // fade out after reaching 100%
+        setTimeout(() => {
+          preloader.classList.add("hidden");
+        }, 400);
+      }
+
+      percentEl.textContent = Math.round(current) + "%";
+    }, stepTime);
+  })();
 </script>
