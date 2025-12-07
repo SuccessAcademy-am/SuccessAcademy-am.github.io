@@ -2,7 +2,6 @@
 <div id="countdownPreloader" class="count-preloader">
   <div class="count-wrapper">
     <div class="count-circle"></div>
-
     <div class="count-content">
       <div class="count-logo">Success Academy</div>
       <div class="count-number" id="countNumber">3</div>
@@ -10,19 +9,14 @@
   </div>
 </div>
 
-<!-- =============== SMOKE EFFECT LAYER (ambient + interactive) =============== -->
-<div id="smoke-area">
-  <!-- Ambient drifting blobs -->
-  <div class="smoke-ambient sa1"></div>
-  <div class="smoke-ambient sa2"></div>
-  <div class="smoke-ambient sa3"></div>
-</div>
+<!-- =============== SMOKE EFFECT LAYER =============== -->
+<div id="smoke-area"></div>
 
 <!-- =============== MAIN HERO SECTION =============== -->
 <section class="sa-hero">
   <header class="sa-hero-header">
     <div class="sa-logo">SUCCESS ACADEMY</div>
-    <div class="sa-menu-icon" aria-label="Menu"></div>
+    <div class="sa-menu-icon"></div>
   </header>
 
   <div class="sa-hero-inner">
@@ -34,11 +28,11 @@
       </p>
     </div>
 
-    <!-- IMAGES (TEXT ABOVE ON MOBILE) -->
     <div class="sa-hero-visual">
       <div class="sa-portrait sa-portrait--tone1">
         <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0428.jpg?v=1765128580" alt="">
       </div>
+
       <div class="sa-portrait sa-portrait--tone2">
         <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579" alt="">
       </div>
@@ -48,25 +42,22 @@
 
 <style>
 :root {
-  --sa-bg:   #EAE0D5;
+  --sa-bg: #EAE0D5;
   --sa-text: #5E503F;
   --sa-soft: #8A7B6B;
-
   --tone1: #C6AC8F;
   --tone2: #E3D5CA;
 }
 
-* { box-sizing: border-box; }
-
 body {
   margin: 0;
   background: var(--sa-bg);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   color: var(--sa-text);
   overflow-x: hidden;
 }
 
-/* =============== PRELOADER =============== */
+/* ================= PRELOADER ================= */
 .count-preloader {
   position: fixed;
   inset: 0;
@@ -74,8 +65,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999999;
-  transition: opacity 0.6s ease, visibility 0.6s ease;
+  z-index: 99999;
+  transition: opacity .6s ease, visibility .6s ease;
 }
 
 .count-preloader.hidden {
@@ -97,289 +88,226 @@ body {
   inset: 0;
   border-radius: 50%;
   border: 3px solid var(--sa-text);
-  box-shadow: 0 0 25px rgba(94, 80, 63, 0.2);
-  animation: circlePulse 2.5s ease-in-out infinite;
+  animation: circlePulse 2.5s infinite ease-in-out;
 }
 
 @keyframes circlePulse {
-  0%, 100% { transform: scale(0.96); opacity: 0.9; }
-  50%      { transform: scale(1);    opacity: 1;   }
+  0%,100% { transform: scale(.96); opacity:.9 }
+  50%     { transform: scale(1);   opacity:1 }
 }
 
 .count-content {
-  text-align: center;
-  color: var(--sa-text);
+  text-align:center;
 }
 
 .count-logo {
-  font-size: clamp(22px, 5vw, 28px);
+  font-size: clamp(22px,5vw,28px);
   font-weight: 800;
-  letter-spacing: 0.18em;
+  letter-spacing: .18em;
   text-transform: uppercase;
   margin-bottom: 16px;
 }
 
 .count-number {
-  font-size: clamp(64px, 16vw, 90px);
+  font-size: clamp(64px,15vw,90px);
   font-weight: 900;
-  line-height: 1;
 }
 
-/* =============== SMOKE EFFECT (ambient + interactive) =============== */
-#smoke-area {
+/* ================= SMOKE ================= */
+#smoke-area{
   position: fixed;
   inset: 0;
-  pointer-events: none;
-  z-index: 100;          /* under preloader, above hero */
-  overflow: hidden;
+  pointer-events:none;
+  z-index:100;
 }
 
-/* Strong dark smoke for interaction */
 .smoke {
-  position: absolute;
-  width: 55px;
-  height: 55px;
-  background: radial-gradient(
-    circle,
-    rgba(94, 80, 63, 0.55) 0%,
-    rgba(94, 80, 63, 0.25) 45%,
-    rgba(94, 80, 63, 0.00) 100%
+  position:absolute;
+  width:40px;
+  height:40px;
+  background: radial-gradient(circle,
+    rgba(227,213,202,0.6)10%,
+    rgba(234,224,213,0.12)55%,
+    rgba(198,172,143,0)90%
   );
-  opacity: 0.9;
-  border-radius: 50%;
-  filter: blur(10px);
-  mix-blend-mode: multiply;
-  animation: smokeFade 1.8s ease-out forwards;
+  border-radius:50%;
+  animation: smokeFade 1.6s ease-out forwards;
+  filter: blur(18px);
+  mix-blend-mode: soft-light;
 }
 
 @keyframes smokeFade {
-  0%   { transform: scale(0.4); opacity: 0.9; }
-  100% { transform: scale(2.6); opacity: 0; }
+  0%{ transform:scale(.5); opacity:.9 }
+  100%{ transform:scale(2.8); opacity:0 }
 }
 
-/* Ambient drifting smoke blobs */
-.smoke-ambient {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(94, 80, 63, 0.28) 0%,
-    rgba(94, 80, 63, 0.12) 40%,
-    rgba(94, 80, 63, 0.0) 100%
-  );
-  filter: blur(22px);
-  mix-blend-mode: multiply;
-  opacity: 0.7;
-  animation: smokeDrift 24s linear infinite;
-}
-
-.smoke-ambient.sa1 { top: 10%; left: -10%; animation-duration: 28s; }
-.smoke-ambient.sa2 { top: 40%; right: -20%; animation-duration: 32s; }
-.smoke-ambient.sa3 { bottom: -15%; left: 30%; animation-duration: 26s; }
-
-@keyframes smokeDrift {
-  0%   { transform: translate3d(0,0,0) scale(1); }
-  50%  { transform: translate3d(20px,-30px,0) scale(1.1); }
-  100% { transform: translate3d(-10px,20px,0) scale(1); }
-}
-
-/* =============== HERO LAYOUT (mobile-first) =============== */
+/* ================= HERO ================= */
 .sa-hero {
-  padding: 14px 16px 20px;
+  padding: 18px 18px 28px;
   background: var(--sa-bg);
-  display: flex;
-  flex-direction: column;
 }
 
 .sa-hero-header {
-  display: flex;
+  display:flex;
   justify-content: space-between;
-  align-items: center;
+  align-items:center;
 }
 
 .sa-logo {
-  font-size: clamp(26px, 7vw, 32px);
-  font-weight: 900;
-  letter-spacing: 0.18em;
+  font-size: clamp(26px,7vw,32px);
+  font-weight:900;
+  letter-spacing:.18em;
 }
 
 .sa-menu-icon {
-  width: 2px;
-  height: 24px;
-  border-radius: 999px;
+  width:2px;
+  height:24px;
   background: var(--sa-text);
 }
 
-/* TEXT BLOCK */
 .sa-hero-inner {
-  margin-top: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.sa-hero-text {
-  max-width: 100%;
+  margin-top: 18px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
 }
 
 .sa-hero-text h1 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(46px, 13vw, 58px);
-  line-height: 1.08;
-  margin: 0 0 8px;
-  color: var(--sa-text);
+  font-family: Georgia, serif;
+  font-size: clamp(46px,13vw,58px);
+  line-height:1.08;
+  margin:0 0 8px;
 }
 
 .sa-hero-text p {
-  font-size: clamp(18px, 4.8vw, 21px);
-  line-height: 1.7;
+  font-size: clamp(18px,4.8vw,21px);
   color: var(--sa-soft);
-  margin: 0;
+  line-height:1.7;
+  margin:0;
 }
 
-/* IMAGES – small and close to text on mobile */
+/* ====== IMAGES (FIXED SPACING ON MOBILE) ====== */
 .sa-hero-visual {
-  position: relative;
-  width: 150px;
-  height: 150px;
-  margin-top: 8px;
-  align-self: flex-end;   /* like Zulik: on the right */
+  position:relative;
+  width:160px;
+  height:160px;
+
+  /* KEY FIX: push images DOWN */
+  margin-top: 100px;
+
+  align-self:flex-end;
 }
 
-.sa-portrait {
-  position: absolute;
-  width: 105px;
-  height: 105px;
-  border-radius: 999px;
-  overflow: hidden;
-  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22);
+.sa-portrait{
+  position:absolute;
+  width:110px;
+  height:110px;
+  border-radius:999px;
+  overflow:hidden;
+  box-shadow:0 18px 34px rgba(0,0,0,0.22);
 }
 
-.sa-portrait img {
-  width: 150%;
-  height: 150%;
-  object-fit: cover;
-  object-position: center top;  /* show hat/upper part */
-  transform: translateY(8%);
-  mix-blend-mode: multiply;
+.sa-portrait img{
+  width:150%;
+  height:150%;
+  object-fit:cover;
+  object-position:center top;
+  mix-blend-mode:multiply;
 }
 
+/* top circle */
 .sa-portrait--tone1 {
-  right: 0;
-  top: 0;
+  right:0;
+  top:0;
   background: var(--tone1);
-  animation: float1 10s ease-in-out infinite alternate;
+  animation: float1 10s infinite alternate ease-in-out;
 }
 
+/* bottom circle */
 .sa-portrait--tone2 {
-  left: -10px;
-  bottom: -6px;
+  left:-12px;
+  bottom:-10px;
   background: var(--tone2);
-  animation: float2 11s ease-in-out infinite alternate;
+  animation: float2 11s infinite alternate ease-in-out;
 }
 
 @keyframes float1 {
-  0%   { transform: translate(0, 0); }
-  25%  { transform: translate(10px, -10px); }
-  50%  { transform: translate(-8px, 6px); }
-  75%  { transform: translate(6px, 12px); }
-  100% { transform: translate(-4px, -6px); }
+  0%{ transform:translate(0,0) }
+  25%{ transform:translate(10px,-10px) }
+  50%{ transform:translate(-8px,6px) }
+  75%{ transform:translate(6px,12px) }
+  100%{ transform:translate(-4px,-6px) }
 }
 
 @keyframes float2 {
-  0%   { transform: translate(0, 0); }
-  25%  { transform: translate(-8px, -8px); }
-  50%  { transform: translate(10px, 4px); }
-  75%  { transform: translate(-6px, 10px); }
-  100% { transform: translate(4px, -4px); }
+  0%{ transform:translate(0,0) }
+  25%{ transform:translate(-8px,-8px) }
+  50%{ transform:translate(10px,4px) }
+  75%{ transform:translate(-6px,10px) }
+  100%{ transform:translate(4px,-4px) }
 }
 
-/* =============== DESKTOP OVERRIDES =============== */
-@media (min-width: 900px) {
-  .sa-hero {
-    min-height: 100vh;
-    padding: 32px 8vw 40px;
+/* ================= DESKTOP ================= */
+@media (min-width:900px){
+  .sa-hero{
+    min-height:100vh;
+    padding:32px 8vw 40px;
   }
 
-  .sa-hero-inner {
-    margin-top: 8vh;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 60px;
+  .sa-hero-inner{
+    margin-top:10vh;
+    flex-direction:row;
+    justify-content:space-between;
+    gap:60px;
   }
 
-  .sa-hero-text {
-    max-width: 520px;
+  .sa-hero-visual{
+    width:360px;
+    height:320px;
+    margin-top:0;
   }
 
-  .sa-hero-text h1 {
-    font-size: clamp(46px, 7vw, 64px);
-  }
-
-  .sa-hero-text p {
-    font-size: 19px;
-  }
-
-  .sa-hero-visual {
-    width: 360px;
-    height: 320px;
-  }
-
-  .sa-portrait {
-    width: 210px;
-    height: 210px;
+  .sa-portrait{
+    width:210px;
+    height:210px;
   }
 }
 </style>
 
 <script>
-/* =============== COUNTDOWN LOGIC =============== */
-(function () {
-  const preloader = document.getElementById("countdownPreloader");
-  const numEl = document.getElementById("countNumber");
+/* =============== PRELOADER COUNTDOWN =============== */
+(function(){
+  const pre = document.getElementById("countdownPreloader");
+  const num = document.getElementById("countNumber");
 
   let count = 3;
-
-  const interval = setInterval(() => {
-    count -= 1;
-
-    if (count > 0) {
-      numEl.textContent = count;
+  const timer = setInterval(()=>{
+    count--;
+    if(count > 0){
+      num.textContent = count;
     } else {
-      clearInterval(interval);
-      preloader.classList.add("hidden");
+      clearInterval(timer);
+      pre.classList.add("hidden");
     }
   }, 1000);
 })();
 
-/* =============== SMOKE EFFECT LOGIC (interactive) =============== */
-(function () {
-  const smokeArea = document.getElementById('smoke-area');
-
-  function createSmoke(x, y) {
-    const s = document.createElement('div');
-    s.className = 'smoke';
-    s.style.left = (x - 28) + 'px';
-    s.style.top  = (y - 28) + 'px';
-    smokeArea.appendChild(s);
-
-    setTimeout(() => s.remove(), 1900);
+/* =============== SMOKE EFFECT =============== */
+(function(){
+  const smoke = document.getElementById("smoke-area");
+  function create(x,y){
+    const s=document.createElement("div");
+    s.className="smoke";
+    s.style.left = x - 20 + "px";
+    s.style.top  = y - 20 + "px";
+    smoke.appendChild(s);
+    setTimeout(()=>s.remove(),1600);
   }
-
-  // Desktop
-  window.addEventListener('mousemove', (e) => {
-    createSmoke(e.clientX, e.clientY);
-  });
-
-  // Mobile
-  window.addEventListener('touchmove', (e) => {
-    if (!e.touches || !e.touches.length) return;
-    const t = e.touches[0];
-    createSmoke(t.clientX, t.clientY);
-  }, { passive: true });
+  window.addEventListener("mousemove",(e)=>create(e.clientX,e.clientY));
+  window.addEventListener("touchmove",(e)=>{
+    if(!e.touches.length) return;
+    const t=e.touches[0];
+    create(t.clientX,t.clientY);
+  },{passive:true});
 })();
 </script>
