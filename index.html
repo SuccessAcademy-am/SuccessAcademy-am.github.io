@@ -140,9 +140,9 @@
       white-space:nowrap;
     }
 
-    /* ==== MENU BUBBLE WITH PULSING “Menu” ==== */
+    /* ==== MENU BUBBLE WITH PULSING HEART ICON ==== */
     .sa-menu-toggle {
-      min-width: 64px;
+      min-width: 44px;
       height: 40px;
       border-radius: 999px;
       border: none;
@@ -159,11 +159,9 @@
 
     .sa-menu-toggle span {
       font-weight: 700;
-      font-size: 14px;
+      font-size: 18px;
       color: var(--sa-text);
       line-height: 1;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
     }
 
     @keyframes saHeartPulse {
@@ -427,6 +425,14 @@
       margin-bottom: 28px;
     }
 
+    /* extra space after Shopify/Upwork block */
+    #shopify-upwork {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      margin-bottom: 26px; /* MORE SPACE HERE */
+    }
+
     .sa-offer-card h3 {
       font-size: 20px;
       margin-bottom: 8px;
@@ -555,6 +561,12 @@
       margin-top: 8px;
     }
 
+    /* make sure frame doesn't overlap title */
+    .sa-up-card {
+      margin-top: 18px;
+      display: block;
+    }
+
     /* ================= MOBILE TWEAKS ================= */
     @media (max-width: 600px) {
 
@@ -617,7 +629,7 @@
   <header class="sa-main-header">
     <div class="sa-logo">SUCCESS ACADEMY</div>
     <button class="sa-menu-toggle" id="saMenuToggle" aria-label="Մենյու">
-      <span>MENU</span>
+      <span>♥</span>
     </button>
   </header>
 
