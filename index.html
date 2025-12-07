@@ -33,6 +33,10 @@
       overflow-x: hidden;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     /* ================= PRELOADER ================= */
     .sa-count-preloader {
       position: fixed;
@@ -109,20 +113,24 @@
       100% { transform: scale(3.4); opacity: 0; }
     }
 
-    /* ================= HERO ================= */
-    .sa-hero {
-      min-height: 100vh;
-      padding: 20px 22px 40px;
-      display:flex;
-      flex-direction:column;
-      background: var(--sa-bg);
-    }
-
-    .sa-hero-header {
+    /* =============== STICKY MAIN HEADER (LOGO + MENU) =============== */
+    .sa-main-header {
+      position: sticky;
+      top: 0;
+      z-index: 9000;
+      padding: 14px 22px 10px;
       display:flex;
       justify-content:space-between;
       align-items:center;
-      margin-bottom: 28px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: linear-gradient(
+        to bottom,
+        rgba(234,224,213,0.98),
+        rgba(234,224,213,0.90),
+        rgba(234,224,213,0.70),
+        transparent
+      );
     }
 
     .sa-logo {
@@ -130,11 +138,6 @@
       font-weight:800;
       letter-spacing:0.08em;
       white-space:nowrap;
-    }
-
-    .sa-hero-inner {
-      display:flex;
-      flex-direction:column;
     }
 
     /* ==== MENU BUBBLE ==== */
@@ -175,7 +178,7 @@
 
     .sa-menu-panel {
       position: fixed;
-      top: 14px;
+      top: 64px;
       right: 14px;
       z-index: 9999;
       opacity: 0;
@@ -222,7 +225,21 @@
       opacity: 0.85;
     }
 
-    /* ==== DYNAMIC TEXT FRAME (reusable) ==== */
+    /* ================= HERO ================= */
+    .sa-hero {
+      min-height: 100vh;
+      padding: 10px 22px 40px;
+      display:flex;
+      flex-direction:column;
+      background: var(--sa-bg);
+    }
+
+    .sa-hero-inner {
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* ==== TEXT FRAME BASE STYLE ==== */
     .sa-text-frame {
       display: inline-block;
       padding: 16px 18px 14px;
@@ -232,7 +249,6 @@
       box-shadow: 0 18px 32px rgba(0, 0, 0, 0.10);
       position: relative;
       overflow: hidden;
-      animation: saCardFloat 10s ease-in-out infinite alternate;
     }
 
     .sa-text-frame::before {
@@ -249,12 +265,6 @@
       transform: translate3d(-40px, 0, 0);
       animation: saCardGlow 8s ease-in-out infinite;
       pointer-events: none;
-    }
-
-    @keyframes saCardFloat {
-      0%   { transform: translateY(0); }
-      50%  { transform: translateY(-4px); }
-      100% { transform: translateY(2px); }
     }
 
     @keyframes saCardGlow {
@@ -279,6 +289,19 @@
       margin: 0;
       max-width: 95%;
       color: var(--sa-soft);
+    }
+
+    /* ==== SCROLL ZOOM ANIMATION (for frames) ==== */
+    .sa-anim-frame {
+      opacity: 0;
+      transform: scale(0.96) translateY(18px);
+      transition: opacity .5s ease, transform .5s ease, box-shadow .5s ease;
+    }
+
+    .sa-anim-frame.in-view {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      box-shadow: 0 20px 36px rgba(0,0,0,0.14);
     }
 
     /* ================= ROUND FLOATING IMAGES ================= */
@@ -514,10 +537,6 @@
         font-size: 24px !important;
       }
 
-      .sa-hero-header {
-        margin-bottom: 30px !important;
-      }
-
       .sa-hero-text h1 {
         font-size: 26px !important;
         line-height: 1.35 !important;
@@ -569,38 +588,38 @@
   <!-- =============== SMOKE =============== -->
   <div id="smoke-area-sa"></div>
 
+  <!-- =============== STICKY HEADER (LOGO + MENU) =============== -->
+  <header class="sa-main-header">
+    <div class="sa-logo">SUCCESS ACADEMY</div>
+    <button class="sa-menu-toggle" id="saMenuToggle" aria-label="Մենյու">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- floating menu -->
+  <nav class="sa-menu-panel" id="saMenuPanel">
+    <div class="sa-text-frame sa-menu-card">
+      <button class="sa-menu-link" data-scroll="#hero">
+        <span class="sa-menu-dot"></span> Գլխավոր
+      </button>
+      <button class="sa-menu-link" data-scroll="#offer">
+        <span class="sa-menu-dot"></span> Ինչ ենք առաջարկում
+      </button>
+      <button class="sa-menu-link" data-scroll="#cta">
+        <span class="sa-menu-dot"></span> Shopify խումբ
+      </button>
+      <button class="sa-menu-link" data-scroll="#upwork-consult">
+        <span class="sa-menu-dot"></span> Upwork խորհրդատվություն
+      </button>
+    </div>
+  </nav>
+
   <!-- =============== HERO =============== -->
   <section class="sa-hero" id="hero">
-
-    <header class="sa-hero-header">
-      <div class="sa-logo">SUCCESS ACADEMY</div>
-      <button class="sa-menu-toggle" id="saMenuToggle" aria-label="Մենյու">
-        <span></span><span></span><span></span>
-      </button>
-    </header>
-
-    <!-- floating menu -->
-    <nav class="sa-menu-panel" id="saMenuPanel">
-      <div class="sa-text-frame sa-menu-card">
-        <button class="sa-menu-link" data-scroll="#hero">
-          <span class="sa-menu-dot"></span> Գլխավոր
-        </button>
-        <button class="sa-menu-link" data-scroll="#offer">
-          <span class="sa-menu-dot"></span> Ինչ ենք առաջարկում
-        </button>
-        <button class="sa-menu-link" data-scroll="#cta">
-          <span class="sa-menu-dot"></span> Shopify խումբ
-        </button>
-        <button class="sa-menu-link" data-scroll="#upwork-consult">
-          <span class="sa-menu-dot"></span> Upwork խորհրդատվություն
-        </button>
-      </div>
-    </nav>
-
     <div class="sa-hero-inner">
 
       <div class="sa-hero-text">
-        <div class="sa-text-frame">
+        <div class="sa-text-frame sa-anim-frame">
           <h1>Մեզ հետ նոր մասնագիտությունը դառնում է իրական ֆրիլանս կարիերա</h1>
           <p>Աշխատանք միջազգային ֆրիլանս հարթակներում, որտեղ դու կարող ես սկսել քո կարիերան հենց ուսուցումից հետո։</p>
         </div>
@@ -628,7 +647,7 @@
     <div class="sa-offer-grid">
 
       <!-- Shopify card -->
-      <div class="sa-text-frame sa-offer-card">
+      <div class="sa-text-frame sa-offer-card sa-anim-frame">
         <h3>Shopify մասնագիտություն</h3>
         <p>
           Shopify-ը համաշխարհային ամենամեծ էլեկտրոնային առևտրի համակարգերից մեկն է,
@@ -641,7 +660,7 @@
       </div>
 
       <!-- Upwork card -->
-      <div class="sa-text-frame sa-offer-card">
+      <div class="sa-text-frame sa-offer-card sa-anim-frame">
         <h3>Upwork կարիերայի մեկնարկ</h3>
         <p>
           Upwork-ը աշխարհում ամենամեծ ֆրիլանս հարթակներից մեկն է,
@@ -654,7 +673,7 @@
       </div>
 
       <!-- AI tools card -->
-      <div class="sa-text-frame sa-offer-card">
+      <div class="sa-text-frame sa-offer-card sa-anim-frame">
         <h3>AI գործիքներ (բոնուս)</h3>
         <p>
           Սովորում ես արհեստական բանականության գործիքներ, որոնց միջոցով ավելի արագ ես աշխատում,
@@ -668,7 +687,7 @@
     </div>
 
     <!-- Price & course info -->
-    <div class="sa-text-frame sa-price-box">
+    <div class="sa-text-frame sa-price-box sa-anim-frame">
       <h3>Դասընթացի արժեքը</h3>
       <p>Փաթեթներ՝</p>
 
@@ -694,7 +713,7 @@
 
   <!-- =============== COUNTDOWN CTA SECTION =============== -->
   <section class="sa-cta" id="cta">
-    <div class="sa-text-frame sa-cta-inner">
+    <div class="sa-text-frame sa-cta-inner sa-anim-frame">
       <div>
         <h3 class="sa-cta-title">
           Հաջորդ Shopify խումբը մեկնարկում է՝ <span class="sa-cta-highlight">18 Դեկտեմբեր 2025</span>
@@ -734,7 +753,7 @@
   <section class="sa-upwork" id="upwork-consult">
     <h2 class="sa-section-title">Upwork խորհուրդատվություն մասնագետների համար</h2>
 
-    <div class="sa-text-frame sa-up-card">
+    <div class="sa-text-frame sa-up-card sa-anim-frame">
       <p>
         Եթե արդեն ունես մասնագիտություն և ցանկանում ես սկսել կարիերա Upwork հարթակում,
         այս հանդիպումը քեզ համար է։
@@ -783,7 +802,7 @@
           pre.classList.add("hidden");
 
           setTimeout(() => {
-            visual.classList.add("sa-visible");
+            if (visual) visual.classList.add("sa-visible");
             circles.forEach(c => c.classList.add("sa-floating"));
           }, 700);
         }
@@ -873,6 +892,29 @@
           toggle.classList.remove("open");
         });
       });
+    })();
+
+    /* SCROLL ZOOM ANIMATION FOR FRAMES */
+    (function(){
+      const frames = document.querySelectorAll(".sa-anim-frame");
+      if (!frames.length) return;
+
+      if (!("IntersectionObserver" in window)) {
+        frames.forEach(f => f.classList.add("in-view"));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+          } else {
+            entry.target.classList.remove("in-view");
+          }
+        });
+      }, { threshold: 0.25 });
+
+      frames.forEach(f => observer.observe(f));
     })();
   </script>
 
