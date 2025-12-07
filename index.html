@@ -8,8 +8,8 @@
   <style>
     :root {
       --sa-bg:   #EAE0D5;
-      --sa-text: #5E503F;
-      --sa-soft: #8A7B6B;
+      --sa-text: #4C3F35;
+      --sa-soft: #756A62;
 
       --sa-tone1: #C6AC8F;
       --sa-tone2: #E3D5CA;
@@ -19,6 +19,8 @@
 
     * {
       box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      font-smooth: always;
     }
 
     body {
@@ -65,14 +67,14 @@
     }
     .sa-count-content { text-align:center; }
     .sa-count-logo {
-      font-size: clamp(22px,5vw,28px);
+      font-size: clamp(22px,5vw,26px);
       font-weight:800;
       letter-spacing:.18em;
       text-transform:uppercase;
-      margin-bottom:16px;
+      margin-bottom:12px;
     }
     .sa-count-number {
-      font-size: clamp(64px,15vw,90px);
+      font-size: clamp(60px,14vw,90px);
       font-weight:900;
     }
 
@@ -119,13 +121,15 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
-      margin-bottom: 10px; /* a little more space after logo */
+      margin-bottom: 22px; /* MORE SPACE after logo */
     }
+
     .sa-logo {
-      font-size: clamp(26px,7vw,32px);
+      font-size: clamp(26px,7vw,30px);
       font-weight:900;
       letter-spacing:.18em;
     }
+
     .sa-menu-icon {
       width:2px;
       height:24px;
@@ -137,30 +141,31 @@
       flex:1;
       display:flex;
       flex-direction:column;
-      justify-content:space-between;
-      margin-top: 4px;
+      justify-content:flex-start;
+      margin-top: 0;
     }
 
-    .sa-hero-text {
-      margin-top: 6px;
-    }
+    /* TEXT BLOCK */
     .sa-hero-text h1 {
-      font-family: Georgia, serif;
-      font-size: clamp(40px,10vw,56px);
-      line-height:1.1;
-      margin:0 0 8px;
+      font-family: system-ui, sans-serif;
+      font-weight: 700;
+      font-size: clamp(30px, 7.5vw, 42px); /* smaller Armenian headline */
+      margin: 0 0 10px;
+      line-height: 1.2;
     }
+
     .sa-hero-text p {
-      font-size: clamp(18px,4.8vw,22px);
-      color:var(--sa-soft);
-      line-height:1.6;
-      margin:0 0 8px;
+      font-size: clamp(16px, 4.2vw, 20px); /* smaller subtitle */
+      line-height: 1.45;
+      margin: 0 0 10px;
+      color: var(--sa-soft);
+      max-width: 95%;
     }
 
     .sa-bold-line {
-      margin-top: 10px;
-      font-size: 20px;
-      line-height: 1.4;
+      font-size: clamp(15px, 3.8vw, 18px);
+      margin-top: 6px;
+      font-weight: 700;
     }
 
     /* ================= ROUND IMAGE FRAMES ================= */
@@ -169,29 +174,27 @@
       width: min(70vw, 340px);
       height: min(70vw, 340px);
       align-self:flex-end;
-      margin-top: 10px;
-      margin-bottom: 10px;
+      margin-top: 16px;
 
-      opacity: 0;                  /* start hidden */
-      transform: translateY(-40px);/* start higher (fall) */
+      opacity: 0;
+      transform: translateY(-40px);
       transition: opacity 0.8s ease, transform 0.9s ease;
     }
 
     .sa-hero-visual.sa-visible {
       opacity: 1;
-      transform: translateY(0);    /* falls into place */
+      transform: translateY(0);
     }
 
     .sa-portrait {
       position:absolute;
-      width: min(50vw, 260px);
-      height: min(50vw, 260px);
+      width: min(48vw, 240px);
+      height: min(48vw, 240px);
       border-radius:999px;
       overflow:hidden;
-      box-shadow:0 25px 45px rgba(0,0,0,0.22);
+      box-shadow:0 22px 42px rgba(0,0,0,0.22);
     }
 
-    /* image inside circle */
     .sa-portrait img {
       width:170%;
       height:170%;
@@ -200,25 +203,22 @@
       mix-blend-mode:multiply;
     }
 
-    /* TOP circle */
     .sa-portrait--tone1 {
-      right:-10px;
+      right:-14px;
       top:0;
       background:var(--sa-tone1);
       animation: saFloatA 12s ease-in-out infinite alternate;
-      animation-play-state: paused; /* start later */
+      animation-play-state: paused;
     }
 
-    /* BOTTOM circle */
     .sa-portrait--tone2 {
       left:0;
-      bottom:-12px;
+      bottom:-14px;
       background:var(--sa-tone2);
       animation: saFloatB 13s ease-in-out infinite alternate;
       animation-play-state: paused;
     }
 
-    /* FLOATING KEYFRAMES */
     @keyframes saFloatA {
       0%   { transform:translate(0,0); }
       25%  { transform:translate(14px,-18px); }
@@ -235,99 +235,50 @@
       100% { transform:translate(8px,-10px); }
     }
 
-    /* class that starts the floating */
     .sa-floating {
       animation-play-state: running !important;
     }
 
-    /* ================= DESKTOP ================= */
-    @media (min-width: 900px) {
-      .sa-hero {
-        padding:32px 8vw 40px;
-      }
-      .sa-hero-inner {
-        flex-direction:row;
-        align-items:center;
-        justify-content:space-between;
-        margin-top:10vh;
-      }
-      .sa-hero-text {
-        max-width:520px;
-      }
-      .sa-hero-visual {
-        width:380px;
-        height:380px;
-        margin-bottom:0;
-      }
-      .sa-portrait {
-        width:260px;
-        height:260px;
-      }
-    }
-
-    /* ================= MOBILE: TEXT UNDER LOGO, BIGGER, LESS SPACE ================= */
+    /* ================= MOBILE OVERRIDES ================= */
     @media (max-width: 600px) {
 
-      .sa-hero {
-        padding: 10px 16px 18px !important;
-      }
-
       .sa-hero-header {
-        margin-bottom: 10px !important; /* more space after logo on mobile */
-      }
-
-      .sa-hero-inner {
-        margin-top: 2px !important;
+        margin-bottom: 24px !important;
       }
 
       .sa-hero-text {
-        margin-top: 6px !important;
+        margin-top: 0;
       }
 
       .sa-hero-text h1 {
-        font-size: 54px !important;
-        line-height: 1.05 !important;
-        margin: 0 0 4px !important;
+        font-size: 38px !important; /* finally correct mobile size */
+        line-height: 1.22 !important;
       }
 
       .sa-hero-text p {
-        font-size: 24px !important;
-        line-height: 1.4 !important;
-        margin: 0 0 4px !important;
-        max-width: 95%;
+        font-size: 17px !important;
       }
 
       .sa-bold-line {
-        font-size: 22px;
-        margin-top: 8px;
+        font-size: 16px !important;
       }
 
       .sa-hero-visual {
-        width: 260px !important;
-        height: 260px !important;
-        margin-top: 8px !important;
+        width: 250px !important;
+        height: 250px !important;
       }
 
       .sa-portrait {
-        width: 210px !important;
-        height: 210px !important;
+        width: 200px !important;
+        height: 200px !important;
       }
 
-      .sa-portrait--tone1 {
-        top: -6px !important;
-        right: -18px !important;
-      }
-
-      .sa-portrait--tone2 {
-        bottom: -10px !important;
-        left: -12px !important;
-      }
     }
   </style>
 </head>
 <body>
 
-  <!-- =============== COUNTDOWN PRELOADER =============== -->
+  <!-- =============== PRELOADER =============== -->
   <div id="countdownPreloader" class="sa-count-preloader">
     <div class="sa-count-wrapper">
       <div class="sa-count-circle"></div>
@@ -338,45 +289,46 @@
     </div>
   </div>
 
-  <!-- =============== SMOKE EFFECT LAYER =============== -->
+  <!-- =============== SMOKE =============== -->
   <div id="smoke-area-sa"></div>
 
-  <!-- =============== MAIN HERO SECTION =============== -->
+  <!-- =============== HERO =============== -->
   <section class="sa-hero">
+
     <header class="sa-hero-header">
       <div class="sa-logo">SUCCESS ACADEMY</div>
       <div class="sa-menu-icon"></div>
     </header>
 
     <div class="sa-hero-inner">
+
       <div class="sa-hero-text">
         <h1>Մեզ հետ նոր մասնագիտությունը դառնում է իրական ֆրիլանս կարիերա</h1>
 
         <p>Աշխատանք միջազգային ֆրիլանս հարթակներում, որտեղ դու կարող ես սկսել քո կարիերան հենց ուսուցումից հետո։</p>
 
-        <div class="sa-bold-line">
-          <strong>Մեզ հետ դու սկսում ես ոչ թե դաս, այլ կարիերա։</strong>
-        </div>
+        <div class="sa-bold-line"><strong>Մեզ հետ դու սկսում ես ոչ թե դաս, այլ կարիերա։</strong></div>
       </div>
 
       <div class="sa-hero-visual">
         <div class="sa-portrait sa-portrait--tone1">
-          <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0428.jpg?v=1765128580" alt="">
+          <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0428.jpg?v=1765128580">
         </div>
 
         <div class="sa-portrait sa-portrait--tone2">
-          <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579" alt="">
+          <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579">
         </div>
       </div>
+
     </div>
   </section>
 
   <script>
-    /* =============== PRELOADER COUNTDOWN + IMAGE DELAY =============== */
+    /* PRELOADER + DELAYED FLOATING */
     (function(){
-      const pre     = document.getElementById("countdownPreloader");
-      const num     = document.getElementById("countNumber");
-      const visual  = document.querySelector(".sa-hero-visual");
+      const pre = document.getElementById("countdownPreloader");
+      const num = document.getElementById("countNumber");
+      const visual = document.querySelector(".sa-hero-visual");
       const circles = document.querySelectorAll(".sa-portrait");
 
       let count = 3;
@@ -387,21 +339,17 @@
           num.textContent = count;
         } else {
           clearInterval(timer);
-          // hide preloader
           pre.classList.add("hidden");
 
-          // after preloader is gone, wait a bit, then show circles & start floating
           setTimeout(() => {
-            if (visual) {
-              visual.classList.add("sa-visible");  // fade + fall in
-            }
-            circles.forEach(c => c.classList.add("sa-floating")); // start float animation
-          }, 800); // delay after preloader disappears
+            visual.classList.add("sa-visible");
+            circles.forEach(c => c.classList.add("sa-floating"));
+          }, 700);
         }
       }, 1000);
     })();
 
-    /* =============== SMOKE EFFECT =============== */
+    /* SMOKE EFFECT */
     (function(){
       const smoke = document.getElementById("smoke-area-sa");
 
@@ -415,7 +363,6 @@
       }
 
       window.addEventListener("mousemove", e => puff(e.clientX, e.clientY));
-
       window.addEventListener("touchmove", e => {
         if (!e.touches.length) return;
         const t = e.touches[0];
@@ -423,5 +370,6 @@
       }, { passive:true });
     })();
   </script>
+
 </body>
 </html>
