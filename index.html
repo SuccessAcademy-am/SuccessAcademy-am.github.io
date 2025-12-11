@@ -10,8 +10,6 @@
   <meta property="og:description" content="Սովորիր Shopify, Upwork և AI գործիքներ, ստեղծիր իրական ֆրիլանս կարիերա Success Academy-ի հետ։" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0434.jpg?v=1765139942" />
-  <!-- optionally also set URL if you already know the domain -->
-  <!-- <meta property="og:url" content="https://your-domain.com"> -->
 
   <!-- Twitter card (optional, also shows logo) -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -299,7 +297,7 @@
         rgba(255, 255, 255, 0.7),
         transparent 60%);
       opacity: 0;
-      transform: translate3d(-40px, 0, 0);
+      transform: translate3d(-60px, 0, 0);
       animation: saCardGlow 8s ease-in-out infinite;
       pointer-events: none;
     }
@@ -344,8 +342,8 @@
     /* ================= ROUND FLOATING IMAGES ================= */
     .sa-hero-visual {
       position:relative;
-      width: min(90vw, 420px);   /* more space for floating */
-      height: min(90vw, 420px);  /* more space for floating */
+      width: min(95vw, 460px);   /* bigger space for floating */
+      height: min(95vw, 460px);  /* bigger space for floating */
       align-self:flex-end;
 
       opacity: 0;
@@ -362,18 +360,13 @@
 
     .sa-portrait {
       position:absolute;
-      width: min(60vw, 260px);   /* a bit bigger inside larger circle */
-      height: min(60vw, 260px);
+      width: min(55vw, 230px);   /* a bit smaller inside larger circle */
+      height: min(55vw, 230px);
       border-radius:999px;
       overflow:hidden;
       box-shadow:0 22px 42px rgba(0,0,0,0.18);
-      touch-action: none;   /* allow touch drag without scrolling */
-      cursor: grab;
-    }
-
-    .sa-portrait.sa-dragging {
-      cursor: grabbing;
-      animation: none !important; /* stop float during drag */
+      pointer-events: none;  /* no dragging / no touch interaction */
+      cursor: default;
     }
 
     .sa-portrait img {
@@ -384,18 +377,18 @@
       mix-blend-mode:multiply;
     }
 
-    /* BIGGER FLOAT DISTANCE */
+    /* positions adjusted to avoid overlap + smaller float distance */
     .sa-portrait--tone1 {
-      right:-18px;
-      top:-6px;
+      right: 30px;
+      top: 20px;
       background:var(--sa-tone1);
       animation: saFloatA 14s ease-in-out infinite alternate;
       animation-play-state: paused;
     }
 
     .sa-portrait--tone2 {
-      left:-18px;
-      bottom:-10px;
+      left: 30px;
+      bottom: 20px;
       background:var(--sa-tone2);
       animation: saFloatB 16s ease-in-out infinite alternate;
       animation-play-state: paused;
@@ -403,18 +396,18 @@
 
     @keyframes saFloatA {
       0%   { transform:translate(0,0); }
-      25%  { transform:translate(24px,-32px); }
-      50%  { transform:translate(-26px,20px); }
-      75%  { transform:translate(30px,26px); }
-      100% { transform:translate(-18px,-22px); }
+      25%  { transform:translate(14px,-18px); }
+      50%  { transform:translate(-16px,12px); }
+      75%  { transform:translate(18px,16px); }
+      100% { transform:translate(-12px,-14px); }
     }
 
     @keyframes saFloatB {
       0%   { transform:translate(0,0); }
-      25%  { transform:translate(-26px,-24px); }
-      50%  { transform:translate(30px,18px); }
-      75%  { transform:translate(-28px,30px); }
-      100% { transform:translate(18px,-20px); }
+      25%  { transform:translate(-16px,-16px); }
+      50%  { transform:translate(18px,10px); }
+      75%  { transform:translate(-18px,18px); }
+      100% { transform:translate(12px,-12px); }
     }
 
     .sa-floating {
@@ -582,7 +575,6 @@
       margin-top: 8px;
     }
 
-    /* make sure frame doesn't overlap title */
     .sa-up-card {
       margin-top: 18px;
       display: block;
@@ -605,13 +597,13 @@
       }
 
       .sa-hero-visual {
-        width: 280px !important;   /* bigger circle on mobile */
-        height: 280px !important;
+        width: 320px !important;   /* bigger circle on mobile */
+        height: 320px !important;
       }
 
       .sa-portrait {
-        width: 220px !important;   /* bigger portraits on mobile */
-        height: 220px !important;
+        width: 240px !important;   /* nice big portraits on mobile */
+        height: 240px !important;
       }
 
       .sa-section-title {
@@ -1005,113 +997,6 @@
       }, { threshold: 0.25 });
 
       frames.forEach(f => observer.observe(f));
-    })();
-
-    /* DRAGGABLE HERO IMAGES (MOBILE + DESKTOP) */
-    (function () {
-      const container = document.querySelector(".sa-hero-visual");
-      if (!container) return;
-
-      const portraits = container.querySelectorAll(".sa-portrait");
-      if (!portraits.length) return;
-
-      portraits.forEach(setupDraggable);
-
-      function setupDraggable(el) {
-        let isDragging = false;
-        let pointerOffsetX = 0;
-        let pointerOffsetY = 0;
-        let elWidth = 0;
-        let elHeight = 0;
-
-        function pointerDown(clientX, clientY, isTouchEvent) {
-          isDragging = true;
-          el.classList.add("sa-dragging");
-
-          // switch control purely to left/top
-          el.style.right = "auto";
-          el.style.bottom = "auto";
-
-          const rect = el.getBoundingClientRect();
-          const contRect = container.getBoundingClientRect();
-
-          elWidth = rect.width;
-          elHeight = rect.height;
-
-          // point where user grabbed the element
-          pointerOffsetX = clientX - rect.left;
-          pointerOffsetY = clientY - rect.top;
-
-          if (isTouchEvent) {
-            document.addEventListener("touchmove", touchMove, { passive: false });
-            document.addEventListener("touchend", pointerUp);
-            document.addEventListener("touchcancel", pointerUp);
-          } else {
-            document.addEventListener("mousemove", mouseMove);
-            document.addEventListener("mouseup", pointerUp);
-          }
-
-          moveTo(clientX, clientY);
-        }
-
-        function pointerUp() {
-          if (!isDragging) return;
-          isDragging = false;
-          el.classList.remove("sa-dragging");
-
-          document.removeEventListener("mousemove", mouseMove);
-          document.removeEventListener("mouseup", pointerUp);
-          document.removeEventListener("touchmove", touchMove);
-          document.removeEventListener("touchend", pointerUp);
-          document.removeEventListener("touchcancel", pointerUp);
-        }
-
-        function moveTo(clientX, clientY) {
-          if (!isDragging) return;
-
-          const contRect = container.getBoundingClientRect();
-
-          let x = clientX - contRect.left - pointerOffsetX;
-          let y = clientY - contRect.top - pointerOffsetY;
-
-          // keep element inside the container bounds
-          const maxX = contRect.width - elWidth;
-          const maxY = contRect.height - elHeight;
-
-          x = Math.max(0, Math.min(maxX, x));
-          y = Math.max(0, Math.min(maxY, y));
-
-          el.style.left = x + "px";
-          el.style.top = y + "px";
-        }
-
-        function mouseDown(e) {
-          e.preventDefault();
-          pointerDown(e.clientX, e.clientY, false);
-        }
-
-        function mouseMove(e) {
-          e.preventDefault();
-          moveTo(e.clientX, e.clientY);
-        }
-
-        function touchStart(e) {
-          if (!e.touches || !e.touches.length) return;
-          const t = e.touches[0];
-          e.preventDefault();
-          pointerDown(t.clientX, t.clientY, true);
-        }
-
-        function touchMove(e) {
-          if (!e.touches || !e.touches.length) return;
-          const t = e.touches[0];
-          e.preventDefault();
-          moveTo(t.clientX, t.clientY);
-        }
-
-        el.addEventListener("mousedown", mouseDown);
-        el.addEventListener("touchstart", touchStart, { passive: false });
-      }
     })();
   </script>
 
