@@ -1,190 +1,262 @@
 <!DOCTYPE html>
 <html lang="hy">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Success Academy</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#EAE0D5;
-  --text:#7f5539;
-  --soft:#a68a71;
-  --smoke:#d4a373;
-
-  --portrait-size: 260px;
-}
-
-*{box-sizing:border-box}
-body{
-  margin:0;
-  background:var(--bg);
-  font-family:Inter,sans-serif;
-  color:var(--text);
-  overflow-x:hidden;
-}
-
-/* ================= HERO ================= */
-.hero{
-  padding:24px;
-}
-
-.hero-card{
-  background:#fff;
-  border-radius:20px;
-  padding:20px;
-  box-shadow:0 18px 32px rgba(0,0,0,.12);
-}
-
-.hero-card h1{
-  margin:0 0 10px;
-  font-size:28px;
-}
-.hero-card p{
-  margin:0;
-  color:var(--soft);
-}
-
-/* ================= VISUAL ================= */
-.visual{
-  position:relative;
-  width:100%;
-  height:360px;
-  margin-top:30px;
-}
-
-/* === TRUE CIRCLE FIX (IMPORTANT) === */
-.portrait{
-  position:absolute;
-  width:var(--portrait-size);
-  height:var(--portrait-size);     /* force square */
-  border-radius:50%;
-  overflow:hidden;                /* CLIPS IMAGE */
-  box-shadow:0 24px 48px rgba(0,0,0,.2);
-  background:#fff;
-  animation-play-state:paused;
-}
-
-/* Image inside */
-.portrait img{
-  width:160%;
-  height:160%;
-  object-fit:cover;
-  object-position:center top;
-  display:block;
-}
-
-/* === SMOKE AURA === */
-.portrait::before{
-  content:"";
-  position:absolute;
-  inset:-36px;
-  border-radius:50%;
-  background:radial-gradient(circle,
-    rgba(212,163,115,.75) 0%,
-    rgba(212,163,115,.35) 40%,
-    rgba(212,163,115,.12) 60%,
-    rgba(212,163,115,0) 78%);
-  filter:blur(14px);
-  animation:smokePulse 3.2s ease-in-out infinite;
-  z-index:0;
-}
-
-@keyframes smokePulse{
-  0%,100%{transform:scale(.98);opacity:.8}
-  50%{transform:scale(1.08);opacity:1}
-}
-
-/* Desktop float */
-.p1{
-  right:10%;
-  top:0;
-  animation:floatA 14s ease-in-out infinite alternate;
-}
-.p2{
-  left:10%;
-  bottom:0;
-  animation:floatB 16s ease-in-out infinite alternate;
-}
-
-@keyframes floatA{
-  from{transform:translate(0,0)}
-  to{transform:translate(18px,-20px)}
-}
-@keyframes floatB{
-  from{transform:translate(0,0)}
-  to{transform:translate(-18px,20px)}
-}
-
-.floating{animation-play-state:running}
-
-/* ================= MOBILE FIX ================= */
-@media(max-width:600px){
   :root{
-    --portrait-size: 220px;
+    --bg:#EAE0D5;
+    --text:#7f5539;
+    --soft:#a68a71;
+
+    --ring:#1F1F21;               /* black ring */
+    --smoke: 212,163,115;         /* smoke RGB */
+
+    --size: 260px;                /* circle size (desktop) */
+    --ringW: 6px;                 /* ring stroke width */
+
+    --overlap: 15%;               /* mobile overlap */
   }
 
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    font-family:Inter, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+  }
+
+  /* simple header */
+  .header{
+    position:sticky; top:0; z-index:50;
+    padding:14px 18px;
+    background:rgba(234,224,213,.85);
+    backdrop-filter: blur(12px);
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{ font-weight:800; letter-spacing:.08em; font-size:24px; }
+
+  .wrap{ padding:18px; }
+  .card{
+    background:rgba(255,255,255,.88);
+    border:1px solid rgba(127,85,57,.20);
+    border-radius:20px;
+    padding:18px;
+    box-shadow:0 18px 32px rgba(0,0,0,.10);
+  }
+  h1{ margin:0 0 10px; font-size:28px; line-height:1.25; }
+  p{ margin:0; color:var(--soft); line-height:1.5; }
+
+  /* ===== Visual area ===== */
   .visual{
-    height:300px;
+    position:relative;
+    width:min(96vw, 520px);
+    height:420px;
+    margin:26px auto 0;
+    overflow:visible;
   }
 
-  /* 15% overlap EXACT */
-  .p1{
-    left:50%;
-    right:auto;
-    top:10px;
-    transform:translateX(calc(-50% - 15%));
-    animation:floatMobileA 10s ease-in-out infinite alternate;
+  /* Photo circle */
+  .portrait{
+    position:absolute;
+    width:var(--size);
+    height:var(--size);
+    border-radius:50%;
+    overflow:hidden;                 /* clip photo */
+    background:#fff;
+    box-shadow:0 22px 42px rgba(0,0,0,.16);
+    z-index:2;
+    will-change: transform;
   }
-  .p2{
-    left:50%;
-    bottom:auto;
-    top:30px;
-    transform:translateX(calc(-50% + 15%));
-    animation:floatMobileB 12s ease-in-out infinite alternate;
+  .portrait img{
+    width:160%;
+    height:160%;
+    object-fit:cover;
+    object-position:center top;
+    display:block;
+    transform: translateZ(0);
   }
 
-  @keyframes floatMobileA{
-    from{transform:translateX(calc(-50% - 15%)) translateY(0)}
-    to{transform:translateX(calc(-50% - 15%)) translateY(-12px)}
+  /* Black ring frame OUTSIDE image */
+  .portrait::after{
+    content:"";
+    position:absolute;
+    inset: calc(-1 * var(--ringW));  /* outside the photo edge */
+    border-radius:50%;
+    border: var(--ringW) solid var(--ring);
+    pointer-events:none;
+    z-index:5;
   }
-  @keyframes floatMobileB{
-    from{transform:translateX(calc(-50% + 15%)) translateY(0)}
-    to{transform:translateX(calc(-50% + 15%)) translateY(12px)}
+
+  /* extra decorative rings (empty circles like in screenshot) */
+  .ring{
+    position:absolute;
+    width: calc(var(--size) * 1.25);
+    height: calc(var(--size) * 1.25);
+    border-radius:50%;
+    border: var(--ringW) solid var(--ring);
+    z-index:1;
+    pointer-events:none;
+    opacity:1;
   }
-}
+
+  /* positions (desktop) */
+  .p1{ left:18px; top:90px; animation: floatA 10s ease-in-out infinite alternate; }
+  .p2{ left:160px; top:130px; animation: floatB 11.5s ease-in-out infinite alternate; }
+
+  .r1{ left:-40px; top:60px; transform: rotate(-10deg); }
+  .r2{ left:210px; top:220px; transform: rotate(12deg); }
+
+  /* floating */
+  @keyframes floatA{
+    from{ transform: translate(0,0); }
+    to  { transform: translate(14px,-10px); }
+  }
+  @keyframes floatB{
+    from{ transform: translate(0,0); }
+    to  { transform: translate(-12px,12px); }
+  }
+
+  /* Smoke puffs (created by JS) - placed OUTSIDE ring */
+  .smoke-puff{
+    position:absolute;
+    width:28px; height:28px;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:6; /* above rings */
+    background: radial-gradient(circle,
+      rgba(var(--smoke), .70) 0%,
+      rgba(var(--smoke), .28) 45%,
+      rgba(var(--smoke), .10) 62%,
+      rgba(var(--smoke), 0) 78%
+    );
+    filter: blur(10px);
+    mix-blend-mode: soft-light;
+    animation: puff 1.9s ease-out forwards;
+  }
+  @keyframes puff{
+    0%   { transform: translate(0,0) scale(.9); opacity:1; }
+    100% { transform: translate(var(--dx), var(--dy)) scale(3.0); opacity:0; }
+  }
+
+  /* ===== Mobile fixes (match your screenshot style) ===== */
+  @media (max-width:600px){
+    :root{
+      --size: 230px;
+      --ringW: 6px;
+    }
+    .visual{ height:360px; }
+
+    /* keep overlap ~15% */
+    .p1{
+      left:50%;
+      top:105px;
+      transform: translateX(calc(-50% - var(--overlap)));
+      animation: floatMobileA 9.8s ease-in-out infinite alternate;
+    }
+    .p2{
+      left:50%;
+      top:120px;
+      transform: translateX(calc(-50% + var(--overlap)));
+      animation: floatMobileB 11.2s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatMobileA{
+      from{ transform: translateX(calc(-50% - var(--overlap))) translateY(0); }
+      to  { transform: translateX(calc(-50% - var(--overlap))) translateY(-10px); }
+    }
+    @keyframes floatMobileB{
+      from{ transform: translateX(calc(-50% + var(--overlap))) translateY(0); }
+      to  { transform: translateX(calc(-50% + var(--overlap))) translateY(10px); }
+    }
+
+    /* rings like screenshot */
+    .r1{ left:-60px; top:110px; }
+    .r2{ left:140px; top:210px; }
+  }
 </style>
 </head>
 
 <body>
-
-<section class="hero">
-  <div class="hero-card">
-    <h1>Ֆրիլանս կարիերա</h1>
-    <p>Միջազգային հարթակներում աշխատելու հստակ ուղի</p>
-  </div>
-
-  <div class="visual">
-    <div class="portrait p1">
-      <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579">
-    </div>
-
-    <div class="portrait p2">
-      <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0428.jpg?v=1765128580">
+  <div class="header">
+    <div class="logo">SUCCESS ACADEMY</div>
+    <div style="width:40px;height:40px;border-radius:999px;background:#fff;display:grid;place-items:center;box-shadow:0 10px 22px rgba(0,0,0,.12);">
+      ♥
     </div>
   </div>
-</section>
+
+  <div class="wrap">
+    <div class="card">
+      <h1>Ֆրիլանս կարիերա</h1>
+      <p>Միջազգային հարթակներում աշխատելու հստակ ուղի</p>
+    </div>
+
+    <div class="visual" id="visual">
+      <!-- decorative rings -->
+      <div class="ring r1"></div>
+      <div class="ring r2"></div>
+
+      <!-- portraits -->
+      <div class="portrait p1" id="p1">
+        <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579" alt="">
+      </div>
+
+      <div class="portrait p2" id="p2">
+        <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0428.jpg?v=1765128580" alt="">
+      </div>
+    </div>
+  </div>
 
 <script>
-/* start floating after load */
-window.addEventListener("load",()=>{
-  document.querySelectorAll(".portrait").forEach(p=>{
-    p.classList.add("floating");
-  });
-});
-</script>
+  // Smoke OUTSIDE the ring frame (not inside image)
+  (function(){
+    const visual = document.getElementById("visual");
+    const portraits = [document.getElementById("p1"), document.getElementById("p2")];
+    if(!visual || portraits.some(x => !x)) return;
 
+    function spawnOutsideRing(el){
+      const v = visual.getBoundingClientRect();
+      const r = el.getBoundingClientRect();
+
+      // center of portrait relative to visual
+      const cx = (r.left + r.width/2) - v.left;
+      const cy = (r.top  + r.height/2) - v.top;
+
+      // radius: slightly OUTSIDE the ring
+      const radius = (r.width/2) + 10;
+
+      // random angle around circle
+      const a = Math.random() * Math.PI * 2;
+      const x = cx + Math.cos(a) * radius;
+      const y = cy + Math.sin(a) * radius;
+
+      // drift outward-ish
+      const dx = (Math.cos(a) * (30 + Math.random()*35)) + (Math.random()*18 - 9);
+      const dy = (Math.sin(a) * (30 + Math.random()*35)) + (Math.random()*18 - 9) - 10;
+
+      const puff = document.createElement("div");
+      puff.className = "smoke-puff";
+      puff.style.left = x + "px";
+      puff.style.top  = y + "px";
+      puff.style.setProperty("--dx", dx + "px");
+      puff.style.setProperty("--dy", dy + "px");
+
+      visual.appendChild(puff);
+      setTimeout(()=>puff.remove(), 1900);
+    }
+
+    // start loop
+    setInterval(() => {
+      portraits.forEach(el => {
+        if(Math.random() < 0.92) spawnOutsideRing(el);
+      });
+    }, 260);
+  })();
+</script>
 </body>
 </html>
