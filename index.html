@@ -1,243 +1,746 @@
 <!DOCTYPE html>
 <html lang="hy">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Success Academy</title>
+  <meta charset="UTF-8" />
+  <title>Success Academy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --bg:#EAE0D5;
-  --text:#7f5539;
-  --soft:#a68a71;
+  <style>
+    :root {
+      --sa-bg:   #EAE0D5;
+      --sa-text: #7f5539;
+      --sa-soft: #a68a71;
+      --sa-tone1: #C6AC8F;
+      --sa-tone2: #E3D5CA;
+    }
 
-  --ring:#1F1F21;
-  --smoke: 212,163,115;
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+    body {
+      margin: 0;
+      background: var(--sa-bg);
+      font-family: 'Inter', sans-serif;
+      color: var(--sa-text);
+      overflow-x: hidden;
+    }
+    html { scroll-behavior: smooth; }
 
-  /* sizes */
-  --photoSize: 240px;      /* photo circle size */
-  --ringSize: 360px;       /* big ring size */
-  --ringW: 6px;
+    /* ================= PRELOADER ================= */
+    .sa-count-preloader {
+      position: fixed;
+      inset: 0;
+      background: var(--sa-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999999;
+      transition: opacity .6s ease, visibility .6s ease;
+    }
+    .sa-count-preloader.hidden { opacity: 0; visibility: hidden; }
+    .sa-count-wrapper {
+      position: relative;
+      width: min(75vw, 380px);
+      height: min(75vw, 380px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sa-count-circle {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 3px solid var(--sa-text);
+      animation: saCirclePulse 2.5s ease-in-out infinite;
+    }
+    @keyframes saCirclePulse {
+      0%,100% { transform: scale(.96); opacity:.9 }
+      50%     { transform: scale(1);   opacity:1 }
+    }
+    .sa-count-content { text-align:center; }
+    .sa-count-logo {
+      font-size: clamp(22px,5vw,26px);
+      font-weight:800;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      margin-bottom:12px;
+    }
+    .sa-count-number { font-size: clamp(60px,14vw,90px); font-weight:900; }
 
-  /* overlap/position control (DESKTOP) */
-  --p1-x: 20px;   --p1-y: 90px;
-  --p2-x: 155px;  --p2-y: 120px;
+    /* =============== STICKY HEADER (LOGO + MENU) =============== */
+    .sa-main-header {
+      position: sticky;
+      top: 0;
+      z-index: 9000;
+      padding: 14px 22px 10px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: linear-gradient(
+        to bottom,
+        rgba(234,224,213,0.98),
+        rgba(234,224,213,0.95),
+        rgba(234,224,213,0.90),
+        rgba(234,224,213,0.75)
+      );
+    }
 
-  --r1-x: -60px;  --r1-y: 70px;
-  --r2-x: 140px;  --r2-y: 220px;
-}
+    .sa-logo {
+      font-size: 28px;
+      font-weight:800;
+      letter-spacing:0.08em;
+      white-space:nowrap;
+    }
 
-/* ===== Mobile layout (match your screenshot) ===== */
-@media (max-width:600px){
-  :root{
-    --photoSize: 230px;
-    --ringSize: 360px;
-    --ringW: 6px;
+    .sa-menu-toggle {
+      min-width: 44px;
+      height: 40px;
+      border-radius: 999px;
+      border: none;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0 14px;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+      position: relative;
+      animation: saHeartPulse 1.3s ease-in-out infinite;
+    }
+    .sa-menu-toggle span {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--sa-text);
+      line-height: 1;
+    }
+    @keyframes saHeartPulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(127,85,57,0.45); }
+      40% { transform: scale(1.08); box-shadow: 0 0 0 12px rgba(127,85,57,0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(127,85,57,0); }
+    }
 
-    /* ✅ MOBILE positions (adjust if you want) */
-    --p1-x: 18px;   --p1-y: 115px;
-    --p2-x: 145px;  --p2-y: 132px;
+    .sa-menu-panel {
+      position: fixed;
+      top: 70px;
+      right: 14px;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px);
+      transition: opacity .25s ease, transform .25s ease;
+    }
+    .sa-menu-panel.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
 
-    --r1-x: -120px; --r1-y: 120px;
-    --r2-x: 120px;  --r2-y: 245px;
-  }
-}
+    .sa-menu-card {
+      padding: 12px 16px 10px;
+      display:flex;
+      flex-direction:column;
+      gap: 4px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 18px 32px rgba(0,0,0,0.22);
+      border: 1px solid rgba(127,85,57,0.18);
+      min-width: 230px;
+    }
+    .sa-menu-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      opacity: 0.6;
+      margin-bottom: 4px;
+    }
+    .sa-menu-link {
+      background: transparent;
+      border: none;
+      text-align: left;
+      font-size: 14px;
+      padding: 6px 4px;
+      cursor: pointer;
+      color: var(--sa-text);
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+    .sa-menu-dot {
+      width:6px;
+      height:6px;
+      border-radius:999px;
+      background: var(--sa-text);
+      opacity:0.6;
+    }
+    .sa-menu-link:hover { opacity: 0.85; }
+    .sa-menu-close { margin-top: 6px; font-size: 13px; justify-content: flex-end; opacity: 0.8; }
 
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Inter, sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
-}
+    /* ================= HERO ================= */
+    .sa-hero {
+      min-height: 100vh;
+      padding: 10px 22px 50px;
+      display:flex;
+      flex-direction:column;
+      background: var(--sa-bg);
+    }
+    .sa-hero-inner { display:flex; flex-direction:column; }
 
-.header{
-  position:sticky; top:0; z-index:50;
-  padding:14px 18px;
-  background:rgba(234,224,213,.85);
-  backdrop-filter: blur(12px);
-  display:flex; justify-content:space-between; align-items:center;
-}
-.logo{font-weight:800; letter-spacing:.08em; font-size:24px;}
+    .sa-text-frame {
+      display: inline-block;
+      padding: 16px 18px 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(127, 85, 57, 0.25);
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 18px 32px rgba(0, 0, 0, 0.10);
+      position: relative;
+      overflow: hidden;
+    }
 
-.wrap{padding:18px;}
-.card{
-  background:rgba(255,255,255,.88);
-  border:1px solid rgba(127,85,57,.20);
-  border-radius:20px;
-  padding:18px;
-  box-shadow:0 18px 32px rgba(0,0,0,.10);
-}
-h1{margin:0 0 10px; font-size:28px; line-height:1.2;}
-p{margin:0; color:var(--soft); line-height:1.5;}
+    .sa-hero-text h1 {
+      font-weight: 600;
+      font-size: clamp(26px, 7vw, 34px);
+      margin: 0 0 8px;
+      line-height: 1.35;
+      max-width: 92%;
+    }
+    .sa-hero-text p {
+      font-weight: 400;
+      font-size: clamp(16px, 4.2vw, 19px);
+      line-height: 1.5;
+      margin: 0;
+      max-width: 95%;
+      color: var(--sa-soft);
+    }
 
-.visual{
-  position:relative;
-  width:min(96vw, 520px);
-  height:420px;
-  margin:22px auto 0;
-  overflow:visible;
-}
+    .sa-anim-frame {
+      opacity: 0;
+      transform: scale(0.96) translateY(26px);
+      transition: opacity .6s ease, transform .6s ease, box-shadow .6s ease;
+    }
+    .sa-anim-frame.in-view {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
 
-/* ===== Big rings (BEHIND photos) ===== */
-.ring{
-  position:absolute;
-  width:var(--ringSize);
-  height:var(--ringSize);
-  border-radius:50%;
-  border:var(--ringW) solid var(--ring);
-  z-index:1;
-  pointer-events:none;
-}
+    /* ================== RESTORED TWO ROUND FLOATING IMAGES ================== */
+    .sa-hero-visual{
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      height: 320px;
+      margin: 28px auto 0;
+    }
 
-.r1{ left:var(--r1-x); top:var(--r1-y); }
-.r2{ left:var(--r2-x); top:var(--r2-y); }
+    .sa-portrait{
+      position: absolute;
+      width: 220px;
+      height: 220px;            /* iOS safe */
+      border-radius: 50%;
+      overflow: hidden;         /* clip */
+      box-shadow: 0 22px 42px rgba(0,0,0,.18);
+      background: #fff;
+      pointer-events: none;
+      will-change: transform;
+    }
+    .sa-portrait img{
+      width: 150%;
+      height: 150%;
+      object-fit: cover;
+      object-position: center top;
+      display:block;
+    }
 
-/* ===== Photo circles (ON TOP) ===== */
-.portrait{
-  position:absolute;
-  width:var(--photoSize);
-  height:var(--photoSize);     /* ✅ force true circle */
-  border-radius:50%;
-  overflow:hidden;             /* ✅ clip image */
-  background:#fff;
-  box-shadow:0 24px 48px rgba(0,0,0,.18);
-  z-index:3;
-  will-change: transform;
-}
+    .sa-portrait--one{
+      left: 0;
+      top: 20px;
+      animation: saFloatA 12s ease-in-out infinite alternate;
+    }
+    .sa-portrait--two{
+      right: 0;
+      top: 40px;
+      animation: saFloatB 14s ease-in-out infinite alternate;
+    }
 
-/* photo inside */
-.portrait img{
-  width:160%;
-  height:160%;
-  object-fit:cover;
-  object-position:center top;
-  display:block;
-}
+    @keyframes saFloatA{
+      from{ transform: translate(0,0); }
+      to{   transform: translate(14px,-10px); }
+    }
+    @keyframes saFloatB{
+      from{ transform: translate(0,0); }
+      to{   transform: translate(-14px,12px); }
+    }
 
-/* thin ring on the photo itself (optional, looks like your screenshot) */
-.portrait::after{
-  content:"";
-  position:absolute;
-  inset: calc(-1 * var(--ringW));
-  border-radius:50%;
-  border: var(--ringW) solid var(--ring);
-  z-index:5;
-  pointer-events:none;
-}
+    /* MOBILE: 15% overlap, still floating */
+    @media (max-width: 600px){
+      .sa-logo { font-size: 24px !important; }
+      .sa-hero-text h1 { font-size: 26px !important; line-height: 1.35 !important; }
+      .sa-hero-text p { font-size: 16px !important; }
 
-/* positions (exactly controlled) */
-.p1{ left:var(--p1-x); top:var(--p1-y); }
-.p2{ left:var(--p2-x); top:var(--p2-y); }
+      .sa-hero-visual{ height: 300px; }
 
-/* Floating (keeps your exact base position using translate3d) */
-.p1{ animation: float1 10s ease-in-out infinite alternate; }
-.p2{ animation: float2 12s ease-in-out infinite alternate; }
+      .sa-portrait{
+        width: 200px;
+        height: 200px;
+      }
 
-@keyframes float1{
-  from{ transform: translate3d(0,0,0); }
-  to{   transform: translate3d(14px,-10px,0); }
-}
-@keyframes float2{
-  from{ transform: translate3d(0,0,0); }
-  to{   transform: translate3d(-12px,12px,0); }
-}
+      .sa-portrait--one{
+        left: 50%;
+        top: 30px;
+        transform: translateX(calc(-50% - 15%));
+        animation: saFloatMobileA 10s ease-in-out infinite alternate;
+      }
+      .sa-portrait--two{
+        left: 50%;
+        right: auto;
+        top: 55px;
+        transform: translateX(calc(-50% + 15%));
+        animation: saFloatMobileB 12s ease-in-out infinite alternate;
+      }
 
-/* ===== Smoke outside photo frame (NOT inside) ===== */
-.smoke{
-  position:absolute;
-  width:28px; height:28px;
-  border-radius:50%;
-  pointer-events:none;
-  z-index:6;
-  background: radial-gradient(circle,
-    rgba(var(--smoke), .70) 0%,
-    rgba(var(--smoke), .28) 45%,
-    rgba(var(--smoke), .10) 62%,
-    rgba(var(--smoke), 0) 78%
-  );
-  filter: blur(10px);
-  mix-blend-mode: soft-light;
-  animation: puff 1.9s ease-out forwards;
-}
-@keyframes puff{
-  0%   { transform: translate(0,0) scale(.9); opacity:1; }
-  100% { transform: translate(var(--dx), var(--dy)) scale(3.0); opacity:0; }
-}
-</style>
+      @keyframes saFloatMobileA{
+        from{ transform: translateX(calc(-50% - 15%)) translateY(0); }
+        to  { transform: translateX(calc(-50% - 15%)) translateY(-10px); }
+      }
+      @keyframes saFloatMobileB{
+        from{ transform: translateX(calc(-50% + 15%)) translateY(0); }
+        to  { transform: translateX(calc(-50% + 15%)) translateY(10px); }
+      }
+
+      .sa-section-title { font-size: 24px; }
+      .sa-offer-card h3 { font-size: 18px; }
+      .sa-offer-card p  { font-size: 14px; }
+      .sa-price-box h3  { font-size: 20px; }
+      .sa-cta-inner { gap: 10px; }
+      .sa-cta-title { font-size: 18px; }
+      .sa-faq-q { font-size: 14px; }
+    }
+
+    /* =============== SECTIONS =============== */
+    .sa-offer { padding: 10px 22px 40px; margin-top: 48px; }
+    .sa-section-title { font-size: 28px; font-weight: 700; margin-bottom: 6px; color: var(--sa-text); }
+    .sa-section-subtitle { font-size: 14px; color: var(--sa-soft); margin-bottom: 22px; }
+    .sa-offer-grid { display: grid; gap: 22px; margin-bottom: 28px; }
+
+    #shopify-upwork { display: flex; flex-direction: column; gap: 22px; margin-bottom: 26px; }
+    .sa-offer-card h3 { font-size: 20px; margin-bottom: 8px; color: var(--sa-text); }
+    .sa-offer-card p { font-size: 15px; margin-bottom: 6px; color: var(--sa-soft); }
+
+    .sa-price-box h3 { font-size: 22px; margin-bottom: 8px; }
+    .sa-price-list { padding-left: 18px; margin: 0 0 10px; }
+    .sa-price-list li { margin-bottom: 6px; font-size: 15px; }
+    .sa-price-amount { font-size: 20px; margin-top: 8px; color: var(--sa-text); }
+    .sa-note { font-size: 13px; opacity: 0.8; margin-top: 4px; }
+
+    .sa-cta { padding: 0 22px 40px; margin-top: 52px; }
+    .sa-cta-inner { display: flex; flex-direction: column; gap: 14px; }
+    .sa-cta-title { font-size: 20px; font-weight: 700; margin: 0 0 4px; }
+    .sa-cta-text { font-size: 15px; color: var(--sa-soft); margin: 0; }
+    .sa-cta-highlight { font-weight: 600; }
+    .sa-cta-timer { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+    .sa-cta-box { min-width: 70px; padding: 8px 10px; border-radius: 12px; background: rgba(127, 85, 57, 0.06); text-align: center; }
+    .sa-cta-box span { display: block; font-size: 20px; font-weight: 700; line-height: 1.2; }
+    .sa-cta-box label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+    .sa-cta-note { font-size: 14px; margin-top: 6px; }
+    .sa-cta-note strong { font-weight: 700; }
+
+    .sa-faq { padding: 10px 22px 70px; margin-top: 56px; }
+    .sa-faq-wrap { display: grid; gap: 12px; margin-top: 16px; }
+    .sa-faq-item { width: 100%; display: block; padding: 0; }
+    .sa-faq-btn {
+      width: 100%;
+      border: none;
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+      padding: 14px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      color: var(--sa-text);
+      font-family: inherit;
+    }
+    .sa-faq-q { font-size: 15px; font-weight: 700; line-height: 1.35; }
+    .sa-faq-icon {
+      width: 34px; height: 34px; border-radius: 999px;
+      display: grid; place-items: center;
+      background: rgba(127, 85, 57, 0.08);
+      border: 1px solid rgba(127, 85, 57, 0.16);
+      flex: 0 0 auto;
+      transition: transform .25s ease, background .25s ease;
+    }
+    .sa-faq-icon span { font-size: 18px; font-weight: 900; line-height: 1; transform: translateY(-1px); }
+    .sa-faq-item.open .sa-faq-icon { transform: rotate(45deg); background: rgba(127, 85, 57, 0.12); }
+    .sa-faq-panel { max-height: 0; overflow: hidden; transition: max-height .35s ease; padding: 0 14px; }
+    .sa-faq-a { padding: 0 0 14px; font-size: 14px; line-height: 1.55; color: var(--sa-soft); }
+
+    .sa-upwork { padding: 10px 22px 70px; margin-top: 56px; }
+    .sa-up-list { padding-left: 18px; margin: 8px 0 12px; }
+    .sa-up-list li { margin-bottom: 6px; font-size: 15px; color: var(--sa-soft); }
+    .sa-date { font-size: 15px; margin-top: 8px; }
+    .sa-up-card { margin-top: 18px; display: block; }
+  </style>
 </head>
 
 <body>
-  <div class="header">
-    <div class="logo">SUCCESS ACADEMY</div>
-    <div style="width:40px;height:40px;border-radius:999px;background:#fff;display:grid;place-items:center;box-shadow:0 10px 22px rgba(0,0,0,.12);">♥</div>
-  </div>
-
-  <div class="wrap">
-    <div class="card">
-      <h1>Ֆրիլանս կարիերա</h1>
-      <p>Միջազգային հարթակներում աշխատելու հստակ ուղի</p>
-    </div>
-
-    <div class="visual" id="visual">
-      <!-- ✅ rings behind (your marked frames) -->
-      <div class="ring r1"></div>
-      <div class="ring r2"></div>
-
-      <!-- ✅ photos exactly placed -->
-      <div class="portrait p1" id="p1">
-        <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579" alt="">
-      </div>
-
-      <div class="portrait p2" id="p2">
-        <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0428.jpg?v=1765128580" alt="">
+  <!-- PRELOADER -->
+  <div id="countdownPreloader" class="sa-count-preloader">
+    <div class="sa-count-wrapper">
+      <div class="sa-count-circle"></div>
+      <div class="sa-count-content">
+        <div class="sa-count-logo">Success Academy</div>
+        <div class="sa-count-number" id="countNumber">3</div>
       </div>
     </div>
   </div>
 
-<script>
-/* Smoke OUTSIDE the photo frame (ring), not inside */
-(function(){
-  const visual = document.getElementById("visual");
-  const portraits = [document.getElementById("p1"), document.getElementById("p2")];
-  if(!visual || portraits.some(x => !x)) return;
+  <!-- HEADER -->
+  <header class="sa-main-header">
+    <div class="sa-logo">SUCCESS ACADEMY</div>
+    <button class="sa-menu-toggle" id="saMenuToggle" aria-label="Մենյու">
+      <span>♥</span>
+    </button>
+  </header>
 
-  function spawnOutside(el){
-    const v = visual.getBoundingClientRect();
-    const r = el.getBoundingClientRect();
+  <!-- MENU -->
+  <nav class="sa-menu-panel" id="saMenuPanel">
+    <div class="sa-menu-card">
+      <div class="sa-menu-title"></div>
 
-    const cx = (r.left + r.width/2) - v.left;
-    const cy = (r.top  + r.height/2) - v.top;
+      <button class="sa-menu-link" data-scroll="#shopify-upwork"><span class="sa-menu-dot"></span> Ինչ է Shopify և Upwork-ը</button>
+      <button class="sa-menu-link" data-scroll="#course-about"><span class="sa-menu-dot"></span> Դասընթացի մասին</button>
+      <button class="sa-menu-link" data-scroll="#course-price"><span class="sa-menu-dot"></span> Դասընթացի արժեքը</button>
+      <button class="sa-menu-link" data-scroll="#cta"><span class="sa-menu-dot"></span> Դասընթացի մեկնարկը</button>
+      <button class="sa-menu-link" data-scroll="#faq"><span class="sa-menu-dot"></span> Հաճախ տրվող հարցեր</button>
+      <button class="sa-menu-link" data-scroll="#upwork-consult"><span class="sa-menu-dot"></span> Upwork խորհրդատվություն</button>
 
-    // slightly outside the ring
-    const radius = (r.width/2) + 12;
+      <button class="sa-menu-link sa-menu-close" data-close="true">Փակել ✕</button>
+    </div>
+  </nav>
 
-    const a = Math.random() * Math.PI * 2;
-    const x = cx + Math.cos(a) * radius;
-    const y = cy + Math.sin(a) * radius;
+  <!-- HERO -->
+  <section class="sa-hero" id="hero">
+    <div class="sa-hero-inner">
 
-    // drift outward from the ring
-    const dx = Math.cos(a) * (35 + Math.random()*30) + (Math.random()*14 - 7);
-    const dy = Math.sin(a) * (35 + Math.random()*30) + (Math.random()*14 - 7) - 8;
+      <div class="sa-hero-text">
+        <div class="sa-text-frame sa-anim-frame">
+          <h1>Մեզ հետ նոր մասնագիտությունը դառնում է իրական ֆրիլանս կարիերա</h1>
+          <p>Աշխատանք միջազգային ֆրիլանս հարթակներում, որտեղ դու կարող ես սկսել քո կարիերան հենց ուսուցումից հետո։</p>
+        </div>
+      </div>
 
-    const puff = document.createElement("div");
-    puff.className = "smoke";
-    puff.style.left = x + "px";
-    puff.style.top  = y + "px";
-    puff.style.setProperty("--dx", dx + "px");
-    puff.style.setProperty("--dy", dy + "px");
+      <!-- ✅ RESTORED NORMAL 2 ROUND IMAGES -->
+      <div class="sa-hero-visual">
+        <div class="sa-portrait sa-portrait--one">
+          <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579" alt="portrait 1">
+        </div>
 
-    visual.appendChild(puff);
-    setTimeout(()=>puff.remove(), 1900);
-  }
+        <div class="sa-portrait sa-portrait--two">
+          <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0428.jpg?v=1765128580" alt="portrait 2">
+        </div>
+      </div>
 
-  setInterval(()=>{
-    portraits.forEach(p => { if(Math.random() < 0.9) spawnOutside(p); });
-  }, 260);
-})();
-</script>
+    </div>
+  </section>
+
+  <!-- OFFER -->
+  <section class="sa-offer" id="offer">
+    <h2 class="sa-section-title">Ինչ ես սովորելու այս դասընթացի շրջանակում</h2>
+    <p class="sa-section-subtitle"></p>
+
+    <div class="sa-offer-grid">
+      <div id="shopify-upwork">
+        <div class="sa-text-frame sa-offer-card sa-anim-frame">
+          <h3>Shopify մասնագիտություն</h3>
+          <p>Shopify-ը համաշխարհային ամենամեծ էլեկտրոնային առևտրի համակարգերից մեկն է, որտեղ բիզնեսները ստեղծում են իրենց օնլայն խանութները։</p>
+          <p>Դասընթացից հետո դու դառնում ես Shopify մասնագետ՝ իրական պորտֆոլիոյով, պատրաստ աշխատելու իրական նախագծերի վրա։</p>
+        </div>
+
+        <div class="sa-text-frame sa-offer-card sa-anim-frame">
+          <h3>Upwork կարիերայի մեկնարկ</h3>
+          <p>Upwork-ը աշխարհում ամենամեծ ֆրիլանս հարթակներից մեկն է, որտեղ աշխատում են միջազգային հաճախորդների հետ։</p>
+          <p>Դասընթացից հետո մենք օգնում ենք ստեղծել կամ բարելավել քո Upwork պրոֆիլը, հասկանալ ինչպես գտնել ճիշտ աշխատանքներ և ինչպես ստանալ առաջին պատվերները։</p>
+        </div>
+      </div>
+
+      <div class="sa-text-frame sa-offer-card sa-anim-frame">
+        <h3>AI գործիքներ (բոնուս)</h3>
+        <p>Սովորում ես արհեստական բանականության գործիքներ, որոնց միջոցով ավելի արագ ես աշխատում, բարձրացնում ես արդյունավետությունը և ավելի հեշտ ես գտնում աշխատանք։</p>
+        <p>Այս հմտությունները քեզ դարձնում են տեղեկացված և ժամանակակից մասնագետ IT ոլորտում։</p>
+      </div>
+    </div>
+
+    <div class="sa-text-frame sa-price-box sa-anim-frame" id="course-price">
+      <h3>Դասընթացի արժեքը</h3>
+      <p>Փաթեթներ՝</p>
+
+      <ul class="sa-price-list">
+        <li>✅ <strong>49,000 դրամ</strong> – Shopify (1 ամիս հետադարձ կապ + վիդեո դասեր)</li>
+        <li>✅ <strong>59,000 դրամ</strong> – Shopify + Upwork պրոֆիլի պատրաստում (2 ամիս հետադարձ կապ + վիդեո դասեր)</li>
+        <li>✅ <strong>69,000 դրամ</strong> – Shopify + Upwork պրոֆիլի պատրաստում + 2 ժամ հանդիպում + AI (25+ գործիք, Upwork էջի ստեղծում, աշխատանքի դիմելու և ստանալու գաղտնիքներ իրական օրինակներով, 2 ամիս հետադարձ կապ + վիդեո դասեր 🚀)</li>
+      </ul>
+
+      <p class="sa-note">Վճարումը կատարվում է մեկ անգամ, առանց թաքնված հավելյալ վճարների։</p>
+    </div>
+
+    <div class="sa-text-frame sa-anim-frame" id="course-about" style="margin-top:18px;">
+      <h3>Դասընթացի մասին</h3>
+      <p>⏳ Տևողություն՝ 3 շաբաթ</p>
+      <p>🕒 Դասեր՝ շաբաթական 2 անգամ (2 ժամ)</p>
+      <p>📱 Online, ցերեկային և երեկոյան խմբերով</p>
+    </div>
+  </section>
+
+  <!-- CTA (NO seconds) -->
+  <section class="sa-cta" id="cta">
+    <div class="sa-text-frame sa-cta-inner sa-anim-frame">
+      <div>
+        <h3 class="sa-cta-title">
+          Հաջորդ Shopify խումբը մեկնարկում է՝ <span class="sa-cta-highlight">5 Փետրվար 2026</span>
+        </h3>
+        <p class="sa-cta-text">
+          Եթե ուզում ես նոր մասնագիտություն, իրական պորտֆոլիո և միջազգային հաճախորդներ,
+          սա է քո հնարավորությունը։ Հաջորդ խումբը սահմանափակ տեղերով է։
+        </p>
+      </div>
+
+      <div class="sa-cta-timer" id="saCountdown">
+        <div class="sa-cta-box">
+          <span id="saDays">00</span>
+          <label>Օր</label>
+        </div>
+        <div class="sa-cta-box">
+          <span id="saHours">00</span>
+          <label>Ժամ</label>
+        </div>
+        <div class="sa-cta-box">
+          <span id="saMinutes">00</span>
+          <label>Րոպե</label>
+        </div>
+      </div>
+
+      <p class="sa-cta-note">👉 Գրանցման համար գրիր <strong>DM</strong> և մենք կուղարկենք բոլոր մանրամասները։</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sa-faq" id="faq">
+    <h2 class="sa-section-title">Հաճախ տրվող հարցեր</h2>
+
+    <div class="sa-faq-wrap">
+      <div class="sa-text-frame sa-faq-item sa-anim-frame">
+        <button class="sa-faq-btn" type="button" aria-expanded="false">
+          <div class="sa-faq-q">1․ Դասընթացից հետո պատրաստ կլինե՞մ սկսելու աշխատել</div>
+          <div class="sa-faq-icon" aria-hidden="true"><span>+</span></div>
+        </button>
+        <div class="sa-faq-panel" role="region">
+          <div class="sa-faq-a">
+            Այո։ Դասընթացի ընթացքում կստանաս գործնական գիտելիքներ, կկազմես իրական պորտֆոլիո և կսովորես ինչպես ճիշտ քայլերով մտնել ֆրիլանս աշխարհ։
+            Դասընթացի ավարտին դու կունենաս հստակ ուղղություն՝ առաջին պատվերը ստանալու համար։
+          </div>
+        </div>
+      </div>
+
+      <div class="sa-text-frame sa-faq-item sa-anim-frame">
+        <button class="sa-faq-btn" type="button" aria-expanded="false">
+          <div class="sa-faq-q">2․ Դասերը օնլա՞յն են</div>
+          <div class="sa-faq-icon" aria-hidden="true"><span>+</span></div>
+        </button>
+        <div class="sa-faq-panel" role="region">
+          <div class="sa-faq-a">
+            Այո, դասերը ամբողջությամբ օնլայն են։ Յուրաքանչյուր դասից հետո դու կստանաս նաև <strong>առանձին վիդեո դասեր</strong>՝
+            որոնք <strong>ոչ թե դասի ձայնագրություններ են</strong>, այլ հատուկ պատրաստված տեխնիկական վիդեոներ։
+            Դրանք կխնայեն քո ժամանակը և կօգնեն սովորել արագ, պարզ և առանց ձանձրանալու։
+          </div>
+        </div>
+      </div>
+
+      <div class="sa-text-frame sa-faq-item sa-anim-frame">
+        <button class="sa-faq-btn" type="button" aria-expanded="false">
+          <div class="sa-faq-q">3․ Upwork պրոֆիլը երբ և ինչպես է ստեղծվում</div>
+          <div class="sa-faq-icon" aria-hidden="true"><span>+</span></div>
+        </button>
+        <div class="sa-faq-panel" role="region">
+          <div class="sa-faq-a">
+            Upwork պրոֆիլի ամբողջ կոնտենտը տրամադրվում է իմ կողմից՝ այն բանից հետո, երբ դու հաջողությամբ ավարտում ես Shopify դասընթացը։
+            Այնուհետև՝ վիդեո դասերի օգնությամբ դու կկարողանաս քայլ առ քայլ ստեղծել կամ թարմացնել քո Upwork պրոֆիլը ճիշտ կառուցվածքով։
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPWORK -->
+  <section class="sa-upwork" id="upwork-consult">
+    <h2 class="sa-section-title">Upwork խորհրդատվություն</h2>
+
+    <div class="sa-text-frame sa-up-card sa-anim-frame">
+      <p>Եթե արդեն ունես մասնագիտություն և ցանկանում ես սկսել կարիերա Upwork հարթակում, այս հանդիպումը քեզ համար է։</p>
+      <p>Ստեղծում կամ բարելավում ենք Ձեր Upwork-ի էջը՝ ձևավորելով գրագետ պրոֆիլ։ Բացի այդ, կսովորեցնենք՝</p>
+
+      <ul class="sa-up-list">
+        <li>• Ինչպես ճիշտ դիմել աշխատանքների համար</li>
+        <li>• Ինչպես գրել արդյունավետ նամակներ (cover letter)</li>
+        <li>• Ինչպես ընտրել համապատասխան աշխատանքներ</li>
+        <li>• Ինչպես խուսափել խաբեություններից</li>
+        <li>• Ինչպես ստանալ գումարը Հայաստանում</li>
+      </ul>
+
+      <p class="sa-price-amount"><strong>Արժեքը՝ 20,000 դրամ։</strong></p>
+      <p class="sa-note">Դասընթացը՝ օնլայն, խմբային ֆորմատով։ Տևողությունը՝ 2,5–3 ժամ։</p>
+
+      <p class="sa-date">
+        <strong>Դեկտեմբերի 24</strong><br>
+        Ցերեկային խումբ — 13:00<br>
+        Երեկոյան խումբ — 19:00
+      </p>
+    </div>
+  </section>
+
+  <script>
+    /* PRELOADER */
+    (function(){
+      const pre = document.getElementById("countdownPreloader");
+      const num = document.getElementById("countNumber");
+      let count = 3;
+
+      const timer = setInterval(()=>{
+        count--;
+        if(count > 0){
+          num.textContent = count;
+        } else {
+          clearInterval(timer);
+          pre.classList.add("hidden");
+        }
+      }, 1000);
+    })();
+
+    /* COUNTDOWN TO 5 FEB 2026 (NO SECONDS) */
+    (function(){
+      const daysEl    = document.getElementById("saDays");
+      const hoursEl   = document.getElementById("saHours");
+      const minutesEl = document.getElementById("saMinutes");
+      if (!daysEl || !hoursEl || !minutesEl) return;
+
+      const target = new Date("2026-02-05T00:00:00");
+
+      function updateCountdown(){
+        const now = new Date();
+        let diff = target.getTime() - now.getTime();
+
+        if (diff <= 0) {
+          daysEl.textContent    = "00";
+          hoursEl.textContent   = "00";
+          minutesEl.textContent = "00";
+          return;
+        }
+
+        const totalMinutes = Math.floor(diff / (1000 * 60));
+        const days = Math.floor(totalMinutes / (60*24));
+        const hrs  = Math.floor((totalMinutes % (60*24)) / 60);
+        const mins = totalMinutes % 60;
+
+        daysEl.textContent    = String(days).padStart(2,"0");
+        hoursEl.textContent   = String(hrs).padStart(2,"0");
+        minutesEl.textContent = String(mins).padStart(2,"0");
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 15000);
+    })();
+
+    /* MENU TOGGLE + SMOOTH SCROLL */
+    (function(){
+      const toggle = document.getElementById("saMenuToggle");
+      const panel  = document.getElementById("saMenuPanel");
+      if (!toggle || !panel) return;
+
+      function closeMenu(){ panel.classList.remove("open"); }
+
+      toggle.addEventListener("click", () => panel.classList.toggle("open"));
+
+      document.querySelectorAll(".sa-menu-link").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          if (btn.dataset.close === "true") { e.preventDefault(); closeMenu(); return; }
+          const targetSel = btn.getAttribute("data-scroll");
+          const target = targetSel ? document.querySelector(targetSel) : null;
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+          closeMenu();
+        });
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!panel.classList.contains("open")) return;
+        if (!panel.contains(e.target) && !toggle.contains(e.target)) closeMenu();
+      });
+    })();
+
+    /* SCROLL FADE IN */
+    (function(){
+      const frames = document.querySelectorAll(".sa-anim-frame");
+      if (!frames.length) return;
+
+      if (!("IntersectionObserver" in window)) {
+        frames.forEach(f => f.classList.add("in-view"));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add("in-view");
+        });
+      }, { threshold: 0.25 });
+
+      frames.forEach(f => observer.observe(f));
+    })();
+
+    /* FAQ ACCORDION */
+    (function(){
+      const items = document.querySelectorAll(".sa-faq-item");
+      if (!items.length) return;
+
+      items.forEach(item => {
+        const btn = item.querySelector(".sa-faq-btn");
+        const panel = item.querySelector(".sa-faq-panel");
+        if (!btn || !panel) return;
+
+        btn.addEventListener("click", () => {
+          const isOpen = item.classList.contains("open");
+
+          items.forEach(other => {
+            if (other !== item) {
+              const ob = other.querySelector(".sa-faq-btn");
+              const op = other.querySelector(".sa-faq-panel");
+              if (ob && op) {
+                other.classList.remove("open");
+                ob.setAttribute("aria-expanded", "false");
+                op.style.maxHeight = "0px";
+              }
+            }
+          });
+
+          if (isOpen) {
+            item.classList.remove("open");
+            btn.setAttribute("aria-expanded", "false");
+            panel.style.maxHeight = "0px";
+          } else {
+            item.classList.add("open");
+            btn.setAttribute("aria-expanded", "true");
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          }
+        });
+
+        window.addEventListener("resize", () => {
+          if (!item.classList.contains("open")) return;
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
