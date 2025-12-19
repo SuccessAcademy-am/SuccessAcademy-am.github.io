@@ -11,13 +11,12 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0434.jpg?v=1765139942" />
 
-  <!-- Twitter card (optional, also shows logo) -->
+  <!-- Twitter card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Success Academy — Shopify & Upwork դասընթաց" />
   <meta name="twitter:description" content="Սովորիր Shopify, Upwork և AI գործիքներ, ստեղծիր իրական ֆրիլանս կարիերա Success Academy-ի հետ։" />
   <meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0434.jpg?v=1765139942" />
 
-  <!-- Modern clean font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -31,16 +30,12 @@
 
       --sa-smoke: #d4a373;
 
-      /* NEW: helper vars for hero portraits (prevents overlap) */
+      /* hero sizing */
       --sa-hero-visual-size: min(96vw, 540px);
       --sa-portrait-size: clamp(170px, 40vw, 250px);
     }
 
-    * {
-      box-sizing: border-box;
-      -webkit-font-smoothing: antialiased;
-    }
-
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
     body {
       margin: 0;
       background: var(--sa-bg);
@@ -48,10 +43,7 @@
       color: var(--sa-text);
       overflow-x: hidden;
     }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     /* ================= PRELOADER ================= */
     .sa-count-preloader {
@@ -64,10 +56,8 @@
       z-index: 999999;
       transition: opacity .6s ease, visibility .6s ease;
     }
-    .sa-count-preloader.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
+    .sa-count-preloader.hidden { opacity: 0; visibility: hidden; }
+
     .sa-count-wrapper {
       position: relative;
       width: min(75vw, 380px);
@@ -100,14 +90,13 @@
       font-weight:900;
     }
 
-    /* ================= SMOKE ================= */
+    /* ================= GLOBAL SMOKE (mouse) ================= */
     #smoke-area-sa {
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 99999;
     }
-
     .sa-smoke {
       position: absolute;
       width: 48px;
@@ -123,13 +112,12 @@
       mix-blend-mode: soft-light;
       animation: saSmokeFade 1.8s ease-out forwards;
     }
-
     @keyframes saSmokeFade {
       0%   { transform: scale(.5); opacity: 0.9; }
       100% { transform: scale(3.4); opacity: 0; }
     }
 
-    /* =============== STICKY MAIN HEADER (LOGO + MENU) =============== */
+    /* =============== HEADER =============== */
     .sa-main-header {
       position: sticky;
       top: 0;
@@ -148,7 +136,6 @@
         rgba(234,224,213,0.75)
       );
     }
-
     .sa-logo {
       font-size: 28px;
       font-weight:800;
@@ -156,7 +143,6 @@
       white-space:nowrap;
     }
 
-    /* ==== MENU BUBBLE WITH PULSING HEART ICON ==== */
     .sa-menu-toggle {
       min-width: 44px;
       height: 40px;
@@ -172,27 +158,16 @@
       position: relative;
       animation: saHeartPulse 1.3s ease-in-out infinite;
     }
-
     .sa-menu-toggle span {
       font-weight: 700;
       font-size: 18px;
       color: var(--sa-text);
       line-height: 1;
     }
-
     @keyframes saHeartPulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(127,85,57,0.45);
-      }
-      40% {
-        transform: scale(1.08);
-        box-shadow: 0 0 0 12px rgba(127,85,57,0);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(127,85,57,0);
-      }
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(127,85,57,0.45); }
+      40% { transform: scale(1.08); box-shadow: 0 0 0 12px rgba(127,85,57,0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(127,85,57,0); }
     }
 
     .sa-menu-panel {
@@ -205,13 +180,11 @@
       transform: translateY(-8px);
       transition: opacity .25s ease, transform .25s ease;
     }
-
     .sa-menu-panel.open {
       opacity: 1;
       pointer-events: auto;
       transform: translateY(0);
     }
-
     .sa-menu-card {
       padding: 12px 16px 10px;
       display:flex;
@@ -223,7 +196,6 @@
       border: 1px solid rgba(127,85,57,0.18);
       min-width: 230px;
     }
-
     .sa-menu-title {
       font-size: 13px;
       text-transform: uppercase;
@@ -231,7 +203,6 @@
       opacity: 0.6;
       margin-bottom: 4px;
     }
-
     .sa-menu-link {
       background: transparent;
       border: none;
@@ -244,19 +215,12 @@
       align-items:center;
       gap:6px;
     }
-
     .sa-menu-dot {
-      width:6px;
-      height:6px;
-      border-radius:999px;
+      width:6px; height:6px; border-radius:999px;
       background: var(--sa-text);
       opacity:0.6;
     }
-
-    .sa-menu-link:hover {
-      opacity: 0.85;
-    }
-
+    .sa-menu-link:hover { opacity: 0.85; }
     .sa-menu-close {
       margin-top: 6px;
       font-size: 13px;
@@ -272,13 +236,8 @@
       flex-direction:column;
       background: var(--sa-bg);
     }
+    .sa-hero-inner { display:flex; flex-direction:column; }
 
-    .sa-hero-inner {
-      display:flex;
-      flex-direction:column;
-    }
-
-    /* ==== TEXT FRAME BASE STYLE ==== */
     .sa-text-frame {
       display: inline-block;
       padding: 16px 18px 14px;
@@ -289,7 +248,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .sa-text-frame::before {
       content: "";
       position: absolute;
@@ -297,15 +255,12 @@
       left: -30%;
       width: 80%;
       height: 180%;
-      background: radial-gradient(circle at top left,
-        rgba(255, 255, 255, 0.7),
-        transparent 60%);
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.7), transparent 60%);
       opacity: 0;
       transform: translate3d(-60px, 0, 0);
       animation: saCardGlow 8s ease-in-out infinite;
       pointer-events: none;
     }
-
     @keyframes saCardGlow {
       0%   { opacity: 0;   transform: translate3d(-60px, 0, 0); }
       35%  { opacity: 0.7; transform: translate3d(0, 0, 0);    }
@@ -320,7 +275,6 @@
       line-height: 1.35;
       max-width: 92%;
     }
-
     .sa-hero-text p {
       font-weight: 400;
       font-size: clamp(16px, 4.2vw, 19px);
@@ -330,13 +284,11 @@
       color: var(--sa-soft);
     }
 
-    /* ==== SCROLL ZOOM ANIMATION (stronger) ==== */
     .sa-anim-frame {
       opacity: 0;
       transform: scale(0.88) translateY(50px);
       transition: opacity .6s ease, transform .6s ease, box-shadow .6s ease;
     }
-
     .sa-anim-frame.in-view {
       opacity: 1;
       transform: scale(1.06) translateY(0);
@@ -349,21 +301,13 @@
       width: var(--sa-hero-visual-size);
       height: var(--sa-hero-visual-size);
       align-self: flex-end;
-
       opacity: 0;
       transform: translateY(-40px);
       transition: opacity 0.8s ease, transform 0.9s ease;
-
       margin-top: 36px;
-
-      /* NEW: gives extra room so circles can float without clipping */
       padding: 26px;
     }
-
-    .sa-hero-visual.sa-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .sa-hero-visual.sa-visible { opacity: 1; transform: translateY(0); }
 
     .sa-portrait {
       position: absolute;
@@ -374,12 +318,38 @@
       box-shadow: 0 22px 42px rgba(0,0,0,0.18);
       pointer-events: none;
       cursor: default;
-
-      /* NEW: smoother motion + prevents "micro overlap" feeling */
       will-change: transform;
+      z-index: 2;
+    }
+
+    /* ✅ NEW: Smoke aura around each portrait (soft + breathing) */
+    .sa-portrait::before{
+      content:"";
+      position:absolute;
+      inset:-22px;
+      border-radius:999px;
+      background: radial-gradient(circle,
+        rgba(212,163,115,0.32) 0%,
+        rgba(212,163,115,0.16) 35%,
+        rgba(212,163,115,0.05) 60%,
+        rgba(212,163,115,0) 75%
+      );
+      filter: blur(14px);
+      opacity: .85;
+      transform: scale(1);
+      animation: saPortraitSmokePulse 3.8s ease-in-out infinite;
+      z-index: 0;
+      pointer-events:none;
+      mix-blend-mode: soft-light;
+    }
+    @keyframes saPortraitSmokePulse {
+      0%,100% { opacity: .65; transform: scale(0.98); }
+      50%     { opacity: .95; transform: scale(1.06); }
     }
 
     .sa-portrait img {
+      position: relative;
+      z-index: 1;
       width: 160%;
       height: 160%;
       object-fit: cover;
@@ -387,7 +357,6 @@
       mix-blend-mode: multiply;
     }
 
-    /* Desktop/tablet positioning (more space between them) */
     .sa-portrait--tone1 {
       right: 18px;
       top: 12px;
@@ -395,7 +364,6 @@
       animation: saFloatA 14s ease-in-out infinite alternate;
       animation-play-state: paused;
     }
-
     .sa-portrait--tone2 {
       left: 18px;
       bottom: 12px;
@@ -411,7 +379,6 @@
       75%  { transform:translate(20px,18px); }
       100% { transform:translate(-14px,-14px); }
     }
-
     @keyframes saFloatB {
       0%   { transform:translate(0,0); }
       25%  { transform:translate(-18px,-16px); }
@@ -419,117 +386,57 @@
       75%  { transform:translate(-20px,20px); }
       100% { transform:translate(14px,-14px); }
     }
+    .sa-floating { animation-play-state: running !important; }
 
-    .sa-floating {
-      animation-play-state: running !important;
+    /* ✅ NEW: portrait smoke particles (spawned via JS) */
+    .sa-portrait-smoke {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(circle,
+        rgba(212,163,115,0.35) 0%,
+        rgba(212,163,115,0.12) 45%,
+        rgba(212,163,115,0) 75%
+      );
+      filter: blur(10px);
+      mix-blend-mode: soft-light;
+      animation: saPortraitPuff 1.9s ease-out forwards;
+    }
+    @keyframes saPortraitPuff {
+      0%   { transform: translate(0,0) scale(0.8); opacity: .9; }
+      100% { transform: translate(var(--dx), var(--dy)) scale(2.8); opacity: 0; }
     }
 
     /* =============== WHAT WE OFFER SECTION =============== */
-    .sa-offer {
-      padding: 10px 22px 40px;
-      margin-top: 48px;
-    }
-
+    .sa-offer { padding: 10px 22px 40px; margin-top: 48px; }
     .sa-section-title {
       font-size: 28px;
       font-weight: 700;
       margin-bottom: 6px;
       color: var(--sa-text);
     }
-
-    .sa-section-subtitle {
-      font-size: 14px;
-      color: var(--sa-soft);
-      margin-bottom: 22px;
-    }
-
-    .sa-offer-grid {
-      display: grid;
-      gap: 22px;
-      margin-bottom: 28px;
-    }
-
-    #shopify-upwork {
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-      margin-bottom: 26px;
-    }
-
-    .sa-offer-card h3 {
-      font-size: 20px;
-      margin-bottom: 8px;
-      color: var(--sa-text);
-    }
-
-    .sa-offer-card p {
-      font-size: 15px;
-      margin-bottom: 6px;
-      color: var(--sa-soft);
-    }
-
-    .sa-price-box h3 {
-      font-size: 22px;
-      margin-bottom: 8px;
-    }
-
-    .sa-price-list {
-      padding-left: 18px;
-      margin: 0 0 10px;
-    }
-
-    .sa-price-list li {
-      margin-bottom: 6px;
-      font-size: 15px;
-    }
-
-    .sa-price-amount {
-      font-size: 20px;
-      margin-top: 8px;
-      color: var(--sa-text);
-    }
-
-    .sa-note {
-      font-size: 13px;
-      opacity: 0.8;
-      margin-top: 4px;
-    }
+    .sa-section-subtitle { font-size: 14px; color: var(--sa-soft); margin-bottom: 22px; }
+    .sa-offer-grid { display: grid; gap: 22px; margin-bottom: 28px; }
+    #shopify-upwork { display: flex; flex-direction: column; gap: 22px; margin-bottom: 26px; }
+    .sa-offer-card h3 { font-size: 20px; margin-bottom: 8px; color: var(--sa-text); }
+    .sa-offer-card p { font-size: 15px; margin-bottom: 6px; color: var(--sa-soft); }
+    .sa-price-box h3 { font-size: 22px; margin-bottom: 8px; }
+    .sa-price-list { padding-left: 18px; margin: 0 0 10px; }
+    .sa-price-list li { margin-bottom: 6px; font-size: 15px; }
+    .sa-price-amount { font-size: 20px; margin-top: 8px; color: var(--sa-text); }
+    .sa-note { font-size: 13px; opacity: 0.8; margin-top: 4px; }
 
     /* =============== COUNTDOWN CTA SECTION =============== */
-    .sa-cta {
-      padding: 0 22px 40px;
-      margin-top: 52px;
-    }
+    .sa-cta { padding: 0 22px 40px; margin-top: 52px; }
+    .sa-cta-inner { display: flex; flex-direction: column; gap: 14px; }
+    .sa-cta-title { font-size: 20px; font-weight: 700; margin: 0 0 4px; }
+    .sa-cta-text { font-size: 15px; color: var(--sa-soft); margin: 0; }
+    .sa-cta-highlight { font-weight: 600; }
 
-    .sa-cta-inner {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .sa-cta-title {
-      font-size: 20px;
-      font-weight: 700;
-      margin: 0 0 4px;
-    }
-
-    .sa-cta-text {
-      font-size: 15px;
-      color: var(--sa-soft);
-      margin: 0;
-    }
-
-    .sa-cta-highlight {
-      font-weight: 600;
-    }
-
-    .sa-cta-timer {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 4px;
-    }
-
+    .sa-cta-timer { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
     .sa-cta-box {
       min-width: 70px;
       padding: 8px 10px;
@@ -537,48 +444,16 @@
       background: rgba(127, 85, 57, 0.06);
       text-align: center;
     }
+    .sa-cta-box span { display: block; font-size: 20px; font-weight: 700; line-height: 1.2; }
+    .sa-cta-box label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
 
-    .sa-cta-box span {
-      display: block;
-      font-size: 20px;
-      font-weight: 700;
-      line-height: 1.2;
-    }
+    .sa-cta-note { font-size: 14px; margin-top: 6px; }
+    .sa-cta-note strong { font-weight: 700; }
 
-    .sa-cta-box label {
-      display: block;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-top: 2px;
-    }
-
-    .sa-cta-note {
-      font-size: 14px;
-      margin-top: 6px;
-    }
-
-    .sa-cta-note strong {
-      font-weight: 700;
-    }
-
-    /* =============== FAQ SECTION (Accordion) =============== */
-    .sa-faq {
-      padding: 10px 22px 70px;
-      margin-top: 56px;
-    }
-
-    .sa-faq-wrap {
-      display: grid;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .sa-faq-item {
-      width: 100%;
-      display: block;
-      padding: 0;
-    }
+    /* =============== FAQ SECTION =============== */
+    .sa-faq { padding: 10px 22px 70px; margin-top: 56px; }
+    .sa-faq-wrap { display: grid; gap: 12px; margin-top: 16px; }
+    .sa-faq-item { width: 100%; display: block; padding: 0; }
 
     .sa-faq-btn {
       width: 100%;
@@ -594,16 +469,9 @@
       color: var(--sa-text);
       font-family: inherit;
     }
-
-    .sa-faq-q {
-      font-size: 15px;
-      font-weight: 700;
-      line-height: 1.35;
-    }
-
+    .sa-faq-q { font-size: 15px; font-weight: 700; line-height: 1.35; }
     .sa-faq-icon {
-      width: 34px;
-      height: 34px;
+      width: 34px; height: 34px;
       border-radius: 999px;
       display: grid;
       place-items: center;
@@ -612,131 +480,73 @@
       flex: 0 0 auto;
       transition: transform .25s ease, background .25s ease;
     }
-
-    .sa-faq-icon span {
-      font-size: 18px;
-      font-weight: 900;
-      line-height: 1;
-      transform: translateY(-1px);
-    }
-
-    .sa-faq-item.open .sa-faq-icon {
-      transform: rotate(45deg);
-      background: rgba(127, 85, 57, 0.12);
-    }
-
-    .sa-faq-panel {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .35s ease;
-      padding: 0 14px;
-    }
-
-    .sa-faq-a {
-      padding: 0 0 14px;
-      font-size: 14px;
-      line-height: 1.55;
-      color: var(--sa-soft);
-    }
+    .sa-faq-icon span { font-size: 18px; font-weight: 900; line-height: 1; transform: translateY(-1px); }
+    .sa-faq-item.open .sa-faq-icon { transform: rotate(45deg); background: rgba(127, 85, 57, 0.12); }
+    .sa-faq-panel { max-height: 0; overflow: hidden; transition: max-height .35s ease; padding: 0 14px; }
+    .sa-faq-a { padding: 0 0 14px; font-size: 14px; line-height: 1.55; color: var(--sa-soft); }
 
     /* =============== UPWORK CONSULT SECTION =============== */
-    .sa-upwork {
-      padding: 10px 22px 70px;
-      margin-top: 56px;
-    }
+    .sa-upwork { padding: 10px 22px 70px; margin-top: 56px; }
+    .sa-up-list { padding-left: 18px; margin: 8px 0 12px; }
+    .sa-up-list li { margin-bottom: 6px; font-size: 15px; color: var(--sa-soft); }
+    .sa-date { font-size: 15px; margin-top: 8px; }
+    .sa-up-card { margin-top: 18px; display: block; }
 
-    .sa-up-list {
-      padding-left: 18px;
-      margin: 8px 0 12px;
-    }
-
-    .sa-up-list li {
-      margin-bottom: 6px;
-      font-size: 15px;
-      color: var(--sa-soft);
-    }
-
-    .sa-date {
-      font-size: 15px;
-      margin-top: 8px;
-    }
-
-    .sa-up-card {
-      margin-top: 18px;
-      display: block;
-    }
-
-    /* ================= MOBILE / SMALL SCREEN TWEAKS ================= */
+    /* ================= MOBILE TWEAKS (ONE LINE + SLIGHT OVERLAP) ================= */
     @media (max-width: 600px) {
+      .sa-logo { font-size: 24px !important; }
+      .sa-hero-text h1 { font-size: 26px !important; line-height: 1.35 !important; }
+      .sa-hero-text p { font-size: 16px !important; }
 
-      .sa-logo {
-        font-size: 24px !important;
-      }
-
-      .sa-hero-text h1 {
-        font-size: 26px !important;
-        line-height: 1.35 !important;
-      }
-
-      .sa-hero-text p {
-        font-size: 16px !important;
-      }
-
-      /* NEW: mobile layout = NO overlap (stacked circles) */
       :root{
-        --sa-hero-visual-size: min(94vw, 420px);
-        --sa-portrait-size: min(72vw, 260px);
+        --sa-hero-visual-size: min(96vw, 440px);
+        --sa-portrait-size: clamp(170px, 48vw, 220px);
       }
 
+      /* ✅ keep them in ONE row look (absolute) but controlled overlap */
       .sa-hero-visual{
         width: var(--sa-hero-visual-size) !important;
-        height: auto !important;           /* NEW */
-        padding: 0 !important;             /* NEW */
+        height: calc(var(--sa-portrait-size) + 46px) !important;
+        padding: 0 !important;
         margin-top: 22px !important;
-        align-self: center !important;      /* NEW */
-        display: grid !important;           /* NEW */
-        grid-template-columns: 1fr !important;
-        gap: 14px !important;               /* space between images */
-        justify-items: center !important;
+        align-self: center !important;
       }
 
-      .sa-portrait{
-        position: relative !important;      /* NEW */
-        inset: auto !important;             /* NEW */
-        width: var(--sa-portrait-size) !important;
-        height: var(--sa-portrait-size) !important;
-        animation-play-state: paused !important; /* NEW: avoids overlap drift on small screens */
-        transform: none !important;
+      .sa-portrait--tone1{
+        top: 6px !important;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-52%) !important;   /* slightly left */
       }
+      .sa-portrait--tone2{
+        top: 22px !important;
+        left: 50% !important;
+        bottom: auto !important;
+        transform: translateX(-4%) !important;    /* slightly right (overlap) */
+      }
+
+      /* nice depth */
+      .sa-portrait--tone1{ z-index: 3; }
+      .sa-portrait--tone2{ z-index: 2; }
 
       .sa-portrait img{
         width: 150% !important;
         height: 150% !important;
       }
 
-      .sa-section-title {
-        font-size: 24px;
-      }
+      .sa-section-title { font-size: 24px; }
       .sa-offer-card h3 { font-size: 18px; }
       .sa-offer-card p  { font-size: 14px; }
       .sa-price-box h3  { font-size: 20px; }
-
-      .sa-cta-inner {
-        gap: 10px;
-      }
-      .sa-cta-title {
-        font-size: 18px;
-      }
-
-      .sa-faq-q {
-        font-size: 14px;
-      }
+      .sa-cta-inner { gap: 10px; }
+      .sa-cta-title { font-size: 18px; }
+      .sa-faq-q { font-size: 14px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- =============== PRELOADER =============== -->
+  <!-- PRELOADER -->
   <div id="countdownPreloader" class="sa-count-preloader">
     <div class="sa-count-wrapper">
       <div class="sa-count-circle"></div>
@@ -747,10 +557,10 @@
     </div>
   </div>
 
-  <!-- =============== SMOKE =============== -->
+  <!-- SMOKE AREA (mouse) -->
   <div id="smoke-area-sa"></div>
 
-  <!-- =============== STICKY HEADER (LOGO + MENU) =============== -->
+  <!-- HEADER -->
   <header class="sa-main-header">
     <div class="sa-logo">SUCCESS ACADEMY</div>
     <button class="sa-menu-toggle" id="saMenuToggle" aria-label="Մենյու">
@@ -758,7 +568,7 @@
     </button>
   </header>
 
-  <!-- floating menu -->
+  <!-- MENU -->
   <nav class="sa-menu-panel" id="saMenuPanel">
     <div class="sa-menu-card">
       <div class="sa-menu-title"></div>
@@ -775,12 +585,9 @@
       <button class="sa-menu-link" data-scroll="#cta">
         <span class="sa-menu-dot"></span> Դասընթացի մեկնարկը
       </button>
-
-      <!-- NEW: FAQ menu item -->
       <button class="sa-menu-link" data-scroll="#faq">
         <span class="sa-menu-dot"></span> Հաճախ տրվող հարցեր
       </button>
-
       <button class="sa-menu-link" data-scroll="#upwork-consult">
         <span class="sa-menu-dot"></span> Upwork խորհրդատվություն
       </button>
@@ -791,7 +598,7 @@
     </div>
   </nav>
 
-  <!-- =============== HERO =============== -->
+  <!-- HERO -->
   <section class="sa-hero" id="hero">
     <div class="sa-hero-inner">
 
@@ -804,18 +611,18 @@
 
       <div class="sa-hero-visual">
         <div class="sa-portrait sa-portrait--tone1">
-          <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579">
+          <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579" alt="portrait 1">
         </div>
 
         <div class="sa-portrait sa-portrait--tone2">
-          <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0428.jpg?v=1765128580">
+          <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0428.jpg?v=1765128580" alt="portrait 2">
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- =============== WHAT WE OFFER SECTION =============== -->
+  <!-- OFFER -->
   <section class="sa-offer" id="offer">
 
     <h2 class="sa-section-title">Ինչ ես սովորելու այս դասընթացի շրջանակում</h2>
@@ -823,9 +630,7 @@
 
     <div class="sa-offer-grid">
 
-      <!-- Shopify + Upwork block anchor -->
       <div id="shopify-upwork">
-        <!-- Shopify card -->
         <div class="sa-text-frame sa-offer-card sa-anim-frame">
           <h3>Shopify մասնագիտություն</h3>
           <p>
@@ -838,7 +643,6 @@
           </p>
         </div>
 
-        <!-- Upwork card -->
         <div class="sa-text-frame sa-offer-card sa-anim-frame">
           <h3>Upwork կարիերայի մեկնարկ</h3>
           <p>
@@ -852,7 +656,6 @@
         </div>
       </div>
 
-      <!-- AI tools card -->
       <div class="sa-text-frame sa-offer-card sa-anim-frame">
         <h3>AI գործիքներ (բոնուս)</h3>
         <p>
@@ -866,7 +669,6 @@
 
     </div>
 
-    <!-- Price box -->
     <div class="sa-text-frame sa-price-box sa-anim-frame" id="course-price">
       <h3>Դասընթացի արժեքը</h3>
       <p>Փաթեթներ՝</p>
@@ -884,7 +686,6 @@
       <p class="sa-note">Վճարումը կատարվում է մեկ անգամ, առանց թաքնված հավելյալ վճարների։</p>
     </div>
 
-    <!-- Course about (separate anchor) -->
     <div class="sa-text-frame sa-anim-frame" id="course-about" style="margin-top:18px;">
       <h3>Դասընթացի մասին</h3>
       <p>⏳ Տևողություն՝ 3 շաբաթ</p>
@@ -894,7 +695,7 @@
 
   </section>
 
-  <!-- =============== COUNTDOWN CTA SECTION =============== -->
+  <!-- CTA (Timer WITHOUT seconds) -->
   <section class="sa-cta" id="cta">
     <div class="sa-text-frame sa-cta-inner sa-anim-frame">
       <div>
@@ -920,10 +721,6 @@
           <span id="saMinutes">00</span>
           <label>Րոպե</label>
         </div>
-        <div class="sa-cta-box">
-          <span id="saSeconds">00</span>
-          <label>Վայրկյան</label>
-        </div>
       </div>
 
       <p class="sa-cta-note">
@@ -932,7 +729,7 @@
     </div>
   </section>
 
-  <!-- =============== FAQ SECTION (NEW) =============== -->
+  <!-- FAQ -->
   <section class="sa-faq" id="faq">
     <h2 class="sa-section-title">Հաճախ տրվող հարցեր</h2>
 
@@ -1018,7 +815,7 @@
     </div>
   </section>
 
-  <!-- =============== UPWORK CONSULTATION SECTION =============== -->
+  <!-- UPWORK -->
   <section class="sa-upwork" id="upwork-consult">
     <h2 class="sa-section-title">Upwork խորհրդատվություն </h2>
 
@@ -1078,10 +875,9 @@
       }, 1000);
     })();
 
-    /* SMOKE */
+    /* GLOBAL SMOKE FOLLOW (mouse/touch) */
     (function(){
       const smoke = document.getElementById("smoke-area-sa");
-
       function puff(x, y) {
         const s = document.createElement("div");
         s.className = "sa-smoke";
@@ -1090,7 +886,6 @@
         smoke.appendChild(s);
         setTimeout(() => s.remove(), 1800);
       }
-
       window.addEventListener("mousemove", e => puff(e.clientX, e.clientY));
       window.addEventListener("touchmove", e => {
         if (!e.touches.length) return;
@@ -1099,14 +894,72 @@
       }, { passive:true });
     })();
 
-    /* COUNTDOWN TO 5 FEB 2026 */
+    /* ✅ NEW: PORTRAIT SMOKE PARTICLES (from the round images) */
+    (function(){
+      const visual = document.querySelector(".sa-hero-visual");
+      const portraits = document.querySelectorAll(".sa-portrait");
+      if (!visual || !portraits.length) return;
+
+      function spawnPuffNear(el){
+        const vRect = visual.getBoundingClientRect();
+        const r = el.getBoundingClientRect();
+
+        // center of portrait relative to visual
+        const cx = (r.left + r.width/2) - vRect.left;
+        const cy = (r.top  + r.height/2) - vRect.top;
+
+        // random start around edge
+        const angle = Math.random() * Math.PI * 2;
+        const radius = (Math.min(r.width, r.height) / 2) * (0.75 + Math.random()*0.25);
+        const x = cx + Math.cos(angle) * radius;
+        const y = cy + Math.sin(angle) * radius;
+
+        // random drift
+        const dx = (Math.random() * 70 - 35) + "px";
+        const dy = (Math.random() * 70 - 45) + "px";
+
+        const puff = document.createElement("div");
+        puff.className = "sa-portrait-smoke";
+        puff.style.left = x + "px";
+        puff.style.top  = y + "px";
+        puff.style.setProperty("--dx", dx);
+        puff.style.setProperty("--dy", dy);
+
+        visual.appendChild(puff);
+        setTimeout(() => puff.remove(), 1900);
+      }
+
+      // start after hero appears
+      let started = false;
+      const start = () => {
+        if (started) return;
+        started = true;
+
+        // puff loop
+        setInterval(() => {
+          portraits.forEach(p => {
+            // a little randomness (not too much)
+            if (Math.random() < 0.78) spawnPuffNear(p);
+          });
+        }, 320);
+      };
+
+      // when visible
+      const check = setInterval(() => {
+        if (visual.classList.contains("sa-visible")) {
+          clearInterval(check);
+          start();
+        }
+      }, 150);
+    })();
+
+    /* COUNTDOWN TO 5 FEB 2026 (NO SECONDS) */
     (function(){
       const daysEl    = document.getElementById("saDays");
       const hoursEl   = document.getElementById("saHours");
       const minutesEl = document.getElementById("saMinutes");
-      const secondsEl = document.getElementById("saSeconds");
 
-      if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+      if (!daysEl || !hoursEl || !minutesEl) return;
 
       const target = new Date("2026-02-05T00:00:00");
 
@@ -1118,24 +971,21 @@
           daysEl.textContent    = "00";
           hoursEl.textContent   = "00";
           minutesEl.textContent = "00";
-          secondsEl.textContent = "00";
           return;
         }
 
-        const sec  = Math.floor(diff / 1000);
-        const days = Math.floor(sec / (60*60*24));
-        const hrs  = Math.floor((sec % (60*60*24)) / (60*60));
-        const mins = Math.floor((sec % (60*60)) / 60);
-        const s    = sec % 60;
+        const totalMinutes = Math.floor(diff / (1000 * 60));
+        const days = Math.floor(totalMinutes / (60*24));
+        const hrs  = Math.floor((totalMinutes % (60*24)) / 60);
+        const mins = totalMinutes % 60;
 
         daysEl.textContent    = String(days).padStart(2,"0");
         hoursEl.textContent   = String(hrs).padStart(2,"0");
         minutesEl.textContent = String(mins).padStart(2,"0");
-        secondsEl.textContent = String(s).padStart(2,"0");
       }
 
       updateCountdown();
-      setInterval(updateCountdown, 1000);
+      setInterval(updateCountdown, 1000 * 15); // update every 15 seconds (since no seconds shown)
     })();
 
     /* MENU TOGGLE + SMOOTH SCROLL + CLOSE BUTTON */
@@ -1144,9 +994,7 @@
       const panel  = document.getElementById("saMenuPanel");
       if (!toggle || !panel) return;
 
-      function closeMenu() {
-        panel.classList.remove("open");
-      }
+      function closeMenu() { panel.classList.remove("open"); }
 
       toggle.addEventListener("click", () => {
         const isOpen = panel.classList.toggle("open");
@@ -1160,7 +1008,6 @@
             closeMenu();
             return;
           }
-
           const targetSel = btn.getAttribute("data-scroll");
           const target = targetSel ? document.querySelector(targetSel) : null;
           if (target) {
@@ -1171,12 +1018,9 @@
         });
       });
 
-      // click outside to close
       document.addEventListener("click", (e) => {
         if (!panel.classList.contains("open")) return;
-        if (!panel.contains(e.target) && !toggle.contains(e.target)) {
-          closeMenu();
-        }
+        if (!panel.contains(e.target) && !toggle.contains(e.target)) closeMenu();
       });
     })();
 
@@ -1192,18 +1036,15 @@
 
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("in-view");
-          } else {
-            entry.target.classList.remove("in-view");
-          }
+          if (entry.isIntersecting) entry.target.classList.add("in-view");
+          else entry.target.classList.remove("in-view");
         });
       }, { threshold: 0.25 });
 
       frames.forEach(f => observer.observe(f));
     })();
 
-    /* FAQ ACCORDION (Dropdowns) */
+    /* FAQ ACCORDION */
     (function(){
       const items = document.querySelectorAll(".sa-faq-item");
       if (!items.length) return;
@@ -1230,7 +1071,6 @@
         btn.addEventListener("click", () => {
           const isOpen = item.classList.contains("open");
 
-          // Close others (nice UX)
           items.forEach(other => {
             if (other !== item) {
               const ob = other.querySelector(".sa-faq-btn");
@@ -1247,7 +1087,6 @@
           else openIt();
         });
 
-        // keep panel height correct on resize (if open)
         window.addEventListener("resize", () => {
           if (!item.classList.contains("open")) return;
           panel.style.maxHeight = panel.scrollHeight + "px";
