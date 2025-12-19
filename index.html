@@ -342,8 +342,8 @@
     /* ================= ROUND FLOATING IMAGES ================= */
     .sa-hero-visual {
       position:relative;
-      width: min(95vw, 460px);   /* bigger space for floating */
-      height: min(95vw, 460px);  /* bigger space for floating */
+      width: min(95vw, 460px);
+      height: min(95vw, 460px);
       align-self:flex-end;
 
       opacity: 0;
@@ -360,12 +360,12 @@
 
     .sa-portrait {
       position:absolute;
-      width: min(55vw, 230px);   /* a bit smaller inside larger circle */
+      width: min(55vw, 230px);
       height: min(55vw, 230px);
       border-radius:999px;
       overflow:hidden;
       box-shadow:0 22px 42px rgba(0,0,0,0.18);
-      pointer-events: none;  /* no dragging / no touch interaction */
+      pointer-events: none;
       cursor: default;
     }
 
@@ -377,7 +377,6 @@
       mix-blend-mode:multiply;
     }
 
-    /* positions adjusted to avoid overlap + smaller float distance */
     .sa-portrait--tone1 {
       right: 30px;
       top: 20px;
@@ -439,12 +438,11 @@
       margin-bottom: 28px;
     }
 
-    /* extra space after Shopify/Upwork block */
     #shopify-upwork {
       display: flex;
       flex-direction: column;
       gap: 22px;
-      margin-bottom: 26px; /* MORE SPACE HERE */
+      margin-bottom: 26px;
     }
 
     .sa-offer-card h3 {
@@ -597,12 +595,12 @@
       }
 
       .sa-hero-visual {
-        width: 320px !important;   /* bigger circle on mobile */
+        width: 320px !important;
         height: 320px !important;
       }
 
       .sa-portrait {
-        width: 240px !important;   /* nice big portraits on mobile */
+        width: 240px !important;
         height: 240px !important;
       }
 
@@ -757,7 +755,7 @@
         <li>✅ <strong>49,000 դրամ</strong> – Shopify (1 ամիս հետադարձ կապ + վիդեո դասեր)</li>
         <li>✅ <strong>59,000 դրամ</strong> – Shopify + Upwork պրոֆիլի պատրաստում (2 ամիս հետադարձ կապ + վիդեո դասեր)</li>
         <li>
-          ✅ <strong>69,000 դրամ</strong> – Shopify + Upwork պրոֆիլի պատրաստում + 2 ժամ հանդիպում  
+          ✅ <strong>69,000 դրամ</strong> – Shopify + Upwork պրոֆիլի պատրաստում + 2 ժամ հանդիպում
           Upwork հարթակի մանրամասն ուսուցում + AI (25+ գործիք, Upwork էջի ստեղծում,
           աշխատանքի դիմելու և ստանալու գաղտնիքներ իրական օրինակներով, 2 ամիս հետադարձ կապ + վիդեո դասեր 🚀)
         </li>
@@ -781,7 +779,7 @@
     <div class="sa-text-frame sa-cta-inner sa-anim-frame">
       <div>
         <h3 class="sa-cta-title">
-          Հաջորդ Shopify խումբը մեկնարկում է՝ <span class="sa-cta-highlight">18 Դեկտեմբեր 2025</span>
+          Հաջորդ Shopify խումբը մեկնարկում է՝ <span class="sa-cta-highlight">5 Փետրվար 2026</span>
         </h3>
         <p class="sa-cta-text">
           Եթե ուզում ես նոր մասնագիտություն, իրական պորտֆոլիո և միջազգային հաճախորդներ,
@@ -895,7 +893,7 @@
       }, { passive:true });
     })();
 
-    /* COUNTDOWN TO 18 DEC 2025 */
+    /* COUNTDOWN TO 5 FEB 2026 */
     (function(){
       const daysEl    = document.getElementById("saDays");
       const hoursEl   = document.getElementById("saHours");
@@ -904,7 +902,7 @@
 
       if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
 
-      const target = new Date("2025-12-18T00:00:00");
+      const target = new Date("2026-02-05T00:00:00");
 
       function updateCountdown(){
         const now = new Date();
