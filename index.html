@@ -1,681 +1,190 @@
 <!DOCTYPE html>
 <html lang="hy">
 <head>
-  <meta charset="UTF-8" />
-  <title>Success Academy</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Success Academy</title>
 
-  <meta property="og:title" content="Success Academy — Shopify & Upwork դասընթաց" />
-  <meta property="og:description" content="Սովորիր Shopify, Upwork և AI գործիքներ, ստեղծիր իրական ֆրիլանս կարիերա Success Academy-ի հետ։" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0434.jpg?v=1765139942" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Success Academy — Shopify & Upwork դասընթաց" />
-  <meta name="twitter:description" content="Սովորիր Shopify, Upwork և AI գործիքներ, ստեղծիր իրական ֆրիլանս կարիերա Success Academy-ի հետ։" />
-  <meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0434.jpg?v=1765139942" />
+<style>
+:root{
+  --bg:#EAE0D5;
+  --text:#7f5539;
+  --soft:#a68a71;
+  --smoke:#d4a373;
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  --portrait-size: 260px;
+}
 
-  <style>
-    :root {
-      --sa-bg:   #EAE0D5;
-      --sa-text: #7f5539;
-      --sa-soft: #a68a71;
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  font-family:Inter,sans-serif;
+  color:var(--text);
+  overflow-x:hidden;
+}
 
-      --sa-tone1: #C6AC8F;
-      --sa-tone2: #E3D5CA;
+/* ================= HERO ================= */
+.hero{
+  padding:24px;
+}
 
-      /* smoke color */
-      --sa-smoke: rgba(212,163,115,1);
+.hero-card{
+  background:#fff;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 18px 32px rgba(0,0,0,.12);
+}
 
-      /* hero sizing */
-      --sa-hero-visual-size: min(96vw, 540px);
-      --sa-portrait-size: clamp(170px, 40vw, 250px);
-    }
+.hero-card h1{
+  margin:0 0 10px;
+  font-size:28px;
+}
+.hero-card p{
+  margin:0;
+  color:var(--soft);
+}
 
-    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-    body {
-      margin: 0;
-      background: var(--sa-bg);
-      font-family: 'Inter', sans-serif;
-      color: var(--sa-text);
-      overflow-x: hidden;
-    }
-    html { scroll-behavior: smooth; }
+/* ================= VISUAL ================= */
+.visual{
+  position:relative;
+  width:100%;
+  height:360px;
+  margin-top:30px;
+}
 
-    /* ================= PRELOADER ================= */
-    .sa-count-preloader {
-      position: fixed;
-      inset: 0;
-      background: var(--sa-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 999999;
-      transition: opacity .6s ease, visibility .6s ease;
-    }
-    .sa-count-preloader.hidden { opacity: 0; visibility: hidden; }
-    .sa-count-wrapper {
-      position: relative;
-      width: min(75vw, 380px);
-      height: min(75vw, 380px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .sa-count-circle {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      border: 3px solid var(--sa-text);
-      animation: saCirclePulse 2.5s ease-in-out infinite;
-    }
-    @keyframes saCirclePulse {
-      0%,100% { transform: scale(.96); opacity:.9 }
-      50%     { transform: scale(1);   opacity:1 }
-    }
-    .sa-count-content { text-align:center; }
-    .sa-count-logo {
-      font-size: clamp(22px,5vw,26px);
-      font-weight:800;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      margin-bottom:12px;
-    }
-    .sa-count-number { font-size: clamp(60px,14vw,90px); font-weight:900; }
+/* === TRUE CIRCLE FIX (IMPORTANT) === */
+.portrait{
+  position:absolute;
+  width:var(--portrait-size);
+  height:var(--portrait-size);     /* force square */
+  border-radius:50%;
+  overflow:hidden;                /* CLIPS IMAGE */
+  box-shadow:0 24px 48px rgba(0,0,0,.2);
+  background:#fff;
+  animation-play-state:paused;
+}
 
-    /* ================= GLOBAL SMOKE (mouse) ================= */
-    #smoke-area-sa {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 99999;
-    }
-    .sa-smoke {
-      position: absolute;
-      width: 56px;
-      height: 56px;
-      border-radius: 999px;
-      pointer-events: none;
-      background: radial-gradient(circle,
-        rgba(212,163,115,0.85) 0%,
-        rgba(212,163,115,0.28) 40%,
-        rgba(212,163,115,0.08) 62%,
-        rgba(212,163,115,0) 78%
-      );
-      filter: blur(14px);
-      mix-blend-mode: soft-light;
-      animation: saSmokeFade 2.1s ease-out forwards;
-      opacity: 1;
-    }
-    @keyframes saSmokeFade {
-      0%   { transform: scale(.55); opacity: .95; }
-      100% { transform: scale(3.8); opacity: 0; }
-    }
+/* Image inside */
+.portrait img{
+  width:160%;
+  height:160%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+}
 
-    /* =============== HEADER =============== */
-    .sa-main-header {
-      position: sticky;
-      top: 0;
-      z-index: 9000;
-      padding: 14px 22px 10px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      background: linear-gradient(
-        to bottom,
-        rgba(234,224,213,0.98),
-        rgba(234,224,213,0.95),
-        rgba(234,224,213,0.90),
-        rgba(234,224,213,0.75)
-      );
-    }
-    .sa-logo {
-      font-size: 28px;
-      font-weight:800;
-      letter-spacing:0.08em;
-      white-space:nowrap;
-    }
+/* === SMOKE AURA === */
+.portrait::before{
+  content:"";
+  position:absolute;
+  inset:-36px;
+  border-radius:50%;
+  background:radial-gradient(circle,
+    rgba(212,163,115,.75) 0%,
+    rgba(212,163,115,.35) 40%,
+    rgba(212,163,115,.12) 60%,
+    rgba(212,163,115,0) 78%);
+  filter:blur(14px);
+  animation:smokePulse 3.2s ease-in-out infinite;
+  z-index:0;
+}
 
-    .sa-menu-toggle {
-      min-width: 44px;
-      height: 40px;
-      border-radius: 999px;
-      border: none;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      padding: 0 14px;
-      box-shadow: 0 10px 22px rgba(0,0,0,0.18);
-      position: relative;
-      animation: saHeartPulse 1.3s ease-in-out infinite;
-    }
-    .sa-menu-toggle span {
-      font-weight: 700;
-      font-size: 18px;
-      color: var(--sa-text);
-      line-height: 1;
-    }
-    @keyframes saHeartPulse {
-      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(127,85,57,0.45); }
-      40% { transform: scale(1.08); box-shadow: 0 0 0 12px rgba(127,85,57,0); }
-      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(127,85,57,0); }
-    }
+@keyframes smokePulse{
+  0%,100%{transform:scale(.98);opacity:.8}
+  50%{transform:scale(1.08);opacity:1}
+}
 
-    .sa-menu-panel {
-      position: fixed;
-      top: 70px;
-      right: 14px;
-      z-index: 9999;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-8px);
-      transition: opacity .25s ease, transform .25s ease;
-    }
-    .sa-menu-panel.open {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-    .sa-menu-card {
-      padding: 12px 16px 10px;
-      display:flex;
-      flex-direction:column;
-      gap: 4px;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 18px 32px rgba(0,0,0,0.22);
-      border: 1px solid rgba(127,85,57,0.18);
-      min-width: 230px;
-    }
-    .sa-menu-link {
-      background: transparent;
-      border: none;
-      text-align: left;
-      font-size: 14px;
-      padding: 6px 4px;
-      cursor: pointer;
-      color: var(--sa-text);
-      display:flex;
-      align-items:center;
-      gap:6px;
-    }
-    .sa-menu-dot { width:6px; height:6px; border-radius:999px; background: var(--sa-text); opacity:0.6; }
-    .sa-menu-link:hover { opacity: 0.85; }
-    .sa-menu-close { margin-top: 6px; font-size: 13px; justify-content: flex-end; opacity: 0.8; }
+/* Desktop float */
+.p1{
+  right:10%;
+  top:0;
+  animation:floatA 14s ease-in-out infinite alternate;
+}
+.p2{
+  left:10%;
+  bottom:0;
+  animation:floatB 16s ease-in-out infinite alternate;
+}
 
-    /* ================= HERO ================= */
-    .sa-hero {
-      min-height: 100vh;
-      padding: 10px 22px 50px;
-      display:flex;
-      flex-direction:column;
-      background: var(--sa-bg);
-    }
-    .sa-hero-inner { display:flex; flex-direction:column; }
+@keyframes floatA{
+  from{transform:translate(0,0)}
+  to{transform:translate(18px,-20px)}
+}
+@keyframes floatB{
+  from{transform:translate(0,0)}
+  to{transform:translate(-18px,20px)}
+}
 
-    .sa-text-frame {
-      display: inline-block;
-      padding: 16px 18px 14px;
-      border-radius: 18px;
-      border: 1px solid rgba(127, 85, 57, 0.25);
-      background: rgba(255, 255, 255, 0.86);
-      box-shadow: 0 18px 32px rgba(0, 0, 0, 0.10);
-      position: relative;
-      overflow: hidden;
-    }
+.floating{animation-play-state:running}
 
-    .sa-hero-text h1 {
-      font-weight: 600;
-      font-size: clamp(26px, 7vw, 34px);
-      margin: 0 0 8px;
-      line-height: 1.35;
-      max-width: 92%;
-    }
-    .sa-hero-text p {
-      font-weight: 400;
-      font-size: clamp(16px, 4.2vw, 19px);
-      line-height: 1.5;
-      margin: 0;
-      max-width: 95%;
-      color: var(--sa-soft);
-    }
+/* ================= MOBILE FIX ================= */
+@media(max-width:600px){
+  :root{
+    --portrait-size: 220px;
+  }
 
-    /* ================= VISUAL ================= */
-    .sa-hero-visual {
-      position: relative;
-      width: var(--sa-hero-visual-size);
-      height: var(--sa-hero-visual-size);
-      align-self: flex-end;
-      opacity: 0;
-      transform: translateY(-40px);
-      transition: opacity 0.8s ease, transform 0.9s ease;
-      margin-top: 36px;
-      padding: 26px;
-      overflow: visible;
-    }
-    .sa-hero-visual.sa-visible { opacity: 1; transform: translateY(0); }
+  .visual{
+    height:300px;
+  }
 
-    /* ✅ TRUE ROUND FRAME (even if size changes) */
-    .sa-portrait {
-      position: absolute;
-      width: var(--sa-portrait-size);
-      aspect-ratio: 1 / 1;          /* ensures perfect circle */
-      height: auto;                 /* let aspect-ratio control height */
-      border-radius: 999px;
-      overflow: hidden;
-      box-shadow: 0 22px 42px rgba(0,0,0,0.18);
-      pointer-events: none;
-      will-change: transform;
-      z-index: 2;
-      background: transparent;
-    }
+  /* 15% overlap EXACT */
+  .p1{
+    left:50%;
+    right:auto;
+    top:10px;
+    transform:translateX(calc(-50% - 15%));
+    animation:floatMobileA 10s ease-in-out infinite alternate;
+  }
+  .p2{
+    left:50%;
+    bottom:auto;
+    top:30px;
+    transform:translateX(calc(-50% + 15%));
+    animation:floatMobileB 12s ease-in-out infinite alternate;
+  }
 
-    /* ✅ more visible smoke aura */
-    .sa-portrait::before{
-      content:"";
-      position:absolute;
-      inset:-30px;
-      border-radius:999px;
-      background: radial-gradient(circle,
-        rgba(212,163,115,0.62) 0%,
-        rgba(212,163,115,0.30) 38%,
-        rgba(212,163,115,0.12) 58%,
-        rgba(212,163,115,0) 76%
-      );
-      filter: blur(12px);
-      opacity: .95;
-      transform: scale(1);
-      animation: saPortraitSmokePulse 3.2s ease-in-out infinite;
-      z-index: 0;
-      pointer-events:none;
-      mix-blend-mode: soft-light;
-    }
-    @keyframes saPortraitSmokePulse {
-      0%,100% { opacity: .75; transform: scale(0.98); }
-      50%     { opacity: 1;   transform: scale(1.09); }
-    }
-
-    .sa-portrait img {
-      position: relative;
-      z-index: 1;
-      width: 160%;
-      height: 160%;
-      object-fit: cover;
-      object-position: center top;
-      mix-blend-mode: multiply;
-      display:block;
-    }
-
-    /* Desktop positioning */
-    .sa-portrait--tone1 {
-      right: 18px;
-      top: 12px;
-      background: var(--sa-tone1);
-      animation: saFloatA 14s ease-in-out infinite alternate;
-      animation-play-state: paused;
-      z-index: 3;
-    }
-    .sa-portrait--tone2 {
-      left: 18px;
-      bottom: 12px;
-      background: var(--sa-tone2);
-      animation: saFloatB 16s ease-in-out infinite alternate;
-      animation-play-state: paused;
-      z-index: 2;
-    }
-
-    @keyframes saFloatA {
-      0%   { transform:translate(0,0); }
-      25%  { transform:translate(16px,-18px); }
-      50%  { transform:translate(-18px,14px); }
-      75%  { transform:translate(20px,18px); }
-      100% { transform:translate(-14px,-14px); }
-    }
-    @keyframes saFloatB {
-      0%   { transform:translate(0,0); }
-      25%  { transform:translate(-18px,-16px); }
-      50%  { transform:translate(20px,12px); }
-      75%  { transform:translate(-20px,20px); }
-      100% { transform:translate(14px,-14px); }
-    }
-
-    /* ✅ Mobile float keyframes (smaller movement) */
-    @keyframes saFloatMobileA {
-      0%   { transform: translateX(-57%) translateY(0); }
-      50%  { transform: translateX(-54%) translateY(-10px); }
-      100% { transform: translateX(-60%) translateY(8px); }
-    }
-    @keyframes saFloatMobileB {
-      0%   { transform: translateX(-42%) translateY(0); }
-      50%  { transform: translateX(-45%) translateY(10px); }
-      100% { transform: translateX(-39%) translateY(-8px); }
-    }
-
-    .sa-floating { animation-play-state: running !important; }
-
-    /* ✅ Portrait smoke particles (more visible) */
-    .sa-portrait-smoke {
-      position: absolute;
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      pointer-events: none;
-      z-index: 4;
-      background: radial-gradient(circle,
-        rgba(212,163,115,0.78) 0%,
-        rgba(212,163,115,0.28) 45%,
-        rgba(212,163,115,0.10) 62%,
-        rgba(212,163,115,0) 78%
-      );
-      filter: blur(10px);
-      mix-blend-mode: soft-light;
-      animation: saPortraitPuff 2.2s ease-out forwards;
-      opacity: 1;
-    }
-    @keyframes saPortraitPuff {
-      0%   { transform: translate(0,0) scale(0.9); opacity: 1; }
-      100% { transform: translate(var(--dx), var(--dy)) scale(3.2); opacity: 0; }
-    }
-
-    /* =============== CTA TIMER =============== */
-    .sa-cta { padding: 0 22px 40px; margin-top: 52px; }
-    .sa-cta-inner { display: flex; flex-direction: column; gap: 14px; }
-    .sa-cta-title { font-size: 20px; font-weight: 700; margin: 0 0 4px; }
-    .sa-cta-text { font-size: 15px; color: var(--sa-soft); margin: 0; }
-    .sa-cta-highlight { font-weight: 600; }
-
-    .sa-cta-timer { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
-    .sa-cta-box {
-      min-width: 70px;
-      padding: 8px 10px;
-      border-radius: 12px;
-      background: rgba(127, 85, 57, 0.06);
-      text-align: center;
-    }
-    .sa-cta-box span { display: block; font-size: 20px; font-weight: 700; line-height: 1.2; }
-    .sa-cta-box label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
-
-    /* ================= MOBILE (overlap 15% + floating + smoke visible) ================= */
-    @media (max-width: 600px) {
-      :root{
-        --sa-hero-visual-size: min(96vw, 440px);
-        --sa-portrait-size: clamp(180px, 52vw, 235px);
-      }
-
-      .sa-hero-visual{
-        width: var(--sa-hero-visual-size) !important;
-        height: calc(var(--sa-portrait-size) + 60px) !important;
-        padding: 0 !important;
-        margin-top: 22px !important;
-        align-self: center !important;
-      }
-
-      /* ✅ 15% overlap:
-         We place two circles centered, then shift left/right by 15% of their own width */
-      .sa-portrait--tone1{
-        top: 10px !important;
-        left: 50% !important;
-        right: auto !important;
-        transform: translateX(calc(-50% - 15%)) !important; /* left by 15% */
-        animation: saFloatMobileA 9.5s ease-in-out infinite alternate !important;
-        animation-play-state: paused;
-        z-index: 3;
-      }
-      .sa-portrait--tone2{
-        top: 26px !important;
-        left: 50% !important;
-        bottom: auto !important;
-        transform: translateX(calc(-50% + 15%)) !important; /* right by 15% */
-        animation: saFloatMobileB 10.8s ease-in-out infinite alternate !important;
-        animation-play-state: paused;
-        z-index: 2;
-      }
-
-      .sa-portrait img{
-        width: 150% !important;
-        height: 150% !important;
-      }
-
-      /* make aura a bit stronger on mobile */
-      .sa-portrait::before{
-        inset: -34px !important;
-        filter: blur(11px) !important;
-        opacity: 1 !important;
-      }
-    }
-  </style>
+  @keyframes floatMobileA{
+    from{transform:translateX(calc(-50% - 15%)) translateY(0)}
+    to{transform:translateX(calc(-50% - 15%)) translateY(-12px)}
+  }
+  @keyframes floatMobileB{
+    from{transform:translateX(calc(-50% + 15%)) translateY(0)}
+    to{transform:translateX(calc(-50% + 15%)) translateY(12px)}
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- PRELOADER -->
-  <div id="countdownPreloader" class="sa-count-preloader">
-    <div class="sa-count-wrapper">
-      <div class="sa-count-circle"></div>
-      <div class="sa-count-content">
-        <div class="sa-count-logo">Success Academy</div>
-        <div class="sa-count-number" id="countNumber">3</div>
-      </div>
-    </div>
+<section class="hero">
+  <div class="hero-card">
+    <h1>Ֆրիլանս կարիերա</h1>
+    <p>Միջազգային հարթակներում աշխատելու հստակ ուղի</p>
   </div>
 
-  <!-- SMOKE AREA (mouse/touch) -->
-  <div id="smoke-area-sa"></div>
-
-  <!-- HEADER -->
-  <header class="sa-main-header">
-    <div class="sa-logo">SUCCESS ACADEMY</div>
-    <button class="sa-menu-toggle" id="saMenuToggle" aria-label="Մենյու">
-      <span>♥</span>
-    </button>
-  </header>
-
-  <!-- HERO -->
-  <section class="sa-hero" id="hero">
-    <div class="sa-hero-inner">
-
-      <div class="sa-hero-text">
-        <div class="sa-text-frame">
-          <h1>Մեզ հետ նոր մասնագիտությունը դառնում է իրական ֆրիլանս կարիերա</h1>
-          <p>Աշխատանք միջազգային ֆրիլանս հարթակներում, որտեղ դու կարող ես սկսել քո կարիերան հենց ուսուցումից հետո։</p>
-        </div>
-      </div>
-
-      <div class="sa-hero-visual">
-        <div class="sa-portrait sa-portrait--tone1">
-          <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579" alt="portrait 1">
-        </div>
-
-        <div class="sa-portrait sa-portrait--tone2">
-          <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0428.jpg?v=1765128580" alt="portrait 2">
-        </div>
-      </div>
-
+  <div class="visual">
+    <div class="portrait p1">
+      <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579">
     </div>
-  </section>
 
-  <!-- CTA (Timer WITHOUT seconds) -->
-  <section class="sa-cta" id="cta">
-    <div class="sa-text-frame sa-cta-inner">
-      <div>
-        <h3 class="sa-cta-title">
-          Հաջորդ Shopify խումբը մեկնարկում է՝ <span class="sa-cta-highlight">5 Փետրվար 2026</span>
-        </h3>
-        <p class="sa-cta-text">
-          Եթե ուզում ես նոր մասնագիտություն, իրական պորտֆոլիո և միջազգային հաճախորդներ,
-          սա է քո հնարավորությունը։ Հաջորդ խումբը սահմանափակ տեղերով է։
-        </p>
-      </div>
-
-      <div class="sa-cta-timer">
-        <div class="sa-cta-box">
-          <span id="saDays">00</span>
-          <label>Օր</label>
-        </div>
-        <div class="sa-cta-box">
-          <span id="saHours">00</span>
-          <label>Ժամ</label>
-        </div>
-        <div class="sa-cta-box">
-          <span id="saMinutes">00</span>
-          <label>Րոպե</label>
-        </div>
-      </div>
-
-      <p style="font-size:14px;margin-top:6px;">
-        👉 Գրանցման համար գրիր <strong>DM</strong> և մենք կուղարկենք բոլոր մանրամասները։
-      </p>
+    <div class="portrait p2">
+      <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0428.jpg?v=1765128580">
     </div>
-  </section>
+  </div>
+</section>
 
-  <script>
-    /* PRELOADER + start floats */
-    (function(){
-      const pre = document.getElementById("countdownPreloader");
-      const num = document.getElementById("countNumber");
-      const visual = document.querySelector(".sa-hero-visual");
-      const circles = document.querySelectorAll(".sa-portrait");
-
-      let count = 3;
-      const timer = setInterval(()=>{
-        count--;
-        if(count > 0){
-          num.textContent = count;
-        } else {
-          clearInterval(timer);
-          pre.classList.add("hidden");
-          setTimeout(() => {
-            if (visual) visual.classList.add("sa-visible");
-            circles.forEach(c => c.classList.add("sa-floating"));
-          }, 650);
-        }
-      }, 1000);
-    })();
-
-    /* GLOBAL SMOKE FOLLOW */
-    (function(){
-      const smoke = document.getElementById("smoke-area-sa");
-      function puff(x, y) {
-        const s = document.createElement("div");
-        s.className = "sa-smoke";
-        s.style.left = (x - 28) + "px";
-        s.style.top  = (y - 28) + "px";
-        smoke.appendChild(s);
-        setTimeout(() => s.remove(), 2100);
-      }
-      window.addEventListener("mousemove", e => puff(e.clientX, e.clientY));
-      window.addEventListener("touchmove", e => {
-        if (!e.touches.length) return;
-        const t = e.touches[0];
-        puff(t.clientX, t.clientY);
-      }, { passive:true });
-    })();
-
-    /* PORTRAIT SMOKE (from the circles) */
-    (function(){
-      const visual = document.querySelector(".sa-hero-visual");
-      const portraits = document.querySelectorAll(".sa-portrait");
-      if (!visual || !portraits.length) return;
-
-      function spawnPuffNear(el){
-        const vRect = visual.getBoundingClientRect();
-        const r = el.getBoundingClientRect();
-
-        const cx = (r.left + r.width/2) - vRect.left;
-        const cy = (r.top  + r.height/2) - vRect.top;
-
-        const angle = Math.random() * Math.PI * 2;
-        const radius = (Math.min(r.width, r.height) / 2) * (0.78 + Math.random()*0.28);
-
-        const x = cx + Math.cos(angle) * radius;
-        const y = cy + Math.sin(angle) * radius;
-
-        const puff = document.createElement("div");
-        puff.className = "sa-portrait-smoke";
-        puff.style.left = x + "px";
-        puff.style.top  = y + "px";
-
-        const dx = (Math.random() * 90 - 45);
-        const dy = (Math.random() * 90 - 65);
-        puff.style.setProperty("--dx", dx + "px");
-        puff.style.setProperty("--dy", dy + "px");
-
-        visual.appendChild(puff);
-        setTimeout(() => puff.remove(), 2200);
-      }
-
-      // start when hero visible
-      const check = setInterval(() => {
-        if (visual.classList.contains("sa-visible")) {
-          clearInterval(check);
-          setInterval(() => {
-            portraits.forEach(p => {
-              if (Math.random() < 0.9) spawnPuffNear(p);
-            });
-          }, 260);
-        }
-      }, 120);
-    })();
-
-    /* COUNTDOWN TO 5 FEB 2026 (NO SECONDS) */
-    (function(){
-      const daysEl    = document.getElementById("saDays");
-      const hoursEl   = document.getElementById("saHours");
-      const minutesEl = document.getElementById("saMinutes");
-      if (!daysEl || !hoursEl || !minutesEl) return;
-
-      const target = new Date("2026-02-05T00:00:00");
-
-      function updateCountdown(){
-        const now = new Date();
-        let diff = target.getTime() - now.getTime();
-
-        if (diff <= 0) {
-          daysEl.textContent    = "00";
-          hoursEl.textContent   = "00";
-          minutesEl.textContent = "00";
-          return;
-        }
-
-        const totalMinutes = Math.floor(diff / (1000 * 60));
-        const days = Math.floor(totalMinutes / (60*24));
-        const hrs  = Math.floor((totalMinutes % (60*24)) / 60);
-        const mins = totalMinutes % 60;
-
-        daysEl.textContent    = String(days).padStart(2,"0");
-        hoursEl.textContent   = String(hrs).padStart(2,"0");
-        minutesEl.textContent = String(mins).padStart(2,"0");
-      }
-
-      updateCountdown();
-      setInterval(updateCountdown, 15000);
-    })();
-
-    /* MENU (simple) */
-    (function(){
-      const toggle = document.getElementById("saMenuToggle");
-      const panel  = document.getElementById("saMenuPanel");
-      if (!toggle || !panel) return;
-
-      function closeMenu() { panel.classList.remove("open"); }
-
-      toggle.addEventListener("click", () => {
-        const isOpen = panel.classList.toggle("open");
-        if (!isOpen) closeMenu();
-      });
-
-      document.addEventListener("click", (e) => {
-        if (!panel.classList.contains("open")) return;
-        if (!panel.contains(e.target) && !toggle.contains(e.target)) closeMenu();
-      });
-    })();
-  </script>
+<script>
+/* start floating after load */
+window.addEventListener("load",()=>{
+  document.querySelectorAll(".portrait").forEach(p=>{
+    p.classList.add("floating");
+  });
+});
+</script>
 
 </body>
 </html>
