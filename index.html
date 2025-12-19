@@ -30,6 +30,10 @@
       --sa-tone2: #E3D5CA;
 
       --sa-smoke: #d4a373;
+
+      /* NEW: helper vars for hero portraits (prevents overlap) */
+      --sa-hero-visual-size: min(96vw, 540px);
+      --sa-portrait-size: clamp(170px, 40vw, 250px);
     }
 
     * {
@@ -341,16 +345,19 @@
 
     /* ================= ROUND FLOATING IMAGES ================= */
     .sa-hero-visual {
-      position:relative;
-      width: min(95vw, 460px);
-      height: min(95vw, 460px);
-      align-self:flex-end;
+      position: relative;
+      width: var(--sa-hero-visual-size);
+      height: var(--sa-hero-visual-size);
+      align-self: flex-end;
 
       opacity: 0;
       transform: translateY(-40px);
       transition: opacity 0.8s ease, transform 0.9s ease;
 
-      margin-top: 32px;
+      margin-top: 36px;
+
+      /* NEW: gives extra room so circles can float without clipping */
+      padding: 26px;
     }
 
     .sa-hero-visual.sa-visible {
@@ -359,54 +366,58 @@
     }
 
     .sa-portrait {
-      position:absolute;
-      width: min(55vw, 230px);
-      height: min(55vw, 230px);
-      border-radius:999px;
-      overflow:hidden;
-      box-shadow:0 22px 42px rgba(0,0,0,0.18);
+      position: absolute;
+      width: var(--sa-portrait-size);
+      height: var(--sa-portrait-size);
+      border-radius: 999px;
+      overflow: hidden;
+      box-shadow: 0 22px 42px rgba(0,0,0,0.18);
       pointer-events: none;
       cursor: default;
+
+      /* NEW: smoother motion + prevents "micro overlap" feeling */
+      will-change: transform;
     }
 
     .sa-portrait img {
-      width:160%;
-      height:160%;
-      object-fit:cover;
-      object-position:center top;
-      mix-blend-mode:multiply;
+      width: 160%;
+      height: 160%;
+      object-fit: cover;
+      object-position: center top;
+      mix-blend-mode: multiply;
     }
 
+    /* Desktop/tablet positioning (more space between them) */
     .sa-portrait--tone1 {
-      right: 30px;
-      top: 20px;
-      background:var(--sa-tone1);
+      right: 18px;
+      top: 12px;
+      background: var(--sa-tone1);
       animation: saFloatA 14s ease-in-out infinite alternate;
       animation-play-state: paused;
     }
 
     .sa-portrait--tone2 {
-      left: 30px;
-      bottom: 20px;
-      background:var(--sa-tone2);
+      left: 18px;
+      bottom: 12px;
+      background: var(--sa-tone2);
       animation: saFloatB 16s ease-in-out infinite alternate;
       animation-play-state: paused;
     }
 
     @keyframes saFloatA {
       0%   { transform:translate(0,0); }
-      25%  { transform:translate(14px,-18px); }
-      50%  { transform:translate(-16px,12px); }
-      75%  { transform:translate(18px,16px); }
-      100% { transform:translate(-12px,-14px); }
+      25%  { transform:translate(16px,-18px); }
+      50%  { transform:translate(-18px,14px); }
+      75%  { transform:translate(20px,18px); }
+      100% { transform:translate(-14px,-14px); }
     }
 
     @keyframes saFloatB {
       0%   { transform:translate(0,0); }
-      25%  { transform:translate(-16px,-16px); }
-      50%  { transform:translate(18px,10px); }
-      75%  { transform:translate(-18px,18px); }
-      100% { transform:translate(12px,-12px); }
+      25%  { transform:translate(-18px,-16px); }
+      50%  { transform:translate(20px,12px); }
+      75%  { transform:translate(-20px,20px); }
+      100% { transform:translate(14px,-14px); }
     }
 
     .sa-floating {
@@ -655,7 +666,7 @@
       display: block;
     }
 
-    /* ================= MOBILE TWEAKS ================= */
+    /* ================= MOBILE / SMALL SCREEN TWEAKS ================= */
     @media (max-width: 600px) {
 
       .sa-logo {
@@ -671,14 +682,36 @@
         font-size: 16px !important;
       }
 
-      .sa-hero-visual {
-        width: 320px !important;
-        height: 320px !important;
+      /* NEW: mobile layout = NO overlap (stacked circles) */
+      :root{
+        --sa-hero-visual-size: min(94vw, 420px);
+        --sa-portrait-size: min(72vw, 260px);
       }
 
-      .sa-portrait {
-        width: 240px !important;
-        height: 240px !important;
+      .sa-hero-visual{
+        width: var(--sa-hero-visual-size) !important;
+        height: auto !important;           /* NEW */
+        padding: 0 !important;             /* NEW */
+        margin-top: 22px !important;
+        align-self: center !important;      /* NEW */
+        display: grid !important;           /* NEW */
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;               /* space between images */
+        justify-items: center !important;
+      }
+
+      .sa-portrait{
+        position: relative !important;      /* NEW */
+        inset: auto !important;             /* NEW */
+        width: var(--sa-portrait-size) !important;
+        height: var(--sa-portrait-size) !important;
+        animation-play-state: paused !important; /* NEW: avoids overlap drift on small screens */
+        transform: none !important;
+      }
+
+      .sa-portrait img{
+        width: 150% !important;
+        height: 150% !important;
       }
 
       .sa-section-title {
