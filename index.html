@@ -551,6 +551,83 @@
       font-weight: 700;
     }
 
+    /* =============== FAQ SECTION (Accordion) =============== */
+    .sa-faq {
+      padding: 10px 22px 70px;
+      margin-top: 56px;
+    }
+
+    .sa-faq-wrap {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .sa-faq-item {
+      width: 100%;
+      display: block;
+      padding: 0;
+    }
+
+    .sa-faq-btn {
+      width: 100%;
+      border: none;
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+      padding: 14px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      color: var(--sa-text);
+      font-family: inherit;
+    }
+
+    .sa-faq-q {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .sa-faq-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(127, 85, 57, 0.08);
+      border: 1px solid rgba(127, 85, 57, 0.16);
+      flex: 0 0 auto;
+      transition: transform .25s ease, background .25s ease;
+    }
+
+    .sa-faq-icon span {
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1;
+      transform: translateY(-1px);
+    }
+
+    .sa-faq-item.open .sa-faq-icon {
+      transform: rotate(45deg);
+      background: rgba(127, 85, 57, 0.12);
+    }
+
+    .sa-faq-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease;
+      padding: 0 14px;
+    }
+
+    .sa-faq-a {
+      padding: 0 0 14px;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--sa-soft);
+    }
+
     /* =============== UPWORK CONSULT SECTION =============== */
     .sa-upwork {
       padding: 10px 22px 70px;
@@ -617,6 +694,10 @@
       .sa-cta-title {
         font-size: 18px;
       }
+
+      .sa-faq-q {
+        font-size: 14px;
+      }
     }
   </style>
 </head>
@@ -661,6 +742,12 @@
       <button class="sa-menu-link" data-scroll="#cta">
         <span class="sa-menu-dot"></span> Դասընթացի մեկնարկը
       </button>
+
+      <!-- NEW: FAQ menu item -->
+      <button class="sa-menu-link" data-scroll="#faq">
+        <span class="sa-menu-dot"></span> Հաճախ տրվող հարցեր
+      </button>
+
       <button class="sa-menu-link" data-scroll="#upwork-consult">
         <span class="sa-menu-dot"></span> Upwork խորհրդատվություն
       </button>
@@ -809,6 +896,92 @@
       <p class="sa-cta-note">
         👉 Գրանցման համար գրիր <strong>DM</strong> և մենք կուղարկենք բոլոր մանրամասները։
       </p>
+    </div>
+  </section>
+
+  <!-- =============== FAQ SECTION (NEW) =============== -->
+  <section class="sa-faq" id="faq">
+    <h2 class="sa-section-title">Հաճախ տրվող հարցեր</h2>
+
+    <div class="sa-faq-wrap">
+
+      <div class="sa-text-frame sa-faq-item sa-anim-frame">
+        <button class="sa-faq-btn" type="button" aria-expanded="false">
+          <div class="sa-faq-q">1․ Դասընթացից հետո պատրաստ կլինե՞մ սկսելու աշխատել</div>
+          <div class="sa-faq-icon" aria-hidden="true"><span>+</span></div>
+        </button>
+        <div class="sa-faq-panel" role="region">
+          <div class="sa-faq-a">
+            Այո։ Դասընթացի ընթացքում կստանաս գործնական գիտելիքներ, կկազմես իրական պորտֆոլիո և կսովորես ինչպես ճիշտ քայլերով մտնել ֆրիլանս աշխարհ։
+            Դասընթացի ավարտին դու կունենաս հստակ ուղղություն՝ առաջին պատվերը ստանալու համար։
+          </div>
+        </div>
+      </div>
+
+      <div class="sa-text-frame sa-faq-item sa-anim-frame">
+        <button class="sa-faq-btn" type="button" aria-expanded="false">
+          <div class="sa-faq-q">2․ Դասերը օնլա՞յն են</div>
+          <div class="sa-faq-icon" aria-hidden="true"><span>+</span></div>
+        </button>
+        <div class="sa-faq-panel" role="region">
+          <div class="sa-faq-a">
+            Այո, դասերը ամբողջությամբ օնլայն են։ Յուրաքանչյուր դասից հետո դու կստանաս նաև <strong>առանձին վիդեո դասեր</strong>՝
+            որոնք <strong>ոչ թե դասի ձայնագրություններ են</strong>, այլ հատուկ պատրաստված տեխնիկական վիդեոներ։
+            Դրանք կխնայեն քո ժամանակը և կօգնեն սովորել արագ, պարզ և առանց ձանձրանալու։
+          </div>
+        </div>
+      </div>
+
+      <div class="sa-text-frame sa-faq-item sa-anim-frame">
+        <button class="sa-faq-btn" type="button" aria-expanded="false">
+          <div class="sa-faq-q">3․ Եթե ինչ-որ բան չեմ հասկանում կամ չեմ հասցնում, ի՞նչ կլինի</div>
+          <div class="sa-faq-icon" aria-hidden="true"><span>+</span></div>
+        </button>
+        <div class="sa-faq-panel" role="region">
+          <div class="sa-faq-a">
+            Դու կունենաս հետադարձ կապ դասընթացի ընթացքում։ Կարող ես վերադառնալ վիդեո դասերին այնքան անգամ, որքան պետք է,
+            և հարցեր տալ հանդիպումների ժամանակ։
+          </div>
+        </div>
+      </div>
+
+      <div class="sa-text-frame sa-faq-item sa-anim-frame">
+        <button class="sa-faq-btn" type="button" aria-expanded="false">
+          <div class="sa-faq-q">4․ Upwork պրոֆիլը երբ և ինչպես է ստեղծվում</div>
+          <div class="sa-faq-icon" aria-hidden="true"><span>+</span></div>
+        </button>
+        <div class="sa-faq-panel" role="region">
+          <div class="sa-faq-a">
+            Upwork պրոֆիլի ամբողջ կոնտենտը տրամադրվում է <strong>իմ կողմից</strong>՝ այն բանից հետո, երբ դու <strong>հաջողությամբ ավարտում ես Shopify դասընթացը</strong>։
+            Այնուհետև՝ վիդեո դասերի օգնությամբ դու կկարողանաս քայլ առ քայլ <strong>ստեղծել կամ թարմացնել քո Upwork պրոֆիլը</strong> ճիշտ կառուցվածքով։
+          </div>
+        </div>
+      </div>
+
+      <div class="sa-text-frame sa-faq-item sa-anim-frame">
+        <button class="sa-faq-btn" type="button" aria-expanded="false">
+          <div class="sa-faq-q">5․ Պե՞տք է նախնական գիտելիք Shopify կամ IT ոլորտում</div>
+          <div class="sa-faq-icon" aria-hidden="true"><span>+</span></div>
+        </button>
+        <div class="sa-faq-panel" role="region">
+          <div class="sa-faq-a">
+            Ոչ։ Դասընթացը նախատեսված է նաև սկսնակների համար։ Ամեն ինչ սկսում ենք զրոյից և քայլ առ քայլ հասնում գործնական մակարդակի։
+          </div>
+        </div>
+      </div>
+
+      <div class="sa-text-frame sa-faq-item sa-anim-frame">
+        <button class="sa-faq-btn" type="button" aria-expanded="false">
+          <div class="sa-faq-q">6․ Կարո՞ղ եմ համատեղել դասընթացը աշխատանքի կամ ուսման հետ</div>
+          <div class="sa-faq-icon" aria-hidden="true"><span>+</span></div>
+        </button>
+        <div class="sa-faq-panel" role="region">
+          <div class="sa-faq-a">
+            Այո։ Քանի որ դասընթացը օնլայն է, իսկ տեխնիկական մասերը առանձին վիդեոներով են, դու կարող ես սովորել քեզ հարմար ժամանակացույցով։
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -995,6 +1168,58 @@
       }, { threshold: 0.25 });
 
       frames.forEach(f => observer.observe(f));
+    })();
+
+    /* FAQ ACCORDION (Dropdowns) */
+    (function(){
+      const items = document.querySelectorAll(".sa-faq-item");
+      if (!items.length) return;
+
+      items.forEach(item => {
+        const btn = item.querySelector(".sa-faq-btn");
+        const panel = item.querySelector(".sa-faq-panel");
+        if (!btn || !panel) return;
+
+        function closeIt() {
+          item.classList.remove("open");
+          btn.setAttribute("aria-expanded", "false");
+          panel.style.maxHeight = "0px";
+        }
+
+        function openIt() {
+          item.classList.add("open");
+          btn.setAttribute("aria-expanded", "true");
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+
+        closeIt();
+
+        btn.addEventListener("click", () => {
+          const isOpen = item.classList.contains("open");
+
+          // Close others (nice UX)
+          items.forEach(other => {
+            if (other !== item) {
+              const ob = other.querySelector(".sa-faq-btn");
+              const op = other.querySelector(".sa-faq-panel");
+              if (ob && op) {
+                other.classList.remove("open");
+                ob.setAttribute("aria-expanded", "false");
+                op.style.maxHeight = "0px";
+              }
+            }
+          });
+
+          if (isOpen) closeIt();
+          else openIt();
+        });
+
+        // keep panel height correct on resize (if open)
+        window.addEventListener("resize", () => {
+          if (!item.classList.contains("open")) return;
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        });
+      });
     })();
   </script>
 
