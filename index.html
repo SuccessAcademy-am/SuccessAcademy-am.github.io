@@ -224,7 +224,7 @@
       transform: scale(1) translateY(0);
     }
 
-    /* ================== RESTORED TWO ROUND FLOATING IMAGES ================== */
+    /* ================== TWO ROUND FLOATING IMAGES ================== */
     .sa-hero-visual{
       position: relative;
       width: 100%;
@@ -272,40 +272,42 @@
       to{   transform: translate(-14px,12px); }
     }
 
-    /* MOBILE: 15% overlap, still floating */
+    /* MOBILE: overlap reduced + less empty space */
     @media (max-width: 600px){
       .sa-logo { font-size: 24px !important; }
       .sa-hero-text h1 { font-size: 26px !important; line-height: 1.35 !important; }
       .sa-hero-text p { font-size: 16px !important; }
 
-      .sa-hero-visual{ height: 300px; }
+      /* ✅ Less empty space under images */
+      .sa-hero-visual{ height: 240px; }
 
       .sa-portrait{
         width: 200px;
         height: 200px;
       }
 
+      /* ✅ Better hierarchy + back face visible */
       .sa-portrait--one{
         left: 50%;
-        top: 30px;
-        transform: translateX(calc(-50% - 15%));
+        top: 15px;
+        transform: translateX(calc(-50% - 10%));
         animation: saFloatMobileA 10s ease-in-out infinite alternate;
       }
       .sa-portrait--two{
         left: 50%;
         right: auto;
-        top: 55px;
-        transform: translateX(calc(-50% + 15%));
+        top: 35px;
+        transform: translateX(calc(-50% + 10%));
         animation: saFloatMobileB 12s ease-in-out infinite alternate;
       }
 
       @keyframes saFloatMobileA{
-        from{ transform: translateX(calc(-50% - 15%)) translateY(0); }
-        to  { transform: translateX(calc(-50% - 15%)) translateY(-10px); }
+        from{ transform: translateX(calc(-50% - 10%)) translateY(0); }
+        to  { transform: translateX(calc(-50% - 10%)) translateY(-10px); }
       }
       @keyframes saFloatMobileB{
-        from{ transform: translateX(calc(-50% + 15%)) translateY(0); }
-        to  { transform: translateX(calc(-50% + 15%)) translateY(10px); }
+        from{ transform: translateX(calc(-50% + 10%)) translateY(0); }
+        to  { transform: translateX(calc(-50% + 10%)) translateY(10px); }
       }
 
       .sa-section-title { font-size: 24px; }
@@ -431,7 +433,7 @@
         </div>
       </div>
 
-      <!-- ✅ RESTORED NORMAL 2 ROUND IMAGES -->
+      <!-- TWO ROUND IMAGES -->
       <div class="sa-hero-visual">
         <div class="sa-portrait sa-portrait--one">
           <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579" alt="portrait 1">
