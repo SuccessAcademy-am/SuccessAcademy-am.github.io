@@ -298,7 +298,6 @@
       display:block;
     }
 
-    /* Back circle */
     .sa-portrait--tone1 {
       right: 46px;
       top: 6px;
@@ -308,7 +307,6 @@
       z-index: 1;
     }
 
-    /* Front circle */
     .sa-portrait--tone2 {
       left: 62px;
       top: 92px;
@@ -349,7 +347,7 @@
 
     .sa-price-box h3 { font-size: 22px; margin-bottom: 8px; }
     .sa-price-list { padding-left: 18px; margin: 0 0 10px; }
-    .sa-price-list li { margin-bottom: 6px; font-size: 15px; }
+    .sa-price-list li { margin-bottom: 10px; font-size: 15px; }
     .sa-note { font-size: 13px; opacity: 0.8; margin-top: 4px; }
 
     /* Lesson schedule info */
@@ -375,21 +373,10 @@
       letter-spacing: 0.02em;
     }
 
-    /* ===== NEW: STATS / SOCIAL PROOF SECTION ===== */
+    /* ===== STATS / SOCIAL PROOF SECTION ===== */
     .sa-stats { padding: 10px 22px 40px; margin-top: 10px; }
-    .sa-stats-card {
-      width: 100%;
-      display: block;
-      position: relative;
-      overflow: hidden;
-    }
-    .sa-stats-top {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: stretch;
-      margin-top: 12px;
-    }
+    .sa-stats-card { width: 100%; display: block; position: relative; overflow: hidden; }
+    .sa-stats-top { display: flex; flex-wrap: wrap; gap: 12px; align-items: stretch; margin-top: 12px; }
     .sa-stat {
       flex: 1 1 160px;
       min-width: 160px;
@@ -406,11 +393,7 @@
       margin-bottom: 4px;
       color: var(--sa-text);
     }
-    .sa-stat .lbl {
-      font-size: 13px;
-      color: var(--sa-soft);
-      line-height: 1.35;
-    }
+    .sa-stat .lbl { font-size: 13px; color: var(--sa-soft); line-height: 1.35; }
     .sa-stats-note {
       margin-top: 10px;
       font-size: 14px;
@@ -483,15 +466,8 @@
       }
       .sa-portrait { width: 285px !important; height: 285px !important; }
 
-      .sa-portrait--tone1 {
-        right: auto !important;
-        left: -18px !important;
-        top: 18px !important;
-      }
-      .sa-portrait--tone2 {
-        left: 170px !important;
-        top: 70px !important;
-      }
+      .sa-portrait--tone1 { right: auto !important; left: -18px !important; top: 18px !important; }
+      .sa-portrait--tone2 { left: 170px !important; top: 70px !important; }
 
       .sa-section-title { font-size: 24px; }
       .sa-offer-card h3 { font-size: 18px; }
@@ -540,9 +516,9 @@
       <button class="sa-menu-link" data-scroll="#lesson-info"><span class="sa-menu-dot"></span> Դասերի գրաֆիկ</button>
       <button class="sa-menu-link" data-scroll="#success-stats"><span class="sa-menu-dot"></span> Արդյունքներ</button>
       <button class="sa-menu-link" data-scroll="#course-price"><span class="sa-menu-dot"></span> Փաթեթներ</button>
-      <button class="sa-menu-link" data-scroll="#cta"><span class="sa-menu-dot"></span> Դասընթացի մեկնարկը</button>
+      <button class="sa-menu-link" data-scroll="#cta"><span class="sa-menu-dot"></span> Shopify դասերի մեկնարկը</button>
       <button class="sa-menu-link" data-scroll="#faq"><span class="sa-menu-dot"></span> Հաճախ տրվող հարցեր</button>
-      <button class="sa-menu-link" data-scroll="#upwork-consult"><span class="sa-menu-dot"></span> Upwork խորհրդատվություն</button>
+      <button class="sa-menu-link" data-scroll="#upwork-consult"><span class="sa-menu-dot"></span> Upwork օր</button>
 
       <button class="sa-menu-link sa-menu-close" data-close="true">Փակել ✕</button>
     </div>
@@ -551,7 +527,6 @@
   <!-- HERO -->
   <section class="sa-hero" id="hero">
     <div class="sa-hero-inner">
-
       <div class="sa-hero-text">
         <div class="sa-text-frame sa-anim-frame">
           <h1>Մեզ հետ նոր մասնագիտությունը դառնում է իրական ֆրիլանս կարիերա</h1>
@@ -568,14 +543,12 @@
           <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0428.jpg?v=1765128580" alt="">
         </div>
       </div>
-
     </div>
   </section>
 
   <!-- OFFER -->
   <section class="sa-offer" id="offer">
     <h2 class="sa-section-title">Ինչ ես սովորելու այս դասընթացի շրջանակում</h2>
-    <p class="sa-section-subtitle"></p>
 
     <div class="sa-offer-grid">
       <div id="shopify-upwork">
@@ -625,7 +598,7 @@
     </div>
   </section>
 
-  <!-- NEW: SUCCESS STATS SECTION -->
+  <!-- SUCCESS STATS -->
   <section class="sa-stats" id="success-stats">
     <div class="sa-text-frame sa-stats-card sa-anim-frame">
       <h2 class="sa-section-title" style="margin:0 0 6px;">Արդյունքներ, որոնք խոսում են մեր փոխարեն</h2>
@@ -653,7 +626,7 @@
     </div>
   </section>
 
-  <!-- PACKAGES / PRICE -->
+  <!-- PACKAGES -->
   <section class="sa-offer" id="packages">
     <div class="sa-text-frame sa-price-box sa-anim-frame" id="course-price">
       <h3>Փաթեթներ</h3>
@@ -685,12 +658,12 @@
     </div>
   </section>
 
-  <!-- CTA (NO seconds) -->
+  <!-- CTA (Shopify start = March 5, 2026) -->
   <section class="sa-cta" id="cta">
     <div class="sa-text-frame sa-cta-inner sa-anim-frame">
       <div>
         <h3 class="sa-cta-title">
-          Հաջորդ Shopify խումբը մեկնարկում է՝ <span class="sa-cta-highlight">5 Փետրվար 2026</span>
+          Shopify դասերը մեկնարկում են՝ <span class="sa-cta-highlight">5 Մարտ 2026</span>
         </h3>
         <p class="sa-cta-text">
           Եթե ուզում ես նոր մասնագիտություն, իրական պորտֆոլիո և միջազգային հաճախորդներ,
@@ -722,7 +695,6 @@
     <h2 class="sa-section-title">Հաճախ տրվող հարցեր</h2>
 
     <div class="sa-faq-wrap">
-
       <div class="sa-text-frame sa-faq-item sa-anim-frame">
         <button class="sa-faq-btn" type="button" aria-expanded="false">
           <div class="sa-faq-q">1․ Դասընթացից հետո պատրաստ կլինե՞մ սկսելու աշխատել</div>
@@ -795,13 +767,12 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- UPWORK CONSULT -->
+  <!-- UPWORK DAY (March 12, 2026) -->
   <section class="sa-upwork" id="upwork-consult">
-    <h2 class="sa-section-title">Upwork խորհրդատվություն</h2>
+    <h2 class="sa-section-title">Upwork օր</h2>
 
     <div class="sa-text-frame sa-anim-frame">
       <p>Եթե արդեն ունես մասնագիտություն և ցանկանում ես սկսել կարիերա Upwork հարթակում, այս հանդիպումը քեզ համար է։</p>
@@ -818,7 +789,7 @@
       <p class="sa-note">Օնլայն, խմբային ֆորմատով։ Տևողությունը՝ 2,5–3 ժամ։</p>
 
       <p class="sa-date">
-        <strong>Դեկտեմբերի 24</strong><br>
+        <strong>Մարտի 12, 2026</strong><br>
         Ցերեկային խումբ — 13:00<br>
         Երեկոյան խումբ — 19:00
       </p>
@@ -909,14 +880,14 @@
       });
     })();
 
-    /* COUNTDOWN TO 5 FEB 2026 (NO SECONDS) */
+    /* COUNTDOWN TO SHOPIFY START: 5 MARCH 2026 (NO SECONDS) */
     (function(){
       const daysEl    = document.getElementById("saDays");
       const hoursEl   = document.getElementById("saHours");
       const minutesEl = document.getElementById("saMinutes");
       if (!daysEl || !hoursEl || !minutesEl) return;
 
-      const target = new Date("2026-02-05T00:00:00");
+      const target = new Date("2026-03-05T00:00:00");
 
       function updateCountdown(){
         const now = new Date();
