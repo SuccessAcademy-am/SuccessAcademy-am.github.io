@@ -15,6 +15,8 @@
       --sa-tone1: #C6AC8F;
       --sa-tone2: #E3D5CA;
       --sa-smoke: #d4a373;
+      --sa-white: rgba(255,255,255,0.86);
+      --sa-border: rgba(127, 85, 57, 0.25);
     }
 
     * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
@@ -227,8 +229,8 @@
       display: inline-block;
       padding: 16px 18px 14px;
       border-radius: 18px;
-      border: 1px solid rgba(127, 85, 57, 0.25);
-      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid var(--sa-border);
+      background: var(--sa-white);
       box-shadow: 0 18px 32px rgba(0, 0, 0, 0.10);
       position: relative;
       overflow: hidden;
@@ -296,20 +298,20 @@
       display:block;
     }
 
-    /* Back circle (make it MORE visible) */
+    /* Back circle */
     .sa-portrait--tone1 {
-      right: 46px;   /* was 24px */
-      top: 6px;      /* was 14px */
+      right: 46px;
+      top: 6px;
       background:var(--sa-tone1);
       animation: saFloatA 14s ease-in-out infinite alternate;
       animation-play-state: paused;
       z-index: 1;
     }
 
-    /* Front circle (shift a bit so it covers LESS) */
+    /* Front circle */
     .sa-portrait--tone2 {
-      left: 62px;    /* was 34px */
-      top: 92px;     /* was 86px */
+      left: 62px;
+      top: 92px;
       background:var(--sa-tone2);
       animation: saFloatB 16s ease-in-out infinite alternate;
       animation-play-state: paused;
@@ -338,6 +340,7 @@
     .sa-offer { padding: 10px 22px 40px; margin-top: 48px; }
     .sa-section-title { font-size: 28px; font-weight: 700; margin-bottom: 6px; color: var(--sa-text); }
     .sa-section-subtitle { font-size: 14px; color: var(--sa-soft); margin-bottom: 22px; }
+
     .sa-offer-grid { display: grid; gap: 22px; margin-bottom: 28px; }
 
     #shopify-upwork { display: flex; flex-direction: column; gap: 22px; margin-bottom: 26px; }
@@ -372,6 +375,50 @@
       letter-spacing: 0.02em;
     }
 
+    /* ===== NEW: STATS / SOCIAL PROOF SECTION ===== */
+    .sa-stats { padding: 10px 22px 40px; margin-top: 10px; }
+    .sa-stats-card {
+      width: 100%;
+      display: block;
+      position: relative;
+      overflow: hidden;
+    }
+    .sa-stats-top {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: stretch;
+      margin-top: 12px;
+    }
+    .sa-stat {
+      flex: 1 1 160px;
+      min-width: 160px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(127,85,57,0.06);
+      border: 1px solid rgba(127,85,57,0.12);
+    }
+    .sa-stat .num {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 4px;
+      color: var(--sa-text);
+    }
+    .sa-stat .lbl {
+      font-size: 13px;
+      color: var(--sa-soft);
+      line-height: 1.35;
+    }
+    .sa-stats-note {
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--sa-soft);
+      line-height: 1.55;
+    }
+
+    /* CTA */
     .sa-cta { padding: 0 22px 40px; margin-top: 52px; }
     .sa-cta-inner { display: flex; flex-direction: column; gap: 14px; }
     .sa-cta-title { font-size: 20px; font-weight: 700; margin: 0 0 4px; }
@@ -428,7 +475,6 @@
       .sa-hero-text h1 { font-size: 26px !important; line-height: 1.35 !important; }
       .sa-hero-text p { font-size: 16px !important; }
 
-      /* Bigger circles + 15% overlap feeling but NOT killing the back face */
       .sa-hero-visual {
         width: 370px !important;
         height: 310px !important;
@@ -437,15 +483,13 @@
       }
       .sa-portrait { width: 285px !important; height: 285px !important; }
 
-      /* BACK circle: more in center so visible */
       .sa-portrait--tone1 {
         right: auto !important;
         left: -18px !important;
         top: 18px !important;
       }
-      /* FRONT circle: move right a bit -> less covering */
       .sa-portrait--tone2 {
-        left: 170px !important;  /* was 130/150 in older versions */
+        left: 170px !important;
         top: 70px !important;
       }
 
@@ -479,7 +523,6 @@
     <div class="sa-logo">SUCCESS ACADEMY</div>
 
     <button class="sa-menu-toggle" id="saMenuToggle" aria-label="Մենյու">
-      <!-- Graduation cap icon (academy) -->
       <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
         <path d="M8 0 0 4l8 4 6.4-3.2V11h1.2V4.2L16 4 8 0z"/>
         <path d="M3 7.5V10c0 1.1 2.2 2 5 2s5-.9 5-2V7.5L8 10 3 7.5z"/>
@@ -492,10 +535,11 @@
     <div class="sa-menu-card">
       <div class="sa-menu-title"></div>
 
-      <button class="sa-menu-link" data-scroll="#shopify-upwork"><span class="sa-menu-dot"></span> Ինչ է Shopify և Upwork-ը</button>
+      <button class="sa-menu-link" data-scroll="#shopify-upwork"><span class="sa-menu-dot"></span> Ի՞նչ են Upwork-ը, Shopify-ն և AI-ն</button>
       <button class="sa-menu-link" data-scroll="#course-about"><span class="sa-menu-dot"></span> Դասընթացի մասին</button>
       <button class="sa-menu-link" data-scroll="#lesson-info"><span class="sa-menu-dot"></span> Դասերի գրաֆիկ</button>
-      <button class="sa-menu-link" data-scroll="#course-price"><span class="sa-menu-dot"></span> Դասընթացի արժեքը</button>
+      <button class="sa-menu-link" data-scroll="#success-stats"><span class="sa-menu-dot"></span> Արդյունքներ</button>
+      <button class="sa-menu-link" data-scroll="#course-price"><span class="sa-menu-dot"></span> Փաթեթներ</button>
       <button class="sa-menu-link" data-scroll="#cta"><span class="sa-menu-dot"></span> Դասընթացի մեկնարկը</button>
       <button class="sa-menu-link" data-scroll="#faq"><span class="sa-menu-dot"></span> Հաճախ տրվող հարցեր</button>
       <button class="sa-menu-link" data-scroll="#upwork-consult"><span class="sa-menu-dot"></span> Upwork խորհրդատվություն</button>
@@ -511,7 +555,7 @@
       <div class="sa-hero-text">
         <div class="sa-text-frame sa-anim-frame">
           <h1>Մեզ հետ նոր մասնագիտությունը դառնում է իրական ֆրիլանս կարիերա</h1>
-          <p>Աշխատանք միջազգային ֆրիլանս հարթակներում, որտեղ դու կարող ես սկսել քո կարիերան հենց ուսուցումից հետո։</p>
+          <p>Այս 3-ից 5 (ըստ ձեր ընտրված փաթեթի) շաբաթների ընթացքում դուք կսովորեք նոր պահանջված մասնագիտություն և կբացահայտեք, թե ինչպես այն կիրառել միջազգային շուկայում՝ ստանալով բարձր վարձատրվող պատվերներ։</p>
         </div>
       </div>
 
@@ -536,33 +580,32 @@
     <div class="sa-offer-grid">
       <div id="shopify-upwork">
         <div class="sa-text-frame sa-offer-card sa-anim-frame">
-          <h3>Shopify մասնագիտություն</h3>
-          <p>Shopify-ը համաշխարհային ամենամեծ էլեկտրոնային առևտրի համակարգերից մեկն է, որտեղ բիզնեսները ստեղծում են իրենց օնլայն խանութները։</p>
-          <p>Դասընթացից հետո դու դառնում ես Shopify մասնագետ՝ իրական պորտֆոլիոյով, պատրաստ աշխատելու իրական նախագծերի վրա։</p>
+          <h3>💡 Ի՞նչ են Upwork-ը, Shopify-ն և AI-ն</h3>
+          <p>✅ <strong>Shopify</strong> – օնլայն խանութներ ստեղծելու և կառավարելու պրակտիկ հմտություն</p>
+          <p>✅ <strong>Upwork</strong> – աշխարհի ամենամեծ ֆրիլանս հարթակներից մեկը՝ պատվերներ գտնելու համար</p>
+          <p>✅ <strong>AI գործիքներ</strong> – ձեր աշխատանքը արագացնելու և ավելի արդյունավետ դարձնելու համար</p>
         </div>
 
         <div class="sa-text-frame sa-offer-card sa-anim-frame">
-          <h3>Upwork կարիերայի մեկնարկ</h3>
-          <p>Upwork-ը աշխարհում ամենամեծ ֆրիլանս հարթակներից մեկն է, որտեղ աշխատում են միջազգային հաճախորդների հետ։</p>
-          <p>Դասընթացից հետո մենք օգնում ենք ստեղծել կամ բարելավել քո Upwork պրոֆիլը, հասկանալ ինչպես գտնել ճիշտ աշխատանքներ և ինչպես ստանալ առաջին պատվերները։</p>
+          <h3>🎥 Վիդեո դասեր՝ որպես բոնուս</h3>
+          <p>Բացի հիմնական դասերից, կստանաք նաև լրացուցիչ վիդեո դասեր՝ գիտելիքները ամրապնդելու և ցանկացած պահի կրկնելու համար։</p>
         </div>
       </div>
 
       <div class="sa-text-frame sa-offer-card sa-anim-frame">
-        <h3>AI գործիքներ (բոնուս)</h3>
-        <p>Սովորում ես արհեստական բանականության գործիքներ, որոնց միջոցով ավելի արագ ես աշխատում, բարձրացնում ես արդյունավետությունը և ավելի հեշտ ես գտնում աշխատանք։</p>
-        <p>Այս հմտությունները քեզ դարձնում են տեղեկացված և ժամանակակից մասնագետ IT ոլորտում։</p>
+        <h3>Արդյունքը՝ իրական հմտություն + պորտֆոլիո</h3>
+        <p>Դասընթացը պրակտիկ է՝ քայլ առ քայլ, որպեսզի ուսուցումից հետո կարողանաք աշխատել իրական նախագծերի վրա և դիմել պատվերների միջազգային շուկայում։</p>
       </div>
     </div>
 
     <div class="sa-text-frame sa-anim-frame" id="course-about">
       <h3>Դասընթացի մասին</h3>
-      <p>⏳ Տևողություն՝ 3 շաբաթ</p>
-      <p>🕒 Դասեր՝ շաբաթական 2 անգամ (2 ժամ)</p>
-      <p>📱 Online, ցերեկային և երեկոյան խմբերով</p>
+      <p>⏳ Տևողություն – <strong>3 - 5 շաբաթ</strong> (կախված փաթեթից)</p>
+      <p>🕒 Դասեր – շաբաթական <strong>2 անգամ</strong> (յուրաքանչյուրը՝ <strong>2 ժամ</strong>)</p>
+      <p>📱 Օնլայն ձևաչափ – <strong>ցերեկային և երեկոյան խմբեր</strong></p>
     </div>
 
-    <!-- NEW LESSON INFO SECTION -->
+    <!-- LESSON INFO -->
     <div class="sa-text-frame sa-anim-frame" id="lesson-info" style="margin-top:18px;">
       <h3>Դասերի գրաֆիկ</h3>
       <p style="margin:0 0 10px; color: var(--sa-soft); font-size: 14px;">
@@ -580,15 +623,62 @@
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="sa-text-frame sa-price-box sa-anim-frame" id="course-price" style="margin-top:18px;">
-      <h3>Դասընթացի արժեքը</h3>
-      <p>Փաթեթներ՝</p>
+  <!-- NEW: SUCCESS STATS SECTION -->
+  <section class="sa-stats" id="success-stats">
+    <div class="sa-text-frame sa-stats-card sa-anim-frame">
+      <h2 class="sa-section-title" style="margin:0 0 6px;">Արդյունքներ, որոնք խոսում են մեր փոխարեն</h2>
+      <p class="sa-section-subtitle" style="margin:0;">Իրական թվեր՝ մեր ուսանողների հաջողություններից</p>
+
+      <div class="sa-stats-top">
+        <div class="sa-stat">
+          <div class="num">800+</div>
+          <div class="lbl">հաջողությամբ ավարտած ուսանող</div>
+        </div>
+        <div class="sa-stat">
+          <div class="num">70%</div>
+          <div class="lbl">աշխատանք է գտել ավարտից հետո<br>առաջին շաբաթների ընթացքում</div>
+        </div>
+        <div class="sa-stat">
+          <div class="num">3–5 շաբաթ</div>
+          <div class="lbl">պրակտիկ ուսուցում՝ կախված փաթեթից</div>
+        </div>
+      </div>
+
+      <p class="sa-stats-note">
+        Մեր նպատակը միայն սովորեցնելը չէ․ մենք օգնում ենք, որ դուք կարողանաք վերածել հմտությունը աշխատանքային արդյունքի՝
+        ճիշտ ուղղորդմամբ, առաջադրանքներով և հետադարձ կապով։
+      </p>
+    </div>
+  </section>
+
+  <!-- PACKAGES / PRICE -->
+  <section class="sa-offer" id="packages">
+    <div class="sa-text-frame sa-price-box sa-anim-frame" id="course-price">
+      <h3>Փաթեթներ</h3>
 
       <ul class="sa-price-list">
-        <li>✅ <strong>49,000 դրամ</strong> – Shopify (1 ամիս հետադարձ կապ + վիդեո դասեր)</li>
-        <li>✅ <strong>59,000 դրամ</strong> – Shopify + Upwork պրոֆիլի պատրաստում (2 ամիս հետադարձ կապ + վիդեո դասեր)</li>
-        <li>✅ <strong>69,000 դրամ</strong> – Shopify + Upwork պրոֆիլի պատրաստում + 2 ժամ հանդիպում + AI (25+ գործիք, Upwork էջի ստեղծում, աշխատանքի դիմելու և ստանալու գաղտնիքներ իրական օրինակներով, 2 ամիս հետադարձ կապ + վիդեո դասեր 🚀)</li>
+        <li>
+          ✅ <strong>59,000 դրամ</strong><br>
+          • Shopify<br>
+          • 1 ամիս հետադարձ կապ<br>
+          • Վիդեո դասեր
+        </li>
+        <li>
+          ✅ <strong>69,000 դրամ</strong><br>
+          • Shopify + Upwork պրոֆիլի պատրաստում (միայն էջ!)<br>
+          • 2 ամիս հետադարձ կապ<br>
+          • Վիդեո դասեր
+        </li>
+        <li>
+          ✅ <strong>79,000 դրամ 🚀</strong><br>
+          • Shopify + Upwork պրոֆիլի պատրաստում + 2 ժամ հանդիպում՝ Upwork հարթակի մանրամասն ուսուցմամբ<br>
+          • Ինչպետ նաև (հավելյալ 1 դաս 2 ժամ)<br>
+          • Ծրագրավորում (HTML, CSS և այլ հարթակներում) (հավելյալ 1 դաս 2 ժամ)<br>
+          • 2 ամիս հետադարձ կապ<br>
+          • Վիդեո դասեր՝ մշտական հասանելիությամբ
+        </li>
       </ul>
 
       <p class="sa-note">Վճարումը կատարվում է մեկ անգամ, առանց թաքնված հավելյալ վճարների։</p>
@@ -653,8 +743,7 @@
         </button>
         <div class="sa-faq-panel" role="region">
           <div class="sa-faq-a">
-            Այո, դասերը ամբողջությամբ օնլայն են։ Յուրաքանչյուր դասից հետո դու կստանաս նաև <strong>առանձին վիդեո դասեր</strong>՝
-            որոնք <strong>ոչ թե դասի ձայնագրություններ են</strong>, այլ հատուկ պատրաստված տեխնիկական վիդեոներ։
+            Այո, դասերը ամբողջությամբ օնլայն են։ Յուրաքանչյուր դասից հետո դու կստանաս նաև <strong>լրացուցիչ վիդեո դասեր</strong>։
           </div>
         </div>
       </div>
@@ -666,8 +755,7 @@
         </button>
         <div class="sa-faq-panel" role="region">
           <div class="sa-faq-a">
-            Upwork պրոֆիլի կոնտենտը տրամադրվում է իմ կողմից՝ Shopify դասընթացը հաջողությամբ ավարտելուց հետո։
-            Այնուհետև՝ վիդեո դասերի օգնությամբ կստեղծես կամ կթարմացնես քո Upwork պրոֆիլը ճիշտ կառուցվածքով։
+            Փաթեթից կախված՝ Upwork պրոֆիլի պատրաստումը ներառված է։ Քայլ առ քայլ կստանաս ուղղորդում, թե ինչպես ճիշտ կառուցել պրոֆիլը և ինչով առանձնանալ։
           </div>
         </div>
       </div>
@@ -691,7 +779,7 @@
         </button>
         <div class="sa-faq-panel" role="region">
           <div class="sa-faq-a">
-            Այո։ Դասերը օնլայն են, իսկ տեխնիկական մասը՝ առանձին վիդեոներով, որպեսզի հեշտ համատեղես քո գրաֆիկի հետ։
+            Այո։ Դասերը օնլայն են, և ունեք նաև վիդեո դասեր, որպեսզի հեշտ համատեղեք ձեր գրաֆիկի հետ։
           </div>
         </div>
       </div>
