@@ -4,6 +4,13 @@
   <meta charset="UTF-8" />
   <title>Success Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- ✅ Social sharing (OG) image = FIRST one -->
+  <meta property="og:title" content="Success Academy" />
+  <meta property="og:description" content="Shopify • Upwork • AI — պրակտիկ դասընթաց՝ պորտֆոլիո + կարիերայի քայլեր" />
+  <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579" />
+  <meta property="og:type" content="website" />
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
@@ -38,39 +45,25 @@
     a{color:inherit; text-decoration:none;}
     .container{width: min(var(--max), calc(100% - 44px)); margin: 0 auto;}
 
-    /* ======= Top notice (like HighTicket disclaimer bar) ======= */
+    /* ======= Sticky header ======= */
     .topbar{
       position: sticky;
       top: 0;
       z-index: 9999;
-      background: rgba(234,224,213,.88);
+      background: rgba(234,224,213,.92);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(127,85,57,.10);
     }
-    .topbar .row{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 16px;
-      padding: 10px 0;
-    }
-    .topbar small{
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.4;
-    }
 
-    /* ======= Header / nav ======= */
-    header{
-      padding: 14px 0 12px;
-    }
+    header{ padding: 14px 0 12px; }
     .nav{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap: 18px;
+      gap: 14px;
     }
+
     .brand{
       display:flex;
       align-items:center;
@@ -88,10 +81,11 @@
       opacity: .85;
       box-shadow: 0 0 0 6px rgba(127,85,57,.08);
     }
+
     .navlinks{
       display:flex;
       align-items:center;
-      gap: 16px;
+      gap: 12px;
       flex-wrap: wrap;
       justify-content: center;
     }
@@ -100,14 +94,11 @@
       color: rgba(127,85,57,.86);
       padding: 10px 10px;
       border-radius: 12px;
+      font-weight: 700;
     }
     .navlinks a:hover{ background: rgba(127,85,57,.08); }
 
-    .nav-cta{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-    }
+    .nav-cta{ display:flex; align-items:center; gap: 10px; }
 
     .btn{
       display:inline-flex;
@@ -119,7 +110,7 @@
       border: 1px solid rgba(127,85,57,.18);
       background: var(--btnSoft);
       color: var(--text);
-      font-weight: 700;
+      font-weight: 800;
       font-size: 13px;
       cursor:pointer;
       transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
@@ -140,34 +131,36 @@
       opacity: .9;
     }
 
-    .burger{
-      display:none;
-      width: 44px; height: 44px;
+    /* ✅ MENU ICON — keep your previous “academy icon” bubble */
+    .sa-menu-toggle{
+      min-width: 44px;
+      height: 42px;
       border-radius: 999px;
-      border: 1px solid rgba(127,85,57,.18);
-      background: rgba(255,255,255,.75);
-      box-shadow: 0 14px 28px rgba(0,0,0,.12);
-      cursor:pointer;
-    }
-    .burger span{
-      display:block;
-      width: 18px; height: 2px;
-      margin: 0 auto;
-      background: var(--text);
-      border-radius: 2px;
+      border: none;
+      background: rgba(255,255,255,.86);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0 14px;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.16);
       position: relative;
+      gap: 8px;
+      animation: saIconPulse 1.35s ease-in-out infinite;
     }
-    .burger span::before,.burger span::after{
-      content:"";
-      position:absolute; left:0;
-      width: 18px; height: 2px;
-      background: var(--text);
-      border-radius: 2px;
+    .sa-menu-toggle svg{
+      width: 20px;
+      height: 20px;
+      display:block;
+      fill: var(--text);
     }
-    .burger span::before{ top: -6px; }
-    .burger span::after{ top: 6px; }
+    @keyframes saIconPulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(127,85,57,0.32); }
+      40% { transform: scale(1.06); box-shadow: 0 0 0 12px rgba(127,85,57,0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(127,85,57,0); }
+    }
 
-    /* mobile nav panel */
+    /* ======= Mobile menu overlay ======= */
     .mobilePanel{
       display:none;
       position: fixed;
@@ -178,6 +171,7 @@
       -webkit-backdrop-filter: blur(8px);
       padding: 18px;
     }
+    .mobilePanel.show{ display:block; }
     .mobileCard{
       max-width: 520px;
       margin-left: auto;
@@ -206,17 +200,14 @@
       font-weight: 900;
       color: var(--text);
     }
-    .mobileLinks{
-      display:grid; gap: 6px;
-      padding: 0 6px 10px;
-    }
+    .mobileLinks{ display:grid; gap: 6px; padding: 0 6px 10px; }
     .mobileLinks a{
       padding: 12px 12px;
       border-radius: 14px;
       background: rgba(127,85,57,.06);
       border: 1px solid rgba(127,85,57,.12);
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 800;
     }
     .mobileLinks a:hover{ background: rgba(127,85,57,.09); }
 
@@ -227,9 +218,7 @@
       border-radius: var(--radius2);
       box-shadow: var(--shadow);
     }
-    .section{
-      padding: 40px 0;
-    }
+    .section{ padding: 40px 0; }
     .section-title{
       font-size: clamp(22px, 3.5vw, 34px);
       font-weight: 900;
@@ -244,44 +233,27 @@
       max-width: 70ch;
     }
 
-    /* ======= Hero (HighTicket-like: big headline + two CTAs + social proof) ======= */
-    .hero{
-      padding: 18px 0 10px;
-    }
+    /* ======= Hero ======= */
+    .hero{ padding: 18px 0 10px; }
     .heroGrid{
       display:grid;
       grid-template-columns: 1.25fr .95fr;
       gap: 22px;
       align-items: center;
     }
-    .heroCard{
-      padding: 22px;
-      overflow:hidden;
-      position: relative;
-    }
-    .pillRow{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
+    .heroCard{ padding: 22px; overflow:hidden; position: relative; }
+    .pillRow{ display:flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
     .pill{
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
+      display:inline-flex; align-items:center; gap: 10px;
       padding: 8px 10px;
       border-radius: 999px;
       border: 1px solid rgba(127,85,57,.14);
       background: rgba(127,85,57,.06);
-      font-weight: 800;
+      font-weight: 900;
       font-size: 12px;
       color: rgba(127,85,57,.92);
     }
-    .pill .mini{
-      width: 7px; height: 7px; border-radius: 99px;
-      background: var(--text);
-      opacity: .7;
-    }
+    .pill .mini{ width: 7px; height: 7px; border-radius: 99px; background: var(--text); opacity: .7; }
 
     .hero h1{
       margin:0 0 10px;
@@ -298,21 +270,17 @@
       font-size: 16px;
       max-width: 64ch;
     }
-    .heroCtas{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 6px;
-    }
+    .heroCtas{ display:flex; align-items:center; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+
     .trustRow{
       display:flex;
-      align-items:center;
+      align-items:stretch;
       justify-content: space-between;
       gap: 12px;
       margin-top: 18px;
       padding-top: 16px;
       border-top: 1px solid rgba(127,85,57,.12);
+      flex-wrap: wrap;
     }
     .trustBadge{
       display:flex;
@@ -323,19 +291,12 @@
       background: rgba(127,85,57,.06);
       border: 1px solid rgba(127,85,57,.12);
       min-width: 170px;
+      flex: 1 1 170px;
     }
-    .trustBadge .n{
-      font-weight: 900;
-      font-size: 18px;
-      letter-spacing: -0.02em;
-      line-height: 1;
-    }
-    .trustBadge .t{
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.35;
-    }
+    .trustBadge .n{ font-weight: 900; font-size: 18px; letter-spacing: -0.02em; line-height: 1; }
+    .trustBadge .t{ font-size: 12px; color: var(--muted); line-height: 1.35; }
 
+    /* ======= Hero visual (desktop overlap ok) ======= */
     .heroVisual{
       position: relative;
       min-height: 360px;
@@ -356,7 +317,7 @@
       overflow:hidden;
       box-shadow: 0 22px 44px rgba(0,0,0,.16);
       border: 1px solid rgba(127,85,57,.14);
-      background: rgba(255,255,255,.8);
+      background: rgba(255,255,255,.86);
       transform: translateZ(0);
       will-change: transform;
     }
@@ -368,9 +329,9 @@
     }
     .portrait.p1{ left: 18px; top: 26px; }
     .portrait.p2{ right: 18px; bottom: 18px; }
+
     .float{ animation: floaty 10s ease-in-out infinite alternate; }
     .float2{ animation: floaty2 12s ease-in-out infinite alternate; }
-
     @keyframes floaty{
       0%{ transform: translate(0,0) rotate(-1deg); }
       50%{ transform: translate(10px,-14px) rotate(1deg); }
@@ -382,31 +343,6 @@
       100%{ transform: translate(10px,12px) rotate(1deg); }
     }
 
-    /* ======= “Why” icons row ======= */
-    .whyGrid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 16px;
-    }
-    .miniCard{
-      padding: 14px;
-      border-radius: var(--radius);
-      background: rgba(127,85,57,.06);
-      border: 1px solid rgba(127,85,57,.12);
-    }
-    .miniCard .h{
-      font-weight: 900;
-      margin: 0 0 6px;
-      font-size: 14px;
-    }
-    .miniCard .p{
-      margin:0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
     /* ======= Content grids ======= */
     .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .pad{ padding: 20px; }
@@ -414,7 +350,7 @@
     .klist li{ margin: 8px 0; line-height: 1.55; }
     .muted{ color: var(--muted); }
 
-    /* ======= Roadmap steps ======= */
+    /* ======= Steps ======= */
     .steps{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -439,43 +375,6 @@
     }
     .step h3{ margin: 0 0 6px; font-size: 16px; font-weight: 900; }
     .step p{ margin:0; color: var(--muted); font-size: 14px; line-height: 1.55; }
-
-    /* ======= Testimonials slider (light, no libs) ======= */
-    .slider{
-      position: relative;
-      overflow:hidden;
-      border-radius: var(--radius2);
-    }
-    .track{
-      display:flex;
-      transition: transform .5s ease;
-      will-change: transform;
-    }
-    .tcard{
-      flex: 0 0 100%;
-      padding: 18px;
-    }
-    .quote{
-      background: rgba(255,255,255,.72);
-      border: 1px solid rgba(127,85,57,.14);
-      border-radius: 22px;
-      padding: 18px;
-      box-shadow: 0 14px 30px rgba(0,0,0,.12);
-      min-height: 170px;
-    }
-    .quote p{ margin:0 0 12px; color: var(--muted); line-height: 1.65; }
-    .who{ display:flex; align-items:center; justify-content:space-between; gap: 12px; }
-    .who strong{ font-weight: 900; }
-    .dots{
-      display:flex; gap: 8px; justify-content:center;
-      margin-top: 12px;
-    }
-    .dot{
-      width: 8px; height: 8px; border-radius: 999px;
-      background: rgba(127,85,57,.25);
-      cursor:pointer;
-    }
-    .dot.active{ background: rgba(127,85,57,.75); }
 
     /* ======= Packages ======= */
     .prices{
@@ -603,38 +502,54 @@
     .foot small{ color: var(--muted); line-height: 1.6; }
     .foot a{ text-decoration: underline; text-underline-offset: 3px; }
 
-    /* ======= Responsive ======= */
+    /* ✅ RESPONSIVE + FIX images overlapping on mobile */
     @media (max-width: 980px){
+      .container{ width: calc(100% - 32px); }
+      .navlinks{ display:none; }
+
       .heroGrid{ grid-template-columns: 1fr; }
-      .heroVisual{ min-height: 320px; }
-      .whyGrid{ grid-template-columns: 1fr; }
+      .heroVisual{ min-height: 210px; }
+
+      /* Make portraits NOT overlap + smaller + round */
+      .heroVisual{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        align-items:center;
+        justify-items:center;
+        padding: 16px;
+      }
+      .portrait{
+        position: static;                 /* 👈 no absolute on mobile */
+        width: 140px;
+        height: 140px;
+        box-shadow: 0 14px 28px rgba(0,0,0,.12);
+        animation: none !important;       /* no float jitter on mobile */
+      }
+      .portrait img{
+        width: 130%;
+        height: 130%;
+      }
+
       .grid2{ grid-template-columns: 1fr; }
       .steps{ grid-template-columns: 1fr; }
       .prices{ grid-template-columns: 1fr; }
-      .navlinks{ display:none; }
-      .burger{ display:inline-grid; place-items:center; }
-      .mobilePanel.show{ display:block; }
     }
-    @media (max-width: 480px){
-      .container{ width: calc(100% - 32px); }
-      .trustRow{ flex-direction: column; align-items: stretch; }
-      .trustBadge{ min-width: unset; }
-      .portrait{ width: 240px; height: 240px; }
+
+    @media (max-width: 420px){
+      .portrait{ width: 120px; height: 120px; }
+      .hero p{ font-size: 15px; }
+      .brand{ font-size: 14px; }
+      .btn{ padding: 11px 12px; }
+      .heroVisual{ gap: 10px; padding: 14px; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Top notice -->
+  <!-- HEADER -->
   <div class="topbar">
-    <div class="container">
-      <div class="row">
-        <small>⚠️ Արդյունքները կախված են ձեր աշխատանքից, կարգապահությունից և հետևողականությունից։ Մենք «երաշխավորված եկամուտ» չենք խոստանում։</small>
-        <small><a href="#faq">Տեսնել FAQ →</a></small>
-      </div>
-    </div>
-
     <header>
       <div class="container">
         <div class="nav">
@@ -647,16 +562,23 @@
             <a href="#what">Ի՞նչ ենք սովորում</a>
             <a href="#about">Դասընթացի մասին</a>
             <a href="#roadmap">Քայլերը</a>
-            <a href="#results">Արդյունքներ</a>
             <a href="#packages">Փաթեթներ</a>
             <a href="#cta">Մեկնարկ</a>
             <a href="#upworkday">Upwork օր</a>
+            <a href="#faq">FAQ</a>
           </nav>
 
           <div class="nav-cta">
-            <a class="btn" href="#cta"><span class="dot" aria-hidden="true"></span>Տեսնել մեկնարկը</a>
+            <a class="btn" href="#cta"><span class="dot" aria-hidden="true"></span>Մեկնարկ</a>
             <a class="btn primary" href="#packages">Գրանցվել</a>
-            <button class="burger" id="burger" aria-label="Բացել մենյուն"><span></span></button>
+
+            <!-- ✅ Kept your previous icon -->
+            <button class="sa-menu-toggle" id="burger" aria-label="Մենյու">
+              <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                <path d="M8 0 0 4l8 4 6.4-3.2V11h1.2V4.2L16 4 8 0z"/>
+                <path d="M3 7.5V10c0 1.1 2.2 2 5 2s5-.9 5-2V7.5L8 10 3 7.5z"/>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -674,7 +596,6 @@
         <a href="#what" data-close>Ի՞նչ ենք սովորում</a>
         <a href="#about" data-close>Դասընթացի մասին</a>
         <a href="#roadmap" data-close>Քայլերը</a>
-        <a href="#results" data-close>Արդյունքներ</a>
         <a href="#packages" data-close>Փաթեթներ</a>
         <a href="#cta" data-close>Մեկնարկ</a>
         <a href="#upworkday" data-close>Upwork օր</a>
@@ -725,6 +646,7 @@
         </section>
 
         <aside class="heroVisual" aria-label="Success Academy visuals">
+          <!-- ✅ First image (also used as OG image) -->
           <div class="portrait p1 float">
             <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579" alt="">
           </div>
@@ -750,32 +672,17 @@
             <li><strong>Upwork</strong> – ֆրիլանս հարթակ՝ պատվերներ գտնելու համար</li>
             <li><strong>AI գործիքներ</strong> – աշխատանքը արագացնելու և ավելի արդյունավետ դարձնելու համար</li>
           </ul>
-
-          <div class="whyGrid">
-            <div class="miniCard">
-              <div class="h">Երկարաժամկետ հմտություն</div>
-              <p class="p">Սովորում ես մի բան, որը մնում է քեզ հետ ու տալիս է աճի ճանապարհ։</p>
-            </div>
-            <div class="miniCard">
-              <div class="h">Փոխանցելի փորձ</div>
-              <p class="p">Հմտությունները կիրառելի են տարբեր բրենդների ու նախագծերի վրա։</p>
-            </div>
-            <div class="miniCard">
-              <div class="h">Գործնական մոտեցում</div>
-              <p class="p">Քայլ առ քայլ՝ որպեսզի ի վերջո ունենաս պորտֆոլիո։</p>
-            </div>
-          </div>
         </div>
 
         <div class="card pad">
           <h3 style="margin:0 0 8px; font-weight:900;">🎥 Վիդեո դասեր՝ որպես բոնուս</h3>
           <p class="muted" style="margin:0 0 12px; line-height:1.65;">
-            Բացի հիմնական դասերից, ստանում ես նաև լրացուցիչ վիդեո դասեր՝ գիտելիքները ամրապնդելու և ցանկացած պահի կրկնելու համար։
+            Բացի հիմնական դասերից, կստանաք նաև լրացուցիչ վիդեո դասեր՝ գիտելիքները ամրապնդելու և ցանկացած պահի կրկնելու համար։
           </p>
 
           <h3 style="margin: 14px 0 8px; font-weight:900;">✅ Արդյունքը՝ իրական հմտություն + պորտֆոլիո</h3>
           <p class="muted" style="margin:0; line-height:1.65;">
-            Դասընթացը պրակտիկ է՝ որպեսզի ավարտին կարողանաս աշխատել իրական նախագծերի վրա և դիմել պատվերների միջազգային շուկայում։
+            Դասընթացը պրակտիկ է՝ քայլ առ քայլ, որպեսզի ուսուցումից հետո կարողանաք աշխատել իրական նախագծերի վրա և դիմել պատվերների միջազգային շուկայում։
           </p>
         </div>
       </div>
@@ -786,12 +693,11 @@
   <section class="section" id="about">
     <div class="container">
       <h2 class="section-title">Դասընթացի մասին</h2>
-      <p class="section-sub">Կարճ, պարզ, առանց «ավելորդ խոսքի»՝ ինչպես է անցկացվում ու ինչ ռեժիմով։</p>
+      <p class="section-sub">Տևողություն, դասերի քանակ, ֆորմատ՝ ամեն ինչ պարզ ու հստակ։</p>
 
       <div class="grid2">
         <div class="card pad">
-          <h3 style="margin:0 0 10px; font-weight:900;">📌 Ֆորմատ</h3>
-          <ul class="klist">
+          <ul class="klist" style="margin-top:0;">
             <li>⏳ Տևողություն – <strong>3 - 5 շաբաթ</strong> (կախված փաթեթից)</li>
             <li>🕒 Դասեր – շաբաթական <strong>2 անգամ</strong> (յուրաքանչյուրը՝ <strong>2 ժամ</strong>)</li>
             <li>📱 Օնլայն ձևաչափ – <strong>ցերեկային և երեկոյան խմբեր</strong></li>
@@ -802,20 +708,16 @@
           <h3 style="margin:0 0 10px; font-weight:900;">🗓️ Դասերի գրաֆիկ</h3>
           <p class="muted" style="margin:0 0 12px;">Դասերը անցկացվում են ամեն <strong>Երկուշաբթի</strong> և <strong>Հինգշաբթի</strong>։</p>
 
-          <div class="whyGrid" style="grid-template-columns: 1fr 1fr;">
-            <div class="miniCard">
-              <div class="h">Ցերեկային խումբ</div>
-              <p class="p"><strong style="color:var(--text)">12:00</strong></p>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div style="padding:12px; border-radius:16px; background: rgba(127,85,57,.06); border:1px solid rgba(127,85,57,.12);">
+              <div style="font-weight:900;">Ցերեկային խումբ</div>
+              <div class="muted" style="margin-top:4px;"><strong style="color:var(--text);">12:00</strong></div>
             </div>
-            <div class="miniCard">
-              <div class="h">Երեկոյան խումբ</div>
-              <p class="p"><strong style="color:var(--text)">19:00</strong></p>
+            <div style="padding:12px; border-radius:16px; background: rgba(127,85,57,.06); border:1px solid rgba(127,85,57,.12);">
+              <div style="font-weight:900;">Երեկոյան խումբ</div>
+              <div class="muted" style="margin-top:4px;"><strong style="color:var(--text);">19:00</strong></div>
             </div>
           </div>
-
-          <p class="muted" style="margin:12px 0 0; font-size: 13px;">
-            Տեղերը սահմանափակ են, որպեսզի յուրաքանչյուր ուսանող ստանա նորմալ հետադարձ կապ։
-          </p>
         </div>
       </div>
     </div>
@@ -825,7 +727,7 @@
   <section class="section" id="roadmap">
     <div class="container">
       <h2 class="section-title">Քո ճանապարհային քարտեզը</h2>
-      <p class="section-sub">Նույն տրամաբանությամբ, ինչ HighTicket-ում է՝ պարզ «քայլերով», որ հասկանալի լինի՝ ինչ է լինելու հետո։</p>
+      <p class="section-sub">Քայլերով՝ որպեսզի ի սկզբանե հասկանալի լինի ամբողջ պրոցեսը։</p>
 
       <div class="steps">
         <div class="step">
@@ -841,68 +743,7 @@
         <div class="step">
           <div class="num">3</div>
           <h3>Upwork старт</h3>
-          <p>Պրոֆիլի կառուցում (փաթեթից կախված), դիմումների տրամաբանություն, քայլեր դեպի առաջին պատվերը։</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- RESULTS + TESTIMONIALS -->
-  <section class="section" id="results">
-    <div class="container">
-      <h2 class="section-title">Արդյունքներ, որոնք խոսում են մեր փոխարեն</h2>
-      <p class="section-sub">Իրական թվեր + տպավորություններ։ Եթե ուզես, այստեղ հետո կարող ենք ավելացնել կոնկրետ ուսանողների սքրիններ/ֆիդբեքներ։</p>
-
-      <div class="grid2">
-        <div class="card pad">
-          <h3 style="margin:0 0 10px; font-weight:900;">📊 Մեր թվերը</h3>
-          <div class="whyGrid" style="grid-template-columns: 1fr; gap: 10px;">
-            <div class="miniCard">
-              <div class="h">800+ ուսանող</div>
-              <p class="p">Հաջողությամբ ավարտած ուսանողներ։</p>
-            </div>
-            <div class="miniCard">
-              <div class="h">70% շարժ</div>
-              <p class="p">Աշխատանք գտնելու/սկսելու արագ առաջընթաց առաջին շաբաթների ընթացքում։</p>
-            </div>
-            <div class="miniCard">
-              <div class="h">3–5 շաբաթ</div>
-              <p class="p">Պրակտիկ ուսուցում՝ կախված փաթեթից։</p>
-            </div>
-          </div>
-
-          <p class="muted" style="margin: 12px 0 0; line-height:1.65;">
-            Մեր նպատակը միայն սովորեցնելը չէ․ մենք օգնում ենք, որ հմտությունը դառնա աշխատանքային արդյունք՝ ճիշտ ուղղորդմամբ ու հետադարձ կապով։
-          </p>
-        </div>
-
-        <div class="card pad">
-          <h3 style="margin:0 0 10px; font-weight:900;">🗣️ Ինչ են ասում մարդիկ</h3>
-
-          <div class="slider card" style="background: transparent; border:none; box-shadow:none;">
-            <div class="track" id="track">
-              <div class="tcard">
-                <div class="quote">
-                  <p>«Դասերը շատ պրակտիկ են․ վերջապես սկսեցի հասկանալ ինչ անել քայլ առ քայլ, ոչ թե ուղղակի նայել վիդեոներ»</p>
-                  <div class="who"><strong>Ուսանող</strong><span class="muted">— feedback</span></div>
-                </div>
-              </div>
-              <div class="tcard">
-                <div class="quote">
-                  <p>«Upwork-ի մասը ինձ ամենաշատն օգնեց․ սկսեցի ճիշտ աշխատել առաջարկների վրա ու հասկանալ շուկան»</p>
-                  <div class="who"><strong>Ուսանող</strong><span class="muted">— feedback</span></div>
-                </div>
-              </div>
-              <div class="tcard">
-                <div class="quote">
-                  <p>«AI գործիքներով մի քանի անգամ արագացրեցի workflow-ը․ հիմա արդեն ինքնավստահ եմ նախագծերի վրա»</p>
-                  <div class="who"><strong>Ուսանող</strong><span class="muted">— feedback</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="dots" id="dots" aria-label="Testimonials navigation"></div>
+          <p>Փաթեթից կախված՝ պրոֆիլ + դիմումների տրամաբանություն + քայլեր դեպի առաջին պատվերը։</p>
         </div>
       </div>
     </div>
@@ -912,7 +753,7 @@
   <section class="section" id="packages">
     <div class="container">
       <h2 class="section-title">Փաթեթներ</h2>
-      <p class="section-sub">Վճարումը՝ մեկ անգամ, առանց թաքնված հավելյալ վճարների։ Ընտրիր քո ռեժիմին ու նպատակին համապատասխան։</p>
+      <p class="section-sub">Վճարումը կատարվում է մեկ անգամ, առանց թաքնված հավելյալ վճարների։</p>
 
       <div class="prices">
         <div class="price">
@@ -958,9 +799,11 @@
   <section class="section" id="cta">
     <div class="container">
       <div class="card pad">
-        <h2 class="section-title" style="margin-bottom:6px;">Shopify դասերը մեկնարկում են՝ <span style="white-space:nowrap;">12 Մարտ 2026</span></h2>
+        <h2 class="section-title" style="margin-bottom:6px;">
+          Shopify դասերը մեկնարկում են՝ <span style="white-space:nowrap;">12 Մարտ 2026</span>
+        </h2>
         <p class="section-sub" style="margin-bottom: 10px;">
-          Եթե ուզում ես նոր մասնագիտություն, իրական պորտֆոլիո և միջազգային հաճախորդներ՝ սա է քո հնարավորությունը։ Հաջորդ խումբը սահմանափակ տեղերով է։
+          Եթե ուզում ես նոր մասնագիտություն, իրական պորտֆոլիո և միջազգային հաճախորդներ՝ սա է քո հնարավորությունը։
         </p>
 
         <div class="countRow" aria-label="Countdown">
@@ -994,7 +837,7 @@
   <section class="section" id="upworkday">
     <div class="container">
       <h2 class="section-title">Upwork օր</h2>
-      <p class="section-sub">Եթե արդեն ունես մասնագիտություն ու ուզում ես սկսես Upwork-ում՝ սա կոնկրետ հանդիպում է հենց դրա համար։</p>
+      <p class="section-sub">Եթե արդեն ունես մասնագիտություն և ցանկանում ես սկսել կարիերա Upwork-ում՝ այս հանդիպումը քեզ համար է։</p>
 
       <div class="card pad">
         <ul class="klist" style="margin-top:0;">
@@ -1005,18 +848,12 @@
           <li>Ինչպես ստանալ գումարը Հայաստանում</li>
         </ul>
 
-        <div class="whyGrid" style="grid-template-columns: 1fr 1fr; margin-top: 14px;">
-          <div class="miniCard">
-            <div class="h">Արժեքը</div>
-            <p class="p"><strong style="color:var(--text)">20,000 դրամ</strong> • Օնլայն, խմբային ֆորմատ</p>
-          </div>
-          <div class="miniCard">
-            <div class="h">Տևողությունը</div>
-            <p class="p"><strong style="color:var(--text)">2.5–3 ժամ</strong></p>
-          </div>
-        </div>
+        <p class="muted" style="margin: 10px 0 0;">
+          <strong style="color:var(--text)">Արժեքը՝ 20,000 դրամ։</strong><br>
+          Օնլայն, խմբային ֆորմատով։ Տևողությունը՝ 2.5–3 ժամ։
+        </p>
 
-        <p class="muted" style="margin: 12px 0 0;">
+        <p class="muted" style="margin: 10px 0 0;">
           <strong style="color:var(--text)">Մարտի 5, 2026</strong><br>
           Ցերեկային խումբ — 13:00<br>
           Երեկոյան խումբ — 19:00
@@ -1029,7 +866,6 @@
   <section class="section" id="faq">
     <div class="container">
       <h2 class="section-title">Հաճախ տրվող հարցեր</h2>
-      <p class="section-sub">Եթե ուզում ես՝ այստեղ կարող ենք ավելացնել նաև «պայմաններ/վճարում/քանի տեղ կա» հարցերը։</p>
 
       <div class="faqWrap">
         <div class="faqItem">
@@ -1048,7 +884,7 @@
             <span class="plus">+</span>
           </button>
           <div class="faqPanel">
-            <p>Այո, դասերը ամբողջությամբ օնլայն են։ Դասերից բացի կունենաս նաև լրացուցիչ վիդեո դասեր՝ կրկնելու համար։</p>
+            <p>Այո, դասերը ամբողջությամբ օնլայն են։ Յուրաքանչյուր դասից հետո կունենաս նաև վիդեո նյութեր՝ կրկնելու համար։</p>
           </div>
         </div>
 
@@ -1058,7 +894,7 @@
             <span class="plus">+</span>
           </button>
           <div class="faqPanel">
-            <p>Փաթեթից կախված՝ Upwork պրոֆիլի պատրաստումը ներառված է։ Քայլ առ քայլ կստանաս ուղեցույց՝ ինչ գրել, ինչպես առանձնանալ և ինչպես կառուցել վստահելի պրոֆիլ։</p>
+            <p>Փաթեթից կախված՝ Upwork պրոֆիլի պատրաստումը ներառված է։ Քայլ առ քայլ կստանաս ուղեցույց՝ ինչ գրել ու ինչպես ճիշտ կառուցել պրոֆիլը։</p>
           </div>
         </div>
 
@@ -1078,7 +914,7 @@
             <span class="plus">+</span>
           </button>
           <div class="faqPanel">
-            <p>Այո։ Դասերը օնլայն են, և ունես նաև վիդեո նյութեր, որ հեշտ լինի համատեղել քո գրաֆիկի հետ։</p>
+            <p>Այո։ Դասերը օնլայն են և կա նաև վիդեո նյութ, որպեսզի հեշտ համատեղես քո գրաֆիկի հետ։</p>
           </div>
         </div>
 
@@ -1100,14 +936,16 @@
     <div class="container">
       <div class="foot">
         <div>
-          <div class="brand" style="font-size:14px; letter-spacing:.12em;"><span class="brand-badge"></span> SUCCESS ACADEMY</div>
-          <small>© <span id="y"></span> Success Academy • Կրթական հարթակ Shopify + Upwork + AI</small>
+          <div class="brand" style="font-size:14px; letter-spacing:.12em;">
+            <span class="brand-badge"></span> SUCCESS ACADEMY
+          </div>
+          <small>© <span id="y"></span> Success Academy</small>
         </div>
 
         <div>
           <small>
             Instagram՝ <a href="https://www.instagram.com/freelance_to_success" target="_blank" rel="noopener">@freelance_to_success</a><br>
-            Սոցիալական կապ՝ DM
+            Կապ՝ DM
           </small>
         </div>
       </div>
@@ -1118,7 +956,7 @@
     // year
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // mobile menu
+    // Mobile menu open/close (menu icon button)
     (function(){
       const burger = document.getElementById("burger");
       const panel = document.getElementById("mobilePanel");
@@ -1142,7 +980,6 @@
       const m = document.getElementById("m");
       if(!d || !h || !m) return;
 
-      // Target date: 2026-03-12 00:00 local
       const target = new Date("2026-03-12T00:00:00");
 
       function tick(){
@@ -1190,7 +1027,6 @@
           panel.style.maxHeight = (!isOpen) ? (panel.scrollHeight + "px") : "0px";
         });
 
-        // init
         panel.style.maxHeight = "0px";
       });
 
@@ -1199,43 +1035,6 @@
           p.style.maxHeight = p.scrollHeight + "px";
         });
       });
-    })();
-
-    // testimonials dots slider
-    (function(){
-      const track = document.getElementById("track");
-      const dotsWrap = document.getElementById("dots");
-      if(!track || !dotsWrap) return;
-
-      const slides = Array.from(track.children);
-      let idx = 0;
-
-      function renderDots(){
-        dotsWrap.innerHTML = "";
-        slides.forEach((_, i) => {
-          const b = document.createElement("button");
-          b.className = "dot" + (i === idx ? " active" : "");
-          b.type = "button";
-          b.setAttribute("aria-label", "Go to testimonial " + (i+1));
-          b.addEventListener("click", () => go(i));
-          dotsWrap.appendChild(b);
-        });
-      }
-
-      function go(i){
-        idx = i;
-        track.style.transform = "translateX(" + (-idx * 100) + "%)";
-        dotsWrap.querySelectorAll(".dot").forEach((d, di) => d.classList.toggle("active", di === idx));
-      }
-
-      renderDots();
-      go(0);
-
-      // auto-rotate (optional)
-      setInterval(() => {
-        idx = (idx + 1) % slides.length;
-        go(idx);
-      }, 5500);
     })();
   </script>
 </body>
