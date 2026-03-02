@@ -2,582 +2,307 @@
 <html lang="hy">
 <head>
   <meta charset="UTF-8" />
-  <title>Success Academy</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Success Academy | Արմենիա</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
 
-  <!-- ✅ Social sharing (OG) image = FIRST one -->
+  <!-- ✅ Social sharing (OG) image -->
   <meta property="og:title" content="Success Academy" />
-  <meta property="og:description" content="Shopify • Upwork • AI — պրակտիկ դասընթաց՝ պորտֆոլիո + կարիերայի քայլեր" />
+  <meta property="og:description" content="Shopify • Upwork • AI — պրակտիկ դասընթաց՝ պորտֆոլիոյով և կարիերայի արագ մեկնարկով" />
   <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579" />
   <meta property="og:type" content="website" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..900&display=swap" rel="stylesheet">
 
   <style>
+    *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
     :root{
       --bg:#EAE0D5;
       --text:#7f5539;
-      --muted:#a68a71;
-      --card: rgba(255,255,255,0.86);
-      --border: rgba(127,85,57,.18);
+      --muted:#8b6f50;
+      --card:rgba(255,255,255,0.9);
+      --border:rgba(127,85,57,.2);
 
       --btn:#7f5539;
       --btnText:#fff;
-      --btnSoft: rgba(127,85,57,.10);
+      --btnSoft:rgba(127,85,57,.08);
 
-      --shadow: 0 18px 40px rgba(0,0,0,.14);
-      --shadow2: 0 26px 60px rgba(0,0,0,.18);
-
-      --radius: 18px;
-      --radius2: 24px;
-      --max: 1120px;
+      --shadow:0 18px 40px rgba(0,0,0,.1);
+      --shadow2:0 26px 60px rgba(0,0,0,.14);
+      --radius:18px;
+      --radius2:24px;
+      --max:1120px;
     }
-
-    *{box-sizing:border-box; -webkit-font-smoothing:antialiased;}
-    html{scroll-behavior:smooth;}
     body{
       margin:0;
-      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+      background:var(--bg);
+      color:var(--text);
       overflow-x:hidden;
+      line-height:1.5;
     }
     a{color:inherit; text-decoration:none;}
-    .container{width: min(var(--max), calc(100% - 44px)); margin: 0 auto;}
+    .container{width:min(var(--max),calc(100% - 32px)); margin:0 auto;}
 
-    /* ======= Sticky header ======= */
+    /* ----- header / sticky ----- */
     .topbar{
-      position: sticky;
-      top: 0;
-      z-index: 9999;
-      background: rgba(234,224,213,.92);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(127,85,57,.10);
+      position:sticky; top:0; z-index:9999;
+      background:rgba(234,224,213,.9); backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(127,85,57,.12);
     }
-
-    header{ padding: 14px 0 12px; }
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 14px;
-    }
-
+    header{padding:10px 0;}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:10px;}
     .brand{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      font-size: 16px;
-      white-space: nowrap;
+      display:flex; align-items:center; gap:8px;
+      font-weight:900; letter-spacing:.12em; text-transform:uppercase;
+      font-size:clamp(14px,3vw,16px); white-space:nowrap;
     }
-    .brand-badge{
-      width: 12px; height: 12px;
-      border-radius: 99px;
-      background: var(--text);
-      opacity: .85;
-      box-shadow: 0 0 0 6px rgba(127,85,57,.08);
-    }
+    .brand-badge{width:10px; height:10px; border-radius:99px; background:var(--text); opacity:.85; box-shadow:0 0 0 6px rgba(127,85,57,.1);}
 
-    .navlinks{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+    .navlinks{display:flex; align-items:center; gap:6px; flex-wrap:wrap;}
     .navlinks a{
-      font-size: 13px;
-      color: rgba(127,85,57,.86);
-      padding: 10px 10px;
-      border-radius: 12px;
-      font-weight: 700;
+      font-size:13px; font-weight:700; padding:8px 10px; border-radius:30px;
+      color:rgba(127,85,57,.9); transition:background .2s;
     }
-    .navlinks a:hover{ background: rgba(127,85,57,.08); }
-
-    .nav-cta{ display:flex; align-items:center; gap: 10px; }
+    .navlinks a:hover{background:rgba(127,85,57,.1);}
+    .nav-cta{display:flex; align-items:center; gap:8px;}
 
     .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
-      padding: 12px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(127,85,57,.18);
-      background: var(--btnSoft);
-      color: var(--text);
-      font-weight: 800;
-      font-size: 13px;
-      cursor:pointer;
-      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
-      user-select:none;
-      white-space: nowrap;
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:10px 16px; border-radius:40px; border:1px solid rgba(127,85,57,.2);
+      background:var(--btnSoft); color:var(--text); font-weight:800; font-size:13px;
+      cursor:pointer; transition:all .15s; white-space:nowrap;
     }
-    .btn:hover{ transform: translateY(-1px); box-shadow: 0 10px 22px rgba(0,0,0,.12); }
+    .btn:hover{transform:translateY(-2px); box-shadow:0 10px 20px rgba(0,0,0,.1);}
     .btn.primary{
-      background: var(--btn);
-      color: var(--btnText);
-      border-color: rgba(127,85,57,.35);
-      box-shadow: 0 14px 28px rgba(0,0,0,.16);
+      background:var(--btn); color:var(--btnText); border-color:rgba(255,255,255,.2);
+      box-shadow:0 12px 24px rgba(127,85,57,.3);
     }
-    .btn.primary:hover{ box-shadow: 0 18px 34px rgba(0,0,0,.18); }
-    .btn .dot{
-      width: 8px; height: 8px; border-radius: 99px;
-      background: currentColor;
-      opacity: .9;
-    }
+    .btn.primary:hover{box-shadow:0 16px 28px rgba(127,85,57,.4);}
 
-    /* ✅ MENU ICON — keep your previous “academy icon” bubble */
+    /* burger (your original style, slightly polished) */
     .sa-menu-toggle{
-      min-width: 44px;
-      height: 42px;
-      border-radius: 999px;
-      border: none;
-      background: rgba(255,255,255,.86);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      padding: 0 14px;
-      box-shadow: 0 12px 26px rgba(0,0,0,0.16);
-      position: relative;
-      gap: 8px;
-      animation: saIconPulse 1.35s ease-in-out infinite;
+      min-width:44px; height:44px; border-radius:99px; border:none;
+      background:rgba(255,255,255,.9); display:inline-flex; align-items:center; justify-content:center;
+      cursor:pointer; padding:0 12px; box-shadow:0 10px 22px rgba(0,0,0,0.12);
+      gap:6px; animation:saIconPulse 1.5s ease-in-out infinite;
     }
-    .sa-menu-toggle svg{
-      width: 20px;
-      height: 20px;
-      display:block;
-      fill: var(--text);
-    }
-    @keyframes saIconPulse {
-      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(127,85,57,0.32); }
-      40% { transform: scale(1.06); box-shadow: 0 0 0 12px rgba(127,85,57,0); }
-      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(127,85,57,0); }
+    .sa-menu-toggle svg{width:18px; height:18px; fill:var(--text);}
+    @keyframes saIconPulse{
+      0%{transform:scale(1); box-shadow:0 0 0 0 rgba(127,85,57,0.3);}
+      40%{transform:scale(1.05); box-shadow:0 0 0 12px rgba(127,85,57,0);}
+      100%{transform:scale(1); box-shadow:0 0 0 0 rgba(127,85,57,0);}
     }
 
-    /* ======= Mobile menu overlay ======= */
+    /* mobile menu */
     .mobilePanel{
-      display:none;
-      position: fixed;
-      inset: 0;
-      z-index: 99999;
-      background: rgba(0,0,0,.25);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      padding: 18px;
+      display:none; position:fixed; inset:0; z-index:99999;
+      background:rgba(0,0,0,.2); backdrop-filter:blur(6px); padding:16px;
     }
-    .mobilePanel.show{ display:block; }
+    .mobilePanel.show{display:block;}
     .mobileCard{
-      max-width: 520px;
-      margin-left: auto;
-      background: rgba(255,255,255,.92);
-      border: 1px solid rgba(127,85,57,.18);
-      border-radius: 22px;
-      box-shadow: var(--shadow2);
-      padding: 14px;
+      max-width:420px; margin-left:auto; background:rgba(255,255,255,.96);
+      border-radius:24px; box-shadow:var(--shadow2); padding:16px;
+      border:1px solid rgba(127,85,57,.16);
     }
-    .mobileHead{
-      display:flex; align-items:center; justify-content:space-between;
-      padding: 6px 6px 10px;
-    }
-    .mobileTitle{
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      font-size: 12px;
-      opacity: .8;
-    }
+    .mobileHead{display:flex; align-items:center; justify-content:space-between; padding-bottom:12px;}
+    .mobileTitle{font-weight:900; letter-spacing:.12em; text-transform:uppercase; font-size:13px; opacity:.8;}
     .xbtn{
-      width: 40px; height: 40px; border-radius: 999px;
-      border: 1px solid rgba(127,85,57,.18);
-      background: rgba(127,85,57,.06);
-      cursor:pointer;
-      font-weight: 900;
-      color: var(--text);
+      width:44px; height:44px; border-radius:99px; border:1px solid rgba(127,85,57,.2);
+      background:rgba(127,85,57,.06); cursor:pointer; font-weight:900; color:var(--text);
+      font-size:18px;
     }
-    .mobileLinks{ display:grid; gap: 6px; padding: 0 6px 10px; }
+    .mobileLinks{display:grid; gap:6px; padding-bottom:12px;}
     .mobileLinks a{
-      padding: 12px 12px;
-      border-radius: 14px;
-      background: rgba(127,85,57,.06);
-      border: 1px solid rgba(127,85,57,.12);
-      font-size: 14px;
-      font-weight: 800;
+      padding:14px 14px; border-radius:18px; background:rgba(127,85,57,.06);
+      border:1px solid rgba(127,85,57,.1); font-weight:800; font-size:15px;
     }
-    .mobileLinks a:hover{ background: rgba(127,85,57,.09); }
 
-    /* ======= Sections / cards ======= */
-    .card{
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-    }
-    .section{ padding: 40px 0; }
+    /* cards, sections */
+    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius2); box-shadow:var(--shadow);}
+    .section{padding:36px 0;}
     .section-title{
-      font-size: clamp(22px, 3.5vw, 34px);
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      margin: 0 0 10px;
+      font-size:clamp(24px,4vw,36px); font-weight:900; letter-spacing:-0.02em;
+      margin:0 0 8px; line-height:1.2;
     }
-    .section-sub{
-      margin: 0 0 22px;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 15px;
-      max-width: 70ch;
-    }
+    .section-sub{font-size:15px; color:var(--muted); max-width:75ch; margin-bottom:24px;}
 
-    /* ======= Hero ======= */
-    .hero{ padding: 18px 0 10px; }
+    /* HERO grid */
     .heroGrid{
-      display:grid;
-      grid-template-columns: 1.25fr .95fr;
-      gap: 22px;
-      align-items: center;
+      display:grid; grid-template-columns:1.3fr 0.9fr; gap:24px; align-items:center;
     }
-    .heroCard{ padding: 22px; overflow:hidden; position: relative; }
-    .pillRow{ display:flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+    .heroCard{padding:28px;}
+    .pillRow{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px;}
     .pill{
-      display:inline-flex; align-items:center; gap: 10px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(127,85,57,.14);
-      background: rgba(127,85,57,.06);
-      font-weight: 900;
-      font-size: 12px;
-      color: rgba(127,85,57,.92);
+      display:flex; align-items:center; gap:8px; padding:8px 14px; border-radius:40px;
+      background:rgba(127,85,57,.08); border:1px solid rgba(127,85,57,.16);
+      font-weight:800; font-size:12px;
     }
-    .pill .mini{ width: 7px; height: 7px; border-radius: 99px; background: var(--text); opacity: .7; }
+    .pill .mini{width:6px; height:6px; border-radius:99px; background:var(--text);}
 
     .hero h1{
-      margin:0 0 10px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      line-height: 1.16;
-      font-size: clamp(28px, 4.2vw, 48px);
-      max-width: 24ch;
+      margin:0 0 14px; font-weight:900; letter-spacing:-0.02em; line-height:1.15;
+      font-size:clamp(30px,4.5vw,48px);
     }
-    .hero p{
-      margin:0 0 16px;
-      color: var(--muted);
-      line-height: 1.65;
-      font-size: 16px;
-      max-width: 64ch;
-    }
-    .heroCtas{ display:flex; align-items:center; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+    .hero p{font-size:16px; color:var(--muted); margin-bottom:20px; max-width:60ch;}
+    .heroCtas{display:flex; gap:12px; flex-wrap:wrap;}
 
     .trustRow{
-      display:flex;
-      align-items:stretch;
-      justify-content: space-between;
-      gap: 12px;
-      margin-top: 18px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(127,85,57,.12);
-      flex-wrap: wrap;
+      display:flex; gap:12px; margin-top:24px; padding-top:20px;
+      border-top:1px solid rgba(127,85,57,.15); flex-wrap:wrap;
     }
     .trustBadge{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 16px;
-      background: rgba(127,85,57,.06);
-      border: 1px solid rgba(127,85,57,.12);
-      min-width: 170px;
-      flex: 1 1 170px;
+      display:flex; align-items:center; gap:12px; padding:10px 16px;
+      background:rgba(127,85,57,.06); border-radius:20px; border:1px solid rgba(127,85,57,.12);
+      flex:1 1 150px;
     }
-    .trustBadge .n{ font-weight: 900; font-size: 18px; letter-spacing: -0.02em; line-height: 1; }
-    .trustBadge .t{ font-size: 12px; color: var(--muted); line-height: 1.35; }
+    .trustBadge .n{font-weight:900; font-size:20px; line-height:1;}
+    .trustBadge .t{font-size:12px; color:var(--muted); line-height:1.4;}
 
-    /* ======= Hero visual (desktop overlap ok) ======= */
+    /* hero visuals */
     .heroVisual{
-      position: relative;
-      min-height: 360px;
-      border-radius: var(--radius2);
-      border: 1px solid rgba(127,85,57,.14);
-      background:
-        radial-gradient(600px 240px at 20% 10%, rgba(127,85,57,.10), transparent 60%),
-        radial-gradient(520px 260px at 80% 60%, rgba(212,163,115,.22), transparent 58%),
-        rgba(255,255,255,.40);
-      overflow:hidden;
-      box-shadow: var(--shadow);
+      position:relative; min-height:340px; border-radius:var(--radius2);
+      border:1px solid rgba(127,85,57,.16);
+      background:radial-gradient(600px 240px at 20% 10%, rgba(127,85,57,.1), transparent 70%),
+                 radial-gradient(500px 260px at 80% 70%, rgba(212,163,115,.2), transparent 70%),
+                 rgba(255,255,255,.5);
+      box-shadow:var(--shadow); overflow:hidden;
     }
     .portrait{
-      position:absolute;
-      width: min(56vw, 260px);
-      height: min(56vw, 260px);
-      border-radius: 999px;
-      overflow:hidden;
-      box-shadow: 0 22px 44px rgba(0,0,0,.16);
-      border: 1px solid rgba(127,85,57,.14);
-      background: rgba(255,255,255,.86);
-      transform: translateZ(0);
-      will-change: transform;
+      position:absolute; width:min(220px,40vw); height:min(220px,40vw); border-radius:999px;
+      overflow:hidden; box-shadow:0 20px 38px rgba(0,0,0,.15);
+      border:2px solid rgba(255,255,255,.6); background:#fff;
     }
-    .portrait img{
-      width: 135%; height: 135%;
-      object-fit: cover;
-      object-position: center top;
-      display:block;
-    }
-    .portrait.p1{ left: 18px; top: 26px; }
-    .portrait.p2{ right: 18px; bottom: 18px; }
-
-    .float{ animation: floaty 10s ease-in-out infinite alternate; }
-    .float2{ animation: floaty2 12s ease-in-out infinite alternate; }
+    .portrait img{width:140%; height:140%; object-fit:cover; object-position:center 20%; display:block;}
+    .portrait.p1{left:5%; top:8%;}
+    .portrait.p2{right:5%; bottom:8%;}
+    .float{animation:floaty 12s infinite alternate;}
+    .float2{animation:floaty2 14s infinite alternate;}
     @keyframes floaty{
-      0%{ transform: translate(0,0) rotate(-1deg); }
-      50%{ transform: translate(10px,-14px) rotate(1deg); }
-      100%{ transform: translate(-8px,10px) rotate(-1deg); }
+      0%{transform:translate(0,0) rotate(-2deg);}
+      100%{transform:translate(12px,-18px) rotate(2deg);}
     }
     @keyframes floaty2{
-      0%{ transform: translate(0,0) rotate(1deg); }
-      50%{ transform: translate(-12px,-10px) rotate(-1deg); }
-      100%{ transform: translate(10px,12px) rotate(1deg); }
+      0%{transform:translate(0,0) rotate(2deg);}
+      100%{transform:translate(-14px,14px) rotate(-2deg);}
     }
 
-    /* ======= Content grids ======= */
-    .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .pad{ padding: 20px; }
-    .klist{ margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
-    .klist li{ margin: 8px 0; line-height: 1.55; }
-    .muted{ color: var(--muted); }
+    /* grids, lists */
+    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+    .pad{padding:24px;}
+    .klist{margin:12px 0 0; padding-left:22px; color:var(--muted);}
+    .klist li{margin:8px 0;}
 
-    /* ======= Steps ======= */
-    .steps{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 14px;
-    }
+    .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:16px;}
     .step{
-      padding: 18px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.70);
-      border: 1px solid rgba(127,85,57,.14);
-      box-shadow: 0 12px 26px rgba(0,0,0,.10);
+      padding:22px 18px; border-radius:22px; background:rgba(255,255,255,.8);
+      border:1px solid rgba(127,85,57,.16); box-shadow:0 8px 22px rgba(0,0,0,.06);
     }
     .step .num{
-      width: 38px; height: 38px;
-      border-radius: 999px;
-      display:grid; place-items:center;
-      background: rgba(127,85,57,.10);
-      border: 1px solid rgba(127,85,57,.16);
-      font-weight: 900;
-      margin-bottom: 10px;
+      width:42px; height:42px; border-radius:99px; display:grid; place-items:center;
+      background:rgba(127,85,57,.1); border:1px solid rgba(127,85,57,.2);
+      font-weight:900; margin-bottom:14px;
     }
-    .step h3{ margin: 0 0 6px; font-size: 16px; font-weight: 900; }
-    .step p{ margin:0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+    .step h3{margin:0 0 6px; font-size:18px; font-weight:900;}
+    .step p{color:var(--muted); font-size:14px;}
 
-    /* ======= Packages ======= */
-    .prices{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 14px;
-    }
+    .prices{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
     .price{
-      padding: 18px;
-      border-radius: 22px;
-      border: 1px solid rgba(127,85,57,.16);
-      background: rgba(255,255,255,.74);
-      box-shadow: 0 16px 34px rgba(0,0,0,.12);
-      position: relative;
+      padding:22px 18px; border-radius:24px; border:1px solid rgba(127,85,57,.16);
+      background:rgba(255,255,255,.8); box-shadow:0 12px 28px rgba(0,0,0,.08);
+      position:relative;
     }
     .price.featured{
-      border-color: rgba(127,85,57,.26);
-      background: rgba(255,255,255,.86);
-      box-shadow: 0 22px 46px rgba(0,0,0,.16);
-      transform: translateY(-4px);
+      border-color:#7f5539; background:rgba(255,255,255,.95);
+      transform:translateY(-6px); box-shadow:0 20px 40px rgba(127,85,57,.2);
     }
     .tag{
-      position:absolute;
-      top: 14px; right: 14px;
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .10em;
-      text-transform: uppercase;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(127,85,57,.10);
-      border: 1px solid rgba(127,85,57,.16);
+      position:absolute; top:16px; right:16px; font-size:11px; font-weight:900;
+      padding:6px 12px; border-radius:40px; background:rgba(127,85,57,.12);
     }
-    .price h3{ margin:0 0 6px; font-weight: 900; font-size: 16px; }
-    .amount{
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      margin: 6px 0 10px;
-    }
-    .price ul{ margin: 0; padding-left: 18px; color: var(--muted); }
-    .price li{ margin: 8px 0; line-height: 1.55; }
-    .price .btn{ width: 100%; margin-top: 12px; }
+    .price h3{font-size:18px; font-weight:900; margin:0 0 4px;}
+    .amount{font-size:28px; font-weight:900; margin:10px 0 14px;}
+    .price ul{padding-left:18px; color:var(--muted);}
+    .price li{margin:8px 0;}
+    .price .btn{width:100%; margin-top:16px;}
 
-    /* ======= CTA countdown ======= */
-    .countRow{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
+    .countRow{display:flex; gap:12px; flex-wrap:wrap; margin:12px 0 16px;}
     .timeBox{
-      min-width: 82px;
-      padding: 10px 12px;
-      border-radius: 16px;
-      background: rgba(127,85,57,.06);
-      border: 1px solid rgba(127,85,57,.12);
-      text-align:center;
+      min-width:80px; padding:12px; border-radius:20px;
+      background:rgba(127,85,57,.06); border:1px solid rgba(127,85,57,.16); text-align:center;
     }
-    .timeBox .big{ font-size: 22px; font-weight: 900; line-height: 1.1; }
-    .timeBox .lab{ font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+    .timeBox .big{font-size:26px; font-weight:900; line-height:1;}
+    .timeBox .lab{font-size:11px; text-transform:uppercase; color:var(--muted); margin-top:6px;}
 
-    /* ======= FAQ ======= */
-    .faqWrap{ display:grid; gap: 10px; margin-top: 14px; }
+    .faqWrap{display:grid; gap:12px;}
     .faqItem{
-      border-radius: 20px;
-      border: 1px solid rgba(127,85,57,.14);
-      background: rgba(255,255,255,.76);
-      overflow:hidden;
+      border-radius:20px; border:1px solid rgba(127,85,57,.14);
+      background:rgba(255,255,255,.8); overflow:hidden;
     }
     .faqBtn{
-      width:100%;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 14px;
-      background: transparent;
-      border: none;
-      padding: 16px 16px;
-      cursor:pointer;
-      font-family: inherit;
-      color: var(--text);
-      text-align:left;
+      width:100%; display:flex; align-items:center; justify-content:space-between;
+      background:transparent; border:none; padding:18px 18px; cursor:pointer;
+      font-family:inherit; color:var(--text); text-align:left; font-weight:800; font-size:15px;
     }
-    .faqBtn strong{ font-size: 14px; font-weight: 900; line-height: 1.35; }
     .plus{
-      width: 36px; height: 36px;
-      border-radius: 999px;
-      display:grid; place-items:center;
-      background: rgba(127,85,57,.08);
-      border: 1px solid rgba(127,85,57,.16);
-      font-weight: 900;
-      transition: transform .22s ease;
-      flex: 0 0 auto;
+      width:36px; height:36px; border-radius:99px; background:rgba(127,85,57,.08);
+      border:1px solid rgba(127,85,57,.16); display:grid; place-items:center;
+      transition:transform .25s; font-weight:900; flex-shrink:0;
     }
-    .faqItem.open .plus{ transform: rotate(45deg); }
-    .faqPanel{
-      max-height: 0;
-      overflow:hidden;
-      transition: max-height .35s ease;
-      padding: 0 16px;
-    }
-    .faqPanel p{
-      margin: 0;
-      padding: 0 0 16px;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 14px;
-    }
+    .faqItem.open .plus{transform:rotate(45deg);}
+    .faqPanel{max-height:0; overflow:hidden; transition:max-height .35s ease; padding:0 18px;}
+    .faqPanel p{padding-bottom:20px; margin:0; color:var(--muted); font-size:14px;}
 
-    /* ======= Footer ======= */
-    footer{
-      padding: 30px 0 48px;
-      border-top: 1px solid rgba(127,85,57,.12);
-      margin-top: 12px;
-    }
-    .foot{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-    .foot small{ color: var(--muted); line-height: 1.6; }
-    .foot a{ text-decoration: underline; text-underline-offset: 3px; }
+    footer{padding:32px 0 40px; border-top:1px solid rgba(127,85,57,.14); margin-top:16px;}
+    .foot{display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px;}
+    .foot small{color:var(--muted);}
 
-    /* ✅ RESPONSIVE + FIX images overlapping on mobile */
-    @media (max-width: 980px){
-      .container{ width: calc(100% - 32px); }
-      .navlinks{ display:none; }
-
-      .heroGrid{ grid-template-columns: 1fr; }
-      .heroVisual{ min-height: 210px; }
-
-      /* Make portraits NOT overlap + smaller + round */
+    /* ===== MOBILE FIXES (professional) ===== */
+    @media (max-width: 900px){
+      .heroGrid{grid-template-columns:1fr;}
       .heroVisual{
-        display:grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        align-items:center;
-        justify-items:center;
-        padding: 16px;
+        min-height:auto; display:flex; justify-content:center; align-items:center;
+        gap:20px; padding:30px 20px; background:rgba(255,255,255,.4);
       }
       .portrait{
-        position: static;                 /* 👈 no absolute on mobile */
-        width: 140px;
-        height: 140px;
-        box-shadow: 0 14px 28px rgba(0,0,0,.12);
-        animation: none !important;       /* no float jitter on mobile */
+        position:static !important;   /* kill absolute */
+        width:150px; height:150px; animation:none !important;
+        margin:0;
       }
-      .portrait img{
-        width: 130%;
-        height: 130%;
-      }
-
-      .grid2{ grid-template-columns: 1fr; }
-      .steps{ grid-template-columns: 1fr; }
-      .prices{ grid-template-columns: 1fr; }
+      .grid2,.steps,.prices{grid-template-columns:1fr;}
+      .navlinks{display:none;}
     }
-
-    @media (max-width: 420px){
-      .portrait{ width: 120px; height: 120px; }
-      .hero p{ font-size: 15px; }
-      .brand{ font-size: 14px; }
-      .btn{ padding: 11px 12px; }
-      .heroVisual{ gap: 10px; padding: 14px; }
+    @media (max-width: 480px){
+      .container{width:calc(100% - 24px);}
+      .heroCard{padding:22px;}
+      .portrait{width:120px; height:120px;}
+      .trustBadge{padding:12px;}
+      .btn{padding:10px 14px;}
+      .brand{font-size:13px;}
     }
+    /* fix for overlapping text */
+    .muted, p, li{word-break:break-word;}
   </style>
 </head>
-
 <body>
-
-  <!-- HEADER -->
   <div class="topbar">
     <header>
       <div class="container">
         <div class="nav">
-          <a class="brand" href="#home" aria-label="Success Academy">
-            <span class="brand-badge" aria-hidden="true"></span>
-            SUCCESS ACADEMY
-          </a>
-
-          <nav class="navlinks" aria-label="Main navigation">
-            <a href="#what">Ի՞նչ ենք սովորում</a>
+          <a class="brand" href="#home"><span class="brand-badge"></span> SUCCESS ACADEMY</a>
+          <nav class="navlinks">
+            <a href="#what">Սովորելու ենք</a>
             <a href="#about">Դասընթացի մասին</a>
             <a href="#roadmap">Քայլերը</a>
             <a href="#packages">Փաթեթներ</a>
             <a href="#cta">Մեկնարկ</a>
             <a href="#upworkday">Upwork օր</a>
-            <a href="#faq">FAQ</a>
+            <a href="#faq">ՀՏՀ</a>
           </nav>
-
           <div class="nav-cta">
-            <a class="btn" href="#cta"><span class="dot" aria-hidden="true"></span>Մեկնարկ</a>
+            <a class="btn" href="#cta"><span class="mini" style="width:8px;height:8px;background:currentColor;border-radius:99px;"></span>Մեկնարկ</a>
             <a class="btn primary" href="#packages">Գրանցվել</a>
-
-            <!-- ✅ Kept your previous icon -->
-            <button class="sa-menu-toggle" id="burger" aria-label="Մենյու">
-              <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-                <path d="M8 0 0 4l8 4 6.4-3.2V11h1.2V4.2L16 4 8 0z"/>
-                <path d="M3 7.5V10c0 1.1 2.2 2 5 2s5-.9 5-2V7.5L8 10 3 7.5z"/>
-              </svg>
+            <button class="sa-menu-toggle" id="burger" aria-label="Բացել մենյուը">
+              <svg viewBox="0 0 16 16"><path d="M8 0 0 4l8 4 6.4-3.2V11h1.2V4.2L16 4 8 0z"/><path d="M3 7.5V10c0 1.1 2.2 2 5 2s5-.9 5-2V7.5L8 10 3 7.5z"/></svg>
             </button>
           </div>
         </div>
@@ -585,13 +310,10 @@
     </header>
   </div>
 
-  <!-- Mobile menu -->
+  <!-- Mobile panel -->
   <div class="mobilePanel" id="mobilePanel" aria-hidden="true">
     <div class="mobileCard">
-      <div class="mobileHead">
-        <div class="mobileTitle">Menu</div>
-        <button class="xbtn" id="closeMobile" aria-label="Փակել">✕</button>
-      </div>
+      <div class="mobileHead"><span class="mobileTitle">ՄԵՆՅՈՒ</span><button class="xbtn" id="closeMobile">✕</button></div>
       <div class="mobileLinks">
         <a href="#what" data-close>Ի՞նչ ենք սովորում</a>
         <a href="#about" data-close>Դասընթացի մասին</a>
@@ -599,124 +321,84 @@
         <a href="#packages" data-close>Փաթեթներ</a>
         <a href="#cta" data-close>Մեկնարկ</a>
         <a href="#upworkday" data-close>Upwork օր</a>
-        <a href="#faq" data-close>FAQ</a>
+        <a href="#faq" data-close>ՀՏՀ</a>
       </div>
-      <div style="padding: 0 6px 10px;">
-        <a class="btn primary" style="width:100%;" href="#packages" data-close>Գրանցվել</a>
-      </div>
+      <a class="btn primary" style="width:100%;margin-top:8px;" href="#packages" data-close>Գրանցվել</a>
     </div>
   </div>
 
   <!-- HERO -->
-  <main id="home" class="hero">
+  <main class="hero" id="home">
     <div class="container">
       <div class="heroGrid">
         <section class="card heroCard">
           <div class="pillRow">
-            <div class="pill"><span class="mini"></span> Shopify • Upwork • AI</div>
-            <div class="pill"><span class="mini"></span> 3–5 շաբաթ պրակտիկ</div>
-            <div class="pill"><span class="mini"></span> Ցերեկ/Երեկո խմբեր</div>
+            <span class="pill"><span class="mini"></span> Shopify • Upwork • AI</span>
+            <span class="pill"><span class="mini"></span> 3–5 շաբաթ</span>
+            <span class="pill"><span class="mini"></span> Ցերեկ/Երեկո</span>
           </div>
-
-          <h1>Մեզ հետ նոր մասնագիտությունը դառնում է իրական ֆրիլանս կարիերա</h1>
-          <p>
-            Այս 3-ից 5 շաբաթների ընթացքում (ըստ ձեր փաթեթի) դուք կսովորեք պահանջված հմտություն և կբացահայտեք,
-            թե ինչպես այն կիրառել միջազգային շուկայում՝ բարձր վարձատրվող պատվերներ ստանալու համար։
-          </p>
-
+          <h1>Նոր մասնագիտություն՝ իրական ֆրիլանս կարիերայով</h1>
+          <p>3–5 շաբաթում դուք յուրացնում եք պահանջված հմտություններ (Shopify, Upwork, AI) և ստանում պորտֆոլիո՝ միջազգային շուկայում աշխատելու համար։</p>
           <div class="heroCtas">
             <a class="btn primary" href="#packages">Դիտել փաթեթները</a>
-            <a class="btn" href="#what">Տեսնել ծրագիրը</a>
+            <a class="btn" href="#what">Ծրագիրը</a>
           </div>
-
           <div class="trustRow">
-            <div class="trustBadge">
-              <div class="n">800+</div>
-              <div class="t">հաջողությամբ ավարտած ուսանող</div>
-            </div>
-            <div class="trustBadge">
-              <div class="n">70%</div>
-              <div class="t">աշխատանք է գտել ավարտից հետո առաջին շաբաթների ընթացքում</div>
-            </div>
-            <div class="trustBadge">
-              <div class="n">2×/շաբաթ</div>
-              <div class="t">յուրաքանչյուրը՝ 2 ժամ դաս</div>
-            </div>
+            <div class="trustBadge"><span class="n">800+</span><span class="t">շրջանավարտ</span></div>
+            <div class="trustBadge"><span class="n">70%</span><span class="t">աշխատանք է գտնում առաջին ամիսներին</span></div>
+            <div class="trustBadge"><span class="n">2×/շաբ.</span><span class="t">յուր․ 2 ժամ դաս</span></div>
           </div>
         </section>
-
-        <aside class="heroVisual" aria-label="Success Academy visuals">
-          <!-- ✅ First image (also used as OG image) -->
-          <div class="portrait p1 float">
-            <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579" alt="">
-          </div>
-          <div class="portrait p2 float2">
-            <img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0428.jpg?v=1765128580" alt="">
-          </div>
+        <aside class="heroVisual">
+          <div class="portrait p1 float"><img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0429.jpg?v=1765128579" alt="success academy"></div>
+          <div class="portrait p2 float2"><img src="https://cdn.shopify.com/s/files/1/0779/1014/7095/files/IMG_0428.jpg?v=1765128580" alt="success academy"></div>
         </aside>
       </div>
     </div>
   </main>
 
-  <!-- WHAT YOU LEARN -->
+  <!-- WHAT -->
   <section class="section" id="what">
     <div class="container">
-      <h2 class="section-title">Ինչ ես սովորելու այս դասընթացի շրջանակում</h2>
-      <p class="section-sub">Հստակ ծրագիր՝ գործնական հմտություն, պորտֆոլիո և ուղիղ քայլեր դեպի միջազգային պատվերներ։</p>
-
+      <h2 class="section-title">Ի՞նչ ես սովորելու</h2>
+      <p class="section-sub">Գործնական ինտենսիվ՝ Shopify, Upwork, AI գործիքներ, պորտֆոլիո և միջազգային հաճախորդների ձեռքբերման ռազմավարություն։</p>
       <div class="grid2">
         <div class="card pad">
-          <h3 style="margin:0 0 8px; font-weight:900;">💡 Ի՞նչ են Upwork-ը, Shopify-ն և AI-ն</h3>
+          <h3 style="font-weight:900;">💡 Shopify, Upwork, AI հիմքեր</h3>
           <ul class="klist">
-            <li><strong>Shopify</strong> – օնլայն խանութներ ստեղծելու և կառավարելու պրակտիկ հմտություն</li>
-            <li><strong>Upwork</strong> – ֆրիլանս հարթակ՝ պատվերներ գտնելու համար</li>
-            <li><strong>AI գործիքներ</strong> – աշխատանքը արագացնելու և ավելի արդյունավետ դարձնելու համար</li>
+            <li><strong>Shopify</strong> – առցանց խանութների ստեղծում և կառավարում</li>
+            <li><strong>Upwork</strong> – ինչպես գտնել պատվերներ միջազգային հարթակում</li>
+            <li><strong>AI գործիքներ</strong> – արագացնում են աշխատանքը, խնայում ժամանակ</li>
           </ul>
         </div>
-
         <div class="card pad">
-          <h3 style="margin:0 0 8px; font-weight:900;">🎥 Վիդեո դասեր՝ որպես բոնուս</h3>
-          <p class="muted" style="margin:0 0 12px; line-height:1.65;">
-            Բացի հիմնական դասերից, կստանաք նաև լրացուցիչ վիդեո դասեր՝ գիտելիքները ամրապնդելու և ցանկացած պահի կրկնելու համար։
-          </p>
-
-          <h3 style="margin: 14px 0 8px; font-weight:900;">✅ Արդյունքը՝ իրական հմտություն + պորտֆոլիո</h3>
-          <p class="muted" style="margin:0; line-height:1.65;">
-            Դասընթացը պրակտիկ է՝ քայլ առ քայլ, որպեսզի ուսուցումից հետո կարողանաք աշխատել իրական նախագծերի վրա և դիմել պատվերների միջազգային շուկայում։
-          </p>
+          <h3 style="font-weight:900;">🎥 Վիդեոդասեր + հետադարձ կապ</h3>
+          <p class="muted">Բոլոր փաթեթները ներառում են վիդեո նյութեր՝ ցանկացած պահի կրկնելու համար։</p>
+          <h3 style="margin-top:16px;font-weight:900;">✅ Արդյունքը՝ պորտֆոլիո + վստահ մեկնարկ</h3>
+          <p class="muted">Դասընթացն ամբողջությամբ պրակտիկ է, քայլ առ քայլ ուղեկցումով։</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT / SCHEDULE -->
+  <!-- ABOUT -->
   <section class="section" id="about">
     <div class="container">
-      <h2 class="section-title">Դասընթացի մասին</h2>
-      <p class="section-sub">Տևողություն, դասերի քանակ, ֆորմատ՝ ամեն ինչ պարզ ու հստակ։</p>
-
+      <h2 class="section-title">Դասընթացի ձևաչափ</h2>
+      <p class="section-sub">Հստակ գրաֆիկ, օնլայն, հարմարեցված աշխատող մարդկանց համար։</p>
       <div class="grid2">
         <div class="card pad">
           <ul class="klist" style="margin-top:0;">
-            <li>⏳ Տևողություն – <strong>3 - 5 շաբաթ</strong> (կախված փաթեթից)</li>
-            <li>🕒 Դասեր – շաբաթական <strong>2 անգամ</strong> (յուրաքանչյուրը՝ <strong>2 ժամ</strong>)</li>
-            <li>📱 Օնլայն ձևաչափ – <strong>ցերեկային և երեկոյան խմբեր</strong></li>
+            <li>⏳ <strong>3-5 շաբաթ</strong> (կախված փաթեթից)</li>
+            <li>🕒 Շաբաթական <strong>2 դաս</strong> ական 2 ժամ</li>
+            <li>📱 Օնլայն՝ Zoom / Google Meet, ցերեկային (12:00) և երեկոյան (19:00) խմբեր</li>
           </ul>
         </div>
-
-        <div class="card pad" id="lesson-info">
-          <h3 style="margin:0 0 10px; font-weight:900;">🗓️ Դասերի գրաֆիկ</h3>
-          <p class="muted" style="margin:0 0 12px;">Դասերը անցկացվում են ամեն <strong>Երկուշաբթի</strong> և <strong>Հինգշաբթի</strong>։</p>
-
-          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-            <div style="padding:12px; border-radius:16px; background: rgba(127,85,57,.06); border:1px solid rgba(127,85,57,.12);">
-              <div style="font-weight:900;">Ցերեկային խումբ</div>
-              <div class="muted" style="margin-top:4px;"><strong style="color:var(--text);">12:00</strong></div>
-            </div>
-            <div style="padding:12px; border-radius:16px; background: rgba(127,85,57,.06); border:1px solid rgba(127,85,57,.12);">
-              <div style="font-weight:900;">Երեկոյան խումբ</div>
-              <div class="muted" style="margin-top:4px;"><strong style="color:var(--text);">19:00</strong></div>
-            </div>
+        <div class="card pad">
+          <h3 style="margin:0 0 12px;font-weight:900;">🗓️ Դասերի օրեր</h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div style="background:rgba(127,85,57,.06);border-radius:20px;padding:12px;border:1px solid rgba(127,85,57,.12);"><strong>Երկուշաբթի</strong><br><span class="muted">12:00 / 19:00</span></div>
+            <div style="background:rgba(127,85,57,.06);border-radius:20px;padding:12px;border:1px solid rgba(127,85,57,.12);"><strong>Հինգշաբթի</strong><br><span class="muted">12:00 / 19:00</span></div>
           </div>
         </div>
       </div>
@@ -726,25 +408,11 @@
   <!-- ROADMAP -->
   <section class="section" id="roadmap">
     <div class="container">
-      <h2 class="section-title">Քո ճանապարհային քարտեզը</h2>
-      <p class="section-sub">Քայլերով՝ որպեսզի ի սկզբանե հասկանալի լինի ամբողջ պրոցեսը։</p>
-
+      <h2 class="section-title">Ճանապարհային քարտեզ</h2>
       <div class="steps">
-        <div class="step">
-          <div class="num">1</div>
-          <h3>Հիմքեր + գործիքներ</h3>
-          <p>Shopify-ի հիմունքներ, ճիշտ կառուցվածք, AI գործիքներ՝ արագ աշխատանքի համար։</p>
-        </div>
-        <div class="step">
-          <div class="num">2</div>
-          <h3>Պորտֆոլիո + պրակտիկա</h3>
-          <p>Պրակտիկ առաջադրանքներ, իրական ձևաչափով աշխատանք, սխալների ուղղում։</p>
-        </div>
-        <div class="step">
-          <div class="num">3</div>
-          <h3>Upwork старт</h3>
-          <p>Փաթեթից կախված՝ պրոֆիլ + դիմումների տրամաբանություն + քայլեր դեպի առաջին պատվերը։</p>
-        </div>
+        <div class="step"><div class="num">1</div><h3>Հիմքեր + գործիքներ</h3><p>Shopify, AI, Upwork-ի կանոններ, արագ աշխատանքի մեթոդիկա</p></div>
+        <div class="step"><div class="num">2</div><h3>Պորտֆոլիո և պրակտիկա</h3><p>Իրական առաջադրանքներ, սխալների վերլուծություն, առաջին աշխատանքային նախագիծ</p></div>
+        <div class="step"><div class="num">3</div><h3>Upwork մեկնարկ</h3><p>Պրոֆիլի օպտիմիզացիա, cover letter-ներ, հարցազրույցներ, առաջին եկամուտ</p></div>
       </div>
     </div>
   </section>
@@ -753,82 +421,31 @@
   <section class="section" id="packages">
     <div class="container">
       <h2 class="section-title">Փաթեթներ</h2>
-      <p class="section-sub">Վճարումը կատարվում է մեկ անգամ, առանց թաքնված հավելյալ վճարների։</p>
-
+      <p class="section-sub">Միանվագ վճար, առանց պարտադիր լրացուցիչ ծախսերի</p>
       <div class="prices">
-        <div class="price">
-          <h3>Ստարտ</h3>
-          <div class="amount">59,000 դրամ</div>
-          <ul>
-            <li>Shopify</li>
-            <li>1 ամիս հետադարձ կապ</li>
-            <li>Վիդեո դասեր</li>
-          </ul>
-          <a class="btn primary" href="#cta">Գրանցվել (DM)</a>
-        </div>
-
-        <div class="price">
-          <h3>Պրո</h3>
-          <div class="amount">69,000 դրամ</div>
-          <ul>
-            <li>Shopify + Upwork պրոֆիլի պատրաստում (միայն էջ!)</li>
-            <li>2 ամիս հետադարձ կապ</li>
-            <li>Վիդեո դասեր</li>
-          </ul>
-          <a class="btn primary" href="#cta">Գրանցվել (DM)</a>
-        </div>
-
-        <div class="price featured">
-          <div class="tag">Top</div>
-          <h3>Ադվանս 🚀</h3>
-          <div class="amount">79,000 դրամ</div>
-          <ul>
-            <li>Shopify + Upwork պրոֆիլի պատրաստում + 2 ժամ հանդիպում՝ Upwork-ի մանրամասն ուսուցմամբ</li>
-            <li>Հավելյալ 1 դաս (2 ժամ)</li>
-            <li>Ծրագրավորում (HTML, CSS և այլն)՝ հավելյալ 1 դաս (2 ժամ)</li>
-            <li>2 ամիս հետադարձ կապ</li>
-            <li>Վիդեո դասեր՝ մշտական հասանելիությամբ</li>
-          </ul>
-          <a class="btn primary" href="#cta">Գրանցվել (DM)</a>
-        </div>
+        <div class="price"><h3>Ստարտ</h3><div class="amount">59,000 ֏</div><ul><li>Shopify</li><li>1 ամիս հետադարձ կապ</li><li>Վիդեոդասեր</li></ul><a class="btn primary" href="#cta">Ընտրել</a></div>
+        <div class="price"><h3>Պրո</h3><div class="amount">69,000 ֏</div><ul><li>Shopify + Upwork պրոֆիլի ստեղծում (էջ)</li><li>2 ամիս հետադարձ կապ</li><li>Վիդեոդասեր</li></ul><a class="btn primary" href="#cta">Ընտրել</a></div>
+        <div class="price featured"><span class="tag">TOP</span><h3>Ադվանս 🚀</h3><div class="amount">79,000 ֏</div><ul><li>Shopify + Upwork պրոֆիլ + անհատական 2 ժամ Upwork խորացված</li><li>HTML/CSS հիմունքներ (1 լրացուցիչ դաս)</li><li>2 ամիս հետադարձ կապ</li><li>Մշտական հասանելիություն վիդեոդասերին</li></ul><a class="btn primary" href="#cta">Ընտրել</a></div>
       </div>
     </div>
   </section>
 
-  <!-- CTA / COUNTDOWN -->
+  <!-- CTA + COUNTDOWN -->
   <section class="section" id="cta">
     <div class="container">
       <div class="card pad">
-        <h2 class="section-title" style="margin-bottom:6px;">
-          Shopify դասերը մեկնարկում են՝ <span style="white-space:nowrap;">12 Մարտ 2026</span>
-        </h2>
-        <p class="section-sub" style="margin-bottom: 10px;">
-          Եթե ուզում ես նոր մասնագիտություն, իրական պորտֆոլիո և միջազգային հաճախորդներ՝ սա է քո հնարավորությունը։
-        </p>
-
-        <div class="countRow" aria-label="Countdown">
-          <div class="timeBox">
-            <div class="big" id="d">00</div>
-            <div class="lab">Օր</div>
-          </div>
-          <div class="timeBox">
-            <div class="big" id="h">00</div>
-            <div class="lab">Ժամ</div>
-          </div>
-          <div class="timeBox">
-            <div class="big" id="m">00</div>
-            <div class="lab">Րոպե</div>
-          </div>
+        <h2 class="section-title" style="margin-bottom:6px;">📅 Shopify հոսքը մեկնարկում է 12 Մարտի 2026</h2>
+        <p class="section-sub">Պորտֆոլիո, պրակտիկա և ուղիղ ճանապարհ դեպի արտասահմանյան պատվերներ</p>
+        <div class="countRow">
+          <div class="timeBox"><span class="big" id="d">00</span><span class="lab">Օր</span></div>
+          <div class="timeBox"><span class="big" id="h">00</span><span class="lab">Ժամ</span></div>
+          <div class="timeBox"><span class="big" id="m">00</span><span class="lab">Րոպե</span></div>
         </div>
-
-        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px;">
-          <a class="btn primary" href="#packages">Փաթեթները տեսնել</a>
-          <a class="btn" href="https://www.instagram.com/freelance_to_success" target="_blank" rel="noopener">Գրել DM Instagram-ում</a>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a class="btn primary" href="#packages">Տեսնել փաթեթները</a>
+          <a class="btn" href="https://www.instagram.com/freelance_to_success" target="_blank">Instagram DM</a>
         </div>
-
-        <p class="muted" style="margin: 12px 0 0; font-size: 13px;">
-          👉 Գրանցման համար գրիր <strong style="color:var(--text)">DM</strong> և կուղարկենք բոլոր մանրամասները։
-        </p>
+        <p class="muted" style="margin-top:14px;">📩 Գրանցման համար գրեք Direct Message — կուղարկենք մանրամասները</p>
       </div>
     </div>
   </section>
@@ -836,28 +453,16 @@
   <!-- UPWORK DAY -->
   <section class="section" id="upworkday">
     <div class="container">
-      <h2 class="section-title">Upwork օր</h2>
-      <p class="section-sub">Եթե արդեն ունես մասնագիտություն և ցանկանում ես սկսել կարիերա Upwork-ում՝ այս հանդիպումը քեզ համար է։</p>
-
+      <h2 class="section-title">Upwork օր (առանձին)</h2>
+      <p class="section-sub">2.5–3 ժամյա ինտենսիվ՝ նրանց համար, ովքեր ցանկանում են մեկնարկել Upwork-ում</p>
       <div class="card pad">
-        <ul class="klist" style="margin-top:0;">
-          <li>Ինչպես ճիշտ դիմել աշխատանքների համար</li>
-          <li>Ինչպես գրել արդյունավետ նամակներ (cover letter)</li>
-          <li>Ինչպես ընտրել համապատասխան աշխատանքներ</li>
-          <li>Ինչպես խուսափել խաբեություններից</li>
-          <li>Ինչպես ստանալ գումարը Հայաստանում</li>
+        <ul class="klist">
+          <li>Արդյունավետ դիմումների գաղտնիքները</li>
+          <li>Cover letter-ներ, որոնք աշխատում են</li>
+          <li>Խարդախություններից խուսափելը</li>
+          <li>Գումարի ստացում Հայաստանում</li>
         </ul>
-
-        <p class="muted" style="margin: 10px 0 0;">
-          <strong style="color:var(--text)">Արժեքը՝ 20,000 դրամ։</strong><br>
-          Օնլայն, խմբային ֆորմատով։ Տևողությունը՝ 2.5–3 ժամ։
-        </p>
-
-        <p class="muted" style="margin: 10px 0 0;">
-          <strong style="color:var(--text)">Մարտի 5, 2026</strong><br>
-          Ցերեկային խումբ — 13:00<br>
-          Երեկոյան խումբ — 19:00
-        </p>
+        <p class="muted" style="margin-top:16px;"><strong>Արժեքը՝ 20,000 ֏</strong> · խմբային օնլայն · Մարտի 5, 2026<br>Ցերեկային խումբ 13:00 / Երեկոյան 19:00</p>
       </div>
     </div>
   </section>
@@ -866,174 +471,66 @@
   <section class="section" id="faq">
     <div class="container">
       <h2 class="section-title">Հաճախ տրվող հարցեր</h2>
-
       <div class="faqWrap">
-        <div class="faqItem">
-          <button class="faqBtn" type="button">
-            <strong>1․ Դասընթացից հետո պատրաստ կլինե՞մ սկսելու աշխատել</strong>
-            <span class="plus">+</span>
-          </button>
-          <div class="faqPanel">
-            <p>Այո։ Դասընթացի ընթացքում կստանաս գործնական գիտելիքներ, կկազմես պորտֆոլիո և կստանաս ուղղորդում՝ ինչպես ճիշտ քայլերով մտնել ֆրիլանս աշխարհ։</p>
-          </div>
-        </div>
-
-        <div class="faqItem">
-          <button class="faqBtn" type="button">
-            <strong>2․ Դասերը օնլա՞յն են</strong>
-            <span class="plus">+</span>
-          </button>
-          <div class="faqPanel">
-            <p>Այո, դասերը ամբողջությամբ օնլայն են։ Յուրաքանչյուր դասից հետո կունենաս նաև վիդեո նյութեր՝ կրկնելու համար։</p>
-          </div>
-        </div>
-
-        <div class="faqItem">
-          <button class="faqBtn" type="button">
-            <strong>3․ Upwork պրոֆիլը երբ և ինչպես է ստեղծվում</strong>
-            <span class="plus">+</span>
-          </button>
-          <div class="faqPanel">
-            <p>Փաթեթից կախված՝ Upwork պրոֆիլի պատրաստումը ներառված է։ Քայլ առ քայլ կստանաս ուղեցույց՝ ինչ գրել ու ինչպես ճիշտ կառուցել պրոֆիլը։</p>
-          </div>
-        </div>
-
-        <div class="faqItem">
-          <button class="faqBtn" type="button">
-            <strong>4․ Պե՞տք է նախնական գիտելիք ունենալ</strong>
-            <span class="plus">+</span>
-          </button>
-          <div class="faqPanel">
-            <p>Ոչ։ Սկսում ենք զրոյից և քայլ առ քայլ հասնում գործնական մակարդակի։</p>
-          </div>
-        </div>
-
-        <div class="faqItem">
-          <button class="faqBtn" type="button">
-            <strong>5․ Կարո՞ղ եմ համատեղել դասընթացը աշխատանքի հետ</strong>
-            <span class="plus">+</span>
-          </button>
-          <div class="faqPanel">
-            <p>Այո։ Դասերը օնլայն են և կա նաև վիդեո նյութ, որպեսզի հեշտ համատեղես քո գրաֆիկի հետ։</p>
-          </div>
-        </div>
-
-        <div class="faqItem">
-          <button class="faqBtn" type="button">
-            <strong>6․ Ինչքա՞ն ժամանակ կունենամ հետադարձ կապ</strong>
-            <span class="plus">+</span>
-          </button>
-          <div class="faqPanel">
-            <p>Փաթեթից կախված՝ 1 կամ 2 ամիս կունենաս հետադարձ կապ՝ հարցերի, առաջադրանքների և ուղղումների համար։</p>
-          </div>
-        </div>
+        <div class="faqItem"><button class="faqBtn"><span>1. Պե՞տք է արդյոք նախնական գիտելիք</span><span class="plus">+</span></button><div class="faqPanel"><p>Ոչ, դասընթացը սկսվում է զրոյից և հասցնում է աշխատանքային մակարդակի։</p></div></div>
+        <div class="faqItem"><button class="faqBtn"><span>2. Դասերը օնլայն են, թե՞ առկա</span><span class="plus">+</span></button><div class="faqPanel"><p>Ամբողջովին օնլայն՝ Zoom-ով, ձայնագրությունները մնում են ձեզ մոտ։</p></div></div>
+        <div class="faqItem"><button class="faqBtn"><span>3. Upwork պրոֆիլի ստեղծումը ներառվա՞ծ է</span><span class="plus">+</span></button><div class="faqPanel"><p>Այո, «Պրո» և «Ադվանս» փաթեթներում ներառված է պրոֆիլի քայլ առ քայլ կառուցումը։</p></div></div>
+        <div class="faqItem"><button class="faqBtn"><span>4. Կարո՞ղ եմ համատեղել աշխատանքի հետ</span><span class="plus">+</span></button><div class="faqPanel"><p>Իհարկե, դասերը երեկոյան են, իսկ ձայնագրությունները հասանելի են ցանկացած պահի։</p></div></div>
+        <div class="faqItem"><button class="faqBtn"><span>5. Որքա՞ն է հետադարձ կապի ժամկետը</span><span class="plus">+</span></button><div class="faqPanel"><p>1 կամ 2 ամիս՝ կախված փաթեթից, որտեղ կարող եք հարցեր ուղղել և ցույց տալ առաջադրանքները։</p></div></div>
+        <div class="faqItem"><button class="faqBtn"><span>6. Վճարումը միանգամի՞ց է</span><span class="plus">+</span></button><div class="faqPanel"><p>Այո, միանվագ փոխանցումով (AMD) կամ քարտով, ապահովում ենք անդորրագիր։</p></div></div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="foot">
-        <div>
-          <div class="brand" style="font-size:14px; letter-spacing:.12em;">
-            <span class="brand-badge"></span> SUCCESS ACADEMY
-          </div>
-          <small>© <span id="y"></span> Success Academy</small>
-        </div>
-
-        <div>
-          <small>
-            Instagram՝ <a href="https://www.instagram.com/freelance_to_success" target="_blank" rel="noopener">@freelance_to_success</a><br>
-            Կապ՝ DM
-          </small>
-        </div>
+        <div><span class="brand" style="font-size:14px;"><span class="brand-badge"></span> SUCCESS ACADEMY</span><br><small>© <span id="y"></span> Success Academy</small></div>
+        <div><small>IG: <a href="https://www.instagram.com/freelance_to_success" target="_blank">@freelance_to_success</a><br>Կապ՝ DM</small></div>
       </div>
     </div>
   </footer>
 
   <script>
-    // year
-    document.getElementById("y").textContent = new Date().getFullYear();
-
-    // Mobile menu open/close (menu icon button)
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // Mobile menu
     (function(){
-      const burger = document.getElementById("burger");
-      const panel = document.getElementById("mobilePanel");
-      const close = document.getElementById("closeMobile");
-      if(!burger || !panel || !close) return;
-
-      const open = () => { panel.classList.add("show"); panel.setAttribute("aria-hidden","false"); };
-      const shut = () => { panel.classList.remove("show"); panel.setAttribute("aria-hidden","true"); };
-
-      burger.addEventListener("click", open);
-      close.addEventListener("click", shut);
-
-      panel.addEventListener("click", (e) => { if(e.target === panel) shut(); });
-      panel.querySelectorAll("[data-close]").forEach(a => a.addEventListener("click", shut));
-    })();
-
-    // countdown to March 12, 2026 (no seconds)
-    (function(){
-      const d = document.getElementById("d");
-      const h = document.getElementById("h");
-      const m = document.getElementById("m");
-      if(!d || !h || !m) return;
-
-      const target = new Date("2026-03-12T00:00:00");
-
-      function tick(){
-        const now = new Date();
-        let diff = target.getTime() - now.getTime();
-        if(diff <= 0){
-          d.textContent = h.textContent = m.textContent = "00";
-          return;
-        }
-        const totalSec = Math.floor(diff / 1000);
-        const days = Math.floor(totalSec / (60*60*24));
-        const hrs  = Math.floor((totalSec % (60*60*24)) / (60*60));
-        const mins = Math.floor((totalSec % (60*60)) / 60);
-
-        d.textContent = String(days).padStart(2,"0");
-        h.textContent = String(hrs).padStart(2,"0");
-        m.textContent = String(mins).padStart(2,"0");
+      const b=document.getElementById('burger'),p=document.getElementById('mobilePanel'),c=document.getElementById('closeMobile');
+      if(b&&p&&c){
+        b.onclick=()=>{p.classList.add('show');p.setAttribute('aria-hidden','false');};
+        c.onclick=()=>{p.classList.remove('show');p.setAttribute('aria-hidden','true');};
+        p.addEventListener('click',e=>{if(e.target===p)p.classList.remove('show');});
+        p.querySelectorAll('[data-close]').forEach(el=>el.addEventListener('click',()=>p.classList.remove('show')));
       }
-      tick();
-      setInterval(tick, 1000);
     })();
-
-    // FAQ accordion
+    // Countdown
     (function(){
-      const items = document.querySelectorAll(".faqItem");
-      items.forEach(item => {
-        const btn = item.querySelector(".faqBtn");
-        const panel = item.querySelector(".faqPanel");
-        if(!btn || !panel) return;
-
-        const closeAll = () => {
-          items.forEach(it => {
-            if(it === item) return;
-            it.classList.remove("open");
-            const p = it.querySelector(".faqPanel");
-            if(p) p.style.maxHeight = "0px";
-          });
-        };
-
-        btn.addEventListener("click", () => {
-          const isOpen = item.classList.contains("open");
-          closeAll();
-
-          item.classList.toggle("open", !isOpen);
-          panel.style.maxHeight = (!isOpen) ? (panel.scrollHeight + "px") : "0px";
+      const d=document.getElementById('d'),h=document.getElementById('h'),m=document.getElementById('m');
+      if(!d||!h||!m)return;
+      const target=new Date('2026-03-12T00:00:00');
+      function update(){
+        const now=new Date(),diff=target-now;
+        if(diff<=0){d.textContent=h.textContent=m.textContent='00';return;}
+        const total=Math.floor(diff/1000),days=Math.floor(total/86400),hrs=Math.floor((total%86400)/3600),mins=Math.floor((total%3600)/60);
+        d.textContent=String(days).padStart(2,'0');h.textContent=String(hrs).padStart(2,'0');m.textContent=String(mins).padStart(2,'0');
+      }
+      update(); setInterval(update,1000);
+    })();
+    // FAQ
+    (function(){
+      document.querySelectorAll('.faqItem').forEach(item=>{
+        const btn=item.querySelector('.faqBtn'),panel=item.querySelector('.faqPanel');
+        if(!btn||!panel)return;
+        panel.style.maxHeight='0px';
+        btn.addEventListener('click',()=>{
+          const isOpen=item.classList.contains('open');
+          document.querySelectorAll('.faqItem.open').forEach(it=>{if(it!==item){it.classList.remove('open');it.querySelector('.faqPanel').style.maxHeight='0px';}});
+          item.classList.toggle('open',!isOpen);
+          panel.style.maxHeight=!isOpen ? panel.scrollHeight+'px' : '0px';
         });
-
-        panel.style.maxHeight = "0px";
       });
-
-      window.addEventListener("resize", () => {
-        document.querySelectorAll(".faqItem.open .faqPanel").forEach(p => {
-          p.style.maxHeight = p.scrollHeight + "px";
-        });
+      window.addEventListener('resize',()=>{
+        document.querySelectorAll('.faqItem.open .faqPanel').forEach(p=>{p.style.maxHeight=p.scrollHeight+'px';});
       });
     })();
   </script>
