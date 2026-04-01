@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Success Academy | Shopify • Upwork • AI — Պրոֆեսիոնալ ֆրիլանս դասընթաց</title>
-  <meta name="description" content="Դարձիր բարձր վարձատրվող ֆրիլանսեր։ Shopify, Upwork, AI գործիքներ։ Պրակտիկ դասընթաց՝ պորտֆոլիոյով, հաճախորդներ գտնելու ռազմավարությամբ և կարիերայի աջակցությամբ։">
+  <title>Success Academy | Shopify • Upwork • AI — Սովորիր և վաստակիր</title>
+  <meta name="description" content="Shopify, Upwork, AI — պրակտիկ դասընթաց՝ պորտֆոլիոյով և կարիերայի արագ մեկնարկով։ Սկսում ենք Ապրիլի 13-ին և 23-ին։">
   
-  <!-- Open Graph -->
+  <!-- Open Graph / Social -->
   <meta property="og:title" content="Success Academy — Shopify • Upwork • AI դասընթաց">
-  <meta property="og:description" content="3-5 շաբաթում յուրացրու պահանջված հմտություններ, կառուցիր պորտֆոլիո և սկսիր վաստակել միջազգային շուկայում։">
+  <meta property="og:description" content="3–5 շաբաթում յուրացրու պահանջված հմտություններ և ստացիր պորտֆոլիո՝ միջազգային շուկայում աշխատելու համար։">
   <meta property="og:type" content="website">
   
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..900&display=swap" rel="stylesheet">
@@ -21,16 +21,17 @@
     }
 
     :root {
-      --bg: #FFFFFF;
-      --bg-secondary: #F9F7F4;
-      --primary: #1F1F21;
-      --primary-light: #2C2C2E;
-      --accent: #E3FC02;
-      --accent-dark: #c9e002;
-      --text: #1A1A1C;
-      --text-light: #5A5A5E;
-      --border: #EAEAED;
-      --success: #10B981;
+      --bg: #FEFAF5;
+      --bg-card: #FFFFFF;
+      --primary: #C17B4C;
+      --primary-dark: #A5643A;
+      --primary-light: #D9966B;
+      --text: #2C241A;
+      --text-light: #6B5A4A;
+      --border: #EEE3D8;
+      --accent: #F7D44A;
+      --accent-dark: #E5C137;
+      --success: #7A6A5A;
       --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
       --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
       --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
@@ -59,7 +60,7 @@
     }
 
     h1 {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
       margin-bottom: 1rem;
     }
 
@@ -69,7 +70,7 @@
     }
 
     .section {
-      padding: 80px 0;
+      padding: 70px 0;
     }
 
     .section-sm {
@@ -97,8 +98,8 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 14px 32px;
-      border-radius: 9999px;
+      padding: 12px 28px;
+      border-radius: 40px;
       font-weight: 700;
       font-size: 0.9375rem;
       transition: all 0.25s ease;
@@ -109,12 +110,12 @@
 
     .btn-primary {
       background: var(--primary);
-      color: var(--accent);
+      color: white;
       box-shadow: var(--shadow-sm);
     }
 
     .btn-primary:hover {
-      background: #2a2a2d;
+      background: var(--primary-dark);
       transform: translateY(-2px);
       box-shadow: var(--shadow-md);
     }
@@ -127,20 +128,19 @@
 
     .btn-outline:hover {
       background: var(--primary);
-      color: var(--accent);
+      color: white;
       transform: translateY(-2px);
     }
 
     .btn-accent {
       background: var(--accent);
-      color: var(--primary);
+      color: var(--primary-dark);
       font-weight: 800;
     }
 
     .btn-accent:hover {
       background: var(--accent-dark);
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(227, 252, 2, 0.3);
     }
 
     /* Navbar */
@@ -148,7 +148,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(254, 250, 245, 0.96);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
@@ -164,18 +164,19 @@
 
     .logo {
       font-weight: 900;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       letter-spacing: -0.02em;
       text-decoration: none;
       color: var(--text);
     }
 
     .logo span {
-      color: var(--primary);
-      background: var(--accent);
+      color: white;
+      background: var(--primary);
       padding: 4px 10px;
       border-radius: 12px;
       margin-right: 4px;
+      font-size: 1rem;
     }
 
     .nav-links {
@@ -198,8 +199,8 @@
 
     /* Hero */
     .hero {
-      padding: 80px 0 60px;
-      background: linear-gradient(135deg, #FFFFFF 0%, #FEFCE8 100%);
+      padding: 70px 0 50px;
+      background: var(--bg);
     }
 
     .hero-grid {
@@ -212,7 +213,7 @@
     .hero-badge {
       display: inline-flex;
       background: var(--accent);
-      color: var(--primary);
+      color: var(--primary-dark);
       padding: 6px 14px;
       border-radius: 100px;
       font-size: 0.8rem;
@@ -221,9 +222,8 @@
     }
 
     .hero h1 span {
-      color: var(--accent);
-      background: var(--primary);
-      padding: 0 8px;
+      color: var(--primary);
+      border-bottom: 3px solid var(--accent);
     }
 
     .hero p {
@@ -246,7 +246,7 @@
       border-radius: var(--radius);
       padding: 1.5rem;
       color: white;
-      margin-top: 1.5rem;
+      margin-top: 1rem;
     }
 
     .timer-title {
@@ -255,6 +255,7 @@
       letter-spacing: 1px;
       margin-bottom: 1rem;
       color: var(--accent);
+      text-align: center;
     }
 
     .countdown {
@@ -272,7 +273,7 @@
     .countdown-number {
       font-size: 2rem;
       font-weight: 800;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.15);
       border-radius: var(--radius-sm);
       padding: 12px;
       display: block;
@@ -280,7 +281,7 @@
 
     .countdown-label {
       font-size: 0.7rem;
-      opacity: 0.7;
+      opacity: 0.8;
       margin-top: 6px;
       display: block;
     }
@@ -305,7 +306,7 @@
 
     .date-badge {
       background: var(--accent);
-      color: var(--primary);
+      color: var(--primary-dark);
       padding: 12px;
       border-radius: var(--radius-sm);
       text-align: center;
@@ -313,9 +314,51 @@
       margin-bottom: 1rem;
     }
 
+    .visual-stats {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .stat-chip {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* Social Proof */
+    .trust-bar {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .trust-number {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--primary);
+    }
+
+    .trust-label {
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+
     /* Cards */
     .card {
-      background: white;
+      background: var(--bg-card);
       border-radius: var(--radius);
       padding: 1.8rem;
       box-shadow: var(--shadow-sm);
@@ -328,16 +371,91 @@
       box-shadow: var(--shadow-md);
     }
 
-    /* Pricing Grid */
+    /* Learn Grid */
+    .learn-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .learn-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .learn-card h3 {
+      margin-bottom: 0.75rem;
+      color: var(--primary-dark);
+    }
+
+    .learn-card p {
+      color: var(--text-light);
+    }
+
+    /* Benefits */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .benefit-card {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .benefit-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Steps */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .step {
+      text-align: center;
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .step:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .step-number {
+      width: 52px;
+      height: 52px;
+      background: var(--primary);
+      color: white;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin: 0 auto 1.25rem;
+    }
+
+    /* Pricing Cards */
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
       margin-top: 1rem;
     }
 
     .pricing-card {
-      background: white;
+      background: var(--bg-card);
       border-radius: var(--radius);
       padding: 2rem;
       border: 1px solid var(--border);
@@ -352,7 +470,7 @@
 
     .pricing-card.featured {
       border: 2px solid var(--accent);
-      background: linear-gradient(135deg, #FFFFFF 0%, #FEFCE8 100%);
+      background: linear-gradient(135deg, #FFFFFF 0%, #FFF9F0 100%);
     }
 
     .popular-tag {
@@ -361,17 +479,31 @@
       left: 50%;
       transform: translateX(-50%);
       background: var(--accent);
-      color: var(--primary);
+      color: var(--primary-dark);
       padding: 4px 16px;
       border-radius: 40px;
       font-size: 0.7rem;
       font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .pricing-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-dark);
     }
 
     .price {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 800;
       margin: 1rem 0;
+      color: var(--text);
+    }
+
+    .price small {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-light);
     }
 
     .feature-list {
@@ -382,7 +514,7 @@
     .feature-list li {
       margin-bottom: 0.75rem;
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 10px;
       color: var(--text-light);
       font-size: 0.9rem;
@@ -401,100 +533,30 @@
       font-size: 11px;
       font-weight: bold;
       flex-shrink: 0;
-      margin-top: 2px;
     }
 
-    /* Curriculum */
-    .curriculum-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 1.5rem;
+    .pricing-card .btn {
+      width: 100%;
+      margin-top: 0.5rem;
     }
 
-    .module {
-      background: white;
-      border-radius: var(--radius-sm);
-      padding: 1.5rem;
+    /* Upwork Day Section */
+    .upwork-card {
+      background: linear-gradient(135deg, var(--bg-card) 0%, #FFF9F2 100%);
       border: 1px solid var(--border);
-    }
-
-    .module h3 {
-      color: var(--primary);
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--accent);
-      display: inline-block;
-    }
-
-    .module ul {
-      list-style: none;
-      margin-top: 1rem;
-    }
-
-    .module li {
-      margin-bottom: 0.6rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: 0.9rem;
-      color: var(--text-light);
-    }
-
-    .module li::before {
-      content: "▹";
-      color: var(--accent);
-      font-weight: bold;
-    }
-
-    /* Student Success */
-    .success-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .testimonial {
-      background: white;
       border-radius: var(--radius);
       padding: 2rem;
-      border: 1px solid var(--border);
-      position: relative;
+      text-align: center;
     }
 
-    .testimonial::before {
-      content: '"';
-      font-size: 4rem;
-      position: absolute;
-      top: 0.5rem;
-      left: 1rem;
-      color: var(--accent);
-      opacity: 0.3;
-      font-family: serif;
-    }
-
-    .testimonial-text {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .testimonial-author {
-      font-weight: 800;
-      margin-top: 1rem;
-      color: var(--primary);
-    }
-
-    .testimonial-result {
-      color: var(--accent);
-      background: var(--primary);
+    .upwork-date {
       display: inline-block;
-      padding: 2px 8px;
-      border-radius: 20px;
-      font-size: 0.7rem;
+      background: var(--accent);
+      color: var(--primary-dark);
+      padding: 8px 20px;
+      border-radius: 40px;
       font-weight: 700;
-      margin-top: 0.5rem;
+      margin-bottom: 1rem;
     }
 
     /* FAQ */
@@ -504,7 +566,7 @@
     }
 
     .faq-item {
-      background: white;
+      background: var(--bg-card);
       border-radius: var(--radius-sm);
       margin-bottom: 1rem;
       border: 1px solid var(--border);
@@ -522,7 +584,7 @@
     }
 
     .faq-question:hover {
-      background: var(--bg-secondary);
+      background: var(--bg);
     }
 
     .faq-question .icon {
@@ -548,9 +610,9 @@
       transform: rotate(45deg);
     }
 
-    /* CTA */
+    /* CTA Section */
     .cta-section {
-      background: var(--primary);
+      background: var(--primary-dark);
       color: white;
       text-align: center;
       border-radius: var(--radius);
@@ -563,9 +625,34 @@
       margin-bottom: 1rem;
     }
 
+    .cta-section .btn {
+      background: var(--accent);
+      color: var(--primary-dark);
+    }
+
+    .cta-section .btn:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+    }
+
+    .start-dates {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .date-badge-small {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 8px 16px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+    }
+
     /* Footer */
     footer {
-      background: var(--bg-secondary);
+      background: var(--bg-card);
       padding: 48px 24px 32px;
       border-top: 1px solid var(--border);
     }
@@ -598,42 +685,74 @@
 
     /* Responsive */
     @media (max-width: 768px) {
+      .container {
+        padding: 0 20px;
+      }
+      
       .section {
         padding: 50px 0;
       }
+      
       .hero-grid {
         grid-template-columns: 1fr;
         gap: 32px;
       }
+      
+      .hero {
+        padding: 40px 0 30px;
+      }
+      
       .nav-links {
         display: none;
       }
+      
       .cta-section {
         margin: 0 16px 40px;
         padding: 40px 24px;
       }
-      .curriculum-grid {
-        grid-template-columns: 1fr;
+      
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
       }
+      
+      .hero p {
+        max-width: 100%;
+      }
+      
+      .trust-bar {
+        justify-content: center;
+      }
+      
       .countdown-item {
         min-width: 60px;
       }
+      
       .countdown-number {
         font-size: 1.5rem;
       }
     }
-
+    
     @media (min-width: 769px) {
       .mobile-menu-btn {
         display: none;
       }
     }
-
+    
     .mobile-menu-btn {
       background: none;
       border: none;
       font-size: 1.5rem;
       cursor: pointer;
+      color: var(--primary);
+    }
+    
+    .text-primary {
+      color: var(--primary);
+    }
+    
+    .bg-soft {
+      background: var(--bg);
     }
   </style>
 </head>
@@ -643,14 +762,16 @@
   <div class="nav-container">
     <a href="#" class="logo"><span>S</span>uccess Academy</a>
     <div class="nav-links">
-      <a href="#curriculum">Ուսումնական պլան</a>
-      <a href="#pricing">Փաթեթներ</a>
+      <a href="#about">Դասընթացի մասին</a>
+      <a href="#learn">Ի՞նչ ենք սովորում</a>
+      <a href="#benefits">Արդյունքներ</a>
+      <a href="#packages">Փաթեթներ</a>
+      <a href="#how-it-works">Քայլերը</a>
       <a href="#upwork">Upwork օր</a>
-      <a href="#success">Հաջողության պատմություններ</a>
       <a href="#faq">ՀՏՀ</a>
     </div>
-    <a href="#apply" class="btn btn-primary" style="padding: 10px 24px;">Գրանցվել →</a>
-    <button class="mobile-menu-btn" id="menuToggle">☰</button>
+    <a href="#cta" class="btn btn-primary" style="padding: 10px 24px;">Գրանցվել →</a>
+    <button class="mobile-menu-btn" id="menuToggle" aria-label="Menu">☰</button>
   </div>
 </nav>
 
@@ -661,17 +782,22 @@
       <div class="hero-grid">
         <div>
           <div class="hero-badge">🔥 Սահմանափակ տեղեր — նոր հոսքը սկսվում է</div>
-          <h1>Նոր մասնագիտություն՝ <span>իրական ֆրիլանս կարիերայով</span></h1>
-          <p>3–5 շաբաթում յուրացնում ես պահանջված հմտություններ (Shopify, Upwork, AI), ստանում պորտֆոլիո և սովորում հաճախորդներ գտնել միջազգային շուկայում։</p>
+          <h1>Նոր մասնագիտություն՝ իրական <span>ֆրիլանս կարիերայով</span></h1>
+          <p>3–5 շաբաթում դուք յուրացնում եք պահանջված հմտություններ (Shopify, Upwork, AI) և ստանում պորտֆոլիո՝ միջազգային շուկայում աշխատելու համար։</p>
           <div class="hero-buttons">
-            <a href="#pricing" class="btn btn-accent">Ընտրել փաթեթը</a>
-            <a href="#curriculum" class="btn btn-outline">Տես ծրագիրը</a>
+            <a href="#packages" class="btn btn-primary">Դիտել փաթեթները</a>
+            <a href="#learn" class="btn btn-outline">Ծրագիրը</a>
+          </div>
+          <div class="trust-bar">
+            <div class="trust-item"><span class="trust-number">800+</span><span class="trust-label">շրջանավարտ</span></div>
+            <div class="trust-item"><span class="trust-number">70%</span><span class="trust-label">աշխատանք է գտնում առաջին ամիսներին</span></div>
+            <div class="trust-item"><span class="trust-number">2×/շաբ.</span><span class="trust-label">յուր․ 2 ժամ դաս</span></div>
           </div>
         </div>
         <div class="hero-visual">
           <div class="visual-card">
             <div class="date-badge">🎓 Shopify + AI հոսք</div>
-            <div style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem;">Ապրիլի 23, 2026</div>
+            <div style="font-size: 1.3rem; font-weight: 700; text-align: center; margin-bottom: 0.5rem;">Ապրիլի 23, 2026</div>
             <div class="timer-container" style="background: rgba(255,255,255,0.1); padding: 1rem; margin-top: 0.5rem;">
               <div class="timer-title">Մեկնարկին մնացած ժամանակը</div>
               <div class="countdown" id="countdown">
@@ -681,187 +807,168 @@
                 <div class="countdown-item"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">Վայրկյան</span></div>
               </div>
             </div>
+            <div class="visual-stats">
+              <span class="stat-chip">Ցերեկային խումբ 12:30</span>
+              <span class="stat-chip">Երեկոյան խումբ 19:00</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Full Curriculum - What they will learn + How to find clients -->
-  <section id="curriculum" class="section" style="background: var(--bg-secondary);">
+  <!-- About Program - ORIGINAL CONTENT -->
+  <section id="about" class="section bg-soft">
     <div class="container">
       <div class="section-header">
-        <h2>Ուսումնական <span style="background: var(--accent); color: var(--primary); padding: 0 8px;">պլան</span></h2>
-        <p>Ամբողջական ծրագիր՝ հմտություններից մինչև առաջին հաճախորդը</p>
+        <h2>Դասընթացի <span class="text-primary">ձևաչափ</span></h2>
+        <p>Հստակ գրաֆիկ, օնլայն, հարմարեցված աշխատող մարդկանց համար։</p>
       </div>
-      <div class="curriculum-grid">
-        <div class="module">
-          <h3>📦 Մոդուլ 1: Shopify-ի հիմքեր</h3>
-          <ul>
-            <li>Shopify խանութի ստեղծում զրոյից</li>
-            <li>Թեմաների տեղադրում և կարգավորում</li>
-            <li>Ապրանքների ավելացում և կատալոգի կառուցում</li>
-            <li>Վճարային համակարգերի միացում</li>
-            <li>Առաքման կարգավորումներ</li>
-            <li>Shopify հավելվածներ և ավտոմատացում</li>
-          </ul>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+        <div class="card">
+          <h3>⏳ 3-5 շաբաթ</h3>
+          <p>(կախված փաթեթից)</p>
+          <h3 style="margin-top: 1rem;">🕒 Շաբաթական 2 դաս ական 2 ժամ</h3>
+          <p style="margin-top: 0.5rem;">Օնլայն՝ Zoom / Google Meet, ցերեկային (12:30) և երեկոյան (19:00) խմբեր</p>
         </div>
-        <div class="module">
-          <h3>🤖 Մոդուլ 2: AI գործիքներ ֆրիլանսերների համար</h3>
-          <ul>
-            <li>ChatGPT-ի պրոֆեսիոնալ օգտագործում</li>
-            <li>Midjourney և AI գրաֆիկական դիզայն</li>
-            <li>AI-ով բովանդակության ստեղծում (կոնտենտ մարքեթինգ)</li>
-            <li>Ավտոմատացում Make.com և Zapier-ով</li>
-            <li>AI գործիքներ Shopify խանութների համար</li>
-            <li>Պրոմթ ինժեներինգի հիմունքներ</li>
-          </ul>
+        <div class="card">
+          <h3>🗓️ Դասերի օրեր</h3>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 1rem;">
+            <div style="background: var(--bg); border-radius: 16px; padding: 12px; border: 1px solid var(--border);"><strong>Երկուշաբթի</strong><br><span class="text-light">12:30 / 19:00</span></div>
+            <div style="background: var(--bg); border-radius: 16px; padding: 12px; border: 1px solid var(--border);"><strong>Հինգշաբթի</strong><br><span class="text-light">12:30 / 19:00</span></div>
+          </div>
         </div>
-        <div class="module">
-          <h3>📝 Մոդուլ 3: Upwork-ում հաջողության հասնելը</h3>
-          <ul>
-            <li>Upwork պրոֆիլի օպտիմիզացիա</li>
-            <li>Պորտֆոլիոյի կառուցում, որը գրավում է հաճախորդներին</li>
-            <li>Cover letter-ների գաղտնիքները</li>
-            <li>Գնանշումների ճիշտ ձևակերպում</li>
-            <li>Հարցազրույցների հաջող անցկացում</li>
-            <li>Խարդախություններից խուսափելը</li>
-            <li>Upwork-ից գումարի ստացում Հայաստանում</li>
-          </ul>
-        </div>
-        <div class="module">
-          <h3>🎯 Մոդուլ 4: Ինչպես գտնել հաճախորդներ</h3>
-          <ul>
-            <li>Թիրախային հաճախորդի պորտրետի կազմում</li>
-            <li>Սառը հաղորդագրությունների ռազմավարություն</li>
-            <li>LinkedIn-ի միջոցով հաճախորդներ գտնելը</li>
-            <li>Instagram-ի և Facebook-ի օգտագործումը</li>
-            <li>Ռեֆերալ համակարգի կառուցում</li>
-            <li>Հաճախորդների հետ երկարաժամկետ համագործակցություն</li>
-            <li>Գնացուցակի և փաթեթների ձևավորում</li>
-          </ul>
-        </div>
-        <div class="module">
-          <h3>💼 Մոդուլ 5: Պորտֆոլիոյի ստեղծում</h3>
-          <ul>
-            <li>Իրական նախագծերի վրա աշխատանք</li>
-            <li>Կեյսերի ներկայացման ձևաչափ</li>
-            <li>Պորտֆոլիո կայքի ստեղծում</li>
-            <li>Behance և Dribbble պրոֆիլների կարգավորում</li>
-            <li>Վկայականների և առաջարկությունների հավաքագրում</li>
-          </ul>
-        </div>
-        <div class="module">
-          <h3>🚀 Մոդուլ 6: Առաջին եկամուտ և մասշտաբավորում</h3>
-          <ul>
-            <li>Առաջին $500-ի վաստակման պլան</li>
-            <li>Գնային քաղաքականության ձևավորում</li>
-            <li>Սեփական բրենդի կառուցում</li>
-            <li>Թիմի հավաքագրում և դելեգացիա</li>
-            <li>Եկամտի պասիվ աղբյուրների ստեղծում</li>
-            <li>Երկարաժամկետ ռազմավարության մշակում</li>
+        <div class="card">
+          <h3>💡 Shopify, Upwork, AI հիմքեր</h3>
+          <ul class="feature-list" style="margin-top: 0.5rem;">
+            <li><strong>Shopify</strong> – առցանց խանութների ստեղծում և կառավարում</li>
+            <li><strong>Upwork</strong> – ինչպես գտնել պատվերներ միջազգային հարթակում</li>
+            <li><strong>AI գործիքներ</strong> – արագացնում են աշխատանքը, խնայում ժամանակ</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Pricing Section -->
-  <section id="pricing" class="section">
+  <!-- What You Will Learn - ORIGINAL CONTENT -->
+  <section id="learn" class="section">
     <div class="container">
       <div class="section-header">
-        <h2>Ընտրիր քո <span style="background: var(--accent); color: var(--primary); padding: 0 8px;">ճանապարհը</span></h2>
-        <p>Միանվագ վճար, առանց թաքնված ծախսերի</p>
+        <h2>Ի՞նչ ես <span class="text-primary">սովորելու</span></h2>
+        <p>Գործնական ինտենսիվ՝ Shopify, Upwork, AI գործիքներ, պորտֆոլիո և միջազգային հաճախորդների ձեռքբերման ռազմավարություն։</p>
+      </div>
+      <div class="learn-grid">
+        <div class="card learn-card">
+          <div class="learn-icon">🛍️</div>
+          <h3>Shopify</h3>
+          <p>Առցանց խանութների ստեղծում և կառավարում։ Դիզայն, ապրանքների հետազոտություն, ավտոմատացում։</p>
+        </div>
+        <div class="card learn-card">
+          <div class="learn-icon">📝</div>
+          <h3>Upwork</h3>
+          <p>Ինչպես գտնել պատվերներ միջազգային հարթակում, պրոֆիլի օպտիմիզացիա, cover letter-ներ։</p>
+        </div>
+        <div class="card learn-card">
+          <div class="learn-icon">⚡</div>
+          <h3>AI գործիքներ</h3>
+          <p>Արագացնում են աշխատանքը, խնայում ժամանակ։ ChatGPT, Midjourney, ավտոմատացում։</p>
+        </div>
+      </div>
+      <div style="margin-top: 2rem; text-align: center;">
+        <div class="card" style="display: inline-block; text-align: left; max-width: 500px;">
+          <h3>✅ Արդյունքը՝ պորտֆոլիո + վստահ մեկնարկ</h3>
+          <p class="text-light">Դասընթացն ամբողջությամբ պրակտիկ է, քայլ առ քայլ ուղեկցումով։</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits / Outcomes - ORIGINAL CONTENT -->
+  <section id="benefits" class="section bg-soft">
+    <div class="container">
+      <div class="section-header">
+        <h2>Իրական <span class="text-primary">արդյունքներ</span></h2>
+        <p>Սա վկայականների մասին չէ։ Սա քո եկամտի հետագիծը փոխելու մասին է։</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="card benefit-card">
+          <div class="benefit-icon">💰</div>
+          <h3>Վաստակիր մինչև ավարտելը</h3>
+          <p>Ուսանողների 70%-ը գտնում է վճարովի պատվիրատու մինչև 4-րդ շաբաթը։</p>
+        </div>
+        <div class="card benefit-card">
+          <div class="benefit-icon">🎓</div>
+          <h3>Առանց դիպլոմի</h3>
+          <p>Կառուցիր պորտֆոլիո, որն ավելի շատ է խոսում, քան ցանկացած դիպլոմ։</p>
+        </div>
+        <div class="card benefit-card">
+          <div class="benefit-icon">🌍</div>
+          <h3>Աշխատիր ցանկացած վայրից</h3>
+          <p>Նոութբուքից։ Բալի՞, թե՞ տան սենյակ։ Քո ընտրությունը։</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section - ORIGINAL PRICES -->
+  <section id="packages" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Փաթեթներ</h2>
+        <p>Միանվագ վճար, առանց պարտադիր լրացուցիչ ծախսերի</p>
       </div>
       <div class="pricing-grid">
         <div class="pricing-card">
           <h3>Ստարտ</h3>
           <div class="price">59,000 ֏</div>
           <ul class="feature-list">
-            <li>Shopify դասընթաց (լիարժեք)</li>
-            <li>AI գործիքների հիմունքներ</li>
+            <li>Shopify</li>
             <li>1 ամիս հետադարձ կապ</li>
-            <li>Տեսադասերի մշտական հասանելիություն</li>
-            <li>Պորտֆոլիոյի հիմունքներ</li>
-            <li>Մասնակցություն փակ Discord համայնքին</li>
+            <li>Վիդեոդասեր</li>
           </ul>
-          <a href="#apply" class="btn btn-primary" style="width: 100%;">Ընտրել</a>
+          <a href="#cta" class="btn btn-primary">Ընտրել</a>
         </div>
         
         <div class="pricing-card featured">
-          <div class="popular-tag">ԱՄԵՆԱՀԱՅՏ</div>
+          <div class="popular-tag">TOP</div>
           <h3>Պրո</h3>
           <div class="price">69,000 ֏</div>
           <ul class="feature-list">
-            <li>Shopify դասընթաց (լիարժեք)</li>
-            <li>AI գործիքների խորացված կիրառում</li>
-            <li>Upwork պրոֆիլի ստեղծում և օպտիմիզացիա</li>
-            <li>Cover letter-ների գաղտնիքները</li>
+            <li>Shopify + Upwork պրոֆիլի ստեղծում (էջ)</li>
             <li>2 ամիս հետադարձ կապ</li>
-            <li>Տեսադասերի մշտական հասանելիություն</li>
-            <li>Պորտֆոլիոյի ամբողջական փաթեթ</li>
-            <li>Հաճախորդներ գտնելու ռազմավարություն</li>
+            <li>Վիդեոդասեր</li>
           </ul>
-          <a href="#apply" class="btn btn-accent" style="width: 100%;">Ընտրել</a>
+          <a href="#cta" class="btn btn-accent">Ընտրել</a>
         </div>
         
         <div class="pricing-card">
           <h3>Ադվանս 🚀</h3>
           <div class="price">79,000 ֏</div>
           <ul class="feature-list">
-            <li>Shopify + Upwork խորացված դասընթաց</li>
-            <li>AI գործիքների մասնագիտական կիրառում</li>
+            <li>Shopify + Upwork պրոֆիլ + անհատական 2 ժամ Upwork խորացված</li>
             <li>HTML/CSS հիմունքներ (1 լրացուցիչ դաս)</li>
-            <li>Անհատական 2 ժամ Upwork ինտենսիվ</li>
             <li>2 ամիս հետադարձ կապ</li>
             <li>Մշտական հասանելիություն վիդեոդասերին</li>
-            <li>Բոնուսային նյութեր և թրփլեյթներ</li>
-            <li>Անհատական կարիերայի խորհրդատվություն</li>
           </ul>
-          <a href="#apply" class="btn btn-primary" style="width: 100%;">Ընտրել</a>
+          <a href="#cta" class="btn btn-primary">Ընտրել</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Upwork Day Section -->
-  <section id="upwork" class="section" style="background: var(--bg-secondary);">
+  <!-- How It Works - ORIGINAL STEPS -->
+  <section id="how-it-works" class="section bg-soft">
     <div class="container">
       <div class="section-header">
-        <h2>Upwork <span style="background: var(--accent); color: var(--primary); padding: 0 8px;">օր</span></h2>
-        <p>Ինտենսիվ վերապատրաստում Upwork-ում մեկնարկելու համար</p>
+        <h2>Ճանապարհային <span class="text-primary">քարտեզ</span></h2>
+        <p>Պարզ, արագ և գործողության վրա հիմնված։</p>
       </div>
-      <div class="card" style="max-width: 800px; margin: 0 auto; text-align: center;">
-        <div style="background: var(--accent); color: var(--primary); display: inline-block; padding: 8px 20px; border-radius: 40px; font-weight: 800; margin-bottom: 1rem;">📅 Ապրիլի 13, 2026</div>
-        <h3 style="margin-bottom: 1rem;">2.5–3 ժամյա ինտենսիվ վերապատրաստում</h3>
-        <ul class="feature-list" style="text-align: left; max-width: 500px; margin: 1rem auto;">
-          <li>Upwork պրոֆիլի ամբողջական օպտիմիզացիա</li>
-          <li>Արդյունավետ դիմումների գաղտնիքները</li>
-          <li>Cover letter-ներ, որոնք աշխատում են</li>
-          <li>Խարդախություններից խուսափելը և անվտանգ աշխատանքը</li>
-          <li>Գումարի ստացում Հայաստանում (բանկային փոխանցումներ, PayPal, Wise)</li>
-          <li>Առաջին $500 պատվերի ստացման քայլ առ քայլ պլան</li>
-          <li>Կենդանի օրինակներ և հաջողված դիմումների վերլուծություն</li>
-          <li>Հարցուպատասխան և անհատական խորհրդատվություն</li>
-        </ul>
-        <p style="margin-top: 1rem;"><strong>Արժեքը՝ 20,000 ֏</strong> · խմբային օնլայն դասընթաց Zoom-ով</p>
-        <p style="color: var(--text-light); margin-bottom: 1rem;">Ցերեկային խումբ՝ 13:00 / Երեկոյան խումբ՝ 19:00</p>
-        <a href="#apply" class="btn btn-accent">Գրանցվել Upwork օրվան</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Student Success Stories -->
-  <section id="success" class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Հաջողության <span style="background: var(--accent); color: var(--primary); padding: 0 8px;">պատմություններ</span></h2>
-        <p>Մեր շրջանավարտներն արդեն վաստակում են</p>
-      </div>
-      <div class="success-grid">
-        <div class="testimonial">
-          <div class="testimonial-text">«Դասընթացից հետո 2 շաբաթվա ընթացքում գտա իմ առաջին պատվերը Upwork-ում։ Այսօր արդեն 3 կանոնավոր հաճախորդ ունեմ և ամսական վաստակում եմ $1200+»</div>
-          <div class="testimonial-author">— Աննա Ս.</div>
-          <div class="testimonial-result">Upwork-ում $1200/ամսական</div>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Հիմքեր + գործիքներ</h3>
+          <p>Shopify, AI, Upwork-ի կանոններ, արագ աշխատանքի մեթոդիկա</p>
         </div>
-        <
+        <div class="step">
+          <div class="step-number">2</div>
+          <h
